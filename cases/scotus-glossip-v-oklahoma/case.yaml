@@ -1,0 +1,56 @@
+name: scotus-glossip-v-oklahoma
+description: |
+  Supreme Court of the United States oral argument, Glossip v. Oklahoma
+  (docket 22-7466), argued 2024-10-09. Death penalty case from Oklahoma —
+  whether prosecutorial suppression of impeachment evidence requires reversal
+  of a capital conviction.
+
+  This is the canonical "real legal multi-speaker" benchmark for DepoDash:
+  domain-perfect (legal/courtroom), high-quality studio audio, official
+  speaker-labeled and time-aligned transcript via Oyez. Eleven speakers in
+  the room (8 justices + 3 attorneys); naturally polite turn-taking with
+  occasional brief overlaps — a realistic but not adversarial diarization
+  challenge.
+
+source: "https://api.oyez.org/cases/2024/22-7466"
+audio_source: "https://s3.amazonaws.com/oyez.case-media.mp3/case_data/2024/22-7466/22-7466_20241009-argument.delivery.mp3"
+transcript_source: "https://api.oyez.org/case_media/oral_argument_audio/25657"
+license: "Public domain (US government work). Audio + transcript redistributable."
+
+duration_s: 4031   # ~67 minutes
+speakers: 11
+domain: legal/scotus
+language: en
+
+monitor_containers:
+  - sm-triton
+  - sm-rt-transcriber
+
+# Key terms that should survive transcription. Used for entity preservation
+# scoring — sourced from the case itself (parties, justices, key evidence).
+key_terms:
+  - "Glossip"
+  - "Oklahoma"
+  - "Justin Sneed"
+  - "Richard Glossip"
+  - "Waxman"
+  - "Roberts"
+  - "Sotomayor"
+  - "Kagan"
+  - "Kavanaugh"
+  - "Barrett"
+  - "Jackson"
+  - "Alito"
+  - "Thomas"
+  - "Brady"             # legal doctrine (Brady v. Maryland)
+  - "habeas"
+  - "22-7466"           # docket number
+
+ground_truth:
+  reference_text: "reference.txt"
+  reference_rttm: "reference.rttm"
+  notes: |
+    Oyez's transcript is the de-facto canonical version (the official
+    SCOTUS PDF transcript is identical in content but harder to parse).
+    Speaker turns in reference.rttm correspond exactly to Oyez's `turns`
+    array; text_blocks within a turn are concatenated for the WER reference.

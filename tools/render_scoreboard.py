@@ -1,0 +1,201 @@
+"""
+Render SCOREBOARD.md from results/runs/*.json.
+
+For each (engine, case) pair, picks the most recent non-ramp run and emits
+a row with WER, CER, DER (if scored), entity preservation, latency, RTF, GPU
+peak. Concurrency ramp runs go in a separate section that compares N>1 to
+N=1 against the upfront thresholds in METHODOLOGY.md.
+
+Deterministic over input files. Re-run any time `results/runs/` changes.
+"""
+from __future__ import annotations
+
+import json
+import re
+from collections import defaultdict
+from dataclasses import dataclass
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+RUNS_DIR = REPO_ROOT / "results" / "runs"
+OUT_PATH = REPO_ROOT / "results" / "SCOREBOARD.md"
+
+
+@dataclass
+class Run:
+    path: Path
+    timestamp: str
+    engine: str
+    case: str
+    concurrency: int | None         # None for single-stream baseline
+    data: dict
+
+
+def load_runs() -> list[Run]:
+    runs: list[Run] = []
+    for path in sorted(RUNS_DIR.glob("*.json")):
+        # Skip resource jsonl
+        if path.name.endswith("__resources.jsonl"):
+            continue
+        try:
+            data = json.loads(path.read_text())
+        except json.JSONDecodeError:
+            continue
+        m = re.match(r"(?P<ts>[\dT\-Z]+)__(?P<eng>[\w\-]+?)__(?P<case>[\w\-]+?)(?:__ramp-N(?P<n>\d+))?\.json$", path.name)
+        if not m:
+            continue
+        runs.append(Run(
+            path=path,
+            timestamp=m.group("ts"),
+            engine=m.group("eng"),
+            case=m.group("case"),
+            concurrency=int(m.group("n")) if m.group("n") else None,
+            data=data,
+        ))
+    return runs
+
+
+def fmt_pct(x: float | None, places: int = 2) -> str:
+    if x is None:
+        return "—"
+    return f"{x*100:.{places}f}%"
+
+
+def fmt_ms(x: float | None) -> str:
+    if x is None:
+        return "—"
+    return f"{x:.0f} ms"
+
+
+def fmt_int(x) -> str:
+    return "—" if x is None else f"{x:,}"
+
+
+def render() -> str:
+    runs = load_runs()
+    if not runs:
+        return "# Scoreboard\n\nNo runs yet. Run `python -m runner --engine ... --case ...`.\n"
+
+    # Group: latest single-stream run per (engine, case)
+    latest_baseline: dict[tuple[str, str], Run] = {}
+    ramp_runs: dict[tuple[str, str], list[Run]] = defaultdict(list)
+    for r in runs:
+        key = (r.engine, r.case)
+        if r.concurrency is None:
+            cur = latest_baseline.get(key)
+            if cur is None or r.timestamp > cur.timestamp:
+                latest_baseline[key] = r
+        else:
+            ramp_runs[key].append(r)
+
+    lines: list[str] = ["# Scoreboard", ""]
+    lines.append("Auto-generated from `results/runs/*.json`. Re-render with `python tools/render_scoreboard.py`.")
+    lines.append("")
+    lines.append("Methodology + thresholds: see [METHODOLOGY.md](../METHODOLOGY.md).")
+    lines.append("")
+
+    # ---- Accuracy + latency table (single-stream baseline) ----
+    lines.append("## Single-stream baseline")
+    lines.append("")
+    lines.append("| Engine | Case | WER | CER | DER | Entities | TTFT | per-final p95 | RTF | GPU peak |")
+    lines.append("|---|---|---|---|---|---|---|---|---|---|")
+
+    for (engine, case), r in sorted(latest_baseline.items()):
+        s = r.data.get("scores", {})
+        wer = s.get("wer") or {}
+        der = s.get("der") or {}
+        ent = s.get("entity") or {}
+        lat = s.get("latency") or {}
+        res = s.get("resources") or {}
+
+        ent_str = "—"
+        if ent and ent.get("total"):
+            ent_str = f"{ent['preserved']}/{ent['total']}"
+
+        gpu_str = "—"
+        if res.get("gpu_mem_used_mb_peak"):
+            gpu_str = f"{res['gpu_mem_used_mb_peak']:,} MiB"
+
+        lines.append(
+            f"| `{engine}` | `{case}` "
+            f"| {fmt_pct(wer.get('wer'))} "
+            f"| {fmt_pct(wer.get('cer'))} "
+            f"| {fmt_pct(der.get('der'))} "
+            f"| {ent_str} "
+            f"| {fmt_ms(lat.get('ttft_ms'))} "
+            f"| {fmt_ms(lat.get('final_lag_p95_ms'))} "
+            f"| {lat.get('rtf', 0):.3f} "
+            f"| {gpu_str} |"
+        )
+    lines.append("")
+
+    # ---- S/D/I detail ----
+    lines.append("## Accuracy detail (S/D/I + entity preservation)")
+    lines.append("")
+    lines.append("| Engine | Case | Subs | Dels | Ins | Ref words | Hyp words | Missing entities |")
+    lines.append("|---|---|---|---|---|---|---|---|")
+    for (engine, case), r in sorted(latest_baseline.items()):
+        s = r.data.get("scores", {})
+        wer = s.get("wer") or {}
+        ent = s.get("entity") or {}
+        miss = ", ".join(ent.get("missing", [])) if ent.get("missing") else "—"
+        if not wer:
+            continue
+        lines.append(
+            f"| `{engine}` | `{case}` "
+            f"| {fmt_int(wer.get('substitutions'))} "
+            f"| {fmt_int(wer.get('deletions'))} "
+            f"| {fmt_int(wer.get('insertions'))} "
+            f"| {fmt_int(wer.get('ref_word_count'))} "
+            f"| {fmt_int(wer.get('hyp_word_count'))} "
+            f"| {miss} |"
+        )
+    lines.append("")
+
+    # ---- Concurrency ramp ----
+    if ramp_runs:
+        lines.append("## Concurrency ramp")
+        lines.append("")
+        for (engine, case), rs in sorted(ramp_runs.items()):
+            rs_sorted = sorted(rs, key=lambda r: (r.concurrency or 0, r.timestamp))
+            lines.append(f"### `{engine}` × `{case}`")
+            lines.append("")
+            lines.append("| N | Successes | Failures | TTFT p50 | TTFT p95 | RTF p50 | RTF p95 | GPU peak |")
+            lines.append("|---|---|---|---|---|---|---|---|")
+            for r in rs_sorted:
+                d = r.data
+                res = (d.get("resources") or {})
+                gpu = f"{res['gpu_mem_used_mb_peak']:,} MiB" if res.get("gpu_mem_used_mb_peak") else "—"
+                lines.append(
+                    f"| {d.get('concurrency')} "
+                    f"| {d.get('successes', 0)} "
+                    f"| {d.get('failures', 0)} "
+                    f"| {fmt_ms(d.get('ttft_ms_p50'))} "
+                    f"| {fmt_ms(d.get('ttft_ms_p95'))} "
+                    f"| {d.get('rtf_p50', 0):.3f} "
+                    f"| {d.get('rtf_p95', 0):.3f} "
+                    f"| {gpu} |"
+                )
+            lines.append("")
+
+    # ---- Engines + cases inventory ----
+    lines.append("## Inventory")
+    lines.append("")
+    engines = sorted({r.engine for r in runs})
+    cases = sorted({r.case for r in runs})
+    lines.append(f"- **Engines:** {', '.join(f'`{e}`' for e in engines)}")
+    lines.append(f"- **Cases:** {', '.join(f'`{c}`' for c in cases)}")
+    lines.append(f"- **Total runs:** {len(runs)}")
+    lines.append("")
+
+    return "\n".join(lines)
+
+
+def main() -> None:
+    out = render()
+    OUT_PATH.write_text(out)
+    print(f"wrote {OUT_PATH}")
+
+
+if __name__ == "__main__":
+    main()

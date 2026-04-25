@@ -1,0 +1,39 @@
+name: librispeech-test-clean-mini
+description: |
+  10-utterance subset of LibriSpeech test-clean from speaker 1089
+  (chapter 134686, utterances 0000-0009), concatenated into a single
+  70-second mono 16 kHz WAV. Read English speech from public-domain
+  audiobooks via LibriVox. Industry-standard sanity baseline for ASR —
+  any production engine should hit < 5% WER on this. If it doesn't,
+  something in the pipeline is broken.
+
+source: "https://www.openslr.org/12/  (LibriSpeech test-clean)"
+license: |
+  Audio: public domain (LibriVox).
+  Metadata + alignments: CC-BY 4.0.
+  Fully redistributable.
+
+duration_s: 70
+speakers: 1
+domain: read-english
+language: en
+
+monitor_containers:
+  - sm-triton
+  - sm-rt-transcriber
+
+# LibriSpeech reference is uppercase, no punctuation. Whisper-style normalizer
+# in metrics/accuracy.py lowercases + strips punctuation, so engines aren't
+# penalized for adding case/punctuation.
+key_terms:
+  - "Bertie"
+  - "Nelly"
+  - "Shelley"
+
+ground_truth:
+  reference_text: "reference.txt"
+  reference_rttm: null         # single speaker, no diarization scoring
+  notes: |
+    Concatenated from LibriSpeech test-clean files 1089-134686-{0000..0009}.flac
+    via ffmpeg. Reference is the union of those utterances' canonical
+    .trans.txt entries, lowercased, single line.

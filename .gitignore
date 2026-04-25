@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Local secrets
+.env
+.env.*
+!.env.example
+*.token
+*.pat
+credentials.json
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# AI context (local)
+CLAUDE.md
+.claude/
+
+# Local notes
+notes/
+
+# Audio binaries are committed intentionally — see cases/README.md.
