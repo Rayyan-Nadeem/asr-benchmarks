@@ -64,6 +64,10 @@ def fmt_pct(x: float | None, places: int = 2) -> str:
 def fmt_ms(x: float | None) -> str:
     if x is None:
         return "—"
+    if x < 0:
+        # Negative per-final lag = fast-mode artifact (audio sent before finals
+        # arrive). The number isn't meaningful in that mode.
+        return "n/a (fast)"
     return f"{x:.0f} ms"
 
 

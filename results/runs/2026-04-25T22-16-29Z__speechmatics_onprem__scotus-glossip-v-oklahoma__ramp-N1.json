@@ -1,0 +1,29 @@
+{
+  "run_id": "2026-04-25T22-16-29Z__speechmatics_onprem__scotus-glossip-v-oklahoma__ramp-N1",
+  "engine": "speechmatics_onprem",
+  "case": "scotus-glossip-v-oklahoma",
+  "concurrency": 1,
+  "successes": 1,
+  "failures": 0,
+  "failure_reasons": [],
+  "ttft_ms_p50": 5601.524558000165,
+  "ttft_ms_p95": 5601.524558000165,
+  "rtf_p50": 1.0533134266666668,
+  "rtf_p95": 1.0533134266666668,
+  "resources": {
+    "samples": 71,
+    "gpu_mem_used_mb_peak": 7684,
+    "gpu_mem_used_mb_p50": 7684.0,
+    "gpu_util_percent_peak": 74,
+    "gpu_util_percent_p50": 33.0,
+    "gpu_temp_c_peak": 40,
+    "container_cpu_peak": {
+      "sm-triton": 75.31,
+      "sm-rt-transcriber": 18.65
+    },
+    "container_mem_mb_peak": {
+      "sm-triton": 3495.936,
+      "sm-rt-transcriber": 2451.456
+    }
+  }
+}
