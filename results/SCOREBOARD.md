@@ -8,7 +8,7 @@ Methodology + thresholds: see [METHODOLOGY.md](../METHODOLOGY.md).
 
 | Engine | Case | WER | CER | DER | Entities | TTFT | per-final p95 | RTF | GPU peak |
 |---|---|---|---|---|---|---|---|---|---|
-| `speechmatics_onprem` | `deposition-greg-erwin` | — | — | — | — | 852 ms | n/a (fast) | 0.137 | 7,634 MiB |
+| `speechmatics_onprem` | `deposition-greg-erwin` | — | — | — | — | 5020 ms | 26215 ms | 1.052 | 7,782 MiB |
 | `speechmatics_onprem` | `librispeech-test-clean-mini` | 2.98% | 6.08% | — | 3/3 | 4019 ms | 6348 ms | 1.053 | 7,634 MiB |
 | `speechmatics_onprem` | `scotus-glossip-v-oklahoma` | 14.87% | 7.78% | 2.00% | 6/16 | 5131 ms | 18702 ms | 1.051 | 7,684 MiB |
 
@@ -33,4 +33,4 @@ Methodology + thresholds: see [METHODOLOGY.md](../METHODOLOGY.md).
 
 - **Engines:** `speechmatics_onprem`
 - **Cases:** `deposition-greg-erwin`, `librispeech-test-clean-mini`, `scotus-glossip-v-oklahoma`
-- **Total runs:** 8
+- **Total runs:** 9
