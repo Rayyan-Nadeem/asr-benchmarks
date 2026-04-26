@@ -66,6 +66,26 @@ class EntityReport:
         return self.preserved / self.total if self.total else 1.0
 
 
+def score_confidence(words: list) -> dict:
+    """
+    Per-word confidence aggregates (mean / p10 / low-confidence-rate).
+    Useful as a calibration signal — if an engine is consistently 1.0 on words
+    it gets wrong, it's poorly calibrated even if WER looks fine.
+    """
+    confs = [w.confidence for w in words if w.confidence is not None and not w.is_punctuation]
+    if not confs:
+        return {"words_scored": 0, "mean": None, "p10": None, "low_conf_rate": None}
+    confs_sorted = sorted(confs)
+    p10 = confs_sorted[len(confs_sorted) // 10] if len(confs_sorted) >= 10 else confs_sorted[0]
+    low_conf = sum(1 for c in confs if c < 0.7) / len(confs)
+    return {
+        "words_scored": len(confs),
+        "mean": sum(confs) / len(confs),
+        "p10": p10,
+        "low_conf_rate": low_conf,  # fraction of words below 0.7
+    }
+
+
 def score_entity_preservation(hypothesis: str, key_terms: list[str]) -> EntityReport:
     """
     For each key term (case-insensitive substring), check if it appears in the

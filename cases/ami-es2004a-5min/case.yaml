@@ -1,0 +1,50 @@
+name: ami-es2004a-5min
+description: |
+  AMI Meeting Corpus, ES2004a, mid-meeting 5-minute window (audio offset
+  360-660s of the 17.5-min source). Real 4-person scripted-scenario meeting
+  recorded at IDIAP / University of Edinburgh. THIS is the canonical
+  academic diarization stress test — used by every major paper on speaker
+  diarization (pyannote, NeMo, x-vector, EEND, end-to-end neural diarization).
+  Numbers are directly comparable to the published literature.
+
+  Why this window matters:
+  - **All 4 speakers active** (FEE013, FEE016, MEE014, MEO015 — 2 female, 2 male)
+  - **94% speech density** — almost no silence to game DER on
+  - **17% overlap** (where 2+ speakers talk simultaneously) — the failure
+    mode SCOTUS doesn't have, the one Keanan flagged as critical
+  - Mix-Headset audio = mixed beamform from individual lapel mics, similar
+    acoustic conditions to a courtroom with multiple personal mics
+
+source: "https://groups.inf.ed.ac.uk/ami/AMICorpusMirror/amicorpus/ES2004a/audio/ES2004a.Mix-Headset.wav"
+rttm_source: "https://github.com/BUTSpeechFIT/AMI-diarization-setup (test split, only_words RTTM)"
+license: "CC-BY 4.0 (AMI corpus). RTTM annotations: same. Fully redistributable."
+
+duration_s: 300
+speakers: 4
+overlap_percent: 17.0
+speech_density_percent: 94.2
+domain: meeting
+language: en
+
+monitor_containers:
+  - sm-triton
+  - sm-rt-transcriber
+
+# Window provenance — saved so anyone can re-derive the trim.
+window:
+  source_audio_offset_s: 360
+  source_audio_duration_s: 300
+
+# No reference.txt: AMI manual transcripts are in NXT format and word-level
+# alignment to the trimmed window is non-trivial. DER + JER + speaker count
+# are the metrics this case scores. WER reference can be added in Phase 1.5
+# by extracting from the NXT and aligning to the window.
+ground_truth:
+  reference_text: null
+  reference_rttm: "reference.rttm"
+  notes: |
+    RTTM trimmed to [360, 660]s of the source audio, then re-zeroed so the
+    case audio starts at t=0. Speaker labels preserved from the AMI standard
+    (FEE013/FEE016 = female participants, MEE014/MEO015 = male participants).
+
+key_terms: []     # no WER reference; entity scoring N/A

@@ -101,8 +101,8 @@ def render() -> str:
     # ---- Accuracy + latency table (single-stream baseline) ----
     lines.append("## Single-stream baseline")
     lines.append("")
-    lines.append("| Engine | Case | WER | CER | DER | Entities | TTFT | per-final p95 | RTF | GPU peak |")
-    lines.append("|---|---|---|---|---|---|---|---|---|---|")
+    lines.append("| Engine | Case | WER | CER | DER | Entities | Mean conf | TTFT | per-final p95 | RTF | GPU peak |")
+    lines.append("|---|---|---|---|---|---|---|---|---|---|---|")
 
     for (engine, case), r in sorted(latest_baseline.items()):
         s = r.data.get("scores", {})
@@ -111,6 +111,7 @@ def render() -> str:
         ent = s.get("entity") or {}
         lat = s.get("latency") or {}
         res = s.get("resources") or {}
+        conf = s.get("confidence") or {}
 
         ent_str = "—"
         if ent and ent.get("total"):
@@ -120,12 +121,17 @@ def render() -> str:
         if res.get("gpu_mem_used_mb_peak"):
             gpu_str = f"{res['gpu_mem_used_mb_peak']:,} MiB"
 
+        conf_str = "—"
+        if conf.get("mean") is not None:
+            conf_str = f"{conf['mean']:.3f}"
+
         lines.append(
             f"| `{engine}` | `{case}` "
             f"| {fmt_pct(wer.get('wer'))} "
             f"| {fmt_pct(wer.get('cer'))} "
             f"| {fmt_pct(der.get('der'))} "
             f"| {ent_str} "
+            f"| {conf_str} "
             f"| {fmt_ms(lat.get('ttft_ms'))} "
             f"| {fmt_ms(lat.get('final_lag_p95_ms'))} "
             f"| {lat.get('rtf', 0):.3f} "

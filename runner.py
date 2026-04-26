@@ -30,7 +30,7 @@ from typing import Any
 import yaml
 
 from engines._base import Engine, Result
-from metrics.accuracy import score_entity_preservation, score_wer
+from metrics.accuracy import score_confidence, score_entity_preservation, score_wer
 from metrics.diarization import score_der, words_to_rttm_segments
 from metrics.latency import score_latency
 from samplers.resources import ResourceSampler
@@ -170,6 +170,7 @@ async def run_one(engine_name: str, case_name: str, fast: bool, transcription_ov
     lat = score_latency(result.metadata, fast_mode=fast)
     scores["latency"] = asdict(lat)
     scores["resources"] = asdict(res_summary)
+    scores["confidence"] = score_confidence(result.words)
 
     # Write the full run record
     record = {

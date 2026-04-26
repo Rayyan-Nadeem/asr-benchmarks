@@ -70,6 +70,12 @@
         "sm-triton": 3479.552,
         "sm-rt-transcriber": 2448.384
       }
+    },
+    "confidence": {
+      "words_scored": 141,
+      "mean": 0.9833333333333334,
+      "p10": 1.0,
+      "low_conf_rate": 0.03546099290780142
     }
   },
   "result": {
