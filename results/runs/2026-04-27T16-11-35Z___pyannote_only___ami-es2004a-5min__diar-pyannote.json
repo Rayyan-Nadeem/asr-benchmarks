@@ -1,0 +1,613 @@
+{
+  "run_id": "2026-04-27T16-11-35Z___pyannote_only___ami-es2004a-5min__diar-pyannote",
+  "timestamp_utc": "2026-04-27T16-11-35Z",
+  "engine": "_pyannote_only_",
+  "case": "ami-es2004a-5min",
+  "diarizer": "pyannote",
+  "tag": "ceiling",
+  "scores": {
+    "der": {
+      "der": 0.24801531478925548,
+      "speaker_count_ref": 4,
+      "speaker_count_hyp": 3
+    },
+    "diarizer": "pyannote",
+    "latency": {
+      "ttft_ms": null,
+      "ttfp_ms": null,
+      "final_lag_p50_ms": null,
+      "final_lag_p95_ms": null,
+      "final_lag_p99_ms": null,
+      "rtf": 0.15460110078777936,
+      "finals_count": 0,
+      "partials_count": 0
+    },
+    "resources": {},
+    "confidence": {
+      "words_scored": 0,
+      "mean": null,
+      "p10": null,
+      "low_conf_rate": null
+    }
+  },
+  "result": {
+    "transcript": "",
+    "words": [],
+    "raw_dump": [
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 0.03096875,
+        "end": 2.14034375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 1.71846875,
+        "end": 7.371593750000001
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 5.734718750000001,
+        "end": 6.207218750000001
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 6.207218750000001,
+        "end": 7.30409375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 11.45534375,
+        "end": 15.589718750000003
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 13.78409375,
+        "end": 16.88909375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 16.88909375,
+        "end": 19.234718750000003
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 19.58909375,
+        "end": 24.41534375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 21.02346875,
+        "end": 21.15846875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 21.15846875,
+        "end": 21.17534375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 21.17534375,
+        "end": 22.30596875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 22.30596875,
+        "end": 22.508468750000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 22.508468750000002,
+        "end": 22.59284375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 22.59284375,
+        "end": 22.94721875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 31.23284375,
+        "end": 31.739093750000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 34.00034375,
+        "end": 46.875968750000006
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 36.869093750000005,
+        "end": 36.970343750000005
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 37.03784375,
+        "end": 39.822218750000005
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 43.24784375,
+        "end": 43.399718750000005
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 60.10596875,
+        "end": 61.91159375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 61.18596875,
+        "end": 66.60284375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 68.07096875,
+        "end": 70.09596875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 72.47534375000001,
+        "end": 73.89284375000001
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 78.71909375,
+        "end": 82.16159375000001
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 81.52034375000001,
+        "end": 90.73409375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 90.90284375,
+        "end": 91.29096875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 93.97409375000001,
+        "end": 97.07909375000001
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 97.92284375000001,
+        "end": 100.60596875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 101.09534375000001,
+        "end": 102.02346875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 105.41534375,
+        "end": 110.29221875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 107.99721875,
+        "end": 108.08159375000001
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 108.14909375,
+        "end": 108.33471875000001
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 114.39284375000001,
+        "end": 118.72971875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 121.24409375,
+        "end": 123.87659375000001
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 127.31909375000001,
+        "end": 127.77471875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 128.78721875,
+        "end": 131.23409375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 132.88784375,
+        "end": 134.71034375000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 137.76471875000001,
+        "end": 137.83221875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 137.83221875,
+        "end": 154.11659375000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 137.91659375,
+        "end": 139.08096875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 139.78971875000002,
+        "end": 140.71784375000001
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 141.27471875,
+        "end": 144.97034375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 156.12471875,
+        "end": 156.58034375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 157.87971875000002,
+        "end": 158.67284375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 159.83721875,
+        "end": 160.68096875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 159.85409375,
+        "end": 173.32034375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 164.30909375000002,
+        "end": 164.71409375000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 164.91659375,
+        "end": 168.91596875000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 175.54784375,
+        "end": 176.62784375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 181.45409375,
+        "end": 188.74409375000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 193.65471875,
+        "end": 196.42221875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 194.44784375,
+        "end": 195.00471875000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 198.54846875,
+        "end": 198.93659375000001
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 201.11346875,
+        "end": 215.20409375000003
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 215.20409375000003,
+        "end": 227.99534375000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 216.52034375000002,
+        "end": 217.73534375000003
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 220.84034375000002,
+        "end": 221.09346875000003
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 224.36721875,
+        "end": 224.43471875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 224.43471875,
+        "end": 226.39221875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 226.39221875,
+        "end": 226.81409375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 227.99534375000002,
+        "end": 228.01221875000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 228.38346875000002,
+        "end": 232.28159375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 230.96534375000002,
+        "end": 230.98221875000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 230.98221875000002,
+        "end": 235.48784375000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 233.81721875000002,
+        "end": 234.22221875000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 234.22221875000002,
+        "end": 247.01346875000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 243.46971875000003,
+        "end": 244.22909375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 248.05971875,
+        "end": 254.47221875000002
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 253.51034375,
+        "end": 269.42346875000004
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 261.47534375000004,
+        "end": 261.71159375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 261.71159375,
+        "end": 261.76221875000005
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 262.01534375,
+        "end": 262.15034375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 263.87159375000005,
+        "end": 263.92221875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 263.92221875,
+        "end": 263.95596875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_00",
+        "start": 263.95596875,
+        "end": 263.97284375000004
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 263.97284375000004,
+        "end": 264.20909375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 270.38534375,
+        "end": 271.33034375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 271.27971875000003,
+        "end": 277.06784375
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 275.53221875,
+        "end": 275.90346875
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 278.06346875,
+        "end": 291.71534375000005
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_02",
+        "start": 293.36909375,
+        "end": 295.12409375000004
+      },
+      {
+        "_direction": "in",
+        "message": "PyannoteRTTM",
+        "speaker": "SPEAKER_01",
+        "start": 294.98909375,
+        "end": 299.96721875000003
+      }
+    ]
+  }
+}

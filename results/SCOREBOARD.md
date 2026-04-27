@@ -8,6 +8,7 @@ Methodology + thresholds: see [METHODOLOGY.md](../METHODOLOGY.md).
 
 | Case | Engine | Diarizer | Config | WER | CER | DER | Entities | Mean conf | TTFT | per-final p95 | RTF | GPU peak |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `ami-es2004a-5min` | `_pyannote_only_` | `pyannote` | `ceiling` | — | — | 24.80% | — | — | — | — | 0.155 | — |
 | `ami-es2004a-5min` | `speechmatics_onprem` | `native` | _default_ | — | — | 44.24% | — | 0.985 | 8354 ms | 12685 ms | 1.031 | 7,684 MiB |
 | `ami-es2004a-5min` | `speechmatics_onprem` | `native` | `matrix_sm_native` | — | — | 45.02% | — | 0.986 | 5201 ms | 7055 ms | 1.010 | 7,684 MiB |
 | `ami-es2004a-5min` | `speechmatics_onprem` | `native` | `max_delay_10` | — | — | 45.02% | — | 0.986 | 5368 ms | 17988 ms | 1.048 | 7,684 MiB |
@@ -15,7 +16,9 @@ Methodology + thresholds: see [METHODOLOGY.md](../METHODOLOGY.md).
 | `ami-es2004a-5min` | `speechmatics_onprem` | `native` | `max_speakers_4` | — | — | 45.02% | — | 0.986 | 5383 ms | 17496 ms | 1.046 | 7,684 MiB |
 | `ami-es2004a-5min` | `speechmatics_onprem` | `native` | `md10_ms4` | — | — | 45.02% | — | 0.986 | 5394 ms | 18097 ms | 1.048 | 7,684 MiB |
 | `ami-es2004a-5min` | `speechmatics_onprem` | `native` | `md15_ms4_fixed` | — | — | 45.02% | — | 0.986 | 5389 ms | 17255 ms | 1.045 | 7,684 MiB |
+| `ami-es2004a-5min` | `speechmatics_onprem` | `pyannote` | `matrix_sm_pyannote` | — | — | 40.12% | — | 0.986 | 3780 ms | 5652 ms | 1.010 | 11,785 MiB |
 | `ami-es2004a-5min` | `whisper` | `none` | `matrix_whisper_only` | — | — | 100.00% | — | 0.867 | 57420 ms | n/a (fast) | 0.191 | 10,044 MiB |
+| `ami-es2004a-5min` | `whisper` | `pyannote` | `matrix_whisper_pyannote` | — | — | 42.75% | — | 0.874 | 68501 ms | n/a (fast) | 0.228 | 13,520 MiB |
 | `ami-es2004a-5min` | `whisper` | `speechmatics_diar` | `matrix_whisper_smdiar` | — | — | 46.70% | — | 0.869 | 60609 ms | n/a (fast) | 0.202 | 10,032 MiB |
 | `deposition-greg-erwin` | `speechmatics_onprem` | `native` | _default_ | — | — | — | — | 0.990 | 5020 ms | 26215 ms | 1.052 | 7,782 MiB |
 | `librispeech-test-clean-mini` | `speechmatics_onprem` | `native` | _default_ | 2.98% | 6.08% | — | 3/3 | 0.991 | 4019 ms | 6348 ms | 1.053 | 7,634 MiB |
@@ -42,6 +45,6 @@ Methodology + thresholds: see [METHODOLOGY.md](../METHODOLOGY.md).
 
 ## Inventory
 
-- **Engines:** `speechmatics_onprem`, `whisper`
+- **Engines:** `_pyannote_only_`, `speechmatics_onprem`, `whisper`
 - **Cases:** `ami-es2004a-5min`, `deposition-greg-erwin`, `librispeech-test-clean-mini`, `scotus-glossip-v-oklahoma`
-- **Total runs:** 19
+- **Total runs:** 22

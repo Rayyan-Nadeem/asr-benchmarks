@@ -41,8 +41,20 @@ def _get_pipeline():
             "https://huggingface.co/pyannote/speaker-diarization-3.1"
         )
 
-    from pyannote.audio import Pipeline  # imported lazily; heavy
     import torch
+    # PyTorch 2.6+ flipped torch.load default to weights_only=True. pyannote.audio
+    # 3.4 ships pickled checkpoints that need weights_only=False. Patch the
+    # default — safe because we're loading models we just downloaded from HF.
+    _orig_load = torch.load
+    def _patched_load(*args, **kwargs):
+        # Hard-override: pyannote/lightning explicitly pass weights_only=True
+        # in some code paths. Their checkpoints aren't weights-only-safe
+        # (contain pickled Python objects), so we have to force False.
+        kwargs["weights_only"] = False
+        return _orig_load(*args, **kwargs)
+    torch.load = _patched_load
+
+    from pyannote.audio import Pipeline  # imported lazily; heavy
 
     # huggingface_hub renamed use_auth_token → token in 0.23+. Pass via env so
     # the underlying Pipeline.from_pretrained → hf_hub_download chain picks it up.

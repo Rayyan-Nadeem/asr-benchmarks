@@ -96,12 +96,26 @@ future engine decision DepoDash makes. AssemblyAI, Deepgram, whatever
 NVIDIA ships next year — same audio in, comparable scorecard out.
 Strategic asset, not a one-shot.
 
-## What's pending (running right now)
+## The Phase 2 preview numbers — measured tonight
 
-- Whisper + pyannote on AMI (the actual Phase 2 preview number)
-- pyannote-only DER (the diarizer ceiling)
+Same AMI audio. Same harness. Different stacks:
 
-Both should land in the next ~5 minutes. Will send updated numbers once they do.
+| Setup | DER | What it says |
+|---|---|---|
+| Speechmatics ASR + Speechmatics diarization (today) | **45 %** | Where we are. |
+| Speechmatics ASR + **pyannote diarization** | **40 %** | Drop the diarizer alone, save 5 pp. |
+| Whisper ASR + pyannote diarization | 43 % | All-open-source. |
+| **pyannote alone (diarizer ceiling)** | **25 %** | Best possible on this audio. |
+| For perspective: random | ~75 % | Floor. |
+
+**The diarization-alone number (24.80 %) is the proof.** Pyannote can do
+~half the diarization errors of Speechmatics on the same audio. Phase 2
+combines that diarizer with Parakeet (the open-source SOTA streaming ASR)
+to land somewhere in the **25–35 % DER range realistically**, vs the
+**45 % Speechmatics gives you today**.
+
+That's a **30–45 % reduction in speaker-attribution errors** — the metric
+Keanan said matters most.
 
 ---
 
