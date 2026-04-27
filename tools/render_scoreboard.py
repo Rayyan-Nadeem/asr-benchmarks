@@ -27,6 +27,8 @@ class Run:
     timestamp: str
     engine: str
     case: str
+    diarizer: str                   # "native" if not specified
+    tag: str | None                 # config variant label
     concurrency: int | None         # None for single-stream baseline
     data: dict
 
@@ -34,22 +36,20 @@ class Run:
 def load_runs() -> list[Run]:
     runs: list[Run] = []
     for path in sorted(RUNS_DIR.glob("*.json")):
-        # Skip resource jsonl
         if path.name.endswith("__resources.jsonl"):
             continue
         try:
             data = json.loads(path.read_text())
         except json.JSONDecodeError:
             continue
-        m = re.match(r"(?P<ts>[\dT\-Z]+)__(?P<eng>[\w\-]+?)__(?P<case>[\w\-]+?)(?:__ramp-N(?P<n>\d+))?\.json$", path.name)
-        if not m:
-            continue
         runs.append(Run(
             path=path,
-            timestamp=m.group("ts"),
-            engine=m.group("eng"),
-            case=m.group("case"),
-            concurrency=int(m.group("n")) if m.group("n") else None,
+            timestamp=data.get("timestamp_utc", ""),
+            engine=data.get("engine", ""),
+            case=data.get("case", ""),
+            diarizer=data.get("diarizer", "native"),
+            tag=data.get("tag"),
+            concurrency=data.get("concurrency"),
             data=data,
         ))
     return runs
@@ -80,17 +80,20 @@ def render() -> str:
     if not runs:
         return "# Scoreboard\n\nNo runs yet. Run `python -m runner --engine ... --case ...`.\n"
 
-    # Group: latest single-stream run per (engine, case)
-    latest_baseline: dict[tuple[str, str], Run] = {}
+    # Group: latest single-stream run per (engine, diarizer, case, tag).
+    # diarizer = "native" is the engine's own labels (default).
+    # tag=None is the "default" config; named tags are config variants and
+    # get their own row.
+    latest_baseline: dict[tuple[str, str, str, str | None], Run] = {}
     ramp_runs: dict[tuple[str, str], list[Run]] = defaultdict(list)
     for r in runs:
-        key = (r.engine, r.case)
         if r.concurrency is None:
+            key = (r.engine, r.diarizer, r.case, r.tag)
             cur = latest_baseline.get(key)
             if cur is None or r.timestamp > cur.timestamp:
                 latest_baseline[key] = r
         else:
-            ramp_runs[key].append(r)
+            ramp_runs[(r.engine, r.case)].append(r)
 
     lines: list[str] = ["# Scoreboard", ""]
     lines.append("Auto-generated from `results/runs/*.json`. Re-render with `python tools/render_scoreboard.py`.")
@@ -101,10 +104,11 @@ def render() -> str:
     # ---- Accuracy + latency table (single-stream baseline) ----
     lines.append("## Single-stream baseline")
     lines.append("")
-    lines.append("| Engine | Case | WER | CER | DER | Entities | Mean conf | TTFT | per-final p95 | RTF | GPU peak |")
-    lines.append("|---|---|---|---|---|---|---|---|---|---|---|")
+    lines.append("| Case | Engine | Diarizer | Config | WER | CER | DER | Entities | Mean conf | TTFT | per-final p95 | RTF | GPU peak |")
+    lines.append("|---|---|---|---|---|---|---|---|---|---|---|---|---|")
 
-    for (engine, case), r in sorted(latest_baseline.items()):
+    # Sort by case → engine → diarizer → tag so each case's stack is contiguous
+    for (engine, diarizer, case, tag), r in sorted(latest_baseline.items(), key=lambda kv: (kv[0][2], kv[0][0], kv[0][1], kv[0][3] or "")):
         s = r.data.get("scores", {})
         wer = s.get("wer") or {}
         der = s.get("der") or {}
@@ -125,8 +129,9 @@ def render() -> str:
         if conf.get("mean") is not None:
             conf_str = f"{conf['mean']:.3f}"
 
+        config_label = f"`{tag}`" if tag else "_default_"
         lines.append(
-            f"| `{engine}` | `{case}` "
+            f"| `{case}` | `{engine}` | `{diarizer}` | {config_label} "
             f"| {fmt_pct(wer.get('wer'))} "
             f"| {fmt_pct(wer.get('cer'))} "
             f"| {fmt_pct(der.get('der'))} "
@@ -142,17 +147,18 @@ def render() -> str:
     # ---- S/D/I detail ----
     lines.append("## Accuracy detail (S/D/I + entity preservation)")
     lines.append("")
-    lines.append("| Engine | Case | Subs | Dels | Ins | Ref words | Hyp words | Missing entities |")
-    lines.append("|---|---|---|---|---|---|---|---|")
-    for (engine, case), r in sorted(latest_baseline.items()):
+    lines.append("| Case | Engine | Diarizer | Config | Subs | Dels | Ins | Ref words | Hyp words | Missing entities |")
+    lines.append("|---|---|---|---|---|---|---|---|---|---|")
+    for (engine, diarizer, case, tag), r in sorted(latest_baseline.items(), key=lambda kv: (kv[0][2], kv[0][0], kv[0][1], kv[0][3] or "")):
         s = r.data.get("scores", {})
         wer = s.get("wer") or {}
         ent = s.get("entity") or {}
         miss = ", ".join(ent.get("missing", [])) if ent.get("missing") else "—"
         if not wer:
             continue
+        config_label = f"`{tag}`" if tag else "_default_"
         lines.append(
-            f"| `{engine}` | `{case}` "
+            f"| `{case}` | `{engine}` | `{diarizer}` | {config_label} "
             f"| {fmt_int(wer.get('substitutions'))} "
             f"| {fmt_int(wer.get('deletions'))} "
             f"| {fmt_int(wer.get('insertions'))} "

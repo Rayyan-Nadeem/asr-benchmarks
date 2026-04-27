@@ -29,6 +29,7 @@ from typing import Any
 
 import yaml
 
+from diarizers._base import Diarizer, overlay_speakers
 from engines._base import Engine, Result
 from metrics.accuracy import score_confidence, score_entity_preservation, score_wer
 from metrics.diarization import score_der, words_to_rttm_segments
@@ -44,13 +45,20 @@ RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 
 def load_engine(name: str) -> Engine:
     mod = importlib.import_module(f"engines.{name}")
-    # Each adapter module exports a class with name = "<EngineName>" or its main class.
-    # Convention: pick the first class whose .name attribute matches the module name.
     for attr in dir(mod):
         obj = getattr(mod, attr)
         if isinstance(obj, type) and getattr(obj, "name", None) == name:
             return obj()
     raise ImportError(f"engines/{name}.py does not expose an Engine class with .name == '{name}'")
+
+
+def load_diarizer(name: str) -> Diarizer:
+    mod = importlib.import_module(f"diarizers.{name}")
+    for attr in dir(mod):
+        obj = getattr(mod, attr)
+        if isinstance(obj, type) and getattr(obj, "name", None) == name:
+            return obj()
+    raise ImportError(f"diarizers/{name}.py does not expose a Diarizer class with .name == '{name}'")
 
 
 def load_case(name: str) -> dict[str, Any]:
@@ -122,12 +130,15 @@ def _result_to_jsonable(result: Result) -> dict[str, Any]:
     }
 
 
-async def run_one(engine_name: str, case_name: str, fast: bool, transcription_overlay: dict | None) -> dict[str, Any]:
+async def run_one(engine_name: str, case_name: str, fast: bool, transcription_overlay: dict | None, tag: str | None = None, diarizer_name: str = "native") -> dict[str, Any]:
     engine = load_engine(engine_name)
     case = load_case(case_name)
+    diarizer = load_diarizer(diarizer_name)
 
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M-%SZ")
-    run_id = f"{timestamp}__{engine_name}__{case_name}"
+    tag_suffix = f"__{tag}" if tag else ""
+    diar_suffix = f"__diar-{diarizer_name}" if diarizer_name != "native" else ""
+    run_id = f"{timestamp}__{engine_name}__{case_name}{diar_suffix}{tag_suffix}"
     run_path = RESULTS_DIR / f"{run_id}.json"
     resources_path = RESULTS_DIR / f"{run_id}__resources.jsonl"
 
@@ -139,14 +150,33 @@ async def run_one(engine_name: str, case_name: str, fast: bool, transcription_ov
     print(f"      audio: {case['audio_wav']}")
     print(f"      duration: {case.get('duration_s', '?')}s")
 
+    # If a non-native diarizer is being used, force the engine to NOT diarize
+    # (avoid wasting compute and avoid the engine's labels colliding with the
+    # diarizer's labels in the overlay step).
+    if diarizer_name not in ("native",) and "transcription_config" not in config:
+        config["transcription_config"] = {}
+    if diarizer_name not in ("native",):
+        # Most engines won't have a transcription_config; this only matters for
+        # speechmatics-style. Setting diarization=none is a hint, not an error.
+        tc = config.setdefault("transcription_config", {})
+        tc.setdefault("diarization", "none")
+
     # Start resource sampler in a thread alongside the async engine call
     containers = case.get("monitor_containers", ["sm-triton", "sm-rt-transcriber"])
     with ResourceSampler(resources_path, containers=containers, interval_s=1.0) as sampler:
         result = await engine.transcribe(case["audio_wav"], config=config)
+        # Run the diarizer (sequentially — these tests don't need overlap).
+        # NativeDiarizer / NoneDiarizer return [] and are no-ops.
+        diar_segments = await diarizer.diarize(case["audio_wav"])
     res_summary = sampler.summary(skip_initial_seconds=10.0)
+
+    # If the diarizer produced segments, overlay them onto the engine words.
+    if diar_segments:
+        overlay_speakers(result.words, diar_segments)
 
     # Score
     scores: dict[str, Any] = {}
+    scores["diarizer"] = diarizer_name
     if result.error:
         scores["error"] = result.error
 
@@ -178,6 +208,8 @@ async def run_one(engine_name: str, case_name: str, fast: bool, transcription_ov
         "timestamp_utc": timestamp,
         "engine": engine_name,
         "case": case_name,
+        "diarizer": diarizer_name,
+        "tag": tag,
         "case_meta": {k: v for k, v in case.items() if k not in ("dir", "audio_wav")},
         "scores": scores,
         "result": _result_to_jsonable(result),
@@ -265,7 +297,14 @@ def main() -> None:
     p.add_argument("--engine", required=True, help="engine module name in engines/")
     p.add_argument("--case", required=True, help="case folder name in cases/")
     p.add_argument("--fast", action="store_true", help="send audio as fast as WS allows (offline accuracy runs)")
-    p.add_argument("--diarization", choices=["none", "speaker"], help="override transcription_config.diarization")
+    p.add_argument("--tag", help="label this run; appears in SCOREBOARD as a separate row (e.g. 'max_delay_10')")
+    p.add_argument("--diarizer", default="native", help="diarizers/ module name (native|none|pyannote|speechmatics_diar). default: native (engine's own labels)")
+    p.add_argument("--diarization", choices=["none", "speaker"], help="override transcription_config.diarization (engine-internal flag, separate from --diarizer)")
+    p.add_argument("--max-delay", type=float, help="override max_delay (seconds, range 2-20)")
+    p.add_argument("--max-delay-mode", choices=["fixed", "flexible"], help="override max_delay_mode")
+    p.add_argument("--max-speakers", type=int, help="override speaker_diarization_config.max_speakers (range 2-100)")
+    p.add_argument("--enable-partials", action="store_true", help="set enable_partials=true")
+    p.add_argument("--operating-point", choices=["enhanced", "standard"], help="override operating_point")
     p.add_argument("--concurrency-ramp", help="comma-separated stream counts, e.g. '1,2,4'")
     p.add_argument("--ramp-hold-s", type=float, default=180.0)
     args = p.parse_args()
@@ -273,12 +312,22 @@ def main() -> None:
     overlay: dict[str, Any] = {}
     if args.diarization:
         overlay["diarization"] = args.diarization
+    if args.max_delay is not None:
+        overlay["max_delay"] = args.max_delay
+    if args.max_delay_mode:
+        overlay["max_delay_mode"] = args.max_delay_mode
+    if args.max_speakers is not None:
+        overlay["speaker_diarization_config"] = {"max_speakers": args.max_speakers}
+    if args.enable_partials:
+        overlay["enable_partials"] = True
+    if args.operating_point:
+        overlay["operating_point"] = args.operating_point
 
     if args.concurrency_ramp:
         levels = [int(x) for x in args.concurrency_ramp.split(",")]
         asyncio.run(run_concurrency_ramp(args.engine, args.case, levels, args.ramp_hold_s))
     else:
-        asyncio.run(run_one(args.engine, args.case, args.fast, overlay or None))
+        asyncio.run(run_one(args.engine, args.case, args.fast, overlay or None, tag=args.tag, diarizer_name=args.diarizer))
 
 
 if __name__ == "__main__":
