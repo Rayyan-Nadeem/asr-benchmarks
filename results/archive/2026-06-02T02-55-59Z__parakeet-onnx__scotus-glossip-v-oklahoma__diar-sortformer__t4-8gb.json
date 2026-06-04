@@ -1,0 +1,693 @@
+{
+  "engine": "parakeet-onnx",
+  "diarizer": "sortformer",
+  "case": "scotus-glossip-v-oklahoma",
+  "tag": "t4-8gb",
+  "url": "ws://127.0.0.1:9000/v2",
+  "config": {
+    "language": "en",
+    "operating_point": "enhanced",
+    "diarization": "speaker",
+    "enable_partials": false,
+    "max_delay": 5.0,
+    "max_delay_mode": "flexible",
+    "output_locale": "en-US",
+    "enable_entities": false,
+    "punctuation_overrides": {
+      "permitted_marks": [
+        ",",
+        ".",
+        "?"
+      ]
+    },
+    "speaker_diarization_config": {
+      "max_speakers": 4
+    }
+  },
+  "measured": {
+    "audio_duration_s": 300.0,
+    "wall_clock_s": 306.46196315199995,
+    "ttft_s": 5.328730351999184,
+    "first_final_s": 10.695349911999074,
+    "rtf": 1.0215398771733333,
+    "partial_count": 6,
+    "final_count": 3,
+    "transcript": "We will hear argument this morning in case twenty two seventy four Mr. Waxman. Mr. Chief Justice, and may it please the court, Richard Glossop was convicted on the word of one man, Justin Sneed, the undisputed murderer in this case. Oklahoma has now disclosed evidence revealing that Mr. Sneed lied to the",
+    "finals": [
+      {
+        "t": 10.695349911999074,
+        "transcript": "We will hear argument this morning in case twenty two seventy four",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 0.4,
+            "end_time": 0.48,
+            "alternatives": [
+              {
+                "content": "We",
+                "confidence": 0.886746531687493
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 0.48,
+            "end_time": 0.64,
+            "alternatives": [
+              {
+                "content": "will",
+                "confidence": 0.9975234958015764
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 0.64,
+            "end_time": 0.96,
+            "alternatives": [
+              {
+                "content": "hear",
+                "confidence": 0.9968498121445918
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 0.96,
+            "end_time": 1.36,
+            "alternatives": [
+              {
+                "content": "argument",
+                "confidence": 0.9971353708509846
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 1.36,
+            "end_time": 1.6,
+            "alternatives": [
+              {
+                "content": "this",
+                "confidence": 0.9988648678832667
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 1.6,
+            "end_time": 1.92,
+            "alternatives": [
+              {
+                "content": "morning",
+                "confidence": 0.9997995399866882
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 1.92,
+            "end_time": 2.08,
+            "alternatives": [
+              {
+                "content": "in",
+                "confidence": 0.9909386712470547
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 2.08,
+            "end_time": 2.56,
+            "alternatives": [
+              {
+                "content": "case",
+                "confidence": 0.955754735176914
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 2.56,
+            "end_time": 2.88,
+            "alternatives": [
+              {
+                "content": "twenty",
+                "confidence": 0.974284824745667
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 2.88,
+            "end_time": 3.2800000000000002,
+            "alternatives": [
+              {
+                "content": "two",
+                "confidence": 0.9972448178136268
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 3.2800000000000002,
+            "end_time": 3.68,
+            "alternatives": [
+              {
+                "content": "seventy",
+                "confidence": 0.9989152079528808
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 3.68,
+            "end_time": 3.92,
+            "alternatives": [
+              {
+                "content": "four",
+                "confidence": 0.9992827588474613
+              }
+            ],
+            "speaker": "speaker_0"
+          }
+        ]
+      },
+      {
+        "t": 21.156285974999264,
+        "transcript": "Mr. Waxman.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 7.0,
+            "end_time": 7.24,
+            "alternatives": [
+              {
+                "content": "Mr.",
+                "confidence": 0.8516554307901508
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 7.24,
+            "end_time": 9.24,
+            "alternatives": [
+              {
+                "content": "Waxman.",
+                "confidence": 0.9336230571527535
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 31.53988481399938,
+        "transcript": "Mr. Chief Justice, and may it please the court, Richard Glossop was convicted on the word of one man, Justin Sneed, the undisputed murderer in this case. Oklahoma has now disclosed evidence revealing that Mr. Sneed lied to the",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 9.280000000000001,
+            "end_time": 9.6,
+            "alternatives": [
+              {
+                "content": "Mr.",
+                "confidence": 0.7566502107845674
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 9.6,
+            "end_time": 9.84,
+            "alternatives": [
+              {
+                "content": "Chief",
+                "confidence": 0.9963215731236019
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 9.84,
+            "end_time": 10.32,
+            "alternatives": [
+              {
+                "content": "Justice,",
+                "confidence": 0.9141280325987851
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 10.32,
+            "end_time": 10.48,
+            "alternatives": [
+              {
+                "content": "and",
+                "confidence": 0.8363954413674175
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 10.48,
+            "end_time": 10.72,
+            "alternatives": [
+              {
+                "content": "may",
+                "confidence": 0.990052862006209
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 10.72,
+            "end_time": 10.8,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 0.9972176694664755
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 10.8,
+            "end_time": 11.2,
+            "alternatives": [
+              {
+                "content": "please",
+                "confidence": 0.9999800330044127
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 11.2,
+            "end_time": 11.280000000000001,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9987864933074208
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 11.280000000000001,
+            "end_time": 12.08,
+            "alternatives": [
+              {
+                "content": "court,",
+                "confidence": 0.6102714237479715
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 12.08,
+            "end_time": 12.4,
+            "alternatives": [
+              {
+                "content": "Richard",
+                "confidence": 0.9999299718187774
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 12.4,
+            "end_time": 13.280000000000001,
+            "alternatives": [
+              {
+                "content": "Glossop",
+                "confidence": 0.8160014310108058
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 13.280000000000001,
+            "end_time": 13.440000000000001,
+            "alternatives": [
+              {
+                "content": "was",
+                "confidence": 0.9995161253522707
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 13.440000000000001,
+            "end_time": 14.0,
+            "alternatives": [
+              {
+                "content": "convicted",
+                "confidence": 0.9999869766086267
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 14.0,
+            "end_time": 14.16,
+            "alternatives": [
+              {
+                "content": "on",
+                "confidence": 0.9998531557209194
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 14.16,
+            "end_time": 14.32,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9997885674561939
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 14.32,
+            "end_time": 14.64,
+            "alternatives": [
+              {
+                "content": "word",
+                "confidence": 0.9996266567094687
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 14.64,
+            "end_time": 14.88,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 0.9995206509418585
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 14.88,
+            "end_time": 15.2,
+            "alternatives": [
+              {
+                "content": "one",
+                "confidence": 0.9999550601153864
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 15.2,
+            "end_time": 16.08,
+            "alternatives": [
+              {
+                "content": "man,",
+                "confidence": 0.9408833854340252
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 16.08,
+            "end_time": 16.64,
+            "alternatives": [
+              {
+                "content": "Justin",
+                "confidence": 0.9993739186939469
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 16.64,
+            "end_time": 17.36,
+            "alternatives": [
+              {
+                "content": "Sneed,",
+                "confidence": 0.8530125865007563
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 17.36,
+            "end_time": 17.52,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9997448380376103
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 17.52,
+            "end_time": 18.32,
+            "alternatives": [
+              {
+                "content": "undisputed",
+                "confidence": 0.9993677580573843
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 18.32,
+            "end_time": 18.880000000000003,
+            "alternatives": [
+              {
+                "content": "murderer",
+                "confidence": 0.999944532724947
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 18.880000000000003,
+            "end_time": 19.12,
+            "alternatives": [
+              {
+                "content": "in",
+                "confidence": 0.9999532721416701
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 19.12,
+            "end_time": 19.36,
+            "alternatives": [
+              {
+                "content": "this",
+                "confidence": 0.9999178715409944
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 19.36,
+            "end_time": 20.240000000000002,
+            "alternatives": [
+              {
+                "content": "case.",
+                "confidence": 0.9958946486869603
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 20.240000000000002,
+            "end_time": 21.200000000000003,
+            "alternatives": [
+              {
+                "content": "Oklahoma",
+                "confidence": 0.9979778591493584
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 21.200000000000003,
+            "end_time": 21.36,
+            "alternatives": [
+              {
+                "content": "has",
+                "confidence": 0.9991723002807874
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 21.36,
+            "end_time": 21.68,
+            "alternatives": [
+              {
+                "content": "now",
+                "confidence": 0.9999069062148269
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 21.68,
+            "end_time": 22.32,
+            "alternatives": [
+              {
+                "content": "disclosed",
+                "confidence": 0.9999297529478208
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.32,
+            "end_time": 22.880000000000003,
+            "alternatives": [
+              {
+                "content": "evidence",
+                "confidence": 0.9999246709728371
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.880000000000003,
+            "end_time": 23.6,
+            "alternatives": [
+              {
+                "content": "revealing",
+                "confidence": 0.9999367356197585
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 23.6,
+            "end_time": 23.84,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 0.9990981613232669
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 23.84,
+            "end_time": 24.16,
+            "alternatives": [
+              {
+                "content": "Mr.",
+                "confidence": 0.9638523084407651
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 24.16,
+            "end_time": 24.880000000000003,
+            "alternatives": [
+              {
+                "content": "Sneed",
+                "confidence": 0.9798161730985143
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 24.880000000000003,
+            "end_time": 25.200000000000003,
+            "alternatives": [
+              {
+                "content": "lied",
+                "confidence": 0.9999566104809473
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 25.200000000000003,
+            "end_time": 25.36,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 0.9999854566779314
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 25.36,
+            "end_time": 25.439999999999998,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.999969006545237
+              }
+            ],
+            "speaker": "speaker_1"
+          }
+        ]
+      }
+    ]
+  },
+  "wer": 0.9322033898305084
+}

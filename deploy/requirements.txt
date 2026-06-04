@@ -1,0 +1,50 @@
+# depodash-asr — Python dependencies
+#
+# Base image (nvcr.io/nvidia/pytorch:25.01-py3) already ships:
+#   - Python 3.10
+#   - PyTorch with CUDA 12.6
+#   - cuDNN
+#   - basic NumPy / SciPy stack
+#
+# This file pins the application-layer deps. Versions are tested against
+# the base image; bump deliberately, not opportunistically.
+
+# ---- Web framework ----
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.27,<1.0
+websockets>=14.0,<15.0
+
+# ---- Audio I/O ----
+soundfile>=0.13,<1.0
+librosa>=0.10.2,<1.0
+
+# ---- ASR / diarization / NLP frameworks ----
+# NeMo at >=2.7 is required for native multitalker + streaming sortformer
+# v2.1 support without backport patches. Pinned to 2.7.x to avoid
+# surprise API changes in 2.8+.
+# [asr]  — multitalker, nemotron-native, parakeet-nemo, sortformer
+# [nlp]  — PunctuationCapitalizationModel for the distilbert punctuator
+nemo-toolkit[asr,nlp]>=2.7,<2.8
+
+# Multitalker requires the bundled MultitalkerTranscriptionConfig from
+# the HF model snapshot; huggingface-hub fetches it at first use.
+huggingface-hub>=0.24,<1.0
+
+# Sortformer-streaming pre-encode buffer + audio padding.
+torchaudio  # version follows the base image's torch pin
+
+# Diarization metric (used by tools/score_der.py; not required for
+# serving but bundled for ops/diagnostic use inside the container).
+pyannote.audio>=3.1,<4.0
+pyannote.metrics>=3.2,<4.0
+pyannote.core>=5.0,<6.0
+pyannote.database>=5.1,<6.0
+
+# Silero VAD — used for segment_first chunk boundaries.
+silero-vad>=5.1,<6.0
+
+# Misc utilities
+omegaconf>=2.3,<3.0
+hydra-core>=1.3,<2.0
+pyyaml>=6.0,<7.0
+psutil>=6.0,<7.0

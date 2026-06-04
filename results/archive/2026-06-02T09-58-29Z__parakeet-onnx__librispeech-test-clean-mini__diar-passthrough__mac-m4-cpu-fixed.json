@@ -1,0 +1,1515 @@
+{
+  "engine": "parakeet-onnx",
+  "diarizer": "passthrough",
+  "case": "librispeech-test-clean-mini",
+  "tag": "mac-m4-cpu-fixed",
+  "url": "ws://127.0.0.1:9000/v2",
+  "config": {
+    "language": "en",
+    "operating_point": "enhanced",
+    "diarization": "none",
+    "enable_partials": false,
+    "max_delay": 3.0,
+    "max_delay_mode": "flexible",
+    "output_locale": "en-US",
+    "enable_entities": false,
+    "punctuation_overrides": {
+      "permitted_marks": [
+        ",",
+        ".",
+        "?"
+      ]
+    }
+  },
+  "measured": {
+    "audio_duration_s": 70.0000625,
+    "wall_clock_s": 73.38971620798111,
+    "ttft_s": 3.536746166879311,
+    "first_final_s": 6.875980874989182,
+    "rtf": 1.0484235811643898,
+    "partial_count": 13,
+    "final_count": 8,
+    "transcript": "He hoped there would be stew for dinner, turnips carrots and bruised potatoes, and fat mutton Stuff it into you, his belly counseled him. After early nightfall the yellow lamps would light up here and there the squalid quarter of the brothels. fragment upon the moon wandering companionless, pale for weariness. The dull light fell more faintly upon the page whereon another equation began to unfold itself slowly The chaos in which his ardour extinguished itself was a cold, indifferent knowledge of himself. At most, by an alms given to a beggar whose blessing he fled from, he might hope wearily to win for himself some measure of actual grace.",
+    "finals": [
+      {
+        "t": 6.875980874989182,
+        "transcript": "He hoped there would be stew for dinner, turnips",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 0.32,
+            "end_time": 0.48,
+            "alternatives": [
+              {
+                "confidence": 0.9261298258247801,
+                "content": "He",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 0.48,
+            "end_time": 0.96,
+            "alternatives": [
+              {
+                "confidence": 0.9988789799734156,
+                "content": "hoped",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 0.96,
+            "end_time": 1.12,
+            "alternatives": [
+              {
+                "confidence": 0.9878647931373917,
+                "content": "there",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 1.12,
+            "end_time": 1.28,
+            "alternatives": [
+              {
+                "confidence": 0.9983694955926853,
+                "content": "would",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 1.28,
+            "end_time": 1.44,
+            "alternatives": [
+              {
+                "confidence": 0.9997990535283231,
+                "content": "be",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 1.44,
+            "end_time": 1.84,
+            "alternatives": [
+              {
+                "confidence": 0.9873606936000513,
+                "content": "stew",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 1.84,
+            "end_time": 2.0,
+            "alternatives": [
+              {
+                "confidence": 0.9992994213243986,
+                "content": "for",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 2.0,
+            "end_time": 2.48,
+            "alternatives": [
+              {
+                "confidence": 0.9108226439496839,
+                "content": "dinner,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 2.48,
+            "end_time": 3.12,
+            "alternatives": [
+              {
+                "confidence": 0.9973037716612825,
+                "content": "turnips",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 10.082850416889414,
+        "transcript": "carrots and bruised potatoes, and fat mutton",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 3.24,
+            "end_time": 3.72,
+            "alternatives": [
+              {
+                "confidence": 0.9999966224193227,
+                "content": "carrots",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 3.72,
+            "end_time": 3.88,
+            "alternatives": [
+              {
+                "confidence": 0.9999399221272516,
+                "content": "and",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 3.88,
+            "end_time": 4.4399999999999995,
+            "alternatives": [
+              {
+                "confidence": 0.999398998466823,
+                "content": "bruised",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 4.4399999999999995,
+            "end_time": 5.08,
+            "alternatives": [
+              {
+                "confidence": 0.8417433905402015,
+                "content": "potatoes,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 5.08,
+            "end_time": 5.24,
+            "alternatives": [
+              {
+                "confidence": 0.9999648344963598,
+                "content": "and",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 5.24,
+            "end_time": 5.5600000000000005,
+            "alternatives": [
+              {
+                "confidence": 0.9999680529300359,
+                "content": "fat",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 5.5600000000000005,
+            "end_time": 6.04,
+            "alternatives": [
+              {
+                "confidence": 0.999919983485971,
+                "content": "mutton",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 27.357368416851386,
+        "transcript": "Stuff it into you, his belly counseled him. After early nightfall the yellow lamps would light",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 10.64,
+            "end_time": 11.2,
+            "alternatives": [
+              {
+                "confidence": 0.8698918981430188,
+                "content": "Stuff",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 11.2,
+            "end_time": 11.36,
+            "alternatives": [
+              {
+                "confidence": 0.9995435176814228,
+                "content": "it",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 11.36,
+            "end_time": 11.600000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.9943576547502734,
+                "content": "into",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 11.600000000000001,
+            "end_time": 11.92,
+            "alternatives": [
+              {
+                "confidence": 0.9679222405189988,
+                "content": "you,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 11.92,
+            "end_time": 12.16,
+            "alternatives": [
+              {
+                "confidence": 0.9973585231441725,
+                "content": "his",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 12.16,
+            "end_time": 12.64,
+            "alternatives": [
+              {
+                "confidence": 0.9975643859693833,
+                "content": "belly",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 12.64,
+            "end_time": 13.2,
+            "alternatives": [
+              {
+                "confidence": 0.8372811613891322,
+                "content": "counseled",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 13.2,
+            "end_time": 13.920000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9815180732440444,
+                "content": "him.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 13.920000000000002,
+            "end_time": 14.32,
+            "alternatives": [
+              {
+                "confidence": 0.869148035732916,
+                "content": "After",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 14.32,
+            "end_time": 14.719999999999999,
+            "alternatives": [
+              {
+                "confidence": 0.9997971071323202,
+                "content": "early",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 14.719999999999999,
+            "end_time": 15.440000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.9977532553313806,
+                "content": "nightfall",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 15.440000000000001,
+            "end_time": 15.52,
+            "alternatives": [
+              {
+                "confidence": 0.9974146147805832,
+                "content": "the",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 15.52,
+            "end_time": 15.84,
+            "alternatives": [
+              {
+                "confidence": 0.9998658042319061,
+                "content": "yellow",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 15.84,
+            "end_time": 16.32,
+            "alternatives": [
+              {
+                "confidence": 0.9998881583668032,
+                "content": "lamps",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 16.32,
+            "end_time": 16.48,
+            "alternatives": [
+              {
+                "confidence": 0.9995337515386135,
+                "content": "would",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 16.48,
+            "end_time": 16.8,
+            "alternatives": [
+              {
+                "confidence": 0.9997477088420961,
+                "content": "light",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 36.496981707867235,
+        "transcript": "up here and there the squalid quarter of the brothels.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 16.84,
+            "end_time": 17.080000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9997793922878564,
+                "content": "up",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 17.080000000000002,
+            "end_time": 17.240000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9991137498210781,
+                "content": "here",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 17.240000000000002,
+            "end_time": 17.400000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9947783849973931,
+                "content": "and",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 17.400000000000002,
+            "end_time": 17.72,
+            "alternatives": [
+              {
+                "confidence": 0.9972380599712317,
+                "content": "there",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 17.72,
+            "end_time": 17.880000000000003,
+            "alternatives": [
+              {
+                "confidence": 0.9924926002593257,
+                "content": "the",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 17.880000000000003,
+            "end_time": 18.52,
+            "alternatives": [
+              {
+                "confidence": 0.9932537168126812,
+                "content": "squalid",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 18.52,
+            "end_time": 18.92,
+            "alternatives": [
+              {
+                "confidence": 0.9958634890905033,
+                "content": "quarter",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 18.92,
+            "end_time": 19.0,
+            "alternatives": [
+              {
+                "confidence": 0.9990004765261323,
+                "content": "of",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 19.0,
+            "end_time": 19.16,
+            "alternatives": [
+              {
+                "confidence": 0.9977515344773273,
+                "content": "the",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 19.16,
+            "end_time": 33.0,
+            "alternatives": [
+              {
+                "confidence": 0.960923312038859,
+                "content": "brothels.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 40.2544453330338,
+        "transcript": "fragment upon the moon wandering companionless,",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 33.08,
+            "end_time": 33.56,
+            "alternatives": [
+              {
+                "confidence": 0.9971218095897103,
+                "content": "fragment",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 33.56,
+            "end_time": 33.8,
+            "alternatives": [
+              {
+                "confidence": 0.9984045590319178,
+                "content": "upon",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 33.8,
+            "end_time": 33.88,
+            "alternatives": [
+              {
+                "confidence": 0.9998439793924122,
+                "content": "the",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 33.88,
+            "end_time": 34.36,
+            "alternatives": [
+              {
+                "confidence": 0.9919670786000477,
+                "content": "moon",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 34.36,
+            "end_time": 35.0,
+            "alternatives": [
+              {
+                "confidence": 0.9962016128380524,
+                "content": "wandering",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 35.0,
+            "end_time": 36.04,
+            "alternatives": [
+              {
+                "confidence": 0.9872642711011697,
+                "content": "companionless,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 50.269298624945804,
+        "transcript": "pale for weariness. The dull light fell more faintly upon the page whereon another equation began to unfold itself slowly",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 36.08,
+            "end_time": 36.56,
+            "alternatives": [
+              {
+                "confidence": 0.9985230498999268,
+                "content": "pale",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 36.56,
+            "end_time": 36.8,
+            "alternatives": [
+              {
+                "confidence": 0.9998498188512183,
+                "content": "for",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 36.8,
+            "end_time": 38.16,
+            "alternatives": [
+              {
+                "confidence": 0.9228857491806143,
+                "content": "weariness.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 38.16,
+            "end_time": 38.4,
+            "alternatives": [
+              {
+                "confidence": 0.9997747451949632,
+                "content": "The",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 38.4,
+            "end_time": 38.879999999999995,
+            "alternatives": [
+              {
+                "confidence": 0.9993606576438381,
+                "content": "dull",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 38.879999999999995,
+            "end_time": 39.2,
+            "alternatives": [
+              {
+                "confidence": 0.9999013087833191,
+                "content": "light",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 39.2,
+            "end_time": 39.6,
+            "alternatives": [
+              {
+                "confidence": 0.9999578017259179,
+                "content": "fell",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 39.6,
+            "end_time": 39.76,
+            "alternatives": [
+              {
+                "confidence": 0.9997201749202334,
+                "content": "more",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 39.76,
+            "end_time": 40.4,
+            "alternatives": [
+              {
+                "confidence": 0.9999880793240739,
+                "content": "faintly",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 40.4,
+            "end_time": 40.64,
+            "alternatives": [
+              {
+                "confidence": 0.9999777679920294,
+                "content": "upon",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 40.64,
+            "end_time": 40.72,
+            "alternatives": [
+              {
+                "confidence": 0.9999970197767496,
+                "content": "the",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 40.72,
+            "end_time": 41.2,
+            "alternatives": [
+              {
+                "confidence": 0.9999606035103528,
+                "content": "page",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 41.2,
+            "end_time": 41.76,
+            "alternatives": [
+              {
+                "confidence": 0.8347329780844385,
+                "content": "whereon",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 41.76,
+            "end_time": 42.08,
+            "alternatives": [
+              {
+                "confidence": 0.999895634133761,
+                "content": "another",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 42.08,
+            "end_time": 42.72,
+            "alternatives": [
+              {
+                "confidence": 0.9995815565261239,
+                "content": "equation",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 42.72,
+            "end_time": 43.12,
+            "alternatives": [
+              {
+                "confidence": 0.9999926091019229,
+                "content": "began",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 43.12,
+            "end_time": 43.36,
+            "alternatives": [
+              {
+                "confidence": 0.9999991655356624,
+                "content": "to",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 43.36,
+            "end_time": 43.92,
+            "alternatives": [
+              {
+                "confidence": 0.9999980926563694,
+                "content": "unfold",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 43.92,
+            "end_time": 44.4,
+            "alternatives": [
+              {
+                "confidence": 0.9999596500703918,
+                "content": "itself",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 44.4,
+            "end_time": 45.2,
+            "alternatives": [
+              {
+                "confidence": 0.9999982118662155,
+                "content": "slowly",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 66.97573204198852,
+        "transcript": "The chaos in which his ardour extinguished",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 53.0,
+            "end_time": 53.160000000000004,
+            "alternatives": [
+              {
+                "confidence": 0.7080245331426441,
+                "content": "The",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 53.160000000000004,
+            "end_time": 53.800000000000004,
+            "alternatives": [
+              {
+                "confidence": 0.9948716158653245,
+                "content": "chaos",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 53.800000000000004,
+            "end_time": 53.96,
+            "alternatives": [
+              {
+                "confidence": 0.9941510751314203,
+                "content": "in",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 53.96,
+            "end_time": 54.2,
+            "alternatives": [
+              {
+                "confidence": 0.999800364305984,
+                "content": "which",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 54.2,
+            "end_time": 54.36,
+            "alternatives": [
+              {
+                "confidence": 0.9895541659413655,
+                "content": "his",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 54.36,
+            "end_time": 55.0,
+            "alternatives": [
+              {
+                "confidence": 0.9219978279355691,
+                "content": "ardour",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 55.0,
+            "end_time": 55.72,
+            "alternatives": [
+              {
+                "confidence": 0.9996489007159239,
+                "content": "extinguished",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 73.38873866689391,
+        "transcript": "itself was a cold, indifferent knowledge of himself. At most, by an alms given to a beggar whose blessing he fled from, he might hope wearily to win for himself some measure of actual grace.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 55.76,
+            "end_time": 56.24,
+            "alternatives": [
+              {
+                "confidence": 0.9955150861139836,
+                "content": "itself",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 56.24,
+            "end_time": 56.48,
+            "alternatives": [
+              {
+                "confidence": 0.9977060846221594,
+                "content": "was",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 56.48,
+            "end_time": 56.64,
+            "alternatives": [
+              {
+                "confidence": 0.9994507470023188,
+                "content": "a",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 56.64,
+            "end_time": 57.12,
+            "alternatives": [
+              {
+                "confidence": 0.8813275971533292,
+                "content": "cold,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 57.12,
+            "end_time": 58.0,
+            "alternatives": [
+              {
+                "confidence": 0.9661274411804007,
+                "content": "indifferent",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 58.0,
+            "end_time": 58.48,
+            "alternatives": [
+              {
+                "confidence": 0.9807517984565518,
+                "content": "knowledge",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 58.48,
+            "end_time": 58.64,
+            "alternatives": [
+              {
+                "confidence": 0.999574365655062,
+                "content": "of",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 58.64,
+            "end_time": 59.76,
+            "alternatives": [
+              {
+                "confidence": 0.8572774103232673,
+                "content": "himself.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 59.76,
+            "end_time": 60.08,
+            "alternatives": [
+              {
+                "confidence": 0.9955820392955113,
+                "content": "At",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 60.08,
+            "end_time": 60.72,
+            "alternatives": [
+              {
+                "confidence": 0.7775534860735992,
+                "content": "most,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 60.72,
+            "end_time": 60.96,
+            "alternatives": [
+              {
+                "confidence": 0.9989220807275633,
+                "content": "by",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 60.96,
+            "end_time": 61.2,
+            "alternatives": [
+              {
+                "confidence": 0.9908665689781994,
+                "content": "an",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 61.2,
+            "end_time": 61.68,
+            "alternatives": [
+              {
+                "confidence": 0.996345164670906,
+                "content": "alms",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 61.68,
+            "end_time": 62.0,
+            "alternatives": [
+              {
+                "confidence": 0.999470740276905,
+                "content": "given",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 62.0,
+            "end_time": 62.08,
+            "alternatives": [
+              {
+                "confidence": 0.9996598923957454,
+                "content": "to",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 62.08,
+            "end_time": 62.24,
+            "alternatives": [
+              {
+                "confidence": 0.9986824490320078,
+                "content": "a",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 62.24,
+            "end_time": 62.72,
+            "alternatives": [
+              {
+                "confidence": 0.9972364312202275,
+                "content": "beggar",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 62.72,
+            "end_time": 63.04,
+            "alternatives": [
+              {
+                "confidence": 0.9958137583539726,
+                "content": "whose",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 63.04,
+            "end_time": 63.44,
+            "alternatives": [
+              {
+                "confidence": 0.9987900997680056,
+                "content": "blessing",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 63.44,
+            "end_time": 63.6,
+            "alternatives": [
+              {
+                "confidence": 0.9928320776446766,
+                "content": "he",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 63.6,
+            "end_time": 64.0,
+            "alternatives": [
+              {
+                "confidence": 0.9998418973331301,
+                "content": "fled",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 64.0,
+            "end_time": 64.64,
+            "alternatives": [
+              {
+                "confidence": 0.8852517611956945,
+                "content": "from,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 64.64,
+            "end_time": 64.88,
+            "alternatives": [
+              {
+                "confidence": 0.9758669593979828,
+                "content": "he",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 64.88,
+            "end_time": 65.12,
+            "alternatives": [
+              {
+                "confidence": 0.9996178440856309,
+                "content": "might",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 65.12,
+            "end_time": 65.44,
+            "alternatives": [
+              {
+                "confidence": 0.9997210895484053,
+                "content": "hope",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 65.44,
+            "end_time": 66.08,
+            "alternatives": [
+              {
+                "confidence": 0.9934701966694738,
+                "content": "wearily",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 66.08,
+            "end_time": 66.24,
+            "alternatives": [
+              {
+                "confidence": 0.9963535011277772,
+                "content": "to",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 66.24,
+            "end_time": 66.56,
+            "alternatives": [
+              {
+                "confidence": 0.9990729924474893,
+                "content": "win",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 66.56,
+            "end_time": 66.72,
+            "alternatives": [
+              {
+                "confidence": 0.9986357253819608,
+                "content": "for",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 66.72,
+            "end_time": 67.36,
+            "alternatives": [
+              {
+                "confidence": 0.9907396104946508,
+                "content": "himself",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 67.36,
+            "end_time": 67.68,
+            "alternatives": [
+              {
+                "confidence": 0.998322920004904,
+                "content": "some",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 67.68,
+            "end_time": 68.16,
+            "alternatives": [
+              {
+                "confidence": 0.9994682266096335,
+                "content": "measure",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 68.16,
+            "end_time": 68.4,
+            "alternatives": [
+              {
+                "confidence": 0.9997598509638483,
+                "content": "of",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 68.4,
+            "end_time": 68.96,
+            "alternatives": [
+              {
+                "confidence": 0.9623772902476534,
+                "content": "actual",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 68.96,
+            "end_time": 70.0000625,
+            "alternatives": [
+              {
+                "confidence": 0.9479871932012734,
+                "content": "grace.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "wer": 0.34911242603550297
+}

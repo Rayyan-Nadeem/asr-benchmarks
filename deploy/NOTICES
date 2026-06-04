@@ -1,0 +1,77 @@
+THIRD-PARTY NOTICES
+
+This product (depodash-asr) bundles the following third-party machine
+learning models for inference. License compliance is shipped as part of
+this distribution per each license's attribution requirements.
+
+
+===========================================================================
+NVIDIA Parakeet TDT 0.6B v3
+  Licensed under CC-BY-4.0
+  https://creativecommons.org/licenses/by/4.0/legalcode.en
+  Source: https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3
+
+===========================================================================
+NVIDIA Nemotron Speech Streaming 0.6B (English)
+  Licensed under CC-BY-4.0
+  https://creativecommons.org/licenses/by/4.0/legalcode.en
+  Source: https://huggingface.co/nvidia/nemotron-speech-streaming-en-0.6b
+
+===========================================================================
+NVIDIA FastConformer Hybrid Large Streaming Multi (114M)
+  Licensed under CC-BY-4.0
+  https://creativecommons.org/licenses/by/4.0/legalcode.en
+  Source: https://huggingface.co/nvidia/stt_en_fastconformer_hybrid_large_streaming_multi
+
+===========================================================================
+NVIDIA Multitalker Parakeet Streaming 0.6B v1
+
+Licensed by NVIDIA Corporation under the NVIDIA Open Model License
+  https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/
+Source: https://huggingface.co/nvidia/multitalker-parakeet-streaming-0.6b-v1
+
+Use of this model is also subject to the NVIDIA Trustworthy AI Terms:
+  https://www.nvidia.com/en-us/agreements/trustworthy-ai/terms/
+
+===========================================================================
+NVIDIA Streaming Sortformer 4-speaker v2.1
+
+Licensed by NVIDIA Corporation under the NVIDIA Open Model License
+  https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/
+Source: https://huggingface.co/nvidia/diar_streaming_sortformer_4spk-v2.1
+
+Use of this model is also subject to the NVIDIA Trustworthy AI Terms:
+  https://www.nvidia.com/en-us/agreements/trustworthy-ai/terms/
+
+===========================================================================
+NVIDIA Sortformer 4-speaker v1 (offline overlay variant)
+
+Licensed by NVIDIA Corporation under the NVIDIA Open Model License
+  https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-open-model-license/
+Source: https://huggingface.co/nvidia/diar_sortformer_4spk-v1
+
+===========================================================================
+pyannote.audio 3.1 (segmentation + speaker embedding)
+
+Licensed per the model-card terms at:
+  https://huggingface.co/pyannote/segmentation-3.0
+  https://huggingface.co/pyannote/wespeaker-voxceleb-resnet34-LM
+
+Acceptance of the pyannote model-card terms is required to access these
+weights via HuggingFace; that acceptance carries through to bundled
+deployment as long as the attribution above is preserved.
+
+===========================================================================
+Silero Voice Activity Detector
+  Licensed under MIT
+  https://github.com/snakers4/silero-vad
+
+===========================================================================
+OpenAI Whisper Large v3
+  Licensed under MIT
+  https://github.com/openai/whisper
+
+===========================================================================
+
+For the complete legal review including indemnification, redistribution,
+and field-of-use analysis, see LICENSE_AUDIT.md.

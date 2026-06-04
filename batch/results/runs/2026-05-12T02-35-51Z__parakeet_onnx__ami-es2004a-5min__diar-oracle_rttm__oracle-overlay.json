@@ -1,0 +1,5368 @@
+{
+  "run_id": "2026-05-12T02-35-51Z__parakeet_onnx__ami-es2004a-5min__diar-oracle_rttm__oracle-overlay",
+  "timestamp_utc": "2026-05-12T02-35-51Z",
+  "engine": "parakeet_onnx",
+  "case": "ami-es2004a-5min",
+  "diarizer": "oracle_rttm",
+  "tag": "oracle-overlay",
+  "case_meta": {
+    "name": "ami-es2004a-5min",
+    "description": "AMI Meeting Corpus, ES2004a, mid-meeting 5-minute window (audio offset\n360-660s of the 17.5-min source). Real 4-person scripted-scenario meeting\nrecorded at IDIAP / University of Edinburgh. THIS is the canonical\nacademic diarization stress test \u2014 used by every major paper on speaker\ndiarization (pyannote, NeMo, x-vector, EEND, end-to-end neural diarization).\nNumbers are directly comparable to the published literature.\n\nWhy this window matters:\n- **All 4 speakers active** (FEE013, FEE016, MEE014, MEO015 \u2014 2 female, 2 male)\n- **94% speech density** \u2014 almost no silence to game DER on\n- **17% overlap** (where 2+ speakers talk simultaneously) \u2014 the failure\n  mode SCOTUS doesn't have, the one Keanan flagged as critical\n- Mix-Headset audio = mixed beamform from individual lapel mics, similar\n  acoustic conditions to a courtroom with multiple personal mics\n",
+    "source": "https://groups.inf.ed.ac.uk/ami/AMICorpusMirror/amicorpus/ES2004a/audio/ES2004a.Mix-Headset.wav",
+    "rttm_source": "https://github.com/BUTSpeechFIT/AMI-diarization-setup (test split, only_words RTTM)",
+    "license": "CC-BY 4.0 (AMI corpus). RTTM annotations: same. Fully redistributable.",
+    "duration_s": 300,
+    "speakers": 4,
+    "overlap_percent": 17.0,
+    "speech_density_percent": 94.2,
+    "domain": "meeting",
+    "language": "en",
+    "monitor_containers": [
+      "sm-triton",
+      "sm-rt-transcriber"
+    ],
+    "window": {
+      "source_audio_offset_s": 360,
+      "source_audio_duration_s": 300
+    },
+    "ground_truth": {
+      "reference_text": null,
+      "reference_rttm": "reference.rttm",
+      "notes": "RTTM trimmed to [360, 660]s of the source audio, then re-zeroed so the\ncase audio starts at t=0. Speaker labels preserved from the AMI standard\n(FEE013/FEE016 = female participants, MEE014/MEO015 = male participants).\n"
+    },
+    "key_terms": []
+  },
+  "scores": {
+    "diarizer": "oracle_rttm",
+    "der": {
+      "der": 0.4135472671623011,
+      "speaker_count_ref": 4,
+      "speaker_count_hyp": 4
+    },
+    "latency": {
+      "ttft_ms": 54829.328292020364,
+      "ttfp_ms": null,
+      "final_lag_p50_ms": -245170.67170797964,
+      "final_lag_p95_ms": -245170.67170797964,
+      "final_lag_p99_ms": -245170.67170797964,
+      "rtf": 0.18276443597336767,
+      "finals_count": 1,
+      "partials_count": 0
+    },
+    "resources": {
+      "samples": 36,
+      "gpu_mem_used_mb_peak": null,
+      "gpu_mem_used_mb_p50": null,
+      "gpu_util_percent_peak": null,
+      "gpu_util_percent_p50": null,
+      "gpu_temp_c_peak": null,
+      "container_cpu_peak": {},
+      "container_mem_mb_peak": {}
+    },
+    "confidence": {
+      "words_scored": 0,
+      "mean": null,
+      "p10": null,
+      "low_conf_rate": null
+    }
+  },
+  "result": {
+    "engine": "parakeet_onnx",
+    "audio_path": "/Users/rayyannadeem/speechmaticsContainer/asr-benchmarks/cases/ami-es2004a-5min/audio.wav",
+    "config": {
+      "model": "nemo-parakeet-tdt-0.6b-v3",
+      "quantization": "int8",
+      "providers_requested": [
+        "CoreMLExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "_mode": "batch_vad_segmented"
+    },
+    "transcript": "Well since you guys have chosen the ones I wanted to do. And also my drawing skill isn't that great. Well, as you can see the quality of the work today is um I think it's outstandingly good. Okay, now I'm gonna have to change what it was originally gonna be because that looks like a beak now, so Crocodile? Yeah, it can be a crocodile. It can be a crocodile. Well it was it was firstly it was an attempt at a T Rex and then it sort of changed into a pelican, but it can be a crocodile. And uh I'll have to think on the spot of uh things that it is. Um Uh Scary. Uh strong Yeah, that's about it, I think. Okay. I'm I'm very impressed with your artistic skills. Mine's a dreadful. Oops this is now coming apart. We just put the top in. I hope that clicks in. I'll just I'll hold it on. Yeah. Oops. Oh dear. What happened there? Technical help. Hopefully that'll stay on. Two handed version. Okay. Mm. Again, this is off the top of my head. I was gonna do a big cut too. Um Not a vampire bat, honestly. Uh and somewhere there's a body behind. That's my dreadful that's the worst yeah. It's meant to be an eagle. You can tell it's a flying animal. Could have been a seagull. I never thought of a seagull. An eagle. Um again I'm thinking on my feet, goodness. suppose they're also independent. I'd put that one down again. Didn't Um Independent, right? Did you say they're good at golf? Yeah. Okay? Legal. Oh right, okay. I'm not good at golf. I'll say they're quite free spirited. Flying around everywhere. Doing their own thing. And uh Birds of prey, aren't they? Oh dear. Intrepid. Intrepid. There we go. Hope that pen's gonna be okay. But Mm. Okay. Yeah. Um Finance wise, we've got uh selling price at twenty five Euros. Which I don't actually know what. That is imponted at all. Any ideas? Seventeen. One point four euro would make a pound or something like that. Yeah. Yeah, about seventeen. Seventeen pounds. Seventeen pounds. Okay. Mm. Should we be making notes of this? We can just refer to this later, can't we? I think so. I'd be able to um put that up or put it in the shared folder or something. The the ones on the market at the moment, that's there about Twenty pounds anyway. Right. Yeah. We have to buy one. Mm. I suppose later it depends if we want to undercut the price, but or or is it going to make our product look a cheapy cheapy option? Yeah. Um production costs at twelve fifty. So Pretty huge module. of the selling prices taken up by Building it. Mm-hmm. Um And profit aim is fifty million euros. Which is a In our first year. Yep. Yes. Mm. Yeah. Presume so. Mm-hmm. Um You've got market range international and you did say earlier it's got to be uh um accessible and usable by sort of all age groups. Just We're not focusing on business market, any particular thing. It's everyone, user friendly to everyone. Okay. Big target group. Yes, yes. I don't think we have to I don't think it's a case of Worrying about Different.",
+    "words": [
+      {
+        "content": "Well",
+        "start_time": 0.93,
+        "end_time": 1.3216666666666668,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "since",
+        "start_time": 1.3216666666666668,
+        "end_time": 1.7133333333333334,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "you",
+        "start_time": 1.7133333333333334,
+        "end_time": 2.105,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "guys",
+        "start_time": 2.105,
+        "end_time": 2.4966666666666666,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "have",
+        "start_time": 2.4966666666666666,
+        "end_time": 2.888333333333333,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "chosen",
+        "start_time": 2.888333333333333,
+        "end_time": 3.2800000000000002,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 3.2800000000000002,
+        "end_time": 3.671666666666667,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "ones",
+        "start_time": 3.671666666666667,
+        "end_time": 4.0633333333333335,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I",
+        "start_time": 4.0633333333333335,
+        "end_time": 4.455,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "wanted",
+        "start_time": 4.455,
+        "end_time": 4.846666666666667,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 4.846666666666667,
+        "end_time": 5.238333333333333,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "do.",
+        "start_time": 5.238333333333333,
+        "end_time": 5.63,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "And",
+        "start_time": 11.522,
+        "end_time": 11.828307692307693,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "also",
+        "start_time": 11.828307692307693,
+        "end_time": 12.134615384615385,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "my",
+        "start_time": 12.134615384615385,
+        "end_time": 12.440923076923077,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "drawing",
+        "start_time": 12.440923076923077,
+        "end_time": 12.74723076923077,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "skill",
+        "start_time": 12.74723076923077,
+        "end_time": 13.053538461538462,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "isn't",
+        "start_time": 13.053538461538462,
+        "end_time": 13.359846153846155,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "that",
+        "start_time": 13.359846153846155,
+        "end_time": 13.666153846153847,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "great.",
+        "start_time": 13.666153846153847,
+        "end_time": 13.97246153846154,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Well,",
+        "start_time": 13.97246153846154,
+        "end_time": 14.278769230769232,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "as",
+        "start_time": 14.278769230769232,
+        "end_time": 14.585076923076924,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "you",
+        "start_time": 14.585076923076924,
+        "end_time": 14.891384615384617,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "can",
+        "start_time": 14.891384615384617,
+        "end_time": 15.197692307692307,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "see",
+        "start_time": 15.197692307692307,
+        "end_time": 15.504000000000001,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 15.504000000000001,
+        "end_time": 15.810307692307692,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "quality",
+        "start_time": 15.810307692307692,
+        "end_time": 16.116615384615386,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 16.116615384615386,
+        "end_time": 16.422923076923077,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 16.422923076923077,
+        "end_time": 16.72923076923077,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "work",
+        "start_time": 16.72923076923077,
+        "end_time": 17.03553846153846,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "today",
+        "start_time": 17.03553846153846,
+        "end_time": 17.341846153846156,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "is",
+        "start_time": 17.341846153846156,
+        "end_time": 17.648153846153846,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "um",
+        "start_time": 17.648153846153846,
+        "end_time": 17.95446153846154,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I",
+        "start_time": 17.95446153846154,
+        "end_time": 18.26076923076923,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "think",
+        "start_time": 18.26076923076923,
+        "end_time": 18.567076923076925,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it's",
+        "start_time": 18.567076923076925,
+        "end_time": 18.873384615384616,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "outstandingly",
+        "start_time": 18.873384615384616,
+        "end_time": 19.179692307692306,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "good.",
+        "start_time": 19.179692307692306,
+        "end_time": 19.486,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Okay,",
+        "start_time": 19.682,
+        "end_time": 19.91190476190476,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "now",
+        "start_time": 19.91190476190476,
+        "end_time": 20.141809523809524,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I'm",
+        "start_time": 20.141809523809524,
+        "end_time": 20.371714285714283,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "gonna",
+        "start_time": 20.371714285714283,
+        "end_time": 20.601619047619046,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "have",
+        "start_time": 20.601619047619046,
+        "end_time": 20.83152380952381,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 20.83152380952381,
+        "end_time": 21.06142857142857,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "change",
+        "start_time": 21.06142857142857,
+        "end_time": 21.291333333333334,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "what",
+        "start_time": 21.291333333333334,
+        "end_time": 21.521238095238097,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 21.521238095238097,
+        "end_time": 21.751142857142856,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "was",
+        "start_time": 21.751142857142856,
+        "end_time": 21.98104761904762,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "originally",
+        "start_time": 21.98104761904762,
+        "end_time": 22.21095238095238,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "gonna",
+        "start_time": 22.21095238095238,
+        "end_time": 22.440857142857144,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 22.440857142857144,
+        "end_time": 22.670761904761903,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "because",
+        "start_time": 22.670761904761903,
+        "end_time": 22.900666666666666,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "that",
+        "start_time": 22.900666666666666,
+        "end_time": 23.13057142857143,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "looks",
+        "start_time": 23.13057142857143,
+        "end_time": 23.36047619047619,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "like",
+        "start_time": 23.36047619047619,
+        "end_time": 23.590380952380954,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 23.590380952380954,
+        "end_time": 23.820285714285717,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "beak",
+        "start_time": 23.820285714285717,
+        "end_time": 24.05019047619048,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "now,",
+        "start_time": 24.05019047619048,
+        "end_time": 24.28009523809524,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "so",
+        "start_time": 24.28009523809524,
+        "end_time": 24.51,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Crocodile?",
+        "start_time": 31.202,
+        "end_time": 31.806,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yeah,",
+        "start_time": 33.986,
+        "end_time": 34.284,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 34.284,
+        "end_time": 34.582,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "can",
+        "start_time": 34.582,
+        "end_time": 34.879999999999995,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 34.879999999999995,
+        "end_time": 35.178,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 35.178,
+        "end_time": 35.476,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "crocodile.",
+        "start_time": 35.476,
+        "end_time": 35.774,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "It",
+        "start_time": 35.906,
+        "end_time": 36.23623529411765,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "can",
+        "start_time": 36.23623529411765,
+        "end_time": 36.56647058823529,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 36.56647058823529,
+        "end_time": 36.89670588235294,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 36.89670588235294,
+        "end_time": 37.22694117647059,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "crocodile.",
+        "start_time": 37.22694117647059,
+        "end_time": 37.55717647058823,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Well",
+        "start_time": 37.55717647058823,
+        "end_time": 37.88741176470588,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 37.88741176470588,
+        "end_time": 38.21764705882353,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "was",
+        "start_time": 38.21764705882353,
+        "end_time": 38.54788235294117,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 38.54788235294117,
+        "end_time": 38.87811764705882,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "was",
+        "start_time": 38.87811764705882,
+        "end_time": 39.20835294117647,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "firstly",
+        "start_time": 39.20835294117647,
+        "end_time": 39.538588235294114,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 39.538588235294114,
+        "end_time": 39.86882352941176,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "was",
+        "start_time": 39.86882352941176,
+        "end_time": 40.19905882352941,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "an",
+        "start_time": 40.19905882352941,
+        "end_time": 40.529294117647055,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "attempt",
+        "start_time": 40.529294117647055,
+        "end_time": 40.859529411764704,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "at",
+        "start_time": 40.859529411764704,
+        "end_time": 41.189764705882354,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 41.189764705882354,
+        "end_time": 41.519999999999996,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "T",
+        "start_time": 41.519999999999996,
+        "end_time": 41.850235294117645,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Rex",
+        "start_time": 41.850235294117645,
+        "end_time": 42.180470588235295,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 42.180470588235295,
+        "end_time": 42.510705882352944,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "then",
+        "start_time": 42.510705882352944,
+        "end_time": 42.84094117647059,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 42.84094117647059,
+        "end_time": 43.171176470588236,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "sort",
+        "start_time": 43.171176470588236,
+        "end_time": 43.501411764705885,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 43.501411764705885,
+        "end_time": 43.83164705882353,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "changed",
+        "start_time": 43.83164705882353,
+        "end_time": 44.16188235294118,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "into",
+        "start_time": 44.16188235294118,
+        "end_time": 44.492117647058826,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 44.492117647058826,
+        "end_time": 44.82235294117647,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "pelican,",
+        "start_time": 44.82235294117647,
+        "end_time": 45.15258823529412,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "but",
+        "start_time": 45.15258823529412,
+        "end_time": 45.48282352941177,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 45.48282352941177,
+        "end_time": 45.81305882352942,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "can",
+        "start_time": 45.81305882352942,
+        "end_time": 46.14329411764706,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 46.14329411764706,
+        "end_time": 46.47352941176471,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 46.47352941176471,
+        "end_time": 46.80376470588236,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "crocodile.",
+        "start_time": 46.80376470588236,
+        "end_time": 47.134,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "And",
+        "start_time": 61.442,
+        "end_time": 61.888000000000005,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "uh",
+        "start_time": 61.888000000000005,
+        "end_time": 62.334,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I'll",
+        "start_time": 62.626,
+        "end_time": 62.83984615384615,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "have",
+        "start_time": 62.83984615384615,
+        "end_time": 63.05369230769231,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 63.05369230769231,
+        "end_time": 63.267538461538464,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "think",
+        "start_time": 63.267538461538464,
+        "end_time": 63.48138461538461,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "on",
+        "start_time": 63.48138461538461,
+        "end_time": 63.69523076923077,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 63.69523076923077,
+        "end_time": 63.909076923076924,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "spot",
+        "start_time": 63.909076923076924,
+        "end_time": 64.12292307692307,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 64.12292307692307,
+        "end_time": 64.33676923076924,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "uh",
+        "start_time": 64.33676923076924,
+        "end_time": 64.55061538461538,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "things",
+        "start_time": 64.55061538461538,
+        "end_time": 64.76446153846155,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "that",
+        "start_time": 64.76446153846155,
+        "end_time": 64.9783076923077,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 64.9783076923077,
+        "end_time": 65.19215384615386,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "is.",
+        "start_time": 65.19215384615386,
+        "end_time": 65.406,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Um",
+        "start_time": 66.018,
+        "end_time": 66.622,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Uh",
+        "start_time": 68.13,
+        "end_time": 68.766,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Scary.",
+        "start_time": 69.058,
+        "end_time": 70.142,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Uh",
+        "start_time": 72.514,
+        "end_time": 73.264,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "strong",
+        "start_time": 73.264,
+        "end_time": 74.014,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yeah,",
+        "start_time": 78.754,
+        "end_time": 79.13733333333334,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "that's",
+        "start_time": 79.13733333333334,
+        "end_time": 79.52066666666667,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "about",
+        "start_time": 79.52066666666667,
+        "end_time": 79.904,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it,",
+        "start_time": 79.904,
+        "end_time": 80.28733333333334,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I",
+        "start_time": 80.28733333333334,
+        "end_time": 80.67066666666668,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "think.",
+        "start_time": 80.67066666666668,
+        "end_time": 81.054,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Okay.",
+        "start_time": 81.186,
+        "end_time": 82.334,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I'm",
+        "start_time": 83.17,
+        "end_time": 83.48672727272728,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I'm",
+        "start_time": 83.48672727272728,
+        "end_time": 83.80345454545454,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "very",
+        "start_time": 83.80345454545454,
+        "end_time": 84.12018181818182,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "impressed",
+        "start_time": 84.12018181818182,
+        "end_time": 84.4369090909091,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "with",
+        "start_time": 84.4369090909091,
+        "end_time": 84.75363636363636,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "your",
+        "start_time": 84.75363636363636,
+        "end_time": 85.07036363636364,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "artistic",
+        "start_time": 85.07036363636364,
+        "end_time": 85.3870909090909,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "skills.",
+        "start_time": 85.3870909090909,
+        "end_time": 85.70381818181818,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Mine's",
+        "start_time": 85.70381818181818,
+        "end_time": 86.02054545454546,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 86.02054545454546,
+        "end_time": 86.33727272727272,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "dreadful.",
+        "start_time": 86.33727272727272,
+        "end_time": 86.654,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Oops",
+        "start_time": 87.938,
+        "end_time": 88.21466666666667,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "this",
+        "start_time": 88.21466666666667,
+        "end_time": 88.49133333333333,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "is",
+        "start_time": 88.49133333333333,
+        "end_time": 88.768,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "now",
+        "start_time": 88.768,
+        "end_time": 89.04466666666667,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "coming",
+        "start_time": 89.04466666666667,
+        "end_time": 89.32133333333333,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "apart.",
+        "start_time": 89.32133333333333,
+        "end_time": 89.598,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "We",
+        "start_time": 89.698,
+        "end_time": 89.996,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "just",
+        "start_time": 89.996,
+        "end_time": 90.294,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "put",
+        "start_time": 90.294,
+        "end_time": 90.592,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 90.592,
+        "end_time": 90.89,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "top",
+        "start_time": 90.89,
+        "end_time": 91.188,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "in.",
+        "start_time": 91.188,
+        "end_time": 91.486,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I",
+        "start_time": 93.986,
+        "end_time": 94.21560000000001,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "hope",
+        "start_time": 94.21560000000001,
+        "end_time": 94.4452,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "that",
+        "start_time": 94.4452,
+        "end_time": 94.6748,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "clicks",
+        "start_time": 94.6748,
+        "end_time": 94.9044,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "in.",
+        "start_time": 94.9044,
+        "end_time": 95.134,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I'll",
+        "start_time": 95.266,
+        "end_time": 95.43066666666667,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "just",
+        "start_time": 95.43066666666667,
+        "end_time": 95.59533333333334,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I'll",
+        "start_time": 95.59533333333334,
+        "end_time": 95.76,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "hold",
+        "start_time": 95.76,
+        "end_time": 95.92466666666667,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 95.92466666666667,
+        "end_time": 96.08933333333334,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "on.",
+        "start_time": 96.08933333333334,
+        "end_time": 96.254,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yeah.",
+        "start_time": 96.514,
+        "end_time": 97.342,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Oops.",
+        "start_time": 97.954,
+        "end_time": 98.398,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Oh",
+        "start_time": 98.498,
+        "end_time": 98.816,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "dear.",
+        "start_time": 98.816,
+        "end_time": 99.134,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "What",
+        "start_time": 99.842,
+        "end_time": 100.12866666666666,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "happened",
+        "start_time": 100.12866666666666,
+        "end_time": 100.41533333333334,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "there?",
+        "start_time": 100.41533333333334,
+        "end_time": 100.702,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Technical",
+        "start_time": 101.154,
+        "end_time": 101.648,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "help.",
+        "start_time": 101.648,
+        "end_time": 102.142,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Hopefully",
+        "start_time": 105.442,
+        "end_time": 105.90549999999999,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "that'll",
+        "start_time": 105.90549999999999,
+        "end_time": 106.369,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "stay",
+        "start_time": 106.369,
+        "end_time": 106.8325,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "on.",
+        "start_time": 106.8325,
+        "end_time": 107.29599999999999,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Two",
+        "start_time": 107.29599999999999,
+        "end_time": 107.7595,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "handed",
+        "start_time": 107.7595,
+        "end_time": 108.223,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "version.",
+        "start_time": 108.223,
+        "end_time": 108.68650000000001,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Okay.",
+        "start_time": 108.68650000000001,
+        "end_time": 109.15,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Mm.",
+        "start_time": 109.57,
+        "end_time": 110.142,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Again,",
+        "start_time": 114.434,
+        "end_time": 114.62952941176471,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "this",
+        "start_time": 114.62952941176471,
+        "end_time": 114.8250588235294,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "is",
+        "start_time": 114.8250588235294,
+        "end_time": 115.02058823529411,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "off",
+        "start_time": 115.02058823529411,
+        "end_time": 115.21611764705882,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 115.21611764705882,
+        "end_time": 115.41164705882353,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "top",
+        "start_time": 115.41164705882353,
+        "end_time": 115.60717647058823,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 115.60717647058823,
+        "end_time": 115.80270588235294,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "my",
+        "start_time": 115.80270588235294,
+        "end_time": 115.99823529411765,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "head.",
+        "start_time": 115.99823529411765,
+        "end_time": 116.19376470588234,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I",
+        "start_time": 116.19376470588234,
+        "end_time": 116.38929411764705,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "was",
+        "start_time": 116.38929411764705,
+        "end_time": 116.58482352941176,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "gonna",
+        "start_time": 116.58482352941176,
+        "end_time": 116.78035294117646,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "do",
+        "start_time": 116.78035294117646,
+        "end_time": 116.97588235294117,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 116.97588235294117,
+        "end_time": 117.17141176470588,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "big",
+        "start_time": 117.17141176470588,
+        "end_time": 117.36694117647059,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "cut",
+        "start_time": 117.36694117647059,
+        "end_time": 117.56247058823529,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "too.",
+        "start_time": 117.56247058823529,
+        "end_time": 117.758,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Um",
+        "start_time": 118.114,
+        "end_time": 118.782,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Not",
+        "start_time": 128.866,
+        "end_time": 129.3196,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 129.3196,
+        "end_time": 129.7732,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "vampire",
+        "start_time": 129.7732,
+        "end_time": 130.2268,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "bat,",
+        "start_time": 130.2268,
+        "end_time": 130.6804,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "honestly.",
+        "start_time": 130.6804,
+        "end_time": 131.134,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Uh",
+        "start_time": 132.898,
+        "end_time": 133.18085714285715,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 133.18085714285715,
+        "end_time": 133.46371428571427,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "somewhere",
+        "start_time": 133.46371428571427,
+        "end_time": 133.74657142857143,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "there's",
+        "start_time": 133.74657142857143,
+        "end_time": 134.02942857142855,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 134.02942857142855,
+        "end_time": 134.3122857142857,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "body",
+        "start_time": 134.3122857142857,
+        "end_time": 134.59514285714283,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "behind.",
+        "start_time": 134.59514285714283,
+        "end_time": 134.878,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "That's",
+        "start_time": 137.538,
+        "end_time": 137.86648780487806,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "my",
+        "start_time": 137.86648780487806,
+        "end_time": 138.1949756097561,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "dreadful",
+        "start_time": 138.1949756097561,
+        "end_time": 138.52346341463416,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "that's",
+        "start_time": 138.52346341463416,
+        "end_time": 138.85195121951222,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 138.85195121951222,
+        "end_time": 139.18043902439027,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "worst",
+        "start_time": 139.18043902439027,
+        "end_time": 139.5089268292683,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "yeah.",
+        "start_time": 139.5089268292683,
+        "end_time": 139.83741463414634,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "It's",
+        "start_time": 139.83741463414634,
+        "end_time": 140.1659024390244,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "meant",
+        "start_time": 140.1659024390244,
+        "end_time": 140.49439024390244,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 140.49439024390244,
+        "end_time": 140.8228780487805,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 140.8228780487805,
+        "end_time": 141.15136585365855,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "an",
+        "start_time": 141.15136585365855,
+        "end_time": 141.4798536585366,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "eagle.",
+        "start_time": 141.4798536585366,
+        "end_time": 141.80834146341465,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "You",
+        "start_time": 141.80834146341465,
+        "end_time": 142.1368292682927,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "can",
+        "start_time": 142.1368292682927,
+        "end_time": 142.46531707317075,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "tell",
+        "start_time": 142.46531707317075,
+        "end_time": 142.79380487804877,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it's",
+        "start_time": 142.79380487804877,
+        "end_time": 143.12229268292683,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 143.12229268292683,
+        "end_time": 143.45078048780488,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "flying",
+        "start_time": 143.45078048780488,
+        "end_time": 143.77926829268293,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "animal.",
+        "start_time": 143.77926829268293,
+        "end_time": 144.10775609756098,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Could",
+        "start_time": 144.10775609756098,
+        "end_time": 144.43624390243903,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "have",
+        "start_time": 144.43624390243903,
+        "end_time": 144.76473170731708,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "been",
+        "start_time": 144.76473170731708,
+        "end_time": 145.09321951219513,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 145.09321951219513,
+        "end_time": 145.42170731707319,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "seagull.",
+        "start_time": 145.42170731707319,
+        "end_time": 145.75019512195124,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I",
+        "start_time": 145.75019512195124,
+        "end_time": 146.07868292682926,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "never",
+        "start_time": 146.07868292682926,
+        "end_time": 146.4071707317073,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "thought",
+        "start_time": 146.4071707317073,
+        "end_time": 146.73565853658536,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 146.73565853658536,
+        "end_time": 147.0641463414634,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 147.0641463414634,
+        "end_time": 147.39263414634146,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "seagull.",
+        "start_time": 147.39263414634146,
+        "end_time": 147.72112195121952,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "An",
+        "start_time": 147.72112195121952,
+        "end_time": 148.04960975609757,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "eagle.",
+        "start_time": 148.04960975609757,
+        "end_time": 148.37809756097562,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Um",
+        "start_time": 148.37809756097562,
+        "end_time": 148.70658536585367,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "again",
+        "start_time": 148.70658536585367,
+        "end_time": 149.03507317073172,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I'm",
+        "start_time": 149.03507317073172,
+        "end_time": 149.36356097560974,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "thinking",
+        "start_time": 149.36356097560974,
+        "end_time": 149.6920487804878,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "on",
+        "start_time": 149.6920487804878,
+        "end_time": 150.02053658536585,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "my",
+        "start_time": 150.02053658536585,
+        "end_time": 150.3490243902439,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "feet,",
+        "start_time": 150.3490243902439,
+        "end_time": 150.67751219512195,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "goodness.",
+        "start_time": 150.67751219512195,
+        "end_time": 151.006,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "suppose",
+        "start_time": 151.49,
+        "end_time": 151.76160000000002,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "they're",
+        "start_time": 151.76160000000002,
+        "end_time": 152.0332,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "also",
+        "start_time": 152.0332,
+        "end_time": 152.3048,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "independent.",
+        "start_time": 152.3048,
+        "end_time": 152.5764,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I'd",
+        "start_time": 152.5764,
+        "end_time": 152.848,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "put",
+        "start_time": 152.848,
+        "end_time": 153.1196,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "that",
+        "start_time": 153.1196,
+        "end_time": 153.3912,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "one",
+        "start_time": 153.3912,
+        "end_time": 153.6628,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "down",
+        "start_time": 153.6628,
+        "end_time": 153.93439999999998,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "again.",
+        "start_time": 153.93439999999998,
+        "end_time": 154.206,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Didn't",
+        "start_time": 156.13,
+        "end_time": 156.606,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Um",
+        "start_time": 157.922,
+        "end_time": 158.718,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Independent,",
+        "start_time": 159.874,
+        "end_time": 161.42399999999998,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "right?",
+        "start_time": 161.42399999999998,
+        "end_time": 162.974,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Did",
+        "start_time": 163.234,
+        "end_time": 163.42950000000002,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "you",
+        "start_time": 163.42950000000002,
+        "end_time": 163.625,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "say",
+        "start_time": 163.625,
+        "end_time": 163.8205,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "they're",
+        "start_time": 163.8205,
+        "end_time": 164.01600000000002,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "good",
+        "start_time": 164.01600000000002,
+        "end_time": 164.2115,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "at",
+        "start_time": 164.2115,
+        "end_time": 164.407,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "golf?",
+        "start_time": 164.407,
+        "end_time": 164.6025,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yeah.",
+        "start_time": 164.6025,
+        "end_time": 164.798,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Okay?",
+        "start_time": 164.93,
+        "end_time": 166.046,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Legal.",
+        "start_time": 166.242,
+        "end_time": 166.5508888888889,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Oh",
+        "start_time": 166.5508888888889,
+        "end_time": 166.85977777777777,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "right,",
+        "start_time": 166.85977777777777,
+        "end_time": 167.16866666666667,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "okay.",
+        "start_time": 167.16866666666667,
+        "end_time": 167.47755555555554,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I'm",
+        "start_time": 167.47755555555554,
+        "end_time": 167.78644444444444,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "not",
+        "start_time": 167.78644444444444,
+        "end_time": 168.09533333333331,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "good",
+        "start_time": 168.09533333333331,
+        "end_time": 168.40422222222222,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "at",
+        "start_time": 168.40422222222222,
+        "end_time": 168.7131111111111,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "golf.",
+        "start_time": 168.7131111111111,
+        "end_time": 169.022,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I'll",
+        "start_time": 169.218,
+        "end_time": 169.52133333333333,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "say",
+        "start_time": 169.52133333333333,
+        "end_time": 169.82466666666667,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "they're",
+        "start_time": 169.82466666666667,
+        "end_time": 170.128,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "quite",
+        "start_time": 170.128,
+        "end_time": 170.43133333333333,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "free",
+        "start_time": 170.43133333333333,
+        "end_time": 170.73466666666667,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "spirited.",
+        "start_time": 170.73466666666667,
+        "end_time": 171.038,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Flying",
+        "start_time": 172.034,
+        "end_time": 172.48066666666665,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "around",
+        "start_time": 172.48066666666665,
+        "end_time": 172.92733333333334,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "everywhere.",
+        "start_time": 172.92733333333334,
+        "end_time": 173.374,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Doing",
+        "start_time": 175.618,
+        "end_time": 175.881,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "their",
+        "start_time": 175.881,
+        "end_time": 176.144,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "own",
+        "start_time": 176.144,
+        "end_time": 176.40699999999998,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "thing.",
+        "start_time": 176.40699999999998,
+        "end_time": 176.67,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "And",
+        "start_time": 181.474,
+        "end_time": 182.064,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "uh",
+        "start_time": 182.064,
+        "end_time": 182.654,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Birds",
+        "start_time": 183.778,
+        "end_time": 184.03342857142857,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 184.03342857142857,
+        "end_time": 184.28885714285713,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "prey,",
+        "start_time": 184.28885714285713,
+        "end_time": 184.5442857142857,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "aren't",
+        "start_time": 184.5442857142857,
+        "end_time": 184.7997142857143,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "they?",
+        "start_time": 184.7997142857143,
+        "end_time": 185.05514285714287,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Oh",
+        "start_time": 185.05514285714287,
+        "end_time": 185.31057142857142,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "dear.",
+        "start_time": 185.31057142857142,
+        "end_time": 185.566,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Intrepid.",
+        "start_time": 186.082,
+        "end_time": 187.038,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Intrepid.",
+        "start_time": 187.17,
+        "end_time": 188.798,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "There",
+        "start_time": 193.666,
+        "end_time": 193.92066666666668,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "we",
+        "start_time": 193.92066666666668,
+        "end_time": 194.17533333333333,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "go.",
+        "start_time": 194.17533333333333,
+        "end_time": 194.43,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Hope",
+        "start_time": 194.85,
+        "end_time": 195.11066666666665,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "that",
+        "start_time": 195.11066666666665,
+        "end_time": 195.37133333333333,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "pen's",
+        "start_time": 195.37133333333333,
+        "end_time": 195.632,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "gonna",
+        "start_time": 195.632,
+        "end_time": 195.89266666666666,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 195.89266666666666,
+        "end_time": 196.1533333333333,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "okay.",
+        "start_time": 196.1533333333333,
+        "end_time": 196.414,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "But",
+        "start_time": 198.562,
+        "end_time": 199.038,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Mm.",
+        "start_time": 199.554,
+        "end_time": 199.838,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Okay.",
+        "start_time": 201.154,
+        "end_time": 201.63,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yeah.",
+        "start_time": 202.338,
+        "end_time": 202.622,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Um",
+        "start_time": 205.474,
+        "end_time": 206.014,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Finance",
+        "start_time": 206.178,
+        "end_time": 206.53545454545454,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "wise,",
+        "start_time": 206.53545454545454,
+        "end_time": 206.8929090909091,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "we've",
+        "start_time": 206.8929090909091,
+        "end_time": 207.25036363636363,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "got",
+        "start_time": 207.25036363636363,
+        "end_time": 207.60781818181817,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "uh",
+        "start_time": 207.60781818181817,
+        "end_time": 207.96527272727272,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "selling",
+        "start_time": 207.96527272727272,
+        "end_time": 208.3227272727273,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "price",
+        "start_time": 208.3227272727273,
+        "end_time": 208.68018181818184,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "at",
+        "start_time": 208.68018181818184,
+        "end_time": 209.03763636363638,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "twenty",
+        "start_time": 209.03763636363638,
+        "end_time": 209.39509090909092,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "five",
+        "start_time": 209.39509090909092,
+        "end_time": 209.75254545454547,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Euros.",
+        "start_time": 209.75254545454547,
+        "end_time": 210.11,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Which",
+        "start_time": 210.402,
+        "end_time": 210.652,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I",
+        "start_time": 210.652,
+        "end_time": 210.902,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "don't",
+        "start_time": 210.902,
+        "end_time": 211.152,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "actually",
+        "start_time": 211.152,
+        "end_time": 211.402,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "know",
+        "start_time": 211.402,
+        "end_time": 211.652,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "what.",
+        "start_time": 211.652,
+        "end_time": 211.902,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "That",
+        "start_time": 212.226,
+        "end_time": 212.5324,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "is",
+        "start_time": 212.5324,
+        "end_time": 212.8388,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "imponted",
+        "start_time": 212.8388,
+        "end_time": 213.14520000000002,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "at",
+        "start_time": 213.14520000000002,
+        "end_time": 213.4516,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "all.",
+        "start_time": 213.4516,
+        "end_time": 213.758,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Any",
+        "start_time": 214.658,
+        "end_time": 215.2,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "ideas?",
+        "start_time": 215.2,
+        "end_time": 215.742,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Seventeen.",
+        "start_time": 216.61,
+        "end_time": 218.366,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "One",
+        "start_time": 218.722,
+        "end_time": 219.02033333333333,
+        "speaker": "MEO015",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "point",
+        "start_time": 219.02033333333333,
+        "end_time": 219.31866666666667,
+        "speaker": "MEO015",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "four",
+        "start_time": 219.31866666666667,
+        "end_time": 219.61700000000002,
+        "speaker": "MEO015",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "euro",
+        "start_time": 219.61700000000002,
+        "end_time": 219.91533333333334,
+        "speaker": "MEO015",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "would",
+        "start_time": 219.91533333333334,
+        "end_time": 220.21366666666665,
+        "speaker": "MEO015",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "make",
+        "start_time": 220.21366666666665,
+        "end_time": 220.512,
+        "speaker": "MEO015",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 220.512,
+        "end_time": 220.81033333333335,
+        "speaker": "MEO015",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "pound",
+        "start_time": 220.81033333333335,
+        "end_time": 221.10866666666666,
+        "speaker": "MEO015",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "or",
+        "start_time": 221.10866666666666,
+        "end_time": 221.40699999999998,
+        "speaker": "MEO015",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "something",
+        "start_time": 221.40699999999998,
+        "end_time": 221.70533333333333,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "like",
+        "start_time": 221.70533333333333,
+        "end_time": 222.00366666666667,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "that.",
+        "start_time": 222.00366666666667,
+        "end_time": 222.302,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yeah.",
+        "start_time": 222.594,
+        "end_time": 223.006,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yeah,",
+        "start_time": 224.002,
+        "end_time": 224.4095,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "about",
+        "start_time": 224.4095,
+        "end_time": 224.817,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "seventeen.",
+        "start_time": 224.817,
+        "end_time": 225.2245,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Seventeen",
+        "start_time": 225.2245,
+        "end_time": 225.632,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "pounds.",
+        "start_time": 225.632,
+        "end_time": 226.0395,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Seventeen",
+        "start_time": 226.0395,
+        "end_time": 226.447,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "pounds.",
+        "start_time": 226.447,
+        "end_time": 226.8545,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Okay.",
+        "start_time": 226.8545,
+        "end_time": 227.262,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Mm.",
+        "start_time": 227.842,
+        "end_time": 228.094,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Should",
+        "start_time": 228.418,
+        "end_time": 228.67833333333334,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "we",
+        "start_time": 228.67833333333334,
+        "end_time": 228.93866666666668,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 228.93866666666668,
+        "end_time": 229.199,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "making",
+        "start_time": 229.199,
+        "end_time": 229.45933333333335,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "notes",
+        "start_time": 229.45933333333335,
+        "end_time": 229.71966666666668,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 229.71966666666668,
+        "end_time": 229.98000000000002,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "this?",
+        "start_time": 229.98000000000002,
+        "end_time": 230.24033333333333,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "We",
+        "start_time": 230.24033333333333,
+        "end_time": 230.50066666666666,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "can",
+        "start_time": 230.50066666666666,
+        "end_time": 230.761,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "just",
+        "start_time": 230.761,
+        "end_time": 231.02133333333333,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "refer",
+        "start_time": 231.02133333333333,
+        "end_time": 231.28166666666667,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 231.28166666666667,
+        "end_time": 231.542,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "this",
+        "start_time": 231.542,
+        "end_time": 231.80233333333334,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "later,",
+        "start_time": 231.80233333333334,
+        "end_time": 232.06266666666667,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "can't",
+        "start_time": 232.06266666666667,
+        "end_time": 232.323,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "we?",
+        "start_time": 232.323,
+        "end_time": 232.58333333333334,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I",
+        "start_time": 232.58333333333334,
+        "end_time": 232.84366666666668,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "think",
+        "start_time": 232.84366666666668,
+        "end_time": 233.10399999999998,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "so.",
+        "start_time": 233.10399999999998,
+        "end_time": 233.36433333333332,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I'd",
+        "start_time": 233.36433333333332,
+        "end_time": 233.62466666666666,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 233.62466666666666,
+        "end_time": 233.885,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "able",
+        "start_time": 233.885,
+        "end_time": 234.14533333333333,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 234.14533333333333,
+        "end_time": 234.40566666666666,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "um",
+        "start_time": 234.40566666666666,
+        "end_time": 234.666,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "put",
+        "start_time": 234.666,
+        "end_time": 234.92633333333333,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "that",
+        "start_time": 234.92633333333333,
+        "end_time": 235.18666666666667,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "up",
+        "start_time": 235.18666666666667,
+        "end_time": 235.447,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "or",
+        "start_time": 235.447,
+        "end_time": 235.70733333333334,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "put",
+        "start_time": 235.70733333333334,
+        "end_time": 235.96766666666667,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 235.96766666666667,
+        "end_time": 236.22799999999998,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "in",
+        "start_time": 236.22799999999998,
+        "end_time": 236.48833333333332,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 236.48833333333332,
+        "end_time": 236.74866666666665,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "shared",
+        "start_time": 236.74866666666665,
+        "end_time": 237.009,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "folder",
+        "start_time": 237.009,
+        "end_time": 237.26933333333332,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "or",
+        "start_time": 237.26933333333332,
+        "end_time": 237.52966666666666,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "something.",
+        "start_time": 237.52966666666666,
+        "end_time": 237.79,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "The",
+        "start_time": 238.082,
+        "end_time": 238.311,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 238.311,
+        "end_time": 238.54,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "ones",
+        "start_time": 238.54,
+        "end_time": 238.769,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "on",
+        "start_time": 238.769,
+        "end_time": 238.998,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 238.998,
+        "end_time": 239.227,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "market",
+        "start_time": 239.227,
+        "end_time": 239.45600000000002,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "at",
+        "start_time": 239.45600000000002,
+        "end_time": 239.685,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 239.685,
+        "end_time": 239.91400000000002,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "moment,",
+        "start_time": 239.91400000000002,
+        "end_time": 240.143,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "that's",
+        "start_time": 240.143,
+        "end_time": 240.372,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "there",
+        "start_time": 240.372,
+        "end_time": 240.601,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "about",
+        "start_time": 240.601,
+        "end_time": 240.83,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Twenty",
+        "start_time": 240.994,
+        "end_time": 241.366,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "pounds",
+        "start_time": 241.366,
+        "end_time": 241.738,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "anyway.",
+        "start_time": 241.738,
+        "end_time": 242.11,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Right.",
+        "start_time": 243.266,
+        "end_time": 244.368,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yeah.",
+        "start_time": 244.368,
+        "end_time": 245.47,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "We",
+        "start_time": 245.57,
+        "end_time": 245.83159999999998,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "have",
+        "start_time": 245.83159999999998,
+        "end_time": 246.0932,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 246.0932,
+        "end_time": 246.35479999999998,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "buy",
+        "start_time": 246.35479999999998,
+        "end_time": 246.6164,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "one.",
+        "start_time": 246.6164,
+        "end_time": 246.878,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Mm.",
+        "start_time": 247.17,
+        "end_time": 247.582,
+        "speaker": "MEE014",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I",
+        "start_time": 248.13,
+        "end_time": 248.38964705882353,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "suppose",
+        "start_time": 248.38964705882353,
+        "end_time": 248.64929411764706,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "later",
+        "start_time": 248.64929411764706,
+        "end_time": 248.9089411764706,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 248.9089411764706,
+        "end_time": 249.16858823529412,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "depends",
+        "start_time": 249.16858823529412,
+        "end_time": 249.42823529411766,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "if",
+        "start_time": 249.42823529411766,
+        "end_time": 249.6878823529412,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "we",
+        "start_time": 249.6878823529412,
+        "end_time": 249.94752941176472,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "want",
+        "start_time": 249.94752941176472,
+        "end_time": 250.20717647058825,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 250.20717647058825,
+        "end_time": 250.46682352941176,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "undercut",
+        "start_time": 250.46682352941176,
+        "end_time": 250.7264705882353,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 250.7264705882353,
+        "end_time": 250.98611764705882,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "price,",
+        "start_time": 250.98611764705882,
+        "end_time": 251.24576470588235,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "but",
+        "start_time": 251.24576470588235,
+        "end_time": 251.50541176470588,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "or",
+        "start_time": 251.50541176470588,
+        "end_time": 251.76505882352942,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "or",
+        "start_time": 251.76505882352942,
+        "end_time": 252.02470588235295,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "is",
+        "start_time": 252.02470588235295,
+        "end_time": 252.28435294117648,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 252.28435294117648,
+        "end_time": 252.544,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "going",
+        "start_time": 252.544,
+        "end_time": 252.80364705882354,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 252.80364705882354,
+        "end_time": 253.06329411764708,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "make",
+        "start_time": 253.06329411764708,
+        "end_time": 253.3229411764706,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "our",
+        "start_time": 253.3229411764706,
+        "end_time": 253.58258823529414,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "product",
+        "start_time": 253.58258823529414,
+        "end_time": 253.84223529411767,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "look",
+        "start_time": 253.84223529411767,
+        "end_time": 254.1018823529412,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 254.1018823529412,
+        "end_time": 254.36152941176474,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "cheapy",
+        "start_time": 254.36152941176474,
+        "end_time": 254.62117647058827,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "cheapy",
+        "start_time": 254.62117647058827,
+        "end_time": 254.88082352941177,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "option?",
+        "start_time": 254.88082352941177,
+        "end_time": 255.1404705882353,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yeah.",
+        "start_time": 255.1404705882353,
+        "end_time": 255.40011764705883,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Um",
+        "start_time": 255.40011764705883,
+        "end_time": 255.65976470588237,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "production",
+        "start_time": 255.65976470588237,
+        "end_time": 255.9194117647059,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "costs",
+        "start_time": 255.9194117647059,
+        "end_time": 256.17905882352943,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "at",
+        "start_time": 256.17905882352943,
+        "end_time": 256.43870588235296,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "twelve",
+        "start_time": 256.43870588235296,
+        "end_time": 256.6983529411765,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "fifty.",
+        "start_time": 256.6983529411765,
+        "end_time": 256.958,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "So",
+        "start_time": 257.346,
+        "end_time": 258.174,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Pretty",
+        "start_time": 258.402,
+        "end_time": 258.84866666666665,
+        "speaker": "MEO015",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "huge",
+        "start_time": 258.84866666666665,
+        "end_time": 259.29533333333336,
+        "speaker": "MEO015",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "module.",
+        "start_time": 259.29533333333336,
+        "end_time": 259.742,
+        "speaker": "MEO015",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 260.29,
+        "end_time": 260.6551428571429,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 260.6551428571429,
+        "end_time": 261.0202857142857,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "selling",
+        "start_time": 261.0202857142857,
+        "end_time": 261.3854285714286,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "prices",
+        "start_time": 261.3854285714286,
+        "end_time": 261.75057142857145,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "taken",
+        "start_time": 261.75057142857145,
+        "end_time": 262.1157142857143,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "up",
+        "start_time": 262.1157142857143,
+        "end_time": 262.48085714285713,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "by",
+        "start_time": 262.48085714285713,
+        "end_time": 262.846,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Building",
+        "start_time": 263.01,
+        "end_time": 263.296,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it.",
+        "start_time": 263.296,
+        "end_time": 263.582,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Mm-hmm.",
+        "start_time": 263.842,
+        "end_time": 264.448,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Um",
+        "start_time": 264.448,
+        "end_time": 265.054,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "And",
+        "start_time": 265.442,
+        "end_time": 265.85742857142856,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "profit",
+        "start_time": 265.85742857142856,
+        "end_time": 266.27285714285716,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "aim",
+        "start_time": 266.27285714285716,
+        "end_time": 266.6882857142857,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "is",
+        "start_time": 266.6882857142857,
+        "end_time": 267.1037142857143,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "fifty",
+        "start_time": 267.1037142857143,
+        "end_time": 267.51914285714287,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "million",
+        "start_time": 267.51914285714287,
+        "end_time": 267.9345714285715,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "euros.",
+        "start_time": 267.9345714285715,
+        "end_time": 268.35,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Which",
+        "start_time": 268.77,
+        "end_time": 269.014,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "is",
+        "start_time": 269.014,
+        "end_time": 269.258,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 269.258,
+        "end_time": 269.502,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "In",
+        "start_time": 270.37,
+        "end_time": 270.66266666666667,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "our",
+        "start_time": 270.66266666666667,
+        "end_time": 270.95533333333333,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "first",
+        "start_time": 270.95533333333333,
+        "end_time": 271.248,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "year.",
+        "start_time": 271.248,
+        "end_time": 271.54066666666665,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yep.",
+        "start_time": 271.54066666666665,
+        "end_time": 271.8333333333333,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yes.",
+        "start_time": 271.8333333333333,
+        "end_time": 272.126,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Mm.",
+        "start_time": 272.482,
+        "end_time": 273.118,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yeah.",
+        "start_time": 273.25,
+        "end_time": 273.726,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Presume",
+        "start_time": 274.69,
+        "end_time": 275.126,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "so.",
+        "start_time": 275.126,
+        "end_time": 275.562,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Mm-hmm.",
+        "start_time": 275.562,
+        "end_time": 275.998,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Um",
+        "start_time": 276.418,
+        "end_time": 277.15,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "You've",
+        "start_time": 278.082,
+        "end_time": 278.37476923076923,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "got",
+        "start_time": 278.37476923076923,
+        "end_time": 278.66753846153847,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "market",
+        "start_time": 278.66753846153847,
+        "end_time": 278.9603076923077,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "range",
+        "start_time": 278.9603076923077,
+        "end_time": 279.25307692307695,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "international",
+        "start_time": 279.25307692307695,
+        "end_time": 279.5458461538461,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 279.5458461538461,
+        "end_time": 279.83861538461537,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "you",
+        "start_time": 279.83861538461537,
+        "end_time": 280.1313846153846,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "did",
+        "start_time": 280.1313846153846,
+        "end_time": 280.42415384615384,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "say",
+        "start_time": 280.42415384615384,
+        "end_time": 280.7169230769231,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "earlier",
+        "start_time": 280.7169230769231,
+        "end_time": 281.0096923076923,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it's",
+        "start_time": 281.0096923076923,
+        "end_time": 281.30246153846156,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "got",
+        "start_time": 281.30246153846156,
+        "end_time": 281.5952307692308,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 281.5952307692308,
+        "end_time": 281.88800000000003,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 281.88800000000003,
+        "end_time": 282.1807692307692,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "uh",
+        "start_time": 282.1807692307692,
+        "end_time": 282.47353846153845,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "um",
+        "start_time": 282.47353846153845,
+        "end_time": 282.7663076923077,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "accessible",
+        "start_time": 282.7663076923077,
+        "end_time": 283.05907692307693,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 283.05907692307693,
+        "end_time": 283.35184615384617,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "usable",
+        "start_time": 283.35184615384617,
+        "end_time": 283.6446153846154,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "by",
+        "start_time": 283.6446153846154,
+        "end_time": 283.93738461538464,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "sort",
+        "start_time": 283.93738461538464,
+        "end_time": 284.2301538461539,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 284.2301538461539,
+        "end_time": 284.52292307692306,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "all",
+        "start_time": 284.52292307692306,
+        "end_time": 284.8156923076923,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "age",
+        "start_time": 284.8156923076923,
+        "end_time": 285.10846153846154,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "groups.",
+        "start_time": 285.10846153846154,
+        "end_time": 285.4012307692308,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Just",
+        "start_time": 285.4012307692308,
+        "end_time": 285.694,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "We're",
+        "start_time": 286.178,
+        "end_time": 286.53975,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "not",
+        "start_time": 286.53975,
+        "end_time": 286.9015,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "focusing",
+        "start_time": 286.9015,
+        "end_time": 287.26324999999997,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "on",
+        "start_time": 287.26324999999997,
+        "end_time": 287.625,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "business",
+        "start_time": 287.625,
+        "end_time": 287.98675000000003,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "market,",
+        "start_time": 287.98675000000003,
+        "end_time": 288.3485,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "any",
+        "start_time": 288.3485,
+        "end_time": 288.71025,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "particular",
+        "start_time": 288.71025,
+        "end_time": 289.072,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "thing.",
+        "start_time": 289.072,
+        "end_time": 289.43375000000003,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "It's",
+        "start_time": 289.43375000000003,
+        "end_time": 289.7955,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "everyone,",
+        "start_time": 289.7955,
+        "end_time": 290.15725,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "user",
+        "start_time": 290.15725,
+        "end_time": 290.519,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "friendly",
+        "start_time": 290.519,
+        "end_time": 290.88075000000003,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 290.88075000000003,
+        "end_time": 291.2425,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "everyone.",
+        "start_time": 291.2425,
+        "end_time": 291.60425,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Okay.",
+        "start_time": 291.60425,
+        "end_time": 291.966,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Big",
+        "start_time": 293.41,
+        "end_time": 293.67822222222225,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "target",
+        "start_time": 293.67822222222225,
+        "end_time": 293.94644444444447,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "group.",
+        "start_time": 293.94644444444447,
+        "end_time": 294.2146666666667,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Yes,",
+        "start_time": 294.2146666666667,
+        "end_time": 294.4828888888889,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "yes.",
+        "start_time": 294.4828888888889,
+        "end_time": 294.75111111111113,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I",
+        "start_time": 294.75111111111113,
+        "end_time": 295.01933333333335,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "don't",
+        "start_time": 295.01933333333335,
+        "end_time": 295.28755555555557,
+        "speaker": "FEE016",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "think",
+        "start_time": 295.28755555555557,
+        "end_time": 295.5557777777778,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "we",
+        "start_time": 295.5557777777778,
+        "end_time": 295.824,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "have",
+        "start_time": 295.824,
+        "end_time": 296.09222222222223,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 296.09222222222223,
+        "end_time": 296.36044444444445,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "I",
+        "start_time": 296.36044444444445,
+        "end_time": 296.6286666666667,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "don't",
+        "start_time": 296.6286666666667,
+        "end_time": 296.8968888888889,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "think",
+        "start_time": 296.8968888888889,
+        "end_time": 297.1651111111111,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it's",
+        "start_time": 297.1651111111111,
+        "end_time": 297.43333333333334,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 297.43333333333334,
+        "end_time": 297.70155555555556,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "case",
+        "start_time": 297.70155555555556,
+        "end_time": 297.9697777777778,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 297.9697777777778,
+        "end_time": 298.238,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Worrying",
+        "start_time": 298.434,
+        "end_time": 298.86400000000003,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "about",
+        "start_time": 298.86400000000003,
+        "end_time": 299.294,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Different.",
+        "start_time": 299.522,
+        "end_time": 300.0,
+        "speaker": "FEE013",
+        "confidence": null,
+        "is_punctuation": false
+      }
+    ],
+    "metadata": {
+      "audio_duration_s": 300.0,
+      "wall_clock_s": 54.829330792010296,
+      "first_audio_send": 185207.350188541,
+      "first_final_recv": 185262.179516833,
+      "first_partial_recv": null
+    },
+    "raw_dump": [
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "",
+        "start": 0.482,
+        "end": 0.766,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Well since you guys have chosen the ones I wanted to do.",
+        "start": 0.93,
+        "end": 5.63,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "",
+        "start": 5.762,
+        "end": 7.55,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "And also my drawing skill isn't that great. Well, as you can see the quality of the work today is um I think it's outstandingly good.",
+        "start": 11.522,
+        "end": 19.486,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Okay, now I'm gonna have to change what it was originally gonna be because that looks like a beak now, so",
+        "start": 19.682,
+        "end": 24.51,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Crocodile?",
+        "start": 31.202,
+        "end": 31.806,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yeah, it can be a crocodile.",
+        "start": 33.986,
+        "end": 35.774,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "It can be a crocodile. Well it was it was firstly it was an attempt at a T Rex and then it sort of changed into a pelican, but it can be a crocodile.",
+        "start": 35.906,
+        "end": 47.134,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "And uh",
+        "start": 61.442,
+        "end": 62.334,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I'll have to think on the spot of uh things that it is.",
+        "start": 62.626,
+        "end": 65.406,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Um",
+        "start": 66.018,
+        "end": 66.622,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Uh",
+        "start": 68.13,
+        "end": 68.766,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Scary.",
+        "start": 69.058,
+        "end": 70.142,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Uh strong",
+        "start": 72.514,
+        "end": 74.014,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yeah, that's about it, I think.",
+        "start": 78.754,
+        "end": 81.054,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Okay.",
+        "start": 81.186,
+        "end": 82.334,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I'm I'm very impressed with your artistic skills. Mine's a dreadful.",
+        "start": 83.17,
+        "end": 86.654,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Oops this is now coming apart.",
+        "start": 87.938,
+        "end": 89.598,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "We just put the top in.",
+        "start": 89.698,
+        "end": 91.486,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I hope that clicks in.",
+        "start": 93.986,
+        "end": 95.134,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I'll just I'll hold it on.",
+        "start": 95.266,
+        "end": 96.254,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yeah.",
+        "start": 96.514,
+        "end": 97.342,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Oops.",
+        "start": 97.954,
+        "end": 98.398,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Oh dear.",
+        "start": 98.498,
+        "end": 99.134,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "What happened there?",
+        "start": 99.842,
+        "end": 100.702,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Technical help.",
+        "start": 101.154,
+        "end": 102.142,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Hopefully that'll stay on. Two handed version. Okay.",
+        "start": 105.442,
+        "end": 109.15,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Mm.",
+        "start": 109.57,
+        "end": 110.142,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Again, this is off the top of my head. I was gonna do a big cut too.",
+        "start": 114.434,
+        "end": 117.758,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Um",
+        "start": 118.114,
+        "end": 118.782,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "",
+        "start": 121.282,
+        "end": 124.03,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Not a vampire bat, honestly.",
+        "start": 128.866,
+        "end": 131.134,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Uh and somewhere there's a body behind.",
+        "start": 132.898,
+        "end": 134.878,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "That's my dreadful that's the worst yeah. It's meant to be an eagle. You can tell it's a flying animal. Could have been a seagull. I never thought of a seagull. An eagle. Um again I'm thinking on my feet, goodness.",
+        "start": 137.538,
+        "end": 151.006,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "suppose they're also independent. I'd put that one down again.",
+        "start": 151.49,
+        "end": 154.206,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Didn't",
+        "start": 156.13,
+        "end": 156.606,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Um",
+        "start": 157.922,
+        "end": 158.718,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Independent, right?",
+        "start": 159.874,
+        "end": 162.974,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Did you say they're good at golf? Yeah.",
+        "start": 163.234,
+        "end": 164.798,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Okay?",
+        "start": 164.93,
+        "end": 166.046,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Legal. Oh right, okay. I'm not good at golf.",
+        "start": 166.242,
+        "end": 169.022,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I'll say they're quite free spirited.",
+        "start": 169.218,
+        "end": 171.038,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Flying around everywhere.",
+        "start": 172.034,
+        "end": 173.374,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Doing their own thing.",
+        "start": 175.618,
+        "end": 176.67,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "And uh",
+        "start": 181.474,
+        "end": 182.654,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Birds of prey, aren't they? Oh dear.",
+        "start": 183.778,
+        "end": 185.566,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Intrepid.",
+        "start": 186.082,
+        "end": 187.038,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Intrepid.",
+        "start": 187.17,
+        "end": 188.798,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "There we go.",
+        "start": 193.666,
+        "end": 194.43,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Hope that pen's gonna be okay.",
+        "start": 194.85,
+        "end": 196.414,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "But",
+        "start": 198.562,
+        "end": 199.038,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Mm.",
+        "start": 199.554,
+        "end": 199.838,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Okay.",
+        "start": 201.154,
+        "end": 201.63,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yeah.",
+        "start": 202.338,
+        "end": 202.622,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Um",
+        "start": 205.474,
+        "end": 206.014,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Finance wise, we've got uh selling price at twenty five Euros.",
+        "start": 206.178,
+        "end": 210.11,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Which I don't actually know what.",
+        "start": 210.402,
+        "end": 211.902,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "That is imponted at all.",
+        "start": 212.226,
+        "end": 213.758,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Any ideas?",
+        "start": 214.658,
+        "end": 215.742,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Seventeen.",
+        "start": 216.61,
+        "end": 218.366,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "One point four euro would make a pound or something like that.",
+        "start": 218.722,
+        "end": 222.302,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yeah.",
+        "start": 222.594,
+        "end": 223.006,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yeah, about seventeen. Seventeen pounds. Seventeen pounds. Okay.",
+        "start": 224.002,
+        "end": 227.262,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Mm.",
+        "start": 227.842,
+        "end": 228.094,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Should we be making notes of this? We can just refer to this later, can't we? I think so. I'd be able to um put that up or put it in the shared folder or something.",
+        "start": 228.418,
+        "end": 237.79,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "The the ones on the market at the moment, that's there about",
+        "start": 238.082,
+        "end": 240.83,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Twenty pounds anyway.",
+        "start": 240.994,
+        "end": 242.11,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Right. Yeah.",
+        "start": 243.266,
+        "end": 245.47,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "We have to buy one.",
+        "start": 245.57,
+        "end": 246.878,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Mm.",
+        "start": 247.17,
+        "end": 247.582,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I suppose later it depends if we want to undercut the price, but or or is it going to make our product look a cheapy cheapy option? Yeah. Um production costs at twelve fifty.",
+        "start": 248.13,
+        "end": 256.958,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "So",
+        "start": 257.346,
+        "end": 258.174,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Pretty huge module.",
+        "start": 258.402,
+        "end": 259.742,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "of the selling prices taken up by",
+        "start": 260.29,
+        "end": 262.846,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Building it.",
+        "start": 263.01,
+        "end": 263.582,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Mm-hmm. Um",
+        "start": 263.842,
+        "end": 265.054,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "And profit aim is fifty million euros.",
+        "start": 265.442,
+        "end": 268.35,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Which is a",
+        "start": 268.77,
+        "end": 269.502,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "In our first year. Yep. Yes.",
+        "start": 270.37,
+        "end": 272.126,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Mm.",
+        "start": 272.482,
+        "end": 273.118,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yeah.",
+        "start": 273.25,
+        "end": 273.726,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Presume so. Mm-hmm.",
+        "start": 274.69,
+        "end": 275.998,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Um",
+        "start": 276.418,
+        "end": 277.15,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "You've got market range international and you did say earlier it's got to be uh um accessible and usable by sort of all age groups. Just",
+        "start": 278.082,
+        "end": 285.694,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "We're not focusing on business market, any particular thing. It's everyone, user friendly to everyone. Okay.",
+        "start": 286.178,
+        "end": 291.966,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Big target group. Yes, yes. I don't think we have to I don't think it's a case of",
+        "start": 293.41,
+        "end": 298.238,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Worrying about",
+        "start": 298.434,
+        "end": 299.294,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Different.",
+        "start": 299.522,
+        "end": 300.0,
+        "tokens": [],
+        "timestamps": []
+      }
+    ],
+    "error": null
+  },
+  "resources_path": "results/runs/2026-05-12T02-35-51Z__parakeet_onnx__ami-es2004a-5min__diar-oracle_rttm__oracle-overlay__resources.jsonl"
+}

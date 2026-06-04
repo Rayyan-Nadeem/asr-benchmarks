@@ -1,0 +1,46 @@
+# Build-context exclusions — keeps the Docker build context small and
+# prevents secrets from accidentally ending up in image layers.
+
+# Secrets — never copy these into the image.
+.env
+license.json
+*.token
+.aws/
+.ssh/
+
+# Local model cache — model weights download to a volume at runtime,
+# never bake into the image.
+hf-cache/
+.cache/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE / editor noise
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs and results
+logs/
+*.log
+results/
+
+# Git
+.git/
+.gitignore
+
+# CI artifacts
+.github/
+
+# Tests
+tests/
+test_*.py
+
+# Documentation
+*.md
+docs/

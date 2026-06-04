@@ -1,0 +1,54 @@
+{
+  "engine": "noop",
+  "diarizer": "passthrough",
+  "case": "librispeech-test-clean-mini",
+  "tag": "smoke",
+  "url": "ws://127.0.0.1:9000/v2",
+  "config": {
+    "language": "en",
+    "operating_point": "enhanced",
+    "diarization": "none",
+    "enable_partials": false,
+    "max_delay": 3.0,
+    "max_delay_mode": "flexible",
+    "output_locale": "en-US",
+    "enable_entities": false,
+    "punctuation_overrides": {
+      "permitted_marks": [
+        ",",
+        ".",
+        "?"
+      ]
+    }
+  },
+  "measured": {
+    "audio_duration_s": 70.0000625,
+    "wall_clock_s": 71.91242058295757,
+    "ttft_s": 0.9391291249776259,
+    "first_final_s": 71.9115400830051,
+    "rtf": 1.0273193767928075,
+    "partial_count": 70,
+    "final_count": 1,
+    "transcript": "[noop final: 70.00s of audio received]",
+    "finals": [
+      {
+        "t": 71.9115400830051,
+        "transcript": "[noop final: 70.00s of audio received]",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 0.0,
+            "end_time": 70.0000625,
+            "alternatives": [
+              {
+                "content": "noop",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      }
+    ]
+  }
+}

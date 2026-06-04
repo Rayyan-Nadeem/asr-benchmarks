@@ -1,0 +1,90 @@
+# depodash-asr — M2 deployment
+#
+# Single-service compose for the courtroom deployment shape. Customer's
+# DepoDash middleware points at ws://localhost:9000/v2 unchanged.
+#
+# Usage:
+#   1. cp .env.example .env  &&  edit .env  (HF_TOKEN is mandatory)
+#   2. docker compose up -d
+#   3. tail logs:  docker compose logs -f
+#   4. health:     curl http://localhost:9000/ready
+#
+# First-boot model download takes ~10-15 min over a normal connection.
+# Subsequent restarts use the cached weights and come up in ~30 s.
+
+services:
+  depodash-asr:
+    image: depodash-asr:0.1.0
+    build:
+      # Build context is the repo root (one level up), so the Dockerfile
+      # can COPY engines/, diarizers/, server/ etc. directly. Run from
+      # the repo root: `docker compose -f deploy/docker-compose.yml build`
+      context: ..
+      dockerfile: deploy/Dockerfile
+    container_name: depodash-asr
+    restart: unless-stopped
+
+    # GPU passthrough — works on Linux with nvidia-container-toolkit, and
+    # on Windows 11 with WSL2 + nvidia-container-toolkit-on-wsl. CPU-only
+    # fallback is supported (set ENGINE=parakeet-onnx and remove this
+    # block) but is meaningfully slower; not recommended for production.
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+    ports:
+      - "9000:9000"
+
+    environment:
+      # ---- secrets — see .env ----
+      HF_TOKEN: ${HF_TOKEN:?HF_TOKEN must be set in .env}
+
+      # ---- engine routing ----
+      # auto-multispeaker = hybrid routing per session (production default).
+      # Override to multitalker-parakeet / nemotron-native / parakeet-nemo
+      # for single-engine testing.
+      ENGINE: ${ENGINE:-auto-multispeaker}
+      DIARIZER: ${DIARIZER:-passthrough}
+
+      # ---- post-process layer ----
+      # passthrough = raw engine output. distilbert = NVIDIA
+      # punctuation_en_distilbert post-process (adds periods, commas,
+      # question marks, capitalization). +110 MB cold-load on first use.
+      PUNCTUATOR: ${PUNCTUATOR:-passthrough}
+
+      # ---- concurrency ----
+      MAX_CONCURRENT_CONNECTIONS: ${MAX_CONCURRENT_CONNECTIONS:-4}
+
+      # ---- resource caps ----
+      VRAM_LIMIT_GIB: ${VRAM_LIMIT_GIB:-14}
+
+      # ---- logging ----
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+
+    volumes:
+      # HuggingFace cache — model weights live here, survive container
+      # restarts. ~10 GB after first download. Mount to a fast disk
+      # (SSD strongly preferred) for fast cold-start.
+      - hf-cache:/opt/hf-cache
+
+      # Optional: app-code mount for local development. Comment out for
+      # production deployment to lock the code to the image contents.
+      # - ./engines:/opt/depodash-asr/engines:ro
+      # - ./server:/opt/depodash-asr/server:ro
+
+    # Health check is defined in the Dockerfile but compose can override
+    # if you want a different cadence. Default: every 30s, 10s timeout,
+    # 120s start grace period (model load is slow).
+
+    # Resource limits (uncomment + tune for shared-host deployment)
+    # mem_limit: 16g
+    # memswap_limit: 16g
+    # shm_size: 4g
+
+volumes:
+  hf-cache:
+    name: depodash-asr-hf-cache

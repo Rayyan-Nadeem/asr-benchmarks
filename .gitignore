@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Local secrets
+.env
+.env.*
+!.env.example
+*.token
+*.pat
+credentials.json
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Audio binaries are committed intentionally — see cases/README.md.
+cloud/.env
+
+# Terraform state + provider downloads + per-deployment secrets
+cloud/terraform/*/.terraform/
+cloud/terraform/*/.terraform.lock.hcl
+cloud/terraform/*/terraform.tfstate
+cloud/terraform/*/terraform.tfstate.backup
+cloud/terraform/*/*.tfplan
+cloud/terraform/*/secrets.auto.tfvars
+
+# Engine model weights (huggingface_hub.snapshot_download targets, hundreds of MB)
+models/

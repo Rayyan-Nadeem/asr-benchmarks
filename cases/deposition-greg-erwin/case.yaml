@@ -1,0 +1,42 @@
+name: deposition-greg-erwin
+description: |
+  Sample legal deposition audio used by DepoDash's Client Success team for
+  benchmarking transcription engines. Single speaker (videographer Greg Erwin)
+  reading the on-record preamble and off-record closing for a videotaped
+  deposition. Clean audio, no overlapping speakers, contains proper nouns,
+  dates, times, case numbers, addresses.
+
+  No official ground-truth transcript exists. This case is used for
+  latency + resource baseline only, until Phase 2 brings in a second engine
+  whose output can serve as pseudo-ground-truth (clearly flagged in the
+  scoreboard).
+
+source: "Provided by DepoDash (Bob Bakva), 2026-04-22"
+license: "Customer-provided sample audio. Internal use only — do not redistribute."
+duration_s: 477.5
+speakers: 1
+domain: legal/deposition
+language: en
+
+# Containers to monitor for resource attribution during this run.
+monitor_containers:
+  - sm-triton
+  - sm-rt-transcriber
+
+# Key terms to check for entity preservation when a reference is added later.
+# Pulled from the qualitative dump in speechmaticsContainer/benchmarks/.
+key_terms:
+  - "Casper"
+  - "Wyoming"
+  - "MassMutual"
+  - "Paul Frazier"
+  - "Greg Erwin"
+  - "Trhs Corporation"
+  - "5986369"
+  - "350 Katie Lane"
+  - "2811 West Main Street"
+  - "Toronto County"
+  - "Eighth Judicial District"
+
+# Optional: if reference.txt is added later, populate this block.
+ground_truth: null

@@ -1,0 +1,1144 @@
+{
+  "run_id": "2026-05-12T02-19-30Z__parakeet_onnx__deposition-greg-erwin__mac-first-run",
+  "timestamp_utc": "2026-05-12T02-19-30Z",
+  "engine": "parakeet_onnx",
+  "case": "deposition-greg-erwin",
+  "diarizer": "native",
+  "tag": "mac-first-run",
+  "case_meta": {
+    "name": "deposition-greg-erwin",
+    "description": "Sample legal deposition audio used by DepoDash's Client Success team for\nbenchmarking transcription engines. Single speaker (videographer Greg Erwin)\nreading the on-record preamble and off-record closing for a videotaped\ndeposition. Clean audio, no overlapping speakers, contains proper nouns,\ndates, times, case numbers, addresses.\n\nNo official ground-truth transcript exists. This case is used for\nlatency + resource baseline only, until Phase 2 brings in a second engine\nwhose output can serve as pseudo-ground-truth (clearly flagged in the\nscoreboard).\n",
+    "source": "Provided by DepoDash (Bob Bakva), 2026-04-22",
+    "license": "Customer-provided sample audio. Internal use only \u2014 do not redistribute.",
+    "duration_s": 477.5,
+    "speakers": 1,
+    "domain": "legal/deposition",
+    "language": "en",
+    "monitor_containers": [
+      "sm-triton",
+      "sm-rt-transcriber"
+    ],
+    "key_terms": [
+      "Casper",
+      "Wyoming",
+      "MassMutual",
+      "Paul Frazier",
+      "Greg Erwin",
+      "Trhs Corporation",
+      "5986369",
+      "350 Katie Lane",
+      "2811 West Main Street",
+      "Toronto County",
+      "Eighth Judicial District"
+    ],
+    "ground_truth": null
+  },
+  "scores": {
+    "diarizer": "native",
+    "latency": {
+      "ttft_ms": 223553.63516698708,
+      "ttfp_ms": null,
+      "final_lag_p50_ms": null,
+      "final_lag_p95_ms": null,
+      "final_lag_p99_ms": null,
+      "rtf": 0.46800657189032296,
+      "finals_count": 0,
+      "partials_count": 0
+    },
+    "resources": {
+      "samples": 173,
+      "gpu_mem_used_mb_peak": null,
+      "gpu_mem_used_mb_p50": null,
+      "gpu_util_percent_peak": null,
+      "gpu_util_percent_p50": null,
+      "gpu_temp_c_peak": null,
+      "container_cpu_peak": {},
+      "container_mem_mb_peak": {}
+    },
+    "confidence": {
+      "words_scored": 0,
+      "mean": null,
+      "p10": null,
+      "low_conf_rate": null
+    }
+  },
+  "result": {
+    "engine": "parakeet_onnx",
+    "audio_path": "/Users/rayyannadeem/speechmaticsContainer/asr-benchmarks/cases/deposition-greg-erwin/audio.wav",
+    "config": {
+      "model": "nemo-parakeet-tdt-0.6b-v3",
+      "quantization": "int8",
+      "providers_requested": [
+        "CoreMLExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "_mode": "batch_vad_segmented"
+    },
+    "transcript": "Today is Wednesday, May the third, two thousand six. The time is approximately eight thirty three PM The location is twenty eight eleven West Main Street, Casper, Wyoming. My name is Greg Irwin, Video Specialist of Legal Video of Wyoming. Located at three fifty Katie Lane, Casper, Wyoming. This is case number five nine eight dash six three six nine. Filed in the district court in Toronto County, Wyoming. Eighth judicial district. Entitled TRZ Corporation versus Max Mutual Insurance Company. The deponent is Paul Frazier. The video deposition is requested by John Spencer. Attorney for the defense. The court reporter is Dorothy Bunn of Dor of Bunn and Associates. Council and all present will please identify themselves for the record. John Spencer, representing the Max Mutual Insurance Company. Beverly Wagner representing TRZ Corporation. Witness may be sworn in. Will there be opening remarks before I swear to witness? No. Do you mind if your witness does not stand to be sworn? No, I do not. Sir. Do you solemnly swear from the testimony you're about to give that they'll be the truth, the whole truth, and nothing but the truth under penalty of law? I do. Thank you, we're on the record. Mr Fraser, my name is John Spencer. I represent the Max Mutual Insurance Company. I'll be asking you a series of questions in regard to your knowledge as to the operations of the TRZ plant, which will have a bearing on the outcome of a lawsuit pending between the TRZ corporation and the Max Mutual Insurance Company. I'll ask you to wait to answer until the entire question has been asked. then you must answer verbally, as the court reporter cannot record your nonverbal answers. I will also wait until you have answered the question prior to speaking in response to your answers, as she cannot record two conversations at the same time. Is that understood? Yes, sir. Mr Fraser, is there any reason that you cannot fulfill your obligations as a witness in this case, such as a medical reason, time restraints, or any other reason? No. Are you taking any medicine that could affect your ability to answer my questions today? No. Thank you. Now let me advise you that you are under oath and you're required to answer every question to the best of your ability And as accurately as possible. If you do not understand the question Please ask me to explain it further and I'll be happy to do so. If you cannot answer a question accurately, then we are entitled to your best estimate. Is that clear? Yes. Good. Now will you please state your full name and address for the record. Okay. Paul Robert Fraser. Forty nine South Third Street, Douglas, Wyoming. And how long have you lived there? About fifteen years. We moved there when I went to work for the TRZ corporation. How old are you, Mr Fraser? Fifty three. Are you married, Mr. Fraser? Yes to the to the same woman for twenty seven years. Do you have any children? Objection irrelevant. Uh you may answer, Mr. Fraser. Um Yes, we have three, two boys and a girl, but th they're all married and live elsewhere. Mr. Fraser, what is your educational background? I graduated from high school in Boston and went to RPI. I got a B S in geophysics in nineteen seventy five. Since then I took several postgraduate courses. and received my master's from the University of Wyoming five years later. So when did you join the TRZ corporation? I believe it was in the fall of nineteen ninety. What was your position at that time? I was a project engineer. What was your position when you left TRZ? I was chief engineer and head of the engineering department. What year was that? Two thousand and four. How long did you bend in that position? For about the last five years of my employment. In that position, Mr Fraser, were you responsible for the proper treatment and disposal of the waste material that came from the manufacturing process? No. I I drew up the specifications for the treatment, but I was not responsible for the procedures. Who would have been responsible for the final disposition of the waste? That would have been the head of the waste management department. And who would have been responsible to see to it that the head of that department was properly following your waste treatment procedure? I assume that would have been the plant's general manager. Do you know who that might have been? No, they're There were several different employees that held that position over the years. Does the name of Jack Peterson ring a bell? Yes, I do believe he held that position uh at some point in time. I'd like to request that we go off the record at this time so that I may uh take this phone call. Go right ahead. We'll take a short break this time. We're going off the record the time's approximately eight thirty eight PM. We are back on the record the time is approximately eight forty one PM. Okay. Mr. Fraser, do you consider yourself as an expert in your field? Objection. Mr. Fraser's not here as an expert witness. He's a previous employee who's been called on to testify as to his knowledge of the subject of this lawsuit and nothing more. Mr. Fraser, please answer the question. Well, I don't work in that field anymore, so no, I would not consider myself To be an expert. Well Mr Fraser, you would have considered yourself an expert at the time of your employment, isn't that right, Mr Fraser? Objection leading. Well let's look at this a different way, Mr. Fraser. Have you discussed this case with anyone and do you have any idea as to what this case is all about? Um yes, um She expects me to to testify to in regard to the uh pollution that was created at the plant. Mr. Fraser, let me get this clear. Are you saying that Ms. Wagner has covered the questions that you're going to be asked and instructed you on how she expects you to answer them? Well, um Yes, she told me that there was a A a multi million dollar Clean up. pending against the uh the plant and i i it it it it was depending upon how I answered the questions at the at this deposition. Because of what Ms Wagner has told you about this case, do you feel that you have to protect the company by the way you answer my questions? Objection. Mr. Spencer, I object to that whole line of questioning. I'd like to go off the record and have a conference with my I don't think so, Ms. Wagner. It looks to me like there's already been too much conversation between you and the witness. I think the judge in this case will be very interested in finding out just what you briefed Mr Fraser on and how much you've been coaching him on this case. As a matter of fact, I want to ask Mr Fraser right now about your previous conversations. Mr. Fraser, just what has Ms. Wagner told you regarding this case? Mr. Fraser, I don't want you to answer that. I'm bringing this deposition to a close right now, and I'm again asking that we go off the record so that I can call the judge and ask him to rule in this matter. Let me make this very clear, Ms. Wagner. You will be responsible for all future costs in regard to the taking of testimony of this witness. And may I forewarn you that if you continue to coach the witness it will be treated very seriously as a possible obstruction of justice. And if so We intend to pursue it to the fullest extent of the law. Do you understand that? Yes, Mr. Spencer, and I don't need you to teach me the law. We'll let the judge determine just who's right and wrong in this line of questioning. Under those circumstances I agree that we will adjourn the deposition and go off the record at this time. We'll reconvene after the judge has an opportunity to rule on the validity of my line of questioning. May be assured, Ms Wagner, that we intend to continue questioning Mr Fraser until he has an opportunity to answer all our questions in this matter. We're now going off the record. Having heard the approval of both attorneys to go off the record at this time. This concludes one, volume one of the video tape deposition of mister Paul Frazier. The original of today's testimony will remain in the custody of Legal Video of Wyoming. Whose address is three fifty Katie Lane, Casper, Wyoming. eight two six oh one. The time is approximately eight forty four PM. We are off the record.",
+    "words": [],
+    "metadata": {
+      "audio_duration_s": 477.672,
+      "wall_clock_s": 223.55363520799438,
+      "first_audio_send": 184226.555601666,
+      "first_final_recv": 184450.109236833,
+      "first_partial_recv": null
+    },
+    "raw_dump": [
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Today is Wednesday, May the third, two thousand six. The time is approximately eight thirty three PM",
+        "start": 1.634,
+        "end": 6.846,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "The location is twenty eight eleven West Main Street, Casper, Wyoming.",
+        "start": 6.946,
+        "end": 10.942,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "My name is Greg Irwin, Video Specialist of Legal Video of Wyoming.",
+        "start": 11.234,
+        "end": 14.942,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Located at three fifty Katie Lane, Casper, Wyoming. This is case number five nine eight dash six three six nine.",
+        "start": 15.042,
+        "end": 22.046,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Filed in the district court in Toronto County, Wyoming.",
+        "start": 22.498,
+        "end": 25.566,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Eighth judicial district.",
+        "start": 25.73,
+        "end": 27.038,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Entitled TRZ Corporation versus Max Mutual Insurance Company.",
+        "start": 27.298,
+        "end": 31.454,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "The deponent is Paul Frazier.",
+        "start": 31.938,
+        "end": 33.438,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "The video deposition is requested by John Spencer.",
+        "start": 33.89,
+        "end": 36.798,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Attorney for the defense.",
+        "start": 36.962,
+        "end": 38.302,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "The court reporter is Dorothy Bunn of Dor of Bunn and Associates.",
+        "start": 38.722,
+        "end": 42.718,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Council and all present will please identify themselves for the record.",
+        "start": 43.074,
+        "end": 46.334,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "John Spencer, representing the Max Mutual Insurance Company.",
+        "start": 48.13,
+        "end": 51.102,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Beverly Wagner representing TRZ Corporation.",
+        "start": 51.65,
+        "end": 54.59,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Witness may be sworn in.",
+        "start": 55.042,
+        "end": 56.35,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Will there be opening remarks before I swear to witness? No.",
+        "start": 57.026,
+        "end": 59.614,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Do you mind if your witness does not stand to be sworn? No, I do not.",
+        "start": 59.97,
+        "end": 62.846,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Sir.",
+        "start": 63.618,
+        "end": 64.158,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Do you solemnly swear from the testimony you're about to give that they'll be the truth, the whole truth, and nothing but the truth under penalty of law?",
+        "start": 64.482,
+        "end": 69.662,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I do.",
+        "start": 69.986,
+        "end": 70.558,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Thank you, we're on the record.",
+        "start": 70.978,
+        "end": 72.382,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Mr Fraser, my name is John Spencer. I represent the Max Mutual Insurance Company.",
+        "start": 73.25,
+        "end": 77.374,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I'll be asking you a series of questions in regard to your knowledge as to the operations of the TRZ plant, which will have a bearing on the outcome of a lawsuit pending between the TRZ corporation",
+        "start": 77.698,
+        "end": 87.038,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "and the Max Mutual Insurance Company.",
+        "start": 87.138,
+        "end": 88.862,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I'll ask you to wait to answer until the entire question has been asked.",
+        "start": 89.57,
+        "end": 92.606,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "then you must answer verbally, as the court reporter cannot record your nonverbal answers.",
+        "start": 92.738,
+        "end": 96.734,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I will also wait until you have answered the question prior to speaking in response to your answers, as she cannot record two conversations at the same time.",
+        "start": 97.57,
+        "end": 104.798,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Is that understood?",
+        "start": 105.122,
+        "end": 106.014,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yes, sir.",
+        "start": 106.69,
+        "end": 107.23,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Mr Fraser, is there any reason that you cannot fulfill your obligations as a witness in this case, such as a medical reason, time restraints, or any other reason?",
+        "start": 108.034,
+        "end": 115.134,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "No.",
+        "start": 115.586,
+        "end": 116.158,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Are you taking any medicine that could affect your ability to answer my questions today?",
+        "start": 117.122,
+        "end": 120.766,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "No.",
+        "start": 121.314,
+        "end": 121.79,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Thank you. Now let me advise you that you are under oath and you're required to answer every question to the best of your ability",
+        "start": 123.042,
+        "end": 129.022,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "And as accurately as possible.",
+        "start": 129.57,
+        "end": 131.166,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "If you do not understand the question",
+        "start": 131.394,
+        "end": 133.278,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Please ask me to explain it further and I'll be happy to do so.",
+        "start": 133.41,
+        "end": 136.222,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "If you cannot answer a question accurately, then we are entitled to your best estimate. Is that clear?",
+        "start": 136.834,
+        "end": 141.662,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yes.",
+        "start": 142.05,
+        "end": 142.558,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Good. Now will you please state your full name and address for the record.",
+        "start": 143.426,
+        "end": 146.526,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Okay.",
+        "start": 147.586,
+        "end": 147.934,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Paul Robert Fraser.",
+        "start": 148.098,
+        "end": 149.982,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Forty nine South Third Street, Douglas, Wyoming.",
+        "start": 150.274,
+        "end": 153.214,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "And how long have you lived there?",
+        "start": 153.41,
+        "end": 154.366,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "About fifteen years. We moved there when I went to work for the TRZ corporation.",
+        "start": 155.458,
+        "end": 159.87,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "How old are you, Mr Fraser?",
+        "start": 160.034,
+        "end": 161.15,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Fifty three.",
+        "start": 161.442,
+        "end": 162.302,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Are you married, Mr. Fraser?",
+        "start": 162.434,
+        "end": 163.678,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yes to the to the same woman for twenty seven years.",
+        "start": 164.546,
+        "end": 167.742,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Do you have any children?",
+        "start": 168.514,
+        "end": 169.374,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Objection irrelevant.",
+        "start": 169.474,
+        "end": 170.974,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Uh you may answer, Mr. Fraser.",
+        "start": 171.362,
+        "end": 173.054,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Um",
+        "start": 173.698,
+        "end": 174.366,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yes, we have three, two boys and a girl, but th they're all married and live elsewhere.",
+        "start": 174.69,
+        "end": 179.294,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Mr. Fraser, what is your educational background?",
+        "start": 180.162,
+        "end": 182.526,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I graduated from high school in Boston and went to RPI. I",
+        "start": 183.746,
+        "end": 187.902,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "got a B S in geophysics in nineteen seventy five. Since then I took several postgraduate courses.",
+        "start": 188.45,
+        "end": 195.486,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "and received my master's from the University of Wyoming five years later.",
+        "start": 195.778,
+        "end": 199.39,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "So when did you join the TRZ corporation?",
+        "start": 199.618,
+        "end": 201.662,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I believe it was in the fall of nineteen ninety. What was your position at that time?",
+        "start": 202.626,
+        "end": 207.006,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I was a project engineer.",
+        "start": 207.426,
+        "end": 208.798,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "What was your position when you left TRZ?",
+        "start": 209.41,
+        "end": 211.262,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I was chief engineer and head of the engineering department.",
+        "start": 212.098,
+        "end": 215.102,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "What year was that?",
+        "start": 215.394,
+        "end": 216.158,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Two thousand and four.",
+        "start": 216.546,
+        "end": 217.598,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "How long did you bend in that position?",
+        "start": 218.178,
+        "end": 219.742,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "For about the last five years of my employment.",
+        "start": 220.578,
+        "end": 222.494,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "In that position, Mr Fraser, were you responsible for the proper treatment and disposal of the waste material that came from the manufacturing process?",
+        "start": 223.458,
+        "end": 230.686,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "No. I I drew up the specifications for the treatment, but I",
+        "start": 231.394,
+        "end": 236.126,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "was not responsible for the procedures.",
+        "start": 236.226,
+        "end": 238.206,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Who would have been responsible for the final disposition of the waste?",
+        "start": 238.786,
+        "end": 242.174,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "That would have been the head of the waste management department.",
+        "start": 242.914,
+        "end": 245.31,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "And who would have been responsible to see to it that the head of that department was properly following your waste treatment procedure?",
+        "start": 247.138,
+        "end": 253.534,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I assume that would have been the plant's general manager. Do you know who that might have been?",
+        "start": 254.658,
+        "end": 258.654,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "No, they're",
+        "start": 259.49,
+        "end": 260.158,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "There were several different employees that held that position over the years.",
+        "start": 260.482,
+        "end": 263.678,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Does the name of Jack Peterson ring a bell?",
+        "start": 264.194,
+        "end": 266.078,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yes, I do believe he held that position uh at some point in time.",
+        "start": 267.554,
+        "end": 272.062,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I'd like to request that we go off the record at this time so that I may uh take this phone call.",
+        "start": 273.378,
+        "end": 277.662,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Go right ahead. We'll take a short break this time.",
+        "start": 278.306,
+        "end": 280.35,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "We're going off the record the time's approximately eight thirty eight PM.",
+        "start": 280.45,
+        "end": 284.446,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "We are back on the record the time is approximately eight forty one PM.",
+        "start": 286.434,
+        "end": 289.886,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Okay. Mr. Fraser, do you consider yourself as an expert in your field? Objection. Mr. Fraser's not here as an expert witness. He's a previous employee who's been called on to testify as to his knowledge of the subject of this lawsuit and nothing more. Mr. Fraser, please answer the question.",
+        "start": 291.81,
+        "end": 306.302,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Well, I don't work in that field anymore, so no, I would not consider myself",
+        "start": 307.81,
+        "end": 312.574,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "To be an expert.",
+        "start": 312.738,
+        "end": 313.566,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Well Mr Fraser, you would have considered yourself an expert at the time of your employment, isn't that right, Mr Fraser? Objection leading.",
+        "start": 314.498,
+        "end": 321.246,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Well let's look at this a different way, Mr. Fraser.",
+        "start": 321.762,
+        "end": 324.286,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Have you discussed this case with anyone and do you have any idea as to what this case is all about?",
+        "start": 324.578,
+        "end": 328.99,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Um yes, um",
+        "start": 329.826,
+        "end": 331.614,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "",
+        "start": 331.81,
+        "end": 333.47,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "She expects me to to testify to in regard to the",
+        "start": 333.57,
+        "end": 336.702,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "uh pollution that was created at the plant. Mr. Fraser, let me get this clear. Are you saying that Ms. Wagner has covered the questions that you're going to be asked and instructed you on how she expects you to answer them?",
+        "start": 337.058,
+        "end": 347.166,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Well, um",
+        "start": 348.834,
+        "end": 350.174,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Yes, she told me that there was a",
+        "start": 351.362,
+        "end": 353.598,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "A a multi million dollar",
+        "start": 354.018,
+        "end": 355.87,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Clean up.",
+        "start": 356.29,
+        "end": 357.182,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "pending against the",
+        "start": 357.442,
+        "end": 358.622,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "uh the plant and i i it it it it was depending upon",
+        "start": 359.266,
+        "end": 362.974,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "how I answered the questions at the at this deposition.",
+        "start": 363.33,
+        "end": 365.79,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Because of what Ms Wagner has told you about this case, do you feel that you have to protect the company by the way you answer my questions? Objection. Mr. Spencer, I object to that whole line of questioning.",
+        "start": 366.626,
+        "end": 375.87,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I'd like to go off the record and have a conference with my I don't think so, Ms. Wagner. It looks to me like there's already been too much conversation between you and the witness.",
+        "start": 376.13,
+        "end": 383.39,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I think the judge in this case will be very interested in finding out just what you briefed Mr Fraser on and how much you've been coaching him on this case.",
+        "start": 383.81,
+        "end": 390.718,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "As a matter of fact, I want to ask Mr Fraser right now about your previous conversations.",
+        "start": 391.17,
+        "end": 394.782,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Mr. Fraser, just what has Ms. Wagner told you regarding this case? Mr. Fraser, I don't want you to answer that.",
+        "start": 395.074,
+        "end": 400.67,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "I'm bringing this deposition to a close right now, and I'm again asking that we go off the record so that I can call the judge and ask him to rule in this matter. Let me make this very clear, Ms. Wagner. You will be responsible for all future costs in regard to the taking of testimony of this witness.",
+        "start": 401.218,
+        "end": 414.782,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "And may I forewarn you that if you continue to coach the witness it will be treated very seriously as a possible obstruction of justice.",
+        "start": 414.882,
+        "end": 420.99,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "And if so",
+        "start": 421.218,
+        "end": 422.142,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "We intend to pursue it to the fullest extent of the law. Do you understand that? Yes, Mr. Spencer, and I don't need you to teach me the law.",
+        "start": 422.274,
+        "end": 429.086,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "We'll let the judge determine just who's right and wrong in this line of questioning.",
+        "start": 429.346,
+        "end": 433.022,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Under those circumstances I agree that we will adjourn the deposition and go off the record at this time.",
+        "start": 433.826,
+        "end": 438.526,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "We'll reconvene after the judge has an opportunity to rule on the validity of my line of questioning.",
+        "start": 438.818,
+        "end": 443.166,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "May be assured, Ms Wagner, that we intend to continue questioning Mr Fraser until he has an opportunity to answer all our questions in this matter.",
+        "start": 443.842,
+        "end": 451.07,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "We're now going off the record.",
+        "start": 452.162,
+        "end": 453.502,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Having heard the approval of both attorneys to go off the record at this time. This concludes one, volume one of the video tape deposition of mister Paul Frazier. The original of today's testimony will remain in the custody of Legal Video of Wyoming.",
+        "start": 454.21,
+        "end": 467.774,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "Whose address is three fifty Katie Lane, Casper, Wyoming.",
+        "start": 467.906,
+        "end": 471.198,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "eight two six oh one.",
+        "start": 471.298,
+        "end": 472.574,
+        "tokens": [],
+        "timestamps": []
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetSegment",
+        "text": "The time is approximately eight forty four PM. We are off the record.",
+        "start": 472.898,
+        "end": 476.318,
+        "tokens": [],
+        "timestamps": []
+      }
+    ],
+    "error": null
+  },
+  "resources_path": "results/runs/2026-05-12T02-19-30Z__parakeet_onnx__deposition-greg-erwin__mac-first-run__resources.jsonl"
+}

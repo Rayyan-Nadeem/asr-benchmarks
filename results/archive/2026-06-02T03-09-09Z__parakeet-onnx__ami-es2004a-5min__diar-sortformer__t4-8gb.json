@@ -1,0 +1,597 @@
+{
+  "engine": "parakeet-onnx",
+  "diarizer": "sortformer",
+  "case": "ami-es2004a-5min",
+  "tag": "t4-8gb",
+  "url": "ws://127.0.0.1:9000/v2",
+  "config": {
+    "language": "en",
+    "operating_point": "enhanced",
+    "diarization": "speaker",
+    "enable_partials": false,
+    "max_delay": 5.0,
+    "max_delay_mode": "flexible",
+    "output_locale": "en-US",
+    "enable_entities": false,
+    "punctuation_overrides": {
+      "permitted_marks": [
+        ",",
+        ".",
+        "?"
+      ]
+    },
+    "speaker_diarization_config": {
+      "max_speakers": 4
+    }
+  },
+  "measured": {
+    "audio_duration_s": 300.0,
+    "wall_clock_s": 304.87016757700076,
+    "ttft_s": 5.333478055999876,
+    "first_final_s": 10.681055899000057,
+    "rtf": 1.0162338919233358,
+    "partial_count": 7,
+    "final_count": 5,
+    "transcript": "Well since you guys have chosen the ones I wanted to do. And also my drawing skill isn't that great. gonna have to change what it was originally gonna be because that looks like a beak now, so Crocodile. Well it was it was",
+    "finals": [
+      {
+        "t": 10.681055899000057,
+        "transcript": "Well since you guys have chosen the ones I wanted to do.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 1.92,
+            "end_time": 2.08,
+            "alternatives": [
+              {
+                "content": "Well",
+                "confidence": 0.7121507377882856
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 2.08,
+            "end_time": 2.32,
+            "alternatives": [
+              {
+                "content": "since",
+                "confidence": 0.9819618292735717
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 2.32,
+            "end_time": 2.48,
+            "alternatives": [
+              {
+                "content": "you",
+                "confidence": 0.988170379294541
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 2.48,
+            "end_time": 2.64,
+            "alternatives": [
+              {
+                "content": "guys",
+                "confidence": 0.994050664812199
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 2.64,
+            "end_time": 2.8000000000000003,
+            "alternatives": [
+              {
+                "content": "have",
+                "confidence": 0.9758492497674177
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 2.8000000000000003,
+            "end_time": 3.2,
+            "alternatives": [
+              {
+                "content": "chosen",
+                "confidence": 0.9941718876211978
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 3.2,
+            "end_time": 3.36,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9573504352166728
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 3.36,
+            "end_time": 3.68,
+            "alternatives": [
+              {
+                "content": "ones",
+                "confidence": 0.9592647258070408
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 3.68,
+            "end_time": 3.7600000000000002,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 0.9843617743299095
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 3.7600000000000002,
+            "end_time": 4.08,
+            "alternatives": [
+              {
+                "content": "wanted",
+                "confidence": 0.7642913878851643
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 4.08,
+            "end_time": 4.16,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 0.9927620492055511
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 4.16,
+            "end_time": 10.0,
+            "alternatives": [
+              {
+                "content": "do.",
+                "confidence": 0.6709752511464842
+              }
+            ],
+            "speaker": "speaker_0"
+          }
+        ]
+      },
+      {
+        "t": 20.852160125999944,
+        "transcript": "And also my drawing skill isn't that great.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 11.4,
+            "end_time": 11.72,
+            "alternatives": [
+              {
+                "content": "And",
+                "confidence": 0.6681406954261278
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 11.72,
+            "end_time": 12.120000000000001,
+            "alternatives": [
+              {
+                "content": "also",
+                "confidence": 0.9831239119427841
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 12.120000000000001,
+            "end_time": 12.36,
+            "alternatives": [
+              {
+                "content": "my",
+                "confidence": 0.9957015121182595
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 12.36,
+            "end_time": 12.76,
+            "alternatives": [
+              {
+                "content": "drawing",
+                "confidence": 0.996980583491228
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 12.76,
+            "end_time": 13.08,
+            "alternatives": [
+              {
+                "content": "skill",
+                "confidence": 0.9795914785828977
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 13.08,
+            "end_time": 13.32,
+            "alternatives": [
+              {
+                "content": "isn't",
+                "confidence": 0.9845097803287495
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 13.32,
+            "end_time": 13.48,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 0.9951214347523964
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 13.48,
+            "end_time": 20.0,
+            "alternatives": [
+              {
+                "content": "great.",
+                "confidence": 0.9432874189447258
+              }
+            ],
+            "speaker": "speaker_2"
+          }
+        ]
+      },
+      {
+        "t": 30.973468871001387,
+        "transcript": "gonna have to change what it was originally gonna be because that looks like a beak now, so",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 20.2,
+            "end_time": 20.36,
+            "alternatives": [
+              {
+                "content": "gonna",
+                "confidence": 0.9643741777155378
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 20.36,
+            "end_time": 20.52,
+            "alternatives": [
+              {
+                "content": "have",
+                "confidence": 0.9847168676978275
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 20.52,
+            "end_time": 20.68,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 0.9960863572124379
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 20.68,
+            "end_time": 20.92,
+            "alternatives": [
+              {
+                "content": "change",
+                "confidence": 0.9987380856397614
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 20.92,
+            "end_time": 21.16,
+            "alternatives": [
+              {
+                "content": "what",
+                "confidence": 0.9849195441392745
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 21.16,
+            "end_time": 21.32,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 0.9808921133929442
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 21.32,
+            "end_time": 21.56,
+            "alternatives": [
+              {
+                "content": "was",
+                "confidence": 0.9949223259994845
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 21.56,
+            "end_time": 22.12,
+            "alternatives": [
+              {
+                "content": "originally",
+                "confidence": 0.9972418274540112
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.12,
+            "end_time": 22.36,
+            "alternatives": [
+              {
+                "content": "gonna",
+                "confidence": 0.9300948793925474
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.36,
+            "end_time": 22.6,
+            "alternatives": [
+              {
+                "content": "be",
+                "confidence": 0.9993141827338695
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.6,
+            "end_time": 22.76,
+            "alternatives": [
+              {
+                "content": "because",
+                "confidence": 0.9829420126107901
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.76,
+            "end_time": 22.92,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 0.9805369143906865
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.92,
+            "end_time": 23.16,
+            "alternatives": [
+              {
+                "content": "looks",
+                "confidence": 0.9889741519847244
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 23.16,
+            "end_time": 23.240000000000002,
+            "alternatives": [
+              {
+                "content": "like",
+                "confidence": 0.9989081633732914
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 23.240000000000002,
+            "end_time": 23.32,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 0.989442464899735
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 23.32,
+            "end_time": 23.8,
+            "alternatives": [
+              {
+                "content": "beak",
+                "confidence": 0.9593777655058222
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 23.8,
+            "end_time": 24.2,
+            "alternatives": [
+              {
+                "content": "now,",
+                "confidence": 0.6563804965035975
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 24.2,
+            "end_time": 30.0,
+            "alternatives": [
+              {
+                "content": "so",
+                "confidence": 0.9723212247471948
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 41.117372688000614,
+        "transcript": "Crocodile.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 31.08,
+            "end_time": 37.8,
+            "alternatives": [
+              {
+                "content": "Crocodile.",
+                "confidence": 0.894490298030841
+              }
+            ],
+            "speaker": "speaker_1"
+          }
+        ]
+      },
+      {
+        "t": 51.360796877999746,
+        "transcript": "Well it was it was",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 37.839999999999996,
+            "end_time": 38.08,
+            "alternatives": [
+              {
+                "content": "Well",
+                "confidence": 0.6849168206610665
+              }
+            ],
+            "speaker": "speaker_0"
+          },
+          {
+            "type": "word",
+            "start_time": 38.08,
+            "end_time": 38.16,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 0.7530722983375658
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 38.16,
+            "end_time": 38.48,
+            "alternatives": [
+              {
+                "content": "was",
+                "confidence": 0.9262287179408256
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 38.48,
+            "end_time": 38.559999999999995,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 0.7573140441794833
+              }
+            ],
+            "speaker": "speaker_1"
+          },
+          {
+            "type": "word",
+            "start_time": 38.559999999999995,
+            "end_time": 39.839999999999996,
+            "alternatives": [
+              {
+                "content": "was",
+                "confidence": 0.9833927942839008
+              }
+            ],
+            "speaker": "speaker_1"
+          }
+        ]
+      }
+    ]
+  },
+  "wer": null
+}

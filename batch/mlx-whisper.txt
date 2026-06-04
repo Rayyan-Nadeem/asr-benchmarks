@@ -1,0 +1,5 @@
+# MLX-Whisper adapter — Apple Silicon-native Whisper via the MLX framework.
+# macOS arm64 only. Install on top of base:
+#   pip install -r requirements.txt -r requirements/mlx-whisper.txt
+
+mlx-whisper>=0.4 ; sys_platform == "darwin" and platform_machine == "arm64"

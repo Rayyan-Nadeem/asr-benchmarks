@@ -1,0 +1,1106 @@
+{
+  "engine": "parakeet-onnx",
+  "diarizer": "passthrough",
+  "case": "deposition-greg-erwin",
+  "tag": "mac-m4-cpu-fix2",
+  "url": "ws://127.0.0.1:9000/v2",
+  "config": {
+    "language": "en",
+    "operating_point": "enhanced",
+    "diarization": "none",
+    "enable_partials": false,
+    "max_delay": 3.0,
+    "max_delay_mode": "flexible",
+    "output_locale": "en-US",
+    "enable_entities": false,
+    "punctuation_overrides": {
+      "permitted_marks": [
+        ",",
+        ".",
+        "?"
+      ]
+    }
+  },
+  "measured": {
+    "audio_duration_s": 477.672,
+    "wall_clock_s": 491.8146673340816,
+    "ttft_s": 3.8692793750669807,
+    "first_final_s": 6.8484340000431985,
+    "rtf": 1.0296074865892948,
+    "partial_count": 13,
+    "final_count": 7,
+    "transcript": "Today is Wednesday, May the third, two thousand six. The time is approximately eight thirty three PM The location is twenty eight eleven West Main Street, Casper, Wyoming. My name is Greg Irwin, video specialist of legal video of Wyoming. at three fifty Katie Lane, Casper, Wyoming. is case number five nine eight dash six three six nine, filed in the district court in Toronto County, Wyoming, Eighth Judicial District, entitled TRZ Corporation versus Max. The deponent is Paul",
+    "finals": [
+      {
+        "t": 6.8484340000431985,
+        "transcript": "Today is Wednesday, May the third,",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 1.28,
+            "end_time": 1.76,
+            "alternatives": [
+              {
+                "confidence": 0.9651115115981557,
+                "content": "Today",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 1.76,
+            "end_time": 1.92,
+            "alternatives": [
+              {
+                "confidence": 0.9077365823562519,
+                "content": "is",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 1.92,
+            "end_time": 2.48,
+            "alternatives": [
+              {
+                "confidence": 0.9045167123449216,
+                "content": "Wednesday,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 2.48,
+            "end_time": 2.72,
+            "alternatives": [
+              {
+                "confidence": 0.9334534866879323,
+                "content": "May",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 2.72,
+            "end_time": 2.88,
+            "alternatives": [
+              {
+                "confidence": 0.9921941925900162,
+                "content": "the",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 2.88,
+            "end_time": 3.2800000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.8683236471380713,
+                "content": "third,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 13.296006792224944,
+        "transcript": "two thousand six. The time is approximately eight",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 3.3200000000000003,
+            "end_time": 3.4800000000000004,
+            "alternatives": [
+              {
+                "confidence": 0.8541332100364643,
+                "content": "two",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 3.4800000000000004,
+            "end_time": 3.72,
+            "alternatives": [
+              {
+                "confidence": 0.9995763629755513,
+                "content": "thousand",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 3.72,
+            "end_time": 4.12,
+            "alternatives": [
+              {
+                "confidence": 0.9165855211744119,
+                "content": "six.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 4.12,
+            "end_time": 4.28,
+            "alternatives": [
+              {
+                "confidence": 0.8396884820451717,
+                "content": "The",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 4.28,
+            "end_time": 4.44,
+            "alternatives": [
+              {
+                "confidence": 0.9469490700338687,
+                "content": "time",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 4.44,
+            "end_time": 4.68,
+            "alternatives": [
+              {
+                "confidence": 0.9002624792267554,
+                "content": "is",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 4.68,
+            "end_time": 5.16,
+            "alternatives": [
+              {
+                "confidence": 0.9984593862862177,
+                "content": "approximately",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 5.16,
+            "end_time": 5.5600000000000005,
+            "alternatives": [
+              {
+                "confidence": 0.8869355024794694,
+                "content": "eight",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 18.37656491715461,
+        "transcript": "thirty three PM The location is twenty eight eleven West Main Street, Casper, Wyoming. My name is Greg Irwin, video specialist of legal video of Wyoming.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 5.6000000000000005,
+            "end_time": 5.840000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.9968510754406907,
+                "content": "thirty",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 5.840000000000001,
+            "end_time": 6.08,
+            "alternatives": [
+              {
+                "confidence": 0.9974860180199653,
+                "content": "three",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 6.08,
+            "end_time": 6.880000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.6272577162478261,
+                "content": "PM",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 6.880000000000001,
+            "end_time": 7.040000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.5976379458040608,
+                "content": "The",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 7.040000000000001,
+            "end_time": 7.44,
+            "alternatives": [
+              {
+                "confidence": 0.9854319390220603,
+                "content": "location",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 7.44,
+            "end_time": 7.680000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.9810506523655709,
+                "content": "is",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 7.680000000000001,
+            "end_time": 8.0,
+            "alternatives": [
+              {
+                "confidence": 0.9466736260196155,
+                "content": "twenty",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 8.0,
+            "end_time": 8.24,
+            "alternatives": [
+              {
+                "confidence": 0.9976245824673472,
+                "content": "eight",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 8.24,
+            "end_time": 8.72,
+            "alternatives": [
+              {
+                "confidence": 0.9962782849683791,
+                "content": "eleven",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 8.72,
+            "end_time": 8.96,
+            "alternatives": [
+              {
+                "confidence": 0.9555036174791594,
+                "content": "West",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 8.96,
+            "end_time": 9.2,
+            "alternatives": [
+              {
+                "confidence": 0.993238450531593,
+                "content": "Main",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 9.2,
+            "end_time": 9.52,
+            "alternatives": [
+              {
+                "confidence": 0.8523278769502256,
+                "content": "Street,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 9.52,
+            "end_time": 10.32,
+            "alternatives": [
+              {
+                "confidence": 0.7953496066851211,
+                "content": "Casper,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 10.32,
+            "end_time": 11.120000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.9741710903577019,
+                "content": "Wyoming.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 11.120000000000001,
+            "end_time": 11.280000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.7486088796534173,
+                "content": "My",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 11.280000000000001,
+            "end_time": 11.440000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.9991954178192834,
+                "content": "name",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 11.440000000000001,
+            "end_time": 11.600000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.9989820363329134,
+                "content": "is",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 11.600000000000001,
+            "end_time": 11.920000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9967745124791589,
+                "content": "Greg",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 11.920000000000002,
+            "end_time": 12.64,
+            "alternatives": [
+              {
+                "confidence": 0.878961463937402,
+                "content": "Irwin,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 12.64,
+            "end_time": 12.96,
+            "alternatives": [
+              {
+                "confidence": 0.5354784520653323,
+                "content": "video",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 12.96,
+            "end_time": 13.280000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.9908067754804132,
+                "content": "specialist",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 13.280000000000001,
+            "end_time": 13.440000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.986961708050494,
+                "content": "of",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 13.440000000000001,
+            "end_time": 13.760000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.8156019208975203,
+                "content": "legal",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 13.760000000000002,
+            "end_time": 14.08,
+            "alternatives": [
+              {
+                "confidence": 0.9410033245127336,
+                "content": "video",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 14.08,
+            "end_time": 14.24,
+            "alternatives": [
+              {
+                "confidence": 0.9759898086985522,
+                "content": "of",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 14.24,
+            "end_time": 15.0,
+            "alternatives": [
+              {
+                "confidence": 0.8470180771147036,
+                "content": "Wyoming.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 22.0928930840455,
+        "transcript": "at three fifty Katie Lane, Casper, Wyoming.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 15.32,
+            "end_time": 15.48,
+            "alternatives": [
+              {
+                "confidence": 0.9961897434453449,
+                "content": "at",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 15.48,
+            "end_time": 15.8,
+            "alternatives": [
+              {
+                "confidence": 0.7747813276477554,
+                "content": "three",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 15.8,
+            "end_time": 16.2,
+            "alternatives": [
+              {
+                "confidence": 0.9921484039763095,
+                "content": "fifty",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 16.2,
+            "end_time": 16.68,
+            "alternatives": [
+              {
+                "confidence": 0.7010435277282235,
+                "content": "Katie",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 16.68,
+            "end_time": 16.92,
+            "alternatives": [
+              {
+                "confidence": 0.9767518693639033,
+                "content": "Lane,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 16.92,
+            "end_time": 17.64,
+            "alternatives": [
+              {
+                "confidence": 0.8055256457678339,
+                "content": "Casper,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 17.64,
+            "end_time": 18.28,
+            "alternatives": [
+              {
+                "confidence": 0.9817391822569534,
+                "content": "Wyoming.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 25.15136408410035,
+        "transcript": "is case number five",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 18.4,
+            "end_time": 18.56,
+            "alternatives": [
+              {
+                "confidence": 0.9996033097033569,
+                "content": "is",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 18.56,
+            "end_time": 18.88,
+            "alternatives": [
+              {
+                "confidence": 0.9847466431133339,
+                "content": "case",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 18.88,
+            "end_time": 19.2,
+            "alternatives": [
+              {
+                "confidence": 0.9955342535821032,
+                "content": "number",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 19.2,
+            "end_time": 19.6,
+            "alternatives": [
+              {
+                "confidence": 0.7177836328410904,
+                "content": "five",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 33.758220417192206,
+        "transcript": "nine eight dash six three six nine, filed in the district court in Toronto County, Wyoming, Eighth Judicial District, entitled TRZ Corporation versus Max.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 19.64,
+            "end_time": 19.880000000000003,
+            "alternatives": [
+              {
+                "confidence": 0.9766644077839356,
+                "content": "nine",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 19.880000000000003,
+            "end_time": 20.28,
+            "alternatives": [
+              {
+                "confidence": 0.9934252151775345,
+                "content": "eight",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 20.28,
+            "end_time": 20.68,
+            "alternatives": [
+              {
+                "confidence": 0.6535695030018275,
+                "content": "dash",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 20.68,
+            "end_time": 21.080000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9976948457210454,
+                "content": "six",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 21.080000000000002,
+            "end_time": 21.400000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9935752215373348,
+                "content": "three",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 21.400000000000002,
+            "end_time": 21.64,
+            "alternatives": [
+              {
+                "confidence": 0.9934282298763589,
+                "content": "six",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 21.64,
+            "end_time": 22.28,
+            "alternatives": [
+              {
+                "confidence": 0.7751546787769168,
+                "content": "nine,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 22.28,
+            "end_time": 22.76,
+            "alternatives": [
+              {
+                "confidence": 0.8984658385062538,
+                "content": "filed",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 22.76,
+            "end_time": 22.92,
+            "alternatives": [
+              {
+                "confidence": 0.9982277624894982,
+                "content": "in",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 22.92,
+            "end_time": 23.0,
+            "alternatives": [
+              {
+                "confidence": 0.9993144208726299,
+                "content": "the",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 23.0,
+            "end_time": 23.400000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9055537014435837,
+                "content": "district",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 23.400000000000002,
+            "end_time": 23.720000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9912083537470174,
+                "content": "court",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 23.720000000000002,
+            "end_time": 23.96,
+            "alternatives": [
+              {
+                "confidence": 0.9684177601118564,
+                "content": "in",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 23.96,
+            "end_time": 24.44,
+            "alternatives": [
+              {
+                "confidence": 0.9982580859664697,
+                "content": "Toronto",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 24.44,
+            "end_time": 24.76,
+            "alternatives": [
+              {
+                "confidence": 0.9955791268800462,
+                "content": "County,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 24.76,
+            "end_time": 25.560000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9141069569992134,
+                "content": "Wyoming,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 25.560000000000002,
+            "end_time": 26.040000000000003,
+            "alternatives": [
+              {
+                "confidence": 0.7171491440041087,
+                "content": "Eighth",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 26.040000000000003,
+            "end_time": 26.520000000000003,
+            "alternatives": [
+              {
+                "confidence": 0.9973532669174245,
+                "content": "Judicial",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 26.520000000000003,
+            "end_time": 27.160000000000004,
+            "alternatives": [
+              {
+                "confidence": 0.9256808380609333,
+                "content": "District,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 27.160000000000004,
+            "end_time": 27.800000000000004,
+            "alternatives": [
+              {
+                "confidence": 0.9616209929247646,
+                "content": "entitled",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 27.800000000000004,
+            "end_time": 28.6,
+            "alternatives": [
+              {
+                "confidence": 0.9466427211453304,
+                "content": "TRZ",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 28.6,
+            "end_time": 29.160000000000004,
+            "alternatives": [
+              {
+                "confidence": 0.9534415544678139,
+                "content": "Corporation",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 29.160000000000004,
+            "end_time": 29.400000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9683314919874778,
+                "content": "versus",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 29.400000000000002,
+            "end_time": 30.0,
+            "alternatives": [
+              {
+                "confidence": 0.8668715711271738,
+                "content": "Max.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 40.99881162517704,
+        "transcript": "The deponent is Paul",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 31.72,
+            "end_time": 31.88,
+            "alternatives": [
+              {
+                "confidence": 0.8934166615166272,
+                "content": "The",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 31.88,
+            "end_time": 32.44,
+            "alternatives": [
+              {
+                "confidence": 0.9737134456824444,
+                "content": "deponent",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 32.44,
+            "end_time": 32.52,
+            "alternatives": [
+              {
+                "confidence": 0.9974084479668708,
+                "content": "is",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 32.52,
+            "end_time": 32.76,
+            "alternatives": [
+              {
+                "confidence": 0.9972607656209148,
+                "content": "Paul",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "wer": null
+}

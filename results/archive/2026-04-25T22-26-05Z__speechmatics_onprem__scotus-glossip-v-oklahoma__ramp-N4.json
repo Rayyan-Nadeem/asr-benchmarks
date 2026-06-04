@@ -1,0 +1,32 @@
+{
+  "run_id": "2026-04-25T22-26-05Z__speechmatics_onprem__scotus-glossip-v-oklahoma__ramp-N4",
+  "engine": "speechmatics_onprem",
+  "case": "scotus-glossip-v-oklahoma",
+  "concurrency": 4,
+  "successes": 2,
+  "failures": 2,
+  "failure_reasons": [
+    "server rejected WebSocket connection: HTTP 503",
+    "server rejected WebSocket connection: HTTP 503"
+  ],
+  "ttft_ms_p50": 5068.610053999691,
+  "ttft_ms_p95": 5069.806052299282,
+  "rtf_p50": 1.0494428860500011,
+  "rtf_p95": 1.0494499589940007,
+  "resources": {
+    "samples": 74,
+    "gpu_mem_used_mb_peak": 7782,
+    "gpu_mem_used_mb_p50": 7782.0,
+    "gpu_util_percent_peak": 90,
+    "gpu_util_percent_p50": 8.5,
+    "gpu_temp_c_peak": 46,
+    "container_cpu_peak": {
+      "sm-triton": 41.05,
+      "sm-rt-transcriber": 18.48
+    },
+    "container_mem_mb_peak": {
+      "sm-triton": 3502.08,
+      "sm-rt-transcriber": 2485.248
+    }
+  }
+}

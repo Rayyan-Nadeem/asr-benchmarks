@@ -1,0 +1,5860 @@
+{
+  "run_id": "2026-05-14T02-49-40Z__parakeet_nemo__librispeech-test-clean-mini__gpu-20260514-fp16-baseline",
+  "timestamp_utc": "2026-05-14T02-49-40Z",
+  "engine": "parakeet_nemo",
+  "case": "librispeech-test-clean-mini",
+  "diarizer": "native",
+  "tag": "gpu-20260514-fp16-baseline",
+  "case_meta": {
+    "name": "librispeech-test-clean-mini",
+    "description": "10-utterance subset of LibriSpeech test-clean from speaker 1089\n(chapter 134686, utterances 0000-0009), concatenated into a single\n70-second mono 16 kHz WAV. Read English speech from public-domain\naudiobooks via LibriVox. Industry-standard sanity baseline for ASR \u2014\nany production engine should hit < 5% WER on this. If it doesn't,\nsomething in the pipeline is broken.\n",
+    "source": "https://www.openslr.org/12/  (LibriSpeech test-clean)",
+    "license": "Audio: public domain (LibriVox).\nMetadata + alignments: CC-BY 4.0.\nFully redistributable.\n",
+    "duration_s": 70,
+    "speakers": 1,
+    "domain": "read-english",
+    "language": "en",
+    "monitor_containers": [
+      "sm-triton",
+      "sm-rt-transcriber"
+    ],
+    "key_terms": [
+      "Bertie",
+      "Nelly",
+      "Shelley"
+    ],
+    "ground_truth": {
+      "reference_text": "reference.txt",
+      "reference_rttm": null,
+      "notes": "Concatenated from LibriSpeech test-clean files 1089-134686-{0000..0009}.flac\nvia ffmpeg. Reference is the union of those utterances' canonical\n.trans.txt entries, lowercased, single line.\n"
+    }
+  },
+  "scores": {
+    "diarizer": "native",
+    "wer": {
+      "wer": 0.011904761904761904,
+      "cer": 0.04507337526205451,
+      "substitutions": 2,
+      "deletions": 0,
+      "insertions": 0,
+      "hits": 166,
+      "ref_word_count": 168,
+      "hyp_word_count": 168
+    },
+    "entity": {
+      "total": 3,
+      "preserved": 3,
+      "missing": []
+    },
+    "latency": {
+      "ttft_ms": 28747.216275999905,
+      "ttfp_ms": null,
+      "final_lag_p50_ms": -41012.7837240001,
+      "final_lag_p95_ms": -41012.7837240001,
+      "final_lag_p99_ms": -41012.7837240001,
+      "rtf": 0.4106741554123613,
+      "finals_count": 1,
+      "partials_count": 0
+    },
+    "resources": {
+      "samples": 18,
+      "gpu_mem_used_mb_peak": 2939,
+      "gpu_mem_used_mb_p50": 3.0,
+      "gpu_util_percent_peak": 79,
+      "gpu_util_percent_p50": 0.0,
+      "gpu_temp_c_peak": 39,
+      "container_cpu_peak": {},
+      "container_mem_mb_peak": {}
+    },
+    "confidence": {
+      "words_scored": 0,
+      "mean": null,
+      "p10": null,
+      "low_conf_rate": null
+    }
+  },
+  "result": {
+    "engine": "parakeet_nemo",
+    "audio_path": "/home/ubuntu/asr-benchmarks/cases/librispeech-test-clean-mini/audio.wav",
+    "config": {
+      "model": "nvidia/parakeet-tdt-0.6b-v3",
+      "_mode": "batch"
+    },
+    "transcript": "He hoped there would be stew for dinner, turnips and carrots and bruised potatoes and fat mutton pieces to be ladled out in thick, peppered, flower fattened sauce. Stuff it into you, his belly counseled him. After early nightfall the yellow lamps would light up here and there the squalid quarter of the brothels. Hello, Bertie, any good in your mind? Number ten Fresh Nelly is waiting on you. Good night, husband. The music came nearer, and he recalled the words, the words of Shelley's fragment upon the moon wandering companionless, pale for weariness. The dull light fell more faintly upon the page whereon another equation began to unfold itself slowly, and to spread abroad its widening tail. A cold, lucid indifference reigned in his soul. The chaos in which his ardour extinguished itself was a cold indifferent knowledge of himself. At most, by an alms given to a beggar whose blessing he fled from, he might hope wearily to win for himself some measure of actual grace.",
+    "words": [
+      {
+        "content": "He",
+        "start_time": 0.32,
+        "end_time": 0.48,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "hoped",
+        "start_time": 0.48,
+        "end_time": 0.96,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "there",
+        "start_time": 0.96,
+        "end_time": 1.12,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "would",
+        "start_time": 1.12,
+        "end_time": 1.28,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 1.28,
+        "end_time": 1.52,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "stew",
+        "start_time": 1.52,
+        "end_time": 1.92,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "for",
+        "start_time": 1.92,
+        "end_time": 2.0,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "dinner,",
+        "start_time": 2.0,
+        "end_time": 2.32,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "turnips",
+        "start_time": 2.48,
+        "end_time": 3.12,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 3.12,
+        "end_time": 3.2800000000000002,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "carrots",
+        "start_time": 3.2800000000000002,
+        "end_time": 3.68,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 3.7600000000000002,
+        "end_time": 4.0,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "bruised",
+        "start_time": 4.0,
+        "end_time": 4.48,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "potatoes",
+        "start_time": 4.48,
+        "end_time": 4.96,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 5.04,
+        "end_time": 5.28,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "fat",
+        "start_time": 5.28,
+        "end_time": 5.6000000000000005,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "mutton",
+        "start_time": 5.6000000000000005,
+        "end_time": 6.08,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "pieces",
+        "start_time": 6.08,
+        "end_time": 6.48,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 6.48,
+        "end_time": 6.640000000000001,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 6.640000000000001,
+        "end_time": 6.8,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "ladled",
+        "start_time": 6.8,
+        "end_time": 7.36,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "out",
+        "start_time": 7.36,
+        "end_time": 7.5200000000000005,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "in",
+        "start_time": 7.5200000000000005,
+        "end_time": 7.76,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "thick,",
+        "start_time": 7.76,
+        "end_time": 8.08,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "peppered,",
+        "start_time": 8.16,
+        "end_time": 8.56,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "flower",
+        "start_time": 8.64,
+        "end_time": 9.040000000000001,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "fattened",
+        "start_time": 9.200000000000001,
+        "end_time": 9.68,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "sauce.",
+        "start_time": 9.84,
+        "end_time": 10.4,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Stuff",
+        "start_time": 10.64,
+        "end_time": 11.120000000000001,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 11.200000000000001,
+        "end_time": 11.36,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "into",
+        "start_time": 11.36,
+        "end_time": 11.6,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "you,",
+        "start_time": 11.6,
+        "end_time": 11.76,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "his",
+        "start_time": 12.0,
+        "end_time": 12.16,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "belly",
+        "start_time": 12.16,
+        "end_time": 12.64,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "counseled",
+        "start_time": 12.64,
+        "end_time": 13.36,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "him.",
+        "start_time": 13.36,
+        "end_time": 13.68,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "After",
+        "start_time": 13.92,
+        "end_time": 14.32,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "early",
+        "start_time": 14.32,
+        "end_time": 14.72,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "nightfall",
+        "start_time": 14.72,
+        "end_time": 15.36,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 15.44,
+        "end_time": 15.52,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "yellow",
+        "start_time": 15.52,
+        "end_time": 15.92,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "lamps",
+        "start_time": 15.92,
+        "end_time": 16.32,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "would",
+        "start_time": 16.32,
+        "end_time": 16.48,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "light",
+        "start_time": 16.48,
+        "end_time": 16.8,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "up",
+        "start_time": 16.8,
+        "end_time": 16.96,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "here",
+        "start_time": 17.04,
+        "end_time": 17.2,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 17.2,
+        "end_time": 17.44,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "there",
+        "start_time": 17.44,
+        "end_time": 17.6,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 17.76,
+        "end_time": 17.92,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "squalid",
+        "start_time": 17.92,
+        "end_time": 18.56,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "quarter",
+        "start_time": 18.56,
+        "end_time": 18.96,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 18.96,
+        "end_time": 19.04,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 19.04,
+        "end_time": 19.28,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "brothels.",
+        "start_time": 19.28,
+        "end_time": 20.080000000000002,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Hello,",
+        "start_time": 20.48,
+        "end_time": 20.8,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Bertie,",
+        "start_time": 20.96,
+        "end_time": 21.52,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "any",
+        "start_time": 21.68,
+        "end_time": 21.84,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "good",
+        "start_time": 22.0,
+        "end_time": 22.16,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "in",
+        "start_time": 22.16,
+        "end_time": 22.32,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "your",
+        "start_time": 22.32,
+        "end_time": 22.64,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "mind?",
+        "start_time": 22.64,
+        "end_time": 22.96,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Number",
+        "start_time": 23.2,
+        "end_time": 23.76,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "ten",
+        "start_time": 23.76,
+        "end_time": 24.080000000000002,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Fresh",
+        "start_time": 24.400000000000002,
+        "end_time": 24.88,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Nelly",
+        "start_time": 24.88,
+        "end_time": 25.52,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "is",
+        "start_time": 25.52,
+        "end_time": 25.68,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "waiting",
+        "start_time": 25.68,
+        "end_time": 26.080000000000002,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "on",
+        "start_time": 26.080000000000002,
+        "end_time": 26.400000000000002,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "you.",
+        "start_time": 26.400000000000002,
+        "end_time": 26.64,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Good",
+        "start_time": 26.88,
+        "end_time": 27.28,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "night,",
+        "start_time": 27.28,
+        "end_time": 27.52,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "husband.",
+        "start_time": 27.68,
+        "end_time": 28.240000000000002,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "The",
+        "start_time": 28.48,
+        "end_time": 28.72,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "music",
+        "start_time": 28.72,
+        "end_time": 29.12,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "came",
+        "start_time": 29.12,
+        "end_time": 29.36,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "nearer,",
+        "start_time": 29.36,
+        "end_time": 29.84,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 30.0,
+        "end_time": 30.16,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "he",
+        "start_time": 30.16,
+        "end_time": 30.32,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "recalled",
+        "start_time": 30.32,
+        "end_time": 30.8,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 30.8,
+        "end_time": 31.04,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "words,",
+        "start_time": 31.04,
+        "end_time": 31.52,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 31.68,
+        "end_time": 31.84,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "words",
+        "start_time": 31.84,
+        "end_time": 32.160000000000004,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 32.160000000000004,
+        "end_time": 32.4,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "Shelley's",
+        "start_time": 32.4,
+        "end_time": 33.04,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "fragment",
+        "start_time": 33.04,
+        "end_time": 33.6,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "upon",
+        "start_time": 33.6,
+        "end_time": 33.84,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 33.84,
+        "end_time": 33.92,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "moon",
+        "start_time": 33.92,
+        "end_time": 34.24,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "wandering",
+        "start_time": 34.4,
+        "end_time": 34.96,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "companionless,",
+        "start_time": 34.96,
+        "end_time": 35.92,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "pale",
+        "start_time": 36.160000000000004,
+        "end_time": 36.64,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "for",
+        "start_time": 36.64,
+        "end_time": 36.800000000000004,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "weariness.",
+        "start_time": 36.800000000000004,
+        "end_time": 37.92,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "The",
+        "start_time": 38.160000000000004,
+        "end_time": 38.4,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "dull",
+        "start_time": 38.4,
+        "end_time": 38.88,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "light",
+        "start_time": 38.88,
+        "end_time": 39.28,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "fell",
+        "start_time": 39.28,
+        "end_time": 39.6,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "more",
+        "start_time": 39.6,
+        "end_time": 39.84,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "faintly",
+        "start_time": 39.84,
+        "end_time": 40.4,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "upon",
+        "start_time": 40.4,
+        "end_time": 40.64,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 40.64,
+        "end_time": 40.800000000000004,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "page",
+        "start_time": 40.800000000000004,
+        "end_time": 41.12,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "whereon",
+        "start_time": 41.28,
+        "end_time": 41.76,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "another",
+        "start_time": 41.76,
+        "end_time": 42.160000000000004,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "equation",
+        "start_time": 42.160000000000004,
+        "end_time": 42.72,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "began",
+        "start_time": 42.72,
+        "end_time": 43.12,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 43.12,
+        "end_time": 43.36,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "unfold",
+        "start_time": 43.36,
+        "end_time": 44.0,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "itself",
+        "start_time": 44.0,
+        "end_time": 44.480000000000004,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "slowly,",
+        "start_time": 44.480000000000004,
+        "end_time": 45.12,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 45.28,
+        "end_time": 45.44,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 45.44,
+        "end_time": 45.68,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "spread",
+        "start_time": 45.68,
+        "end_time": 46.08,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "abroad",
+        "start_time": 46.08,
+        "end_time": 46.64,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "its",
+        "start_time": 46.64,
+        "end_time": 46.88,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "widening",
+        "start_time": 46.88,
+        "end_time": 47.76,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "tail.",
+        "start_time": 47.76,
+        "end_time": 48.4,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "A",
+        "start_time": 48.72,
+        "end_time": 49.04,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "cold,",
+        "start_time": 49.04,
+        "end_time": 49.44,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "lucid",
+        "start_time": 49.68,
+        "end_time": 50.32,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "indifference",
+        "start_time": 50.32,
+        "end_time": 51.120000000000005,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "reigned",
+        "start_time": 51.120000000000005,
+        "end_time": 51.68,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "in",
+        "start_time": 51.68,
+        "end_time": 51.84,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "his",
+        "start_time": 51.84,
+        "end_time": 52.160000000000004,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "soul.",
+        "start_time": 52.160000000000004,
+        "end_time": 52.72,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "The",
+        "start_time": 52.96,
+        "end_time": 53.28,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "chaos",
+        "start_time": 53.28,
+        "end_time": 53.84,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "in",
+        "start_time": 53.84,
+        "end_time": 54.08,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "which",
+        "start_time": 54.08,
+        "end_time": 54.24,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "his",
+        "start_time": 54.24,
+        "end_time": 54.4,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "ardour",
+        "start_time": 54.4,
+        "end_time": 54.96,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "extinguished",
+        "start_time": 54.96,
+        "end_time": 55.76,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "itself",
+        "start_time": 55.76,
+        "end_time": 56.08,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "was",
+        "start_time": 56.24,
+        "end_time": 56.4,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 56.4,
+        "end_time": 56.64,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "cold",
+        "start_time": 56.64,
+        "end_time": 57.04,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "indifferent",
+        "start_time": 57.2,
+        "end_time": 58.08,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "knowledge",
+        "start_time": 58.08,
+        "end_time": 58.480000000000004,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 58.480000000000004,
+        "end_time": 58.72,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "himself.",
+        "start_time": 58.72,
+        "end_time": 59.52,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "At",
+        "start_time": 59.76,
+        "end_time": 60.08,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "most,",
+        "start_time": 60.08,
+        "end_time": 60.4,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "by",
+        "start_time": 60.72,
+        "end_time": 60.96,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "an",
+        "start_time": 60.96,
+        "end_time": 61.120000000000005,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "alms",
+        "start_time": 61.120000000000005,
+        "end_time": 61.52,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "given",
+        "start_time": 61.68,
+        "end_time": 62.0,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 62.0,
+        "end_time": 62.08,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 62.08,
+        "end_time": 62.32,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "beggar",
+        "start_time": 62.32,
+        "end_time": 62.64,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "whose",
+        "start_time": 62.72,
+        "end_time": 63.04,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "blessing",
+        "start_time": 63.04,
+        "end_time": 63.52,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "he",
+        "start_time": 63.52,
+        "end_time": 63.68,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "fled",
+        "start_time": 63.68,
+        "end_time": 64.16,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "from,",
+        "start_time": 64.16,
+        "end_time": 64.48,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "he",
+        "start_time": 64.72,
+        "end_time": 64.88,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "might",
+        "start_time": 64.88,
+        "end_time": 65.12,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "hope",
+        "start_time": 65.12,
+        "end_time": 65.44,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "wearily",
+        "start_time": 65.44,
+        "end_time": 66.08,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 66.08,
+        "end_time": 66.24,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "win",
+        "start_time": 66.24,
+        "end_time": 66.64,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "for",
+        "start_time": 66.64,
+        "end_time": 66.8,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "himself",
+        "start_time": 66.8,
+        "end_time": 67.44,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "some",
+        "start_time": 67.44,
+        "end_time": 67.68,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "measure",
+        "start_time": 67.68,
+        "end_time": 68.16,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 68.16,
+        "end_time": 68.48,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "actual",
+        "start_time": 68.48,
+        "end_time": 69.12,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      },
+      {
+        "content": "grace.",
+        "start_time": 69.12,
+        "end_time": 69.76,
+        "speaker": null,
+        "confidence": null,
+        "is_punctuation": false
+      }
+    ],
+    "metadata": {
+      "audio_duration_s": 70.0000625,
+      "wall_clock_s": 28.747216546000004,
+      "first_audio_send": 728.135826335,
+      "first_final_recv": 756.883042611,
+      "first_partial_recv": null
+    },
+    "raw_dump": [
+      {
+        "_direction": "in",
+        "message": "ParakeetHypothesis",
+        "text": "He hoped there would be stew for dinner, turnips and carrots and bruised potatoes and fat mutton pieces to be ladled out in thick, peppered, flower fattened sauce. Stuff it into you, his belly counseled him. After early nightfall the yellow lamps would light up here and there the squalid quarter of the brothels. Hello, Bertie, any good in your mind? Number ten Fresh Nelly is waiting on you. Good night, husband. The music came nearer, and he recalled the words, the words of Shelley's fragment upon the moon wandering companionless, pale for weariness. The dull light fell more faintly upon the page whereon another equation began to unfold itself slowly, and to spread abroad its widening tail. A cold, lucid indifference reigned in his soul. The chaos in which his ardour extinguished itself was a cold indifferent knowledge of himself. At most, by an alms given to a beggar whose blessing he fled from, he might hope wearily to win for himself some measure of actual grace."
+      },
+      {
+        "_direction": "in",
+        "message": "ParakeetTimestamps",
+        "word": [
+          {
+            "word": "He",
+            "start_offset": 4,
+            "end_offset": 6,
+            "start": 0.32,
+            "end": 0.48
+          },
+          {
+            "word": "hoped",
+            "start_offset": 6,
+            "end_offset": 12,
+            "start": 0.48,
+            "end": 0.96
+          },
+          {
+            "word": "there",
+            "start_offset": 12,
+            "end_offset": 14,
+            "start": 0.96,
+            "end": 1.12
+          },
+          {
+            "word": "would",
+            "start_offset": 14,
+            "end_offset": 16,
+            "start": 1.12,
+            "end": 1.28
+          },
+          {
+            "word": "be",
+            "start_offset": 16,
+            "end_offset": 19,
+            "start": 1.28,
+            "end": 1.52
+          },
+          {
+            "word": "stew",
+            "start_offset": 19,
+            "end_offset": 24,
+            "start": 1.52,
+            "end": 1.92
+          },
+          {
+            "word": "for",
+            "start_offset": 24,
+            "end_offset": 25,
+            "start": 1.92,
+            "end": 2.0
+          },
+          {
+            "word": "dinner,",
+            "start_offset": 25,
+            "end_offset": 29,
+            "start": 2.0,
+            "end": 2.32
+          },
+          {
+            "word": "turnips",
+            "start_offset": 31,
+            "end_offset": 39,
+            "start": 2.48,
+            "end": 3.12
+          },
+          {
+            "word": "and",
+            "start_offset": 39,
+            "end_offset": 41,
+            "start": 3.12,
+            "end": 3.2800000000000002
+          },
+          {
+            "word": "carrots",
+            "start_offset": 41,
+            "end_offset": 46,
+            "start": 3.2800000000000002,
+            "end": 3.68
+          },
+          {
+            "word": "and",
+            "start_offset": 47,
+            "end_offset": 50,
+            "start": 3.7600000000000002,
+            "end": 4.0
+          },
+          {
+            "word": "bruised",
+            "start_offset": 50,
+            "end_offset": 56,
+            "start": 4.0,
+            "end": 4.48
+          },
+          {
+            "word": "potatoes",
+            "start_offset": 56,
+            "end_offset": 62,
+            "start": 4.48,
+            "end": 4.96
+          },
+          {
+            "word": "and",
+            "start_offset": 63,
+            "end_offset": 66,
+            "start": 5.04,
+            "end": 5.28
+          },
+          {
+            "word": "fat",
+            "start_offset": 66,
+            "end_offset": 70,
+            "start": 5.28,
+            "end": 5.6000000000000005
+          },
+          {
+            "word": "mutton",
+            "start_offset": 70,
+            "end_offset": 76,
+            "start": 5.6000000000000005,
+            "end": 6.08
+          },
+          {
+            "word": "pieces",
+            "start_offset": 76,
+            "end_offset": 81,
+            "start": 6.08,
+            "end": 6.48
+          },
+          {
+            "word": "to",
+            "start_offset": 81,
+            "end_offset": 83,
+            "start": 6.48,
+            "end": 6.640000000000001
+          },
+          {
+            "word": "be",
+            "start_offset": 83,
+            "end_offset": 85,
+            "start": 6.640000000000001,
+            "end": 6.8
+          },
+          {
+            "word": "ladled",
+            "start_offset": 85,
+            "end_offset": 92,
+            "start": 6.8,
+            "end": 7.36
+          },
+          {
+            "word": "out",
+            "start_offset": 92,
+            "end_offset": 94,
+            "start": 7.36,
+            "end": 7.5200000000000005
+          },
+          {
+            "word": "in",
+            "start_offset": 94,
+            "end_offset": 97,
+            "start": 7.5200000000000005,
+            "end": 7.76
+          },
+          {
+            "word": "thick,",
+            "start_offset": 97,
+            "end_offset": 101,
+            "start": 7.76,
+            "end": 8.08
+          },
+          {
+            "word": "peppered,",
+            "start_offset": 102,
+            "end_offset": 107,
+            "start": 8.16,
+            "end": 8.56
+          },
+          {
+            "word": "flower",
+            "start_offset": 108,
+            "end_offset": 113,
+            "start": 8.64,
+            "end": 9.040000000000001
+          },
+          {
+            "word": "fattened",
+            "start_offset": 115,
+            "end_offset": 121,
+            "start": 9.200000000000001,
+            "end": 9.68
+          },
+          {
+            "word": "sauce.",
+            "start_offset": 123,
+            "end_offset": 130,
+            "start": 9.84,
+            "end": 10.4
+          },
+          {
+            "word": "Stuff",
+            "start_offset": 133,
+            "end_offset": 139,
+            "start": 10.64,
+            "end": 11.120000000000001
+          },
+          {
+            "word": "it",
+            "start_offset": 140,
+            "end_offset": 142,
+            "start": 11.200000000000001,
+            "end": 11.36
+          },
+          {
+            "word": "into",
+            "start_offset": 142,
+            "end_offset": 145,
+            "start": 11.36,
+            "end": 11.6
+          },
+          {
+            "word": "you,",
+            "start_offset": 145,
+            "end_offset": 147,
+            "start": 11.6,
+            "end": 11.76
+          },
+          {
+            "word": "his",
+            "start_offset": 150,
+            "end_offset": 152,
+            "start": 12.0,
+            "end": 12.16
+          },
+          {
+            "word": "belly",
+            "start_offset": 152,
+            "end_offset": 158,
+            "start": 12.16,
+            "end": 12.64
+          },
+          {
+            "word": "counseled",
+            "start_offset": 158,
+            "end_offset": 167,
+            "start": 12.64,
+            "end": 13.36
+          },
+          {
+            "word": "him.",
+            "start_offset": 167,
+            "end_offset": 171,
+            "start": 13.36,
+            "end": 13.68
+          },
+          {
+            "word": "After",
+            "start_offset": 174,
+            "end_offset": 179,
+            "start": 13.92,
+            "end": 14.32
+          },
+          {
+            "word": "early",
+            "start_offset": 179,
+            "end_offset": 184,
+            "start": 14.32,
+            "end": 14.72
+          },
+          {
+            "word": "nightfall",
+            "start_offset": 184,
+            "end_offset": 192,
+            "start": 14.72,
+            "end": 15.36
+          },
+          {
+            "word": "the",
+            "start_offset": 193,
+            "end_offset": 194,
+            "start": 15.44,
+            "end": 15.52
+          },
+          {
+            "word": "yellow",
+            "start_offset": 194,
+            "end_offset": 199,
+            "start": 15.52,
+            "end": 15.92
+          },
+          {
+            "word": "lamps",
+            "start_offset": 199,
+            "end_offset": 204,
+            "start": 15.92,
+            "end": 16.32
+          },
+          {
+            "word": "would",
+            "start_offset": 204,
+            "end_offset": 206,
+            "start": 16.32,
+            "end": 16.48
+          },
+          {
+            "word": "light",
+            "start_offset": 206,
+            "end_offset": 210,
+            "start": 16.48,
+            "end": 16.8
+          },
+          {
+            "word": "up",
+            "start_offset": 210,
+            "end_offset": 212,
+            "start": 16.8,
+            "end": 16.96
+          },
+          {
+            "word": "here",
+            "start_offset": 213,
+            "end_offset": 215,
+            "start": 17.04,
+            "end": 17.2
+          },
+          {
+            "word": "and",
+            "start_offset": 215,
+            "end_offset": 218,
+            "start": 17.2,
+            "end": 17.44
+          },
+          {
+            "word": "there",
+            "start_offset": 218,
+            "end_offset": 220,
+            "start": 17.44,
+            "end": 17.6
+          },
+          {
+            "word": "the",
+            "start_offset": 222,
+            "end_offset": 224,
+            "start": 17.76,
+            "end": 17.92
+          },
+          {
+            "word": "squalid",
+            "start_offset": 224,
+            "end_offset": 232,
+            "start": 17.92,
+            "end": 18.56
+          },
+          {
+            "word": "quarter",
+            "start_offset": 232,
+            "end_offset": 237,
+            "start": 18.56,
+            "end": 18.96
+          },
+          {
+            "word": "of",
+            "start_offset": 237,
+            "end_offset": 238,
+            "start": 18.96,
+            "end": 19.04
+          },
+          {
+            "word": "the",
+            "start_offset": 238,
+            "end_offset": 241,
+            "start": 19.04,
+            "end": 19.28
+          },
+          {
+            "word": "brothels.",
+            "start_offset": 241,
+            "end_offset": 251,
+            "start": 19.28,
+            "end": 20.080000000000002
+          },
+          {
+            "word": "Hello,",
+            "start_offset": 256,
+            "end_offset": 260,
+            "start": 20.48,
+            "end": 20.8
+          },
+          {
+            "word": "Bertie,",
+            "start_offset": 262,
+            "end_offset": 269,
+            "start": 20.96,
+            "end": 21.52
+          },
+          {
+            "word": "any",
+            "start_offset": 271,
+            "end_offset": 273,
+            "start": 21.68,
+            "end": 21.84
+          },
+          {
+            "word": "good",
+            "start_offset": 275,
+            "end_offset": 277,
+            "start": 22.0,
+            "end": 22.16
+          },
+          {
+            "word": "in",
+            "start_offset": 277,
+            "end_offset": 279,
+            "start": 22.16,
+            "end": 22.32
+          },
+          {
+            "word": "your",
+            "start_offset": 279,
+            "end_offset": 283,
+            "start": 22.32,
+            "end": 22.64
+          },
+          {
+            "word": "mind?",
+            "start_offset": 283,
+            "end_offset": 287,
+            "start": 22.64,
+            "end": 22.96
+          },
+          {
+            "word": "Number",
+            "start_offset": 290,
+            "end_offset": 297,
+            "start": 23.2,
+            "end": 23.76
+          },
+          {
+            "word": "ten",
+            "start_offset": 297,
+            "end_offset": 301,
+            "start": 23.76,
+            "end": 24.080000000000002
+          },
+          {
+            "word": "Fresh",
+            "start_offset": 305,
+            "end_offset": 311,
+            "start": 24.400000000000002,
+            "end": 24.88
+          },
+          {
+            "word": "Nelly",
+            "start_offset": 311,
+            "end_offset": 319,
+            "start": 24.88,
+            "end": 25.52
+          },
+          {
+            "word": "is",
+            "start_offset": 319,
+            "end_offset": 321,
+            "start": 25.52,
+            "end": 25.68
+          },
+          {
+            "word": "waiting",
+            "start_offset": 321,
+            "end_offset": 326,
+            "start": 25.68,
+            "end": 26.080000000000002
+          },
+          {
+            "word": "on",
+            "start_offset": 326,
+            "end_offset": 330,
+            "start": 26.080000000000002,
+            "end": 26.400000000000002
+          },
+          {
+            "word": "you.",
+            "start_offset": 330,
+            "end_offset": 333,
+            "start": 26.400000000000002,
+            "end": 26.64
+          },
+          {
+            "word": "Good",
+            "start_offset": 336,
+            "end_offset": 341,
+            "start": 26.88,
+            "end": 27.28
+          },
+          {
+            "word": "night,",
+            "start_offset": 341,
+            "end_offset": 344,
+            "start": 27.28,
+            "end": 27.52
+          },
+          {
+            "word": "husband.",
+            "start_offset": 346,
+            "end_offset": 353,
+            "start": 27.68,
+            "end": 28.240000000000002
+          },
+          {
+            "word": "The",
+            "start_offset": 356,
+            "end_offset": 359,
+            "start": 28.48,
+            "end": 28.72
+          },
+          {
+            "word": "music",
+            "start_offset": 359,
+            "end_offset": 364,
+            "start": 28.72,
+            "end": 29.12
+          },
+          {
+            "word": "came",
+            "start_offset": 364,
+            "end_offset": 367,
+            "start": 29.12,
+            "end": 29.36
+          },
+          {
+            "word": "nearer,",
+            "start_offset": 367,
+            "end_offset": 373,
+            "start": 29.36,
+            "end": 29.84
+          },
+          {
+            "word": "and",
+            "start_offset": 375,
+            "end_offset": 377,
+            "start": 30.0,
+            "end": 30.16
+          },
+          {
+            "word": "he",
+            "start_offset": 377,
+            "end_offset": 379,
+            "start": 30.16,
+            "end": 30.32
+          },
+          {
+            "word": "recalled",
+            "start_offset": 379,
+            "end_offset": 385,
+            "start": 30.32,
+            "end": 30.8
+          },
+          {
+            "word": "the",
+            "start_offset": 385,
+            "end_offset": 388,
+            "start": 30.8,
+            "end": 31.04
+          },
+          {
+            "word": "words,",
+            "start_offset": 388,
+            "end_offset": 394,
+            "start": 31.04,
+            "end": 31.52
+          },
+          {
+            "word": "the",
+            "start_offset": 396,
+            "end_offset": 398,
+            "start": 31.68,
+            "end": 31.84
+          },
+          {
+            "word": "words",
+            "start_offset": 398,
+            "end_offset": 402,
+            "start": 31.84,
+            "end": 32.160000000000004
+          },
+          {
+            "word": "of",
+            "start_offset": 402,
+            "end_offset": 405,
+            "start": 32.160000000000004,
+            "end": 32.4
+          },
+          {
+            "word": "Shelley's",
+            "start_offset": 405,
+            "end_offset": 413,
+            "start": 32.4,
+            "end": 33.04
+          },
+          {
+            "word": "fragment",
+            "start_offset": 413,
+            "end_offset": 420,
+            "start": 33.04,
+            "end": 33.6
+          },
+          {
+            "word": "upon",
+            "start_offset": 420,
+            "end_offset": 423,
+            "start": 33.6,
+            "end": 33.84
+          },
+          {
+            "word": "the",
+            "start_offset": 423,
+            "end_offset": 424,
+            "start": 33.84,
+            "end": 33.92
+          },
+          {
+            "word": "moon",
+            "start_offset": 424,
+            "end_offset": 428,
+            "start": 33.92,
+            "end": 34.24
+          },
+          {
+            "word": "wandering",
+            "start_offset": 430,
+            "end_offset": 437,
+            "start": 34.4,
+            "end": 34.96
+          },
+          {
+            "word": "companionless,",
+            "start_offset": 437,
+            "end_offset": 449,
+            "start": 34.96,
+            "end": 35.92
+          },
+          {
+            "word": "pale",
+            "start_offset": 452,
+            "end_offset": 458,
+            "start": 36.160000000000004,
+            "end": 36.64
+          },
+          {
+            "word": "for",
+            "start_offset": 458,
+            "end_offset": 460,
+            "start": 36.64,
+            "end": 36.800000000000004
+          },
+          {
+            "word": "weariness.",
+            "start_offset": 460,
+            "end_offset": 474,
+            "start": 36.800000000000004,
+            "end": 37.92
+          },
+          {
+            "word": "The",
+            "start_offset": 477,
+            "end_offset": 480,
+            "start": 38.160000000000004,
+            "end": 38.4
+          },
+          {
+            "word": "dull",
+            "start_offset": 480,
+            "end_offset": 486,
+            "start": 38.4,
+            "end": 38.88
+          },
+          {
+            "word": "light",
+            "start_offset": 486,
+            "end_offset": 491,
+            "start": 38.88,
+            "end": 39.28
+          },
+          {
+            "word": "fell",
+            "start_offset": 491,
+            "end_offset": 495,
+            "start": 39.28,
+            "end": 39.6
+          },
+          {
+            "word": "more",
+            "start_offset": 495,
+            "end_offset": 498,
+            "start": 39.6,
+            "end": 39.84
+          },
+          {
+            "word": "faintly",
+            "start_offset": 498,
+            "end_offset": 505,
+            "start": 39.84,
+            "end": 40.4
+          },
+          {
+            "word": "upon",
+            "start_offset": 505,
+            "end_offset": 508,
+            "start": 40.4,
+            "end": 40.64
+          },
+          {
+            "word": "the",
+            "start_offset": 508,
+            "end_offset": 510,
+            "start": 40.64,
+            "end": 40.800000000000004
+          },
+          {
+            "word": "page",
+            "start_offset": 510,
+            "end_offset": 514,
+            "start": 40.800000000000004,
+            "end": 41.12
+          },
+          {
+            "word": "whereon",
+            "start_offset": 516,
+            "end_offset": 522,
+            "start": 41.28,
+            "end": 41.76
+          },
+          {
+            "word": "another",
+            "start_offset": 522,
+            "end_offset": 527,
+            "start": 41.76,
+            "end": 42.160000000000004
+          },
+          {
+            "word": "equation",
+            "start_offset": 527,
+            "end_offset": 534,
+            "start": 42.160000000000004,
+            "end": 42.72
+          },
+          {
+            "word": "began",
+            "start_offset": 534,
+            "end_offset": 539,
+            "start": 42.72,
+            "end": 43.12
+          },
+          {
+            "word": "to",
+            "start_offset": 539,
+            "end_offset": 542,
+            "start": 43.12,
+            "end": 43.36
+          },
+          {
+            "word": "unfold",
+            "start_offset": 542,
+            "end_offset": 550,
+            "start": 43.36,
+            "end": 44.0
+          },
+          {
+            "word": "itself",
+            "start_offset": 550,
+            "end_offset": 556,
+            "start": 44.0,
+            "end": 44.480000000000004
+          },
+          {
+            "word": "slowly,",
+            "start_offset": 556,
+            "end_offset": 564,
+            "start": 44.480000000000004,
+            "end": 45.12
+          },
+          {
+            "word": "and",
+            "start_offset": 566,
+            "end_offset": 568,
+            "start": 45.28,
+            "end": 45.44
+          },
+          {
+            "word": "to",
+            "start_offset": 568,
+            "end_offset": 571,
+            "start": 45.44,
+            "end": 45.68
+          },
+          {
+            "word": "spread",
+            "start_offset": 571,
+            "end_offset": 576,
+            "start": 45.68,
+            "end": 46.08
+          },
+          {
+            "word": "abroad",
+            "start_offset": 576,
+            "end_offset": 583,
+            "start": 46.08,
+            "end": 46.64
+          },
+          {
+            "word": "its",
+            "start_offset": 583,
+            "end_offset": 586,
+            "start": 46.64,
+            "end": 46.88
+          },
+          {
+            "word": "widening",
+            "start_offset": 586,
+            "end_offset": 597,
+            "start": 46.88,
+            "end": 47.76
+          },
+          {
+            "word": "tail.",
+            "start_offset": 597,
+            "end_offset": 605,
+            "start": 47.76,
+            "end": 48.4
+          },
+          {
+            "word": "A",
+            "start_offset": 609,
+            "end_offset": 613,
+            "start": 48.72,
+            "end": 49.04
+          },
+          {
+            "word": "cold,",
+            "start_offset": 613,
+            "end_offset": 618,
+            "start": 49.04,
+            "end": 49.44
+          },
+          {
+            "word": "lucid",
+            "start_offset": 621,
+            "end_offset": 629,
+            "start": 49.68,
+            "end": 50.32
+          },
+          {
+            "word": "indifference",
+            "start_offset": 629,
+            "end_offset": 639,
+            "start": 50.32,
+            "end": 51.120000000000005
+          },
+          {
+            "word": "reigned",
+            "start_offset": 639,
+            "end_offset": 646,
+            "start": 51.120000000000005,
+            "end": 51.68
+          },
+          {
+            "word": "in",
+            "start_offset": 646,
+            "end_offset": 648,
+            "start": 51.68,
+            "end": 51.84
+          },
+          {
+            "word": "his",
+            "start_offset": 648,
+            "end_offset": 652,
+            "start": 51.84,
+            "end": 52.160000000000004
+          },
+          {
+            "word": "soul.",
+            "start_offset": 652,
+            "end_offset": 659,
+            "start": 52.160000000000004,
+            "end": 52.72
+          },
+          {
+            "word": "The",
+            "start_offset": 662,
+            "end_offset": 666,
+            "start": 52.96,
+            "end": 53.28
+          },
+          {
+            "word": "chaos",
+            "start_offset": 666,
+            "end_offset": 673,
+            "start": 53.28,
+            "end": 53.84
+          },
+          {
+            "word": "in",
+            "start_offset": 673,
+            "end_offset": 676,
+            "start": 53.84,
+            "end": 54.08
+          },
+          {
+            "word": "which",
+            "start_offset": 676,
+            "end_offset": 678,
+            "start": 54.08,
+            "end": 54.24
+          },
+          {
+            "word": "his",
+            "start_offset": 678,
+            "end_offset": 680,
+            "start": 54.24,
+            "end": 54.4
+          },
+          {
+            "word": "ardour",
+            "start_offset": 680,
+            "end_offset": 687,
+            "start": 54.4,
+            "end": 54.96
+          },
+          {
+            "word": "extinguished",
+            "start_offset": 687,
+            "end_offset": 697,
+            "start": 54.96,
+            "end": 55.76
+          },
+          {
+            "word": "itself",
+            "start_offset": 697,
+            "end_offset": 701,
+            "start": 55.76,
+            "end": 56.08
+          },
+          {
+            "word": "was",
+            "start_offset": 703,
+            "end_offset": 705,
+            "start": 56.24,
+            "end": 56.4
+          },
+          {
+            "word": "a",
+            "start_offset": 705,
+            "end_offset": 708,
+            "start": 56.4,
+            "end": 56.64
+          },
+          {
+            "word": "cold",
+            "start_offset": 708,
+            "end_offset": 713,
+            "start": 56.64,
+            "end": 57.04
+          },
+          {
+            "word": "indifferent",
+            "start_offset": 715,
+            "end_offset": 726,
+            "start": 57.2,
+            "end": 58.08
+          },
+          {
+            "word": "knowledge",
+            "start_offset": 726,
+            "end_offset": 731,
+            "start": 58.08,
+            "end": 58.480000000000004
+          },
+          {
+            "word": "of",
+            "start_offset": 731,
+            "end_offset": 734,
+            "start": 58.480000000000004,
+            "end": 58.72
+          },
+          {
+            "word": "himself.",
+            "start_offset": 734,
+            "end_offset": 744,
+            "start": 58.72,
+            "end": 59.52
+          },
+          {
+            "word": "At",
+            "start_offset": 747,
+            "end_offset": 751,
+            "start": 59.76,
+            "end": 60.08
+          },
+          {
+            "word": "most,",
+            "start_offset": 751,
+            "end_offset": 755,
+            "start": 60.08,
+            "end": 60.4
+          },
+          {
+            "word": "by",
+            "start_offset": 759,
+            "end_offset": 762,
+            "start": 60.72,
+            "end": 60.96
+          },
+          {
+            "word": "an",
+            "start_offset": 762,
+            "end_offset": 764,
+            "start": 60.96,
+            "end": 61.120000000000005
+          },
+          {
+            "word": "alms",
+            "start_offset": 764,
+            "end_offset": 769,
+            "start": 61.120000000000005,
+            "end": 61.52
+          },
+          {
+            "word": "given",
+            "start_offset": 771,
+            "end_offset": 775,
+            "start": 61.68,
+            "end": 62.0
+          },
+          {
+            "word": "to",
+            "start_offset": 775,
+            "end_offset": 776,
+            "start": 62.0,
+            "end": 62.08
+          },
+          {
+            "word": "a",
+            "start_offset": 776,
+            "end_offset": 779,
+            "start": 62.08,
+            "end": 62.32
+          },
+          {
+            "word": "beggar",
+            "start_offset": 779,
+            "end_offset": 783,
+            "start": 62.32,
+            "end": 62.64
+          },
+          {
+            "word": "whose",
+            "start_offset": 784,
+            "end_offset": 788,
+            "start": 62.72,
+            "end": 63.04
+          },
+          {
+            "word": "blessing",
+            "start_offset": 788,
+            "end_offset": 794,
+            "start": 63.04,
+            "end": 63.52
+          },
+          {
+            "word": "he",
+            "start_offset": 794,
+            "end_offset": 796,
+            "start": 63.52,
+            "end": 63.68
+          },
+          {
+            "word": "fled",
+            "start_offset": 796,
+            "end_offset": 802,
+            "start": 63.68,
+            "end": 64.16
+          },
+          {
+            "word": "from,",
+            "start_offset": 802,
+            "end_offset": 806,
+            "start": 64.16,
+            "end": 64.48
+          },
+          {
+            "word": "he",
+            "start_offset": 809,
+            "end_offset": 811,
+            "start": 64.72,
+            "end": 64.88
+          },
+          {
+            "word": "might",
+            "start_offset": 811,
+            "end_offset": 814,
+            "start": 64.88,
+            "end": 65.12
+          },
+          {
+            "word": "hope",
+            "start_offset": 814,
+            "end_offset": 818,
+            "start": 65.12,
+            "end": 65.44
+          },
+          {
+            "word": "wearily",
+            "start_offset": 818,
+            "end_offset": 826,
+            "start": 65.44,
+            "end": 66.08
+          },
+          {
+            "word": "to",
+            "start_offset": 826,
+            "end_offset": 828,
+            "start": 66.08,
+            "end": 66.24
+          },
+          {
+            "word": "win",
+            "start_offset": 828,
+            "end_offset": 833,
+            "start": 66.24,
+            "end": 66.64
+          },
+          {
+            "word": "for",
+            "start_offset": 833,
+            "end_offset": 835,
+            "start": 66.64,
+            "end": 66.8
+          },
+          {
+            "word": "himself",
+            "start_offset": 835,
+            "end_offset": 843,
+            "start": 66.8,
+            "end": 67.44
+          },
+          {
+            "word": "some",
+            "start_offset": 843,
+            "end_offset": 846,
+            "start": 67.44,
+            "end": 67.68
+          },
+          {
+            "word": "measure",
+            "start_offset": 846,
+            "end_offset": 852,
+            "start": 67.68,
+            "end": 68.16
+          },
+          {
+            "word": "of",
+            "start_offset": 852,
+            "end_offset": 856,
+            "start": 68.16,
+            "end": 68.48
+          },
+          {
+            "word": "actual",
+            "start_offset": 856,
+            "end_offset": 864,
+            "start": 68.48,
+            "end": 69.12
+          },
+          {
+            "word": "grace.",
+            "start_offset": 864,
+            "end_offset": 872,
+            "start": 69.12,
+            "end": 69.76
+          }
+        ],
+        "segment": [
+          {
+            "segment": "He hoped there would be stew for dinner, turnips and carrots and bruised potatoes and fat mutton pieces to be ladled out in thick, peppered, flower fattened sauce.",
+            "start_offset": 4,
+            "end_offset": 130,
+            "start": 0.32,
+            "end": 10.4
+          },
+          {
+            "segment": "Stuff it into you, his belly counseled him.",
+            "start_offset": 133,
+            "end_offset": 171,
+            "start": 10.64,
+            "end": 13.68
+          },
+          {
+            "segment": "After early nightfall the yellow lamps would light up here and there the squalid quarter of the brothels.",
+            "start_offset": 174,
+            "end_offset": 251,
+            "start": 13.92,
+            "end": 20.080000000000002
+          },
+          {
+            "segment": "Hello, Bertie, any good in your mind?",
+            "start_offset": 256,
+            "end_offset": 287,
+            "start": 20.48,
+            "end": 22.96
+          },
+          {
+            "segment": "Number ten Fresh Nelly is waiting on you.",
+            "start_offset": 290,
+            "end_offset": 333,
+            "start": 23.2,
+            "end": 26.64
+          },
+          {
+            "segment": "Good night, husband.",
+            "start_offset": 336,
+            "end_offset": 353,
+            "start": 26.88,
+            "end": 28.240000000000002
+          },
+          {
+            "segment": "The music came nearer, and he recalled the words, the words of Shelley's fragment upon the moon wandering companionless, pale for weariness.",
+            "start_offset": 356,
+            "end_offset": 474,
+            "start": 28.48,
+            "end": 37.92
+          },
+          {
+            "segment": "The dull light fell more faintly upon the page whereon another equation began to unfold itself slowly, and to spread abroad its widening tail.",
+            "start_offset": 477,
+            "end_offset": 605,
+            "start": 38.160000000000004,
+            "end": 48.4
+          },
+          {
+            "segment": "A cold, lucid indifference reigned in his soul.",
+            "start_offset": 609,
+            "end_offset": 659,
+            "start": 48.72,
+            "end": 52.72
+          },
+          {
+            "segment": "The chaos in which his ardour extinguished itself was a cold indifferent knowledge of himself.",
+            "start_offset": 662,
+            "end_offset": 744,
+            "start": 52.96,
+            "end": 59.52
+          },
+          {
+            "segment": "At most, by an alms given to a beggar whose blessing he fled from, he might hope wearily to win for himself some measure of actual grace.",
+            "start_offset": 747,
+            "end_offset": 872,
+            "start": 59.76,
+            "end": 69.76
+          }
+        ],
+        "char": [
+          {
+            "char": [
+              "He"
+            ],
+            "start_offset": 4,
+            "end_offset": 6,
+            "start": 0.32,
+            "end": 0.48
+          },
+          {
+            "char": [
+              "h"
+            ],
+            "start_offset": 6,
+            "end_offset": 7,
+            "start": 0.48,
+            "end": 0.56
+          },
+          {
+            "char": [
+              "op"
+            ],
+            "start_offset": 7,
+            "end_offset": 10,
+            "start": 0.56,
+            "end": 0.8
+          },
+          {
+            "char": [
+              "ed"
+            ],
+            "start_offset": 10,
+            "end_offset": 12,
+            "start": 0.8,
+            "end": 0.96
+          },
+          {
+            "char": [
+              "there"
+            ],
+            "start_offset": 12,
+            "end_offset": 14,
+            "start": 0.96,
+            "end": 1.12
+          },
+          {
+            "char": [
+              "would"
+            ],
+            "start_offset": 14,
+            "end_offset": 16,
+            "start": 1.12,
+            "end": 1.28
+          },
+          {
+            "char": [
+              "be"
+            ],
+            "start_offset": 16,
+            "end_offset": 19,
+            "start": 1.28,
+            "end": 1.52
+          },
+          {
+            "char": [
+              "ste"
+            ],
+            "start_offset": 19,
+            "end_offset": 21,
+            "start": 1.52,
+            "end": 1.68
+          },
+          {
+            "char": [
+              "w"
+            ],
+            "start_offset": 21,
+            "end_offset": 24,
+            "start": 1.68,
+            "end": 1.92
+          },
+          {
+            "char": [
+              "for"
+            ],
+            "start_offset": 24,
+            "end_offset": 25,
+            "start": 1.92,
+            "end": 2.0
+          },
+          {
+            "char": [
+              "din"
+            ],
+            "start_offset": 25,
+            "end_offset": 27,
+            "start": 2.0,
+            "end": 2.16
+          },
+          {
+            "char": [
+              "ner"
+            ],
+            "start_offset": 27,
+            "end_offset": 29,
+            "start": 2.16,
+            "end": 2.32
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 29,
+            "end_offset": 29,
+            "start": 2.32,
+            "end": 2.32
+          },
+          {
+            "char": [
+              "tur"
+            ],
+            "start_offset": 31,
+            "end_offset": 34,
+            "start": 2.48,
+            "end": 2.72
+          },
+          {
+            "char": [
+              "ni"
+            ],
+            "start_offset": 34,
+            "end_offset": 37,
+            "start": 2.72,
+            "end": 2.96
+          },
+          {
+            "char": [
+              "ps"
+            ],
+            "start_offset": 37,
+            "end_offset": 39,
+            "start": 2.96,
+            "end": 3.12
+          },
+          {
+            "char": [
+              "and"
+            ],
+            "start_offset": 39,
+            "end_offset": 41,
+            "start": 3.12,
+            "end": 3.2800000000000002
+          },
+          {
+            "char": [
+              "car"
+            ],
+            "start_offset": 41,
+            "end_offset": 43,
+            "start": 3.2800000000000002,
+            "end": 3.44
+          },
+          {
+            "char": [
+              "ro"
+            ],
+            "start_offset": 43,
+            "end_offset": 45,
+            "start": 3.44,
+            "end": 3.6
+          },
+          {
+            "char": [
+              "ts"
+            ],
+            "start_offset": 45,
+            "end_offset": 46,
+            "start": 3.6,
+            "end": 3.68
+          },
+          {
+            "char": [
+              "and"
+            ],
+            "start_offset": 47,
+            "end_offset": 50,
+            "start": 3.7600000000000002,
+            "end": 4.0
+          },
+          {
+            "char": [
+              "bru"
+            ],
+            "start_offset": 50,
+            "end_offset": 53,
+            "start": 4.0,
+            "end": 4.24
+          },
+          {
+            "char": [
+              "ised"
+            ],
+            "start_offset": 53,
+            "end_offset": 56,
+            "start": 4.24,
+            "end": 4.48
+          },
+          {
+            "char": [
+              "pot"
+            ],
+            "start_offset": 56,
+            "end_offset": 58,
+            "start": 4.48,
+            "end": 4.64
+          },
+          {
+            "char": [
+              "ato"
+            ],
+            "start_offset": 58,
+            "end_offset": 61,
+            "start": 4.64,
+            "end": 4.88
+          },
+          {
+            "char": [
+              "es"
+            ],
+            "start_offset": 61,
+            "end_offset": 62,
+            "start": 4.88,
+            "end": 4.96
+          },
+          {
+            "char": [
+              "and"
+            ],
+            "start_offset": 63,
+            "end_offset": 66,
+            "start": 5.04,
+            "end": 5.28
+          },
+          {
+            "char": [
+              "fat"
+            ],
+            "start_offset": 66,
+            "end_offset": 70,
+            "start": 5.28,
+            "end": 5.6000000000000005
+          },
+          {
+            "char": [
+              "m"
+            ],
+            "start_offset": 70,
+            "end_offset": 72,
+            "start": 5.6000000000000005,
+            "end": 5.76
+          },
+          {
+            "char": [
+              "ut"
+            ],
+            "start_offset": 72,
+            "end_offset": 74,
+            "start": 5.76,
+            "end": 5.92
+          },
+          {
+            "char": [
+              "ton"
+            ],
+            "start_offset": 74,
+            "end_offset": 76,
+            "start": 5.92,
+            "end": 6.08
+          },
+          {
+            "char": [
+              "pie"
+            ],
+            "start_offset": 76,
+            "end_offset": 79,
+            "start": 6.08,
+            "end": 6.32
+          },
+          {
+            "char": [
+              "ces"
+            ],
+            "start_offset": 79,
+            "end_offset": 81,
+            "start": 6.32,
+            "end": 6.48
+          },
+          {
+            "char": [
+              "to"
+            ],
+            "start_offset": 81,
+            "end_offset": 83,
+            "start": 6.48,
+            "end": 6.640000000000001
+          },
+          {
+            "char": [
+              "be"
+            ],
+            "start_offset": 83,
+            "end_offset": 85,
+            "start": 6.640000000000001,
+            "end": 6.8
+          },
+          {
+            "char": [
+              "lad"
+            ],
+            "start_offset": 85,
+            "end_offset": 87,
+            "start": 6.8,
+            "end": 6.96
+          },
+          {
+            "char": [
+              "led"
+            ],
+            "start_offset": 90,
+            "end_offset": 92,
+            "start": 7.2,
+            "end": 7.36
+          },
+          {
+            "char": [
+              "out"
+            ],
+            "start_offset": 92,
+            "end_offset": 94,
+            "start": 7.36,
+            "end": 7.5200000000000005
+          },
+          {
+            "char": [
+              "in"
+            ],
+            "start_offset": 94,
+            "end_offset": 97,
+            "start": 7.5200000000000005,
+            "end": 7.76
+          },
+          {
+            "char": [
+              "th"
+            ],
+            "start_offset": 97,
+            "end_offset": 99,
+            "start": 7.76,
+            "end": 7.92
+          },
+          {
+            "char": [
+              "ick"
+            ],
+            "start_offset": 99,
+            "end_offset": 101,
+            "start": 7.92,
+            "end": 8.08
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 101,
+            "end_offset": 101,
+            "start": 8.08,
+            "end": 8.08
+          },
+          {
+            "char": [
+              "pe"
+            ],
+            "start_offset": 102,
+            "end_offset": 104,
+            "start": 8.16,
+            "end": 8.32
+          },
+          {
+            "char": [
+              "pper"
+            ],
+            "start_offset": 104,
+            "end_offset": 106,
+            "start": 8.32,
+            "end": 8.48
+          },
+          {
+            "char": [
+              "ed"
+            ],
+            "start_offset": 106,
+            "end_offset": 107,
+            "start": 8.48,
+            "end": 8.56
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 107,
+            "end_offset": 107,
+            "start": 8.56,
+            "end": 8.56
+          },
+          {
+            "char": [
+              "fl"
+            ],
+            "start_offset": 108,
+            "end_offset": 110,
+            "start": 8.64,
+            "end": 8.8
+          },
+          {
+            "char": [
+              "ow"
+            ],
+            "start_offset": 110,
+            "end_offset": 112,
+            "start": 8.8,
+            "end": 8.96
+          },
+          {
+            "char": [
+              "er"
+            ],
+            "start_offset": 112,
+            "end_offset": 113,
+            "start": 8.96,
+            "end": 9.040000000000001
+          },
+          {
+            "char": [
+              "fat"
+            ],
+            "start_offset": 115,
+            "end_offset": 118,
+            "start": 9.200000000000001,
+            "end": 9.44
+          },
+          {
+            "char": [
+              "ten"
+            ],
+            "start_offset": 118,
+            "end_offset": 120,
+            "start": 9.44,
+            "end": 9.6
+          },
+          {
+            "char": [
+              "ed"
+            ],
+            "start_offset": 120,
+            "end_offset": 121,
+            "start": 9.6,
+            "end": 9.68
+          },
+          {
+            "char": [
+              "sau"
+            ],
+            "start_offset": 123,
+            "end_offset": 127,
+            "start": 9.84,
+            "end": 10.16
+          },
+          {
+            "char": [
+              "ce"
+            ],
+            "start_offset": 127,
+            "end_offset": 130,
+            "start": 10.16,
+            "end": 10.4
+          },
+          {
+            "char": [
+              "."
+            ],
+            "start_offset": 130,
+            "end_offset": 130,
+            "start": 10.4,
+            "end": 10.4
+          },
+          {
+            "char": [
+              "S"
+            ],
+            "start_offset": 133,
+            "end_offset": 135,
+            "start": 10.64,
+            "end": 10.8
+          },
+          {
+            "char": [
+              "tu"
+            ],
+            "start_offset": 135,
+            "end_offset": 137,
+            "start": 10.8,
+            "end": 10.96
+          },
+          {
+            "char": [
+              "ff"
+            ],
+            "start_offset": 137,
+            "end_offset": 139,
+            "start": 10.96,
+            "end": 11.120000000000001
+          },
+          {
+            "char": [
+              "it"
+            ],
+            "start_offset": 140,
+            "end_offset": 142,
+            "start": 11.200000000000001,
+            "end": 11.36
+          },
+          {
+            "char": [
+              "into"
+            ],
+            "start_offset": 142,
+            "end_offset": 145,
+            "start": 11.36,
+            "end": 11.6
+          },
+          {
+            "char": [
+              "you"
+            ],
+            "start_offset": 145,
+            "end_offset": 147,
+            "start": 11.6,
+            "end": 11.76
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 147,
+            "end_offset": 147,
+            "start": 11.76,
+            "end": 11.76
+          },
+          {
+            "char": [
+              "his"
+            ],
+            "start_offset": 150,
+            "end_offset": 152,
+            "start": 12.0,
+            "end": 12.16
+          },
+          {
+            "char": [
+              "b"
+            ],
+            "start_offset": 152,
+            "end_offset": 154,
+            "start": 12.16,
+            "end": 12.32
+          },
+          {
+            "char": [
+              "ell"
+            ],
+            "start_offset": 154,
+            "end_offset": 156,
+            "start": 12.32,
+            "end": 12.48
+          },
+          {
+            "char": [
+              "y"
+            ],
+            "start_offset": 156,
+            "end_offset": 158,
+            "start": 12.48,
+            "end": 12.64
+          },
+          {
+            "char": [
+              "co"
+            ],
+            "start_offset": 158,
+            "end_offset": 160,
+            "start": 12.64,
+            "end": 12.8
+          },
+          {
+            "char": [
+              "uns"
+            ],
+            "start_offset": 160,
+            "end_offset": 162,
+            "start": 12.8,
+            "end": 12.96
+          },
+          {
+            "char": [
+              "el"
+            ],
+            "start_offset": 162,
+            "end_offset": 164,
+            "start": 12.96,
+            "end": 13.120000000000001
+          },
+          {
+            "char": [
+              "ed"
+            ],
+            "start_offset": 164,
+            "end_offset": 167,
+            "start": 13.120000000000001,
+            "end": 13.36
+          },
+          {
+            "char": [
+              "him"
+            ],
+            "start_offset": 167,
+            "end_offset": 171,
+            "start": 13.36,
+            "end": 13.68
+          },
+          {
+            "char": [
+              "."
+            ],
+            "start_offset": 171,
+            "end_offset": 171,
+            "start": 13.68,
+            "end": 13.68
+          },
+          {
+            "char": [
+              "A"
+            ],
+            "start_offset": 174,
+            "end_offset": 177,
+            "start": 13.92,
+            "end": 14.16
+          },
+          {
+            "char": [
+              "fter"
+            ],
+            "start_offset": 177,
+            "end_offset": 179,
+            "start": 14.16,
+            "end": 14.32
+          },
+          {
+            "char": [
+              "e"
+            ],
+            "start_offset": 179,
+            "end_offset": 180,
+            "start": 14.32,
+            "end": 14.4
+          },
+          {
+            "char": [
+              "ar"
+            ],
+            "start_offset": 180,
+            "end_offset": 182,
+            "start": 14.4,
+            "end": 14.56
+          },
+          {
+            "char": [
+              "ly"
+            ],
+            "start_offset": 182,
+            "end_offset": 184,
+            "start": 14.56,
+            "end": 14.72
+          },
+          {
+            "char": [
+              "n"
+            ],
+            "start_offset": 184,
+            "end_offset": 186,
+            "start": 14.72,
+            "end": 14.88
+          },
+          {
+            "char": [
+              "ight"
+            ],
+            "start_offset": 186,
+            "end_offset": 189,
+            "start": 14.88,
+            "end": 15.120000000000001
+          },
+          {
+            "char": [
+              "f"
+            ],
+            "start_offset": 189,
+            "end_offset": 190,
+            "start": 15.120000000000001,
+            "end": 15.200000000000001
+          },
+          {
+            "char": [
+              "all"
+            ],
+            "start_offset": 190,
+            "end_offset": 192,
+            "start": 15.200000000000001,
+            "end": 15.36
+          },
+          {
+            "char": [
+              "the"
+            ],
+            "start_offset": 193,
+            "end_offset": 194,
+            "start": 15.44,
+            "end": 15.52
+          },
+          {
+            "char": [
+              "y"
+            ],
+            "start_offset": 194,
+            "end_offset": 195,
+            "start": 15.52,
+            "end": 15.6
+          },
+          {
+            "char": [
+              "ell"
+            ],
+            "start_offset": 195,
+            "end_offset": 197,
+            "start": 15.6,
+            "end": 15.76
+          },
+          {
+            "char": [
+              "ow"
+            ],
+            "start_offset": 197,
+            "end_offset": 199,
+            "start": 15.76,
+            "end": 15.92
+          },
+          {
+            "char": [
+              "l"
+            ],
+            "start_offset": 199,
+            "end_offset": 200,
+            "start": 15.92,
+            "end": 16.0
+          },
+          {
+            "char": [
+              "am"
+            ],
+            "start_offset": 200,
+            "end_offset": 202,
+            "start": 16.0,
+            "end": 16.16
+          },
+          {
+            "char": [
+              "ps"
+            ],
+            "start_offset": 202,
+            "end_offset": 204,
+            "start": 16.16,
+            "end": 16.32
+          },
+          {
+            "char": [
+              "would"
+            ],
+            "start_offset": 204,
+            "end_offset": 206,
+            "start": 16.32,
+            "end": 16.48
+          },
+          {
+            "char": [
+              "lig"
+            ],
+            "start_offset": 206,
+            "end_offset": 208,
+            "start": 16.48,
+            "end": 16.64
+          },
+          {
+            "char": [
+              "ht"
+            ],
+            "start_offset": 208,
+            "end_offset": 210,
+            "start": 16.64,
+            "end": 16.8
+          },
+          {
+            "char": [
+              "up"
+            ],
+            "start_offset": 210,
+            "end_offset": 212,
+            "start": 16.8,
+            "end": 16.96
+          },
+          {
+            "char": [
+              "here"
+            ],
+            "start_offset": 213,
+            "end_offset": 215,
+            "start": 17.04,
+            "end": 17.2
+          },
+          {
+            "char": [
+              "and"
+            ],
+            "start_offset": 215,
+            "end_offset": 218,
+            "start": 17.2,
+            "end": 17.44
+          },
+          {
+            "char": [
+              "there"
+            ],
+            "start_offset": 218,
+            "end_offset": 220,
+            "start": 17.44,
+            "end": 17.6
+          },
+          {
+            "char": [
+              "the"
+            ],
+            "start_offset": 222,
+            "end_offset": 224,
+            "start": 17.76,
+            "end": 17.92
+          },
+          {
+            "char": [
+              "s"
+            ],
+            "start_offset": 224,
+            "end_offset": 225,
+            "start": 17.92,
+            "end": 18.0
+          },
+          {
+            "char": [
+              "qu"
+            ],
+            "start_offset": 225,
+            "end_offset": 227,
+            "start": 18.0,
+            "end": 18.16
+          },
+          {
+            "char": [
+              "al"
+            ],
+            "start_offset": 227,
+            "end_offset": 229,
+            "start": 18.16,
+            "end": 18.32
+          },
+          {
+            "char": [
+              "id"
+            ],
+            "start_offset": 229,
+            "end_offset": 232,
+            "start": 18.32,
+            "end": 18.56
+          },
+          {
+            "char": [
+              "quar"
+            ],
+            "start_offset": 232,
+            "end_offset": 235,
+            "start": 18.56,
+            "end": 18.8
+          },
+          {
+            "char": [
+              "ter"
+            ],
+            "start_offset": 235,
+            "end_offset": 237,
+            "start": 18.8,
+            "end": 18.96
+          },
+          {
+            "char": [
+              "of"
+            ],
+            "start_offset": 237,
+            "end_offset": 238,
+            "start": 18.96,
+            "end": 19.04
+          },
+          {
+            "char": [
+              "the"
+            ],
+            "start_offset": 238,
+            "end_offset": 241,
+            "start": 19.04,
+            "end": 19.28
+          },
+          {
+            "char": [
+              "b"
+            ],
+            "start_offset": 241,
+            "end_offset": 243,
+            "start": 19.28,
+            "end": 19.44
+          },
+          {
+            "char": [
+              "rot"
+            ],
+            "start_offset": 243,
+            "end_offset": 245,
+            "start": 19.44,
+            "end": 19.6
+          },
+          {
+            "char": [
+              "h"
+            ],
+            "start_offset": 245,
+            "end_offset": 247,
+            "start": 19.6,
+            "end": 19.76
+          },
+          {
+            "char": [
+              "els"
+            ],
+            "start_offset": 247,
+            "end_offset": 251,
+            "start": 19.76,
+            "end": 20.080000000000002
+          },
+          {
+            "char": [
+              "."
+            ],
+            "start_offset": 251,
+            "end_offset": 251,
+            "start": 20.080000000000002,
+            "end": 20.080000000000002
+          },
+          {
+            "char": [
+              "H"
+            ],
+            "start_offset": 256,
+            "end_offset": 258,
+            "start": 20.48,
+            "end": 20.64
+          },
+          {
+            "char": [
+              "ello"
+            ],
+            "start_offset": 258,
+            "end_offset": 260,
+            "start": 20.64,
+            "end": 20.8
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 260,
+            "end_offset": 260,
+            "start": 20.8,
+            "end": 20.8
+          },
+          {
+            "char": [
+              "B"
+            ],
+            "start_offset": 262,
+            "end_offset": 264,
+            "start": 20.96,
+            "end": 21.12
+          },
+          {
+            "char": [
+              "ert"
+            ],
+            "start_offset": 264,
+            "end_offset": 267,
+            "start": 21.12,
+            "end": 21.36
+          },
+          {
+            "char": [
+              "ie"
+            ],
+            "start_offset": 267,
+            "end_offset": 269,
+            "start": 21.36,
+            "end": 21.52
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 269,
+            "end_offset": 269,
+            "start": 21.52,
+            "end": 21.52
+          },
+          {
+            "char": [
+              "any"
+            ],
+            "start_offset": 271,
+            "end_offset": 273,
+            "start": 21.68,
+            "end": 21.84
+          },
+          {
+            "char": [
+              "good"
+            ],
+            "start_offset": 275,
+            "end_offset": 277,
+            "start": 22.0,
+            "end": 22.16
+          },
+          {
+            "char": [
+              "in"
+            ],
+            "start_offset": 277,
+            "end_offset": 279,
+            "start": 22.16,
+            "end": 22.32
+          },
+          {
+            "char": [
+              "your"
+            ],
+            "start_offset": 279,
+            "end_offset": 283,
+            "start": 22.32,
+            "end": 22.64
+          },
+          {
+            "char": [
+              "mind"
+            ],
+            "start_offset": 283,
+            "end_offset": 287,
+            "start": 22.64,
+            "end": 22.96
+          },
+          {
+            "char": [
+              "?"
+            ],
+            "start_offset": 287,
+            "end_offset": 287,
+            "start": 22.96,
+            "end": 22.96
+          },
+          {
+            "char": [
+              "N"
+            ],
+            "start_offset": 290,
+            "end_offset": 292,
+            "start": 23.2,
+            "end": 23.36
+          },
+          {
+            "char": [
+              "um"
+            ],
+            "start_offset": 292,
+            "end_offset": 294,
+            "start": 23.36,
+            "end": 23.52
+          },
+          {
+            "char": [
+              "ber"
+            ],
+            "start_offset": 294,
+            "end_offset": 297,
+            "start": 23.52,
+            "end": 23.76
+          },
+          {
+            "char": [
+              "ten"
+            ],
+            "start_offset": 297,
+            "end_offset": 301,
+            "start": 23.76,
+            "end": 24.080000000000002
+          },
+          {
+            "char": [
+              "F"
+            ],
+            "start_offset": 305,
+            "end_offset": 307,
+            "start": 24.400000000000002,
+            "end": 24.560000000000002
+          },
+          {
+            "char": [
+              "res"
+            ],
+            "start_offset": 307,
+            "end_offset": 309,
+            "start": 24.560000000000002,
+            "end": 24.72
+          },
+          {
+            "char": [
+              "h"
+            ],
+            "start_offset": 309,
+            "end_offset": 311,
+            "start": 24.72,
+            "end": 24.88
+          },
+          {
+            "char": [
+              "N"
+            ],
+            "start_offset": 311,
+            "end_offset": 314,
+            "start": 24.88,
+            "end": 25.12
+          },
+          {
+            "char": [
+              "ell"
+            ],
+            "start_offset": 314,
+            "end_offset": 317,
+            "start": 25.12,
+            "end": 25.36
+          },
+          {
+            "char": [
+              "y"
+            ],
+            "start_offset": 317,
+            "end_offset": 319,
+            "start": 25.36,
+            "end": 25.52
+          },
+          {
+            "char": [
+              "is"
+            ],
+            "start_offset": 319,
+            "end_offset": 321,
+            "start": 25.52,
+            "end": 25.68
+          },
+          {
+            "char": [
+              "wa"
+            ],
+            "start_offset": 321,
+            "end_offset": 322,
+            "start": 25.68,
+            "end": 25.76
+          },
+          {
+            "char": [
+              "it"
+            ],
+            "start_offset": 322,
+            "end_offset": 324,
+            "start": 25.76,
+            "end": 25.92
+          },
+          {
+            "char": [
+              "ing"
+            ],
+            "start_offset": 324,
+            "end_offset": 326,
+            "start": 25.92,
+            "end": 26.080000000000002
+          },
+          {
+            "char": [
+              "on"
+            ],
+            "start_offset": 326,
+            "end_offset": 330,
+            "start": 26.080000000000002,
+            "end": 26.400000000000002
+          },
+          {
+            "char": [
+              "you"
+            ],
+            "start_offset": 330,
+            "end_offset": 333,
+            "start": 26.400000000000002,
+            "end": 26.64
+          },
+          {
+            "char": [
+              "."
+            ],
+            "start_offset": 333,
+            "end_offset": 333,
+            "start": 26.64,
+            "end": 26.64
+          },
+          {
+            "char": [
+              "Go"
+            ],
+            "start_offset": 336,
+            "end_offset": 338,
+            "start": 26.88,
+            "end": 27.04
+          },
+          {
+            "char": [
+              "od"
+            ],
+            "start_offset": 338,
+            "end_offset": 341,
+            "start": 27.04,
+            "end": 27.28
+          },
+          {
+            "char": [
+              "n"
+            ],
+            "start_offset": 341,
+            "end_offset": 343,
+            "start": 27.28,
+            "end": 27.44
+          },
+          {
+            "char": [
+              "ight"
+            ],
+            "start_offset": 343,
+            "end_offset": 344,
+            "start": 27.44,
+            "end": 27.52
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 344,
+            "end_offset": 344,
+            "start": 27.52,
+            "end": 27.52
+          },
+          {
+            "char": [
+              "hus"
+            ],
+            "start_offset": 346,
+            "end_offset": 348,
+            "start": 27.68,
+            "end": 27.84
+          },
+          {
+            "char": [
+              "b"
+            ],
+            "start_offset": 348,
+            "end_offset": 350,
+            "start": 27.84,
+            "end": 28.0
+          },
+          {
+            "char": [
+              "and"
+            ],
+            "start_offset": 350,
+            "end_offset": 353,
+            "start": 28.0,
+            "end": 28.240000000000002
+          },
+          {
+            "char": [
+              "."
+            ],
+            "start_offset": 353,
+            "end_offset": 353,
+            "start": 28.240000000000002,
+            "end": 28.240000000000002
+          },
+          {
+            "char": [
+              "The"
+            ],
+            "start_offset": 356,
+            "end_offset": 359,
+            "start": 28.48,
+            "end": 28.72
+          },
+          {
+            "char": [
+              "mus"
+            ],
+            "start_offset": 359,
+            "end_offset": 361,
+            "start": 28.72,
+            "end": 28.88
+          },
+          {
+            "char": [
+              "ic"
+            ],
+            "start_offset": 361,
+            "end_offset": 364,
+            "start": 28.88,
+            "end": 29.12
+          },
+          {
+            "char": [
+              "c"
+            ],
+            "start_offset": 364,
+            "end_offset": 365,
+            "start": 29.12,
+            "end": 29.2
+          },
+          {
+            "char": [
+              "ame"
+            ],
+            "start_offset": 365,
+            "end_offset": 367,
+            "start": 29.2,
+            "end": 29.36
+          },
+          {
+            "char": [
+              "ne"
+            ],
+            "start_offset": 367,
+            "end_offset": 369,
+            "start": 29.36,
+            "end": 29.52
+          },
+          {
+            "char": [
+              "ar"
+            ],
+            "start_offset": 369,
+            "end_offset": 371,
+            "start": 29.52,
+            "end": 29.68
+          },
+          {
+            "char": [
+              "er"
+            ],
+            "start_offset": 371,
+            "end_offset": 373,
+            "start": 29.68,
+            "end": 29.84
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 373,
+            "end_offset": 373,
+            "start": 29.84,
+            "end": 29.84
+          },
+          {
+            "char": [
+              "and"
+            ],
+            "start_offset": 375,
+            "end_offset": 377,
+            "start": 30.0,
+            "end": 30.16
+          },
+          {
+            "char": [
+              "he"
+            ],
+            "start_offset": 377,
+            "end_offset": 379,
+            "start": 30.16,
+            "end": 30.32
+          },
+          {
+            "char": [
+              "rec"
+            ],
+            "start_offset": 379,
+            "end_offset": 381,
+            "start": 30.32,
+            "end": 30.48
+          },
+          {
+            "char": [
+              "all"
+            ],
+            "start_offset": 381,
+            "end_offset": 383,
+            "start": 30.48,
+            "end": 30.64
+          },
+          {
+            "char": [
+              "ed"
+            ],
+            "start_offset": 383,
+            "end_offset": 385,
+            "start": 30.64,
+            "end": 30.8
+          },
+          {
+            "char": [
+              "the"
+            ],
+            "start_offset": 385,
+            "end_offset": 388,
+            "start": 30.8,
+            "end": 31.04
+          },
+          {
+            "char": [
+              "word"
+            ],
+            "start_offset": 388,
+            "end_offset": 391,
+            "start": 31.04,
+            "end": 31.28
+          },
+          {
+            "char": [
+              "s"
+            ],
+            "start_offset": 391,
+            "end_offset": 394,
+            "start": 31.28,
+            "end": 31.52
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 394,
+            "end_offset": 394,
+            "start": 31.52,
+            "end": 31.52
+          },
+          {
+            "char": [
+              "the"
+            ],
+            "start_offset": 396,
+            "end_offset": 398,
+            "start": 31.68,
+            "end": 31.84
+          },
+          {
+            "char": [
+              "word"
+            ],
+            "start_offset": 398,
+            "end_offset": 400,
+            "start": 31.84,
+            "end": 32.0
+          },
+          {
+            "char": [
+              "s"
+            ],
+            "start_offset": 400,
+            "end_offset": 402,
+            "start": 32.0,
+            "end": 32.160000000000004
+          },
+          {
+            "char": [
+              "of"
+            ],
+            "start_offset": 402,
+            "end_offset": 405,
+            "start": 32.160000000000004,
+            "end": 32.4
+          },
+          {
+            "char": [
+              "Sh"
+            ],
+            "start_offset": 405,
+            "end_offset": 407,
+            "start": 32.4,
+            "end": 32.56
+          },
+          {
+            "char": [
+              "elle"
+            ],
+            "start_offset": 407,
+            "end_offset": 410,
+            "start": 32.56,
+            "end": 32.8
+          },
+          {
+            "char": [
+              "y"
+            ],
+            "start_offset": 410,
+            "end_offset": 411,
+            "start": 32.8,
+            "end": 32.88
+          },
+          {
+            "char": [
+              "'"
+            ],
+            "start_offset": 411,
+            "end_offset": 411,
+            "start": 32.88,
+            "end": 32.88
+          },
+          {
+            "char": [
+              "s"
+            ],
+            "start_offset": 412,
+            "end_offset": 413,
+            "start": 32.96,
+            "end": 33.04
+          },
+          {
+            "char": [
+              "fra"
+            ],
+            "start_offset": 413,
+            "end_offset": 415,
+            "start": 33.04,
+            "end": 33.2
+          },
+          {
+            "char": [
+              "g"
+            ],
+            "start_offset": 415,
+            "end_offset": 417,
+            "start": 33.2,
+            "end": 33.36
+          },
+          {
+            "char": [
+              "ment"
+            ],
+            "start_offset": 417,
+            "end_offset": 420,
+            "start": 33.36,
+            "end": 33.6
+          },
+          {
+            "char": [
+              "up"
+            ],
+            "start_offset": 420,
+            "end_offset": 421,
+            "start": 33.6,
+            "end": 33.68
+          },
+          {
+            "char": [
+              "on"
+            ],
+            "start_offset": 421,
+            "end_offset": 423,
+            "start": 33.68,
+            "end": 33.84
+          },
+          {
+            "char": [
+              "the"
+            ],
+            "start_offset": 423,
+            "end_offset": 424,
+            "start": 33.84,
+            "end": 33.92
+          },
+          {
+            "char": [
+              "mo"
+            ],
+            "start_offset": 424,
+            "end_offset": 426,
+            "start": 33.92,
+            "end": 34.08
+          },
+          {
+            "char": [
+              "on"
+            ],
+            "start_offset": 426,
+            "end_offset": 428,
+            "start": 34.08,
+            "end": 34.24
+          },
+          {
+            "char": [
+              "w"
+            ],
+            "start_offset": 430,
+            "end_offset": 432,
+            "start": 34.4,
+            "end": 34.56
+          },
+          {
+            "char": [
+              "and"
+            ],
+            "start_offset": 432,
+            "end_offset": 435,
+            "start": 34.56,
+            "end": 34.800000000000004
+          },
+          {
+            "char": [
+              "ering"
+            ],
+            "start_offset": 435,
+            "end_offset": 437,
+            "start": 34.800000000000004,
+            "end": 34.96
+          },
+          {
+            "char": [
+              "comp"
+            ],
+            "start_offset": 437,
+            "end_offset": 440,
+            "start": 34.96,
+            "end": 35.2
+          },
+          {
+            "char": [
+              "an"
+            ],
+            "start_offset": 440,
+            "end_offset": 442,
+            "start": 35.2,
+            "end": 35.36
+          },
+          {
+            "char": [
+              "ion"
+            ],
+            "start_offset": 442,
+            "end_offset": 445,
+            "start": 35.36,
+            "end": 35.6
+          },
+          {
+            "char": [
+              "l"
+            ],
+            "start_offset": 445,
+            "end_offset": 447,
+            "start": 35.6,
+            "end": 35.76
+          },
+          {
+            "char": [
+              "ess"
+            ],
+            "start_offset": 447,
+            "end_offset": 449,
+            "start": 35.76,
+            "end": 35.92
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 449,
+            "end_offset": 449,
+            "start": 35.92,
+            "end": 35.92
+          },
+          {
+            "char": [
+              "p"
+            ],
+            "start_offset": 452,
+            "end_offset": 455,
+            "start": 36.160000000000004,
+            "end": 36.4
+          },
+          {
+            "char": [
+              "ale"
+            ],
+            "start_offset": 455,
+            "end_offset": 458,
+            "start": 36.4,
+            "end": 36.64
+          },
+          {
+            "char": [
+              "for"
+            ],
+            "start_offset": 458,
+            "end_offset": 460,
+            "start": 36.64,
+            "end": 36.800000000000004
+          },
+          {
+            "char": [
+              "we"
+            ],
+            "start_offset": 460,
+            "end_offset": 463,
+            "start": 36.800000000000004,
+            "end": 37.04
+          },
+          {
+            "char": [
+              "ar"
+            ],
+            "start_offset": 463,
+            "end_offset": 466,
+            "start": 37.04,
+            "end": 37.28
+          },
+          {
+            "char": [
+              "in"
+            ],
+            "start_offset": 466,
+            "end_offset": 470,
+            "start": 37.28,
+            "end": 37.6
+          },
+          {
+            "char": [
+              "ess"
+            ],
+            "start_offset": 470,
+            "end_offset": 474,
+            "start": 37.6,
+            "end": 37.92
+          },
+          {
+            "char": [
+              "."
+            ],
+            "start_offset": 474,
+            "end_offset": 474,
+            "start": 37.92,
+            "end": 37.92
+          },
+          {
+            "char": [
+              "The"
+            ],
+            "start_offset": 477,
+            "end_offset": 480,
+            "start": 38.160000000000004,
+            "end": 38.4
+          },
+          {
+            "char": [
+              "d"
+            ],
+            "start_offset": 480,
+            "end_offset": 483,
+            "start": 38.4,
+            "end": 38.64
+          },
+          {
+            "char": [
+              "ull"
+            ],
+            "start_offset": 483,
+            "end_offset": 486,
+            "start": 38.64,
+            "end": 38.88
+          },
+          {
+            "char": [
+              "lig"
+            ],
+            "start_offset": 486,
+            "end_offset": 488,
+            "start": 38.88,
+            "end": 39.04
+          },
+          {
+            "char": [
+              "ht"
+            ],
+            "start_offset": 488,
+            "end_offset": 491,
+            "start": 39.04,
+            "end": 39.28
+          },
+          {
+            "char": [
+              "f"
+            ],
+            "start_offset": 491,
+            "end_offset": 492,
+            "start": 39.28,
+            "end": 39.36
+          },
+          {
+            "char": [
+              "ell"
+            ],
+            "start_offset": 492,
+            "end_offset": 495,
+            "start": 39.36,
+            "end": 39.6
+          },
+          {
+            "char": [
+              "more"
+            ],
+            "start_offset": 495,
+            "end_offset": 498,
+            "start": 39.6,
+            "end": 39.84
+          },
+          {
+            "char": [
+              "fa"
+            ],
+            "start_offset": 498,
+            "end_offset": 500,
+            "start": 39.84,
+            "end": 40.0
+          },
+          {
+            "char": [
+              "int"
+            ],
+            "start_offset": 500,
+            "end_offset": 503,
+            "start": 40.0,
+            "end": 40.24
+          },
+          {
+            "char": [
+              "ly"
+            ],
+            "start_offset": 503,
+            "end_offset": 505,
+            "start": 40.24,
+            "end": 40.4
+          },
+          {
+            "char": [
+              "up"
+            ],
+            "start_offset": 505,
+            "end_offset": 506,
+            "start": 40.4,
+            "end": 40.480000000000004
+          },
+          {
+            "char": [
+              "on"
+            ],
+            "start_offset": 506,
+            "end_offset": 508,
+            "start": 40.480000000000004,
+            "end": 40.64
+          },
+          {
+            "char": [
+              "the"
+            ],
+            "start_offset": 508,
+            "end_offset": 510,
+            "start": 40.64,
+            "end": 40.800000000000004
+          },
+          {
+            "char": [
+              "p"
+            ],
+            "start_offset": 510,
+            "end_offset": 512,
+            "start": 40.800000000000004,
+            "end": 40.96
+          },
+          {
+            "char": [
+              "age"
+            ],
+            "start_offset": 512,
+            "end_offset": 514,
+            "start": 40.96,
+            "end": 41.12
+          },
+          {
+            "char": [
+              "where"
+            ],
+            "start_offset": 516,
+            "end_offset": 519,
+            "start": 41.28,
+            "end": 41.52
+          },
+          {
+            "char": [
+              "on"
+            ],
+            "start_offset": 519,
+            "end_offset": 522,
+            "start": 41.52,
+            "end": 41.76
+          },
+          {
+            "char": [
+              "an"
+            ],
+            "start_offset": 522,
+            "end_offset": 523,
+            "start": 41.76,
+            "end": 41.84
+          },
+          {
+            "char": [
+              "ot"
+            ],
+            "start_offset": 523,
+            "end_offset": 525,
+            "start": 41.84,
+            "end": 42.0
+          },
+          {
+            "char": [
+              "her"
+            ],
+            "start_offset": 525,
+            "end_offset": 527,
+            "start": 42.0,
+            "end": 42.160000000000004
+          },
+          {
+            "char": [
+              "e"
+            ],
+            "start_offset": 527,
+            "end_offset": 528,
+            "start": 42.160000000000004,
+            "end": 42.24
+          },
+          {
+            "char": [
+              "qu"
+            ],
+            "start_offset": 528,
+            "end_offset": 531,
+            "start": 42.24,
+            "end": 42.480000000000004
+          },
+          {
+            "char": [
+              "ation"
+            ],
+            "start_offset": 531,
+            "end_offset": 534,
+            "start": 42.480000000000004,
+            "end": 42.72
+          },
+          {
+            "char": [
+              "beg"
+            ],
+            "start_offset": 534,
+            "end_offset": 537,
+            "start": 42.72,
+            "end": 42.96
+          },
+          {
+            "char": [
+              "an"
+            ],
+            "start_offset": 537,
+            "end_offset": 539,
+            "start": 42.96,
+            "end": 43.12
+          },
+          {
+            "char": [
+              "to"
+            ],
+            "start_offset": 539,
+            "end_offset": 542,
+            "start": 43.12,
+            "end": 43.36
+          },
+          {
+            "char": [
+              "un"
+            ],
+            "start_offset": 542,
+            "end_offset": 545,
+            "start": 43.36,
+            "end": 43.6
+          },
+          {
+            "char": [
+              "f"
+            ],
+            "start_offset": 545,
+            "end_offset": 547,
+            "start": 43.6,
+            "end": 43.76
+          },
+          {
+            "char": [
+              "old"
+            ],
+            "start_offset": 547,
+            "end_offset": 550,
+            "start": 43.76,
+            "end": 44.0
+          },
+          {
+            "char": [
+              "its"
+            ],
+            "start_offset": 550,
+            "end_offset": 553,
+            "start": 44.0,
+            "end": 44.24
+          },
+          {
+            "char": [
+              "elf"
+            ],
+            "start_offset": 553,
+            "end_offset": 556,
+            "start": 44.24,
+            "end": 44.480000000000004
+          },
+          {
+            "char": [
+              "sl"
+            ],
+            "start_offset": 556,
+            "end_offset": 558,
+            "start": 44.480000000000004,
+            "end": 44.64
+          },
+          {
+            "char": [
+              "ow"
+            ],
+            "start_offset": 558,
+            "end_offset": 561,
+            "start": 44.64,
+            "end": 44.88
+          },
+          {
+            "char": [
+              "ly"
+            ],
+            "start_offset": 561,
+            "end_offset": 564,
+            "start": 44.88,
+            "end": 45.12
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 564,
+            "end_offset": 564,
+            "start": 45.12,
+            "end": 45.12
+          },
+          {
+            "char": [
+              "and"
+            ],
+            "start_offset": 566,
+            "end_offset": 568,
+            "start": 45.28,
+            "end": 45.44
+          },
+          {
+            "char": [
+              "to"
+            ],
+            "start_offset": 568,
+            "end_offset": 571,
+            "start": 45.44,
+            "end": 45.68
+          },
+          {
+            "char": [
+              "spre"
+            ],
+            "start_offset": 571,
+            "end_offset": 574,
+            "start": 45.68,
+            "end": 45.92
+          },
+          {
+            "char": [
+              "ad"
+            ],
+            "start_offset": 574,
+            "end_offset": 576,
+            "start": 45.92,
+            "end": 46.08
+          },
+          {
+            "char": [
+              "ab"
+            ],
+            "start_offset": 576,
+            "end_offset": 578,
+            "start": 46.08,
+            "end": 46.24
+          },
+          {
+            "char": [
+              "ro"
+            ],
+            "start_offset": 578,
+            "end_offset": 581,
+            "start": 46.24,
+            "end": 46.480000000000004
+          },
+          {
+            "char": [
+              "ad"
+            ],
+            "start_offset": 581,
+            "end_offset": 583,
+            "start": 46.480000000000004,
+            "end": 46.64
+          },
+          {
+            "char": [
+              "its"
+            ],
+            "start_offset": 583,
+            "end_offset": 586,
+            "start": 46.64,
+            "end": 46.88
+          },
+          {
+            "char": [
+              "w"
+            ],
+            "start_offset": 586,
+            "end_offset": 589,
+            "start": 46.88,
+            "end": 47.12
+          },
+          {
+            "char": [
+              "iden"
+            ],
+            "start_offset": 589,
+            "end_offset": 593,
+            "start": 47.12,
+            "end": 47.44
+          },
+          {
+            "char": [
+              "ing"
+            ],
+            "start_offset": 593,
+            "end_offset": 597,
+            "start": 47.44,
+            "end": 47.76
+          },
+          {
+            "char": [
+              "ta"
+            ],
+            "start_offset": 597,
+            "end_offset": 601,
+            "start": 47.76,
+            "end": 48.08
+          },
+          {
+            "char": [
+              "il"
+            ],
+            "start_offset": 601,
+            "end_offset": 605,
+            "start": 48.08,
+            "end": 48.4
+          },
+          {
+            "char": [
+              "."
+            ],
+            "start_offset": 605,
+            "end_offset": 605,
+            "start": 48.4,
+            "end": 48.4
+          },
+          {
+            "char": [
+              "A"
+            ],
+            "start_offset": 609,
+            "end_offset": 613,
+            "start": 48.72,
+            "end": 49.04
+          },
+          {
+            "char": [
+              "col"
+            ],
+            "start_offset": 613,
+            "end_offset": 617,
+            "start": 49.04,
+            "end": 49.36
+          },
+          {
+            "char": [
+              "d"
+            ],
+            "start_offset": 617,
+            "end_offset": 618,
+            "start": 49.36,
+            "end": 49.44
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 618,
+            "end_offset": 618,
+            "start": 49.44,
+            "end": 49.44
+          },
+          {
+            "char": [
+              "luc"
+            ],
+            "start_offset": 621,
+            "end_offset": 623,
+            "start": 49.68,
+            "end": 49.84
+          },
+          {
+            "char": [
+              "id"
+            ],
+            "start_offset": 626,
+            "end_offset": 629,
+            "start": 50.08,
+            "end": 50.32
+          },
+          {
+            "char": [
+              "indi"
+            ],
+            "start_offset": 629,
+            "end_offset": 632,
+            "start": 50.32,
+            "end": 50.56
+          },
+          {
+            "char": [
+              "ff"
+            ],
+            "start_offset": 632,
+            "end_offset": 634,
+            "start": 50.56,
+            "end": 50.72
+          },
+          {
+            "char": [
+              "eren"
+            ],
+            "start_offset": 634,
+            "end_offset": 636,
+            "start": 50.72,
+            "end": 50.88
+          },
+          {
+            "char": [
+              "ce"
+            ],
+            "start_offset": 636,
+            "end_offset": 639,
+            "start": 50.88,
+            "end": 51.120000000000005
+          },
+          {
+            "char": [
+              "re"
+            ],
+            "start_offset": 639,
+            "end_offset": 642,
+            "start": 51.120000000000005,
+            "end": 51.36
+          },
+          {
+            "char": [
+              "ign"
+            ],
+            "start_offset": 642,
+            "end_offset": 644,
+            "start": 51.36,
+            "end": 51.52
+          },
+          {
+            "char": [
+              "ed"
+            ],
+            "start_offset": 644,
+            "end_offset": 646,
+            "start": 51.52,
+            "end": 51.68
+          },
+          {
+            "char": [
+              "in"
+            ],
+            "start_offset": 646,
+            "end_offset": 648,
+            "start": 51.68,
+            "end": 51.84
+          },
+          {
+            "char": [
+              "his"
+            ],
+            "start_offset": 648,
+            "end_offset": 652,
+            "start": 51.84,
+            "end": 52.160000000000004
+          },
+          {
+            "char": [
+              "so"
+            ],
+            "start_offset": 652,
+            "end_offset": 655,
+            "start": 52.160000000000004,
+            "end": 52.4
+          },
+          {
+            "char": [
+              "ul"
+            ],
+            "start_offset": 655,
+            "end_offset": 659,
+            "start": 52.4,
+            "end": 52.72
+          },
+          {
+            "char": [
+              "."
+            ],
+            "start_offset": 659,
+            "end_offset": 659,
+            "start": 52.72,
+            "end": 52.72
+          },
+          {
+            "char": [
+              "The"
+            ],
+            "start_offset": 662,
+            "end_offset": 666,
+            "start": 52.96,
+            "end": 53.28
+          },
+          {
+            "char": [
+              "cha"
+            ],
+            "start_offset": 666,
+            "end_offset": 670,
+            "start": 53.28,
+            "end": 53.6
+          },
+          {
+            "char": [
+              "os"
+            ],
+            "start_offset": 670,
+            "end_offset": 673,
+            "start": 53.6,
+            "end": 53.84
+          },
+          {
+            "char": [
+              "in"
+            ],
+            "start_offset": 673,
+            "end_offset": 676,
+            "start": 53.84,
+            "end": 54.08
+          },
+          {
+            "char": [
+              "which"
+            ],
+            "start_offset": 676,
+            "end_offset": 678,
+            "start": 54.08,
+            "end": 54.24
+          },
+          {
+            "char": [
+              "his"
+            ],
+            "start_offset": 678,
+            "end_offset": 680,
+            "start": 54.24,
+            "end": 54.4
+          },
+          {
+            "char": [
+              "ar"
+            ],
+            "start_offset": 680,
+            "end_offset": 683,
+            "start": 54.4,
+            "end": 54.64
+          },
+          {
+            "char": [
+              "do"
+            ],
+            "start_offset": 683,
+            "end_offset": 685,
+            "start": 54.64,
+            "end": 54.800000000000004
+          },
+          {
+            "char": [
+              "ur"
+            ],
+            "start_offset": 685,
+            "end_offset": 687,
+            "start": 54.800000000000004,
+            "end": 54.96
+          },
+          {
+            "char": [
+              "ex"
+            ],
+            "start_offset": 687,
+            "end_offset": 689,
+            "start": 54.96,
+            "end": 55.120000000000005
+          },
+          {
+            "char": [
+              "t"
+            ],
+            "start_offset": 689,
+            "end_offset": 690,
+            "start": 55.120000000000005,
+            "end": 55.2
+          },
+          {
+            "char": [
+              "ingu"
+            ],
+            "start_offset": 690,
+            "end_offset": 693,
+            "start": 55.2,
+            "end": 55.44
+          },
+          {
+            "char": [
+              "is"
+            ],
+            "start_offset": 693,
+            "end_offset": 695,
+            "start": 55.44,
+            "end": 55.6
+          },
+          {
+            "char": [
+              "hed"
+            ],
+            "start_offset": 695,
+            "end_offset": 697,
+            "start": 55.6,
+            "end": 55.76
+          },
+          {
+            "char": [
+              "its"
+            ],
+            "start_offset": 697,
+            "end_offset": 699,
+            "start": 55.76,
+            "end": 55.92
+          },
+          {
+            "char": [
+              "elf"
+            ],
+            "start_offset": 699,
+            "end_offset": 701,
+            "start": 55.92,
+            "end": 56.08
+          },
+          {
+            "char": [
+              "was"
+            ],
+            "start_offset": 703,
+            "end_offset": 705,
+            "start": 56.24,
+            "end": 56.4
+          },
+          {
+            "char": [
+              "a"
+            ],
+            "start_offset": 705,
+            "end_offset": 708,
+            "start": 56.4,
+            "end": 56.64
+          },
+          {
+            "char": [
+              "col"
+            ],
+            "start_offset": 708,
+            "end_offset": 711,
+            "start": 56.64,
+            "end": 56.88
+          },
+          {
+            "char": [
+              "d"
+            ],
+            "start_offset": 711,
+            "end_offset": 713,
+            "start": 56.88,
+            "end": 57.04
+          },
+          {
+            "char": [
+              "indi"
+            ],
+            "start_offset": 715,
+            "end_offset": 718,
+            "start": 57.2,
+            "end": 57.44
+          },
+          {
+            "char": [
+              "ff"
+            ],
+            "start_offset": 718,
+            "end_offset": 720,
+            "start": 57.44,
+            "end": 57.6
+          },
+          {
+            "char": [
+              "er"
+            ],
+            "start_offset": 720,
+            "end_offset": 723,
+            "start": 57.6,
+            "end": 57.84
+          },
+          {
+            "char": [
+              "ent"
+            ],
+            "start_offset": 723,
+            "end_offset": 726,
+            "start": 57.84,
+            "end": 58.08
+          },
+          {
+            "char": [
+              "know"
+            ],
+            "start_offset": 726,
+            "end_offset": 728,
+            "start": 58.08,
+            "end": 58.24
+          },
+          {
+            "char": [
+              "led"
+            ],
+            "start_offset": 728,
+            "end_offset": 729,
+            "start": 58.24,
+            "end": 58.32
+          },
+          {
+            "char": [
+              "ge"
+            ],
+            "start_offset": 729,
+            "end_offset": 731,
+            "start": 58.32,
+            "end": 58.480000000000004
+          },
+          {
+            "char": [
+              "of"
+            ],
+            "start_offset": 731,
+            "end_offset": 734,
+            "start": 58.480000000000004,
+            "end": 58.72
+          },
+          {
+            "char": [
+              "him"
+            ],
+            "start_offset": 734,
+            "end_offset": 737,
+            "start": 58.72,
+            "end": 58.96
+          },
+          {
+            "char": [
+              "s"
+            ],
+            "start_offset": 737,
+            "end_offset": 740,
+            "start": 58.96,
+            "end": 59.2
+          },
+          {
+            "char": [
+              "elf"
+            ],
+            "start_offset": 740,
+            "end_offset": 744,
+            "start": 59.2,
+            "end": 59.52
+          },
+          {
+            "char": [
+              "."
+            ],
+            "start_offset": 744,
+            "end_offset": 744,
+            "start": 59.52,
+            "end": 59.52
+          },
+          {
+            "char": [
+              "At"
+            ],
+            "start_offset": 747,
+            "end_offset": 751,
+            "start": 59.76,
+            "end": 60.08
+          },
+          {
+            "char": [
+              "most"
+            ],
+            "start_offset": 751,
+            "end_offset": 755,
+            "start": 60.08,
+            "end": 60.4
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 755,
+            "end_offset": 755,
+            "start": 60.4,
+            "end": 60.4
+          },
+          {
+            "char": [
+              "by"
+            ],
+            "start_offset": 759,
+            "end_offset": 762,
+            "start": 60.72,
+            "end": 60.96
+          },
+          {
+            "char": [
+              "an"
+            ],
+            "start_offset": 762,
+            "end_offset": 764,
+            "start": 60.96,
+            "end": 61.120000000000005
+          },
+          {
+            "char": [
+              "al"
+            ],
+            "start_offset": 764,
+            "end_offset": 766,
+            "start": 61.120000000000005,
+            "end": 61.28
+          },
+          {
+            "char": [
+              "ms"
+            ],
+            "start_offset": 766,
+            "end_offset": 769,
+            "start": 61.28,
+            "end": 61.52
+          },
+          {
+            "char": [
+              "g"
+            ],
+            "start_offset": 771,
+            "end_offset": 772,
+            "start": 61.68,
+            "end": 61.76
+          },
+          {
+            "char": [
+              "iv"
+            ],
+            "start_offset": 772,
+            "end_offset": 773,
+            "start": 61.76,
+            "end": 61.84
+          },
+          {
+            "char": [
+              "en"
+            ],
+            "start_offset": 773,
+            "end_offset": 775,
+            "start": 61.84,
+            "end": 62.0
+          },
+          {
+            "char": [
+              "to"
+            ],
+            "start_offset": 775,
+            "end_offset": 776,
+            "start": 62.0,
+            "end": 62.08
+          },
+          {
+            "char": [
+              "a"
+            ],
+            "start_offset": 776,
+            "end_offset": 779,
+            "start": 62.08,
+            "end": 62.32
+          },
+          {
+            "char": [
+              "beg"
+            ],
+            "start_offset": 779,
+            "end_offset": 782,
+            "start": 62.32,
+            "end": 62.56
+          },
+          {
+            "char": [
+              "gar"
+            ],
+            "start_offset": 782,
+            "end_offset": 783,
+            "start": 62.56,
+            "end": 62.64
+          },
+          {
+            "char": [
+              "wh"
+            ],
+            "start_offset": 784,
+            "end_offset": 786,
+            "start": 62.72,
+            "end": 62.88
+          },
+          {
+            "char": [
+              "ose"
+            ],
+            "start_offset": 786,
+            "end_offset": 788,
+            "start": 62.88,
+            "end": 63.04
+          },
+          {
+            "char": [
+              "bl"
+            ],
+            "start_offset": 788,
+            "end_offset": 790,
+            "start": 63.04,
+            "end": 63.2
+          },
+          {
+            "char": [
+              "ess"
+            ],
+            "start_offset": 790,
+            "end_offset": 792,
+            "start": 63.2,
+            "end": 63.36
+          },
+          {
+            "char": [
+              "ing"
+            ],
+            "start_offset": 792,
+            "end_offset": 794,
+            "start": 63.36,
+            "end": 63.52
+          },
+          {
+            "char": [
+              "he"
+            ],
+            "start_offset": 794,
+            "end_offset": 796,
+            "start": 63.52,
+            "end": 63.68
+          },
+          {
+            "char": [
+              "f"
+            ],
+            "start_offset": 796,
+            "end_offset": 798,
+            "start": 63.68,
+            "end": 63.84
+          },
+          {
+            "char": [
+              "led"
+            ],
+            "start_offset": 798,
+            "end_offset": 802,
+            "start": 63.84,
+            "end": 64.16
+          },
+          {
+            "char": [
+              "from"
+            ],
+            "start_offset": 802,
+            "end_offset": 806,
+            "start": 64.16,
+            "end": 64.48
+          },
+          {
+            "char": [
+              ","
+            ],
+            "start_offset": 806,
+            "end_offset": 806,
+            "start": 64.48,
+            "end": 64.48
+          },
+          {
+            "char": [
+              "he"
+            ],
+            "start_offset": 809,
+            "end_offset": 811,
+            "start": 64.72,
+            "end": 64.88
+          },
+          {
+            "char": [
+              "mig"
+            ],
+            "start_offset": 811,
+            "end_offset": 812,
+            "start": 64.88,
+            "end": 64.96000000000001
+          },
+          {
+            "char": [
+              "ht"
+            ],
+            "start_offset": 812,
+            "end_offset": 814,
+            "start": 64.96000000000001,
+            "end": 65.12
+          },
+          {
+            "char": [
+              "h"
+            ],
+            "start_offset": 814,
+            "end_offset": 815,
+            "start": 65.12,
+            "end": 65.2
+          },
+          {
+            "char": [
+              "op"
+            ],
+            "start_offset": 815,
+            "end_offset": 816,
+            "start": 65.2,
+            "end": 65.28
+          },
+          {
+            "char": [
+              "e"
+            ],
+            "start_offset": 816,
+            "end_offset": 818,
+            "start": 65.28,
+            "end": 65.44
+          },
+          {
+            "char": [
+              "we"
+            ],
+            "start_offset": 818,
+            "end_offset": 821,
+            "start": 65.44,
+            "end": 65.68
+          },
+          {
+            "char": [
+              "ar"
+            ],
+            "start_offset": 821,
+            "end_offset": 824,
+            "start": 65.68,
+            "end": 65.92
+          },
+          {
+            "char": [
+              "ily"
+            ],
+            "start_offset": 824,
+            "end_offset": 826,
+            "start": 65.92,
+            "end": 66.08
+          },
+          {
+            "char": [
+              "to"
+            ],
+            "start_offset": 826,
+            "end_offset": 828,
+            "start": 66.08,
+            "end": 66.24
+          },
+          {
+            "char": [
+              "w"
+            ],
+            "start_offset": 828,
+            "end_offset": 831,
+            "start": 66.24,
+            "end": 66.48
+          },
+          {
+            "char": [
+              "in"
+            ],
+            "start_offset": 831,
+            "end_offset": 833,
+            "start": 66.48,
+            "end": 66.64
+          },
+          {
+            "char": [
+              "for"
+            ],
+            "start_offset": 833,
+            "end_offset": 835,
+            "start": 66.64,
+            "end": 66.8
+          },
+          {
+            "char": [
+              "him"
+            ],
+            "start_offset": 835,
+            "end_offset": 837,
+            "start": 66.8,
+            "end": 66.96000000000001
+          },
+          {
+            "char": [
+              "s"
+            ],
+            "start_offset": 837,
+            "end_offset": 840,
+            "start": 66.96000000000001,
+            "end": 67.2
+          },
+          {
+            "char": [
+              "elf"
+            ],
+            "start_offset": 840,
+            "end_offset": 843,
+            "start": 67.2,
+            "end": 67.44
+          },
+          {
+            "char": [
+              "some"
+            ],
+            "start_offset": 843,
+            "end_offset": 846,
+            "start": 67.44,
+            "end": 67.68
+          },
+          {
+            "char": [
+              "me"
+            ],
+            "start_offset": 846,
+            "end_offset": 848,
+            "start": 67.68,
+            "end": 67.84
+          },
+          {
+            "char": [
+              "as"
+            ],
+            "start_offset": 848,
+            "end_offset": 850,
+            "start": 67.84,
+            "end": 68.0
+          },
+          {
+            "char": [
+              "ure"
+            ],
+            "start_offset": 850,
+            "end_offset": 852,
+            "start": 68.0,
+            "end": 68.16
+          },
+          {
+            "char": [
+              "of"
+            ],
+            "start_offset": 852,
+            "end_offset": 856,
+            "start": 68.16,
+            "end": 68.48
+          },
+          {
+            "char": [
+              "actu"
+            ],
+            "start_offset": 856,
+            "end_offset": 860,
+            "start": 68.48,
+            "end": 68.8
+          },
+          {
+            "char": [
+              "al"
+            ],
+            "start_offset": 860,
+            "end_offset": 864,
+            "start": 68.8,
+            "end": 69.12
+          },
+          {
+            "char": [
+              "gra"
+            ],
+            "start_offset": 864,
+            "end_offset": 868,
+            "start": 69.12,
+            "end": 69.44
+          },
+          {
+            "char": [
+              "ce"
+            ],
+            "start_offset": 868,
+            "end_offset": 872,
+            "start": 69.44,
+            "end": 69.76
+          },
+          {
+            "char": [
+              "."
+            ],
+            "start_offset": 872,
+            "end_offset": 872,
+            "start": 69.76,
+            "end": 69.76
+          }
+        ]
+      }
+    ],
+    "error": null
+  },
+  "resources_path": "results/runs/2026-05-14T02-49-40Z__parakeet_nemo__librispeech-test-clean-mini__gpu-20260514-fp16-baseline__resources.jsonl"
+}

@@ -1,0 +1,16 @@
+# Core
+websockets>=14.0
+pyyaml>=6.0
+soundfile>=0.13
+numpy>=1.26
+
+# Metrics
+jiwer>=4.0.0
+simpleder>=0.0.5
+meeteval>=0.4
+
+# Resource sampling
+psutil>=6.0
+
+# PDF parsing for SCOTUS reference transcripts
+pypdf>=5.0

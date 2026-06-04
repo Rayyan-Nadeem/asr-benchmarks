@@ -1,0 +1,7 @@
+# Parakeet TDT 0.6B v3 INT8 ONNX adapter — hardware-agnostic via ONNX Runtime EPs.
+# Install on top of the base requirements.txt:
+#   pip install -r requirements.txt -r requirements/parakeet-onnx.txt
+
+onnx-asr[cpu,hub]>=0.11.0
+# Note: on macOS arm64 and Linux/Windows with NVIDIA, ONNX Runtime auto-picks the right EP.
+# No separate CoreML / CUDA package needed — bundled with onnxruntime>=1.17.

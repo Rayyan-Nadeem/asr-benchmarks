@@ -1,0 +1,2373 @@
+{
+  "engine": "parakeet-onnx",
+  "diarizer": "passthrough",
+  "case": "ami-es2004a-5min",
+  "tag": "mac-m4-cpu",
+  "url": "ws://127.0.0.1:9000/v2",
+  "config": {
+    "language": "en",
+    "operating_point": "enhanced",
+    "diarization": "none",
+    "enable_partials": false,
+    "max_delay": 3.0,
+    "max_delay_mode": "flexible",
+    "output_locale": "en-US",
+    "enable_entities": false,
+    "punctuation_overrides": {
+      "permitted_marks": [
+        ",",
+        ".",
+        "?"
+      ]
+    }
+  },
+  "measured": {
+    "audio_duration_s": 300.0,
+    "wall_clock_s": 308.0527338339016,
+    "ttft_s": 6.838294124929234,
+    "first_final_s": 10.144429416861385,
+    "rtf": 1.0268424461130052,
+    "partial_count": 43,
+    "final_count": 21,
+    "transcript": "Well since you guys have chosen the ones I wanted to do. And also my drawing skill isn't that great. Okay now I'm gonna have to change what it was originally be because that looks like a beak now. Crocodile. can be a crocodile. it was it was Firstly it was an attempt at a And then it sort of changed into a pelican, but it can be a That's lovely. scary strong Okay. I'm very impressed with your artistic skills. Mine's are dreadful. Oops this is now coming apart. We just put the top in. I hope that clicks in. I'll just I'll hold it on. Yeah. Oops. Oh dear. What happened there? Technical help. Hopefully that'll stay on. Two handed version. Okay. this is off the top of my head. I was gonna do a big too. vampire bat, honestly. have been a seagull. I never thought of a seagull. An eagle. Um again I'm thinking on my feet. Goodness. Um Did you say they're good at golf?",
+    "finals": [
+      {
+        "t": 10.144429416861385,
+        "transcript": "Well since you guys have chosen the ones I wanted to do.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 1.92,
+            "end_time": 2.08,
+            "alternatives": [
+              {
+                "confidence": 0.7027749001882101,
+                "content": "Well",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 2.08,
+            "end_time": 2.32,
+            "alternatives": [
+              {
+                "confidence": 0.9789715926473077,
+                "content": "since",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 2.32,
+            "end_time": 2.48,
+            "alternatives": [
+              {
+                "confidence": 0.9884151252415279,
+                "content": "you",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 2.48,
+            "end_time": 2.64,
+            "alternatives": [
+              {
+                "confidence": 0.9941785491112408,
+                "content": "guys",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 2.64,
+            "end_time": 2.8000000000000003,
+            "alternatives": [
+              {
+                "confidence": 0.9717714375076187,
+                "content": "have",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 2.8000000000000003,
+            "end_time": 3.2,
+            "alternatives": [
+              {
+                "confidence": 0.9945848534924565,
+                "content": "chosen",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 3.2,
+            "end_time": 3.36,
+            "alternatives": [
+              {
+                "confidence": 0.9473311644774091,
+                "content": "the",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 3.36,
+            "end_time": 3.68,
+            "alternatives": [
+              {
+                "confidence": 0.9580735679363364,
+                "content": "ones",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 3.68,
+            "end_time": 3.84,
+            "alternatives": [
+              {
+                "confidence": 0.9858086975477491,
+                "content": "I",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 3.84,
+            "end_time": 4.08,
+            "alternatives": [
+              {
+                "confidence": 0.9050759216980863,
+                "content": "wanted",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 4.08,
+            "end_time": 4.16,
+            "alternatives": [
+              {
+                "confidence": 0.9893976529292954,
+                "content": "to",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 4.16,
+            "end_time": 9.0,
+            "alternatives": [
+              {
+                "confidence": 0.7578221996794482,
+                "content": "do.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 19.462526208953932,
+        "transcript": "And also my drawing skill isn't that great.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 11.36,
+            "end_time": 11.68,
+            "alternatives": [
+              {
+                "confidence": 0.5894280611655454,
+                "content": "And",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 11.68,
+            "end_time": 12.16,
+            "alternatives": [
+              {
+                "confidence": 0.8989852024281647,
+                "content": "also",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 12.16,
+            "end_time": 12.4,
+            "alternatives": [
+              {
+                "confidence": 0.9931990684719743,
+                "content": "my",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 12.4,
+            "end_time": 12.8,
+            "alternatives": [
+              {
+                "confidence": 0.9941509402622551,
+                "content": "drawing",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 12.8,
+            "end_time": 13.04,
+            "alternatives": [
+              {
+                "confidence": 0.9414527782367725,
+                "content": "skill",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 13.04,
+            "end_time": 13.36,
+            "alternatives": [
+              {
+                "confidence": 0.9778217668785771,
+                "content": "isn't",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 13.36,
+            "end_time": 13.52,
+            "alternatives": [
+              {
+                "confidence": 0.9934530177341341,
+                "content": "that",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 13.52,
+            "end_time": 18.0,
+            "alternatives": [
+              {
+                "confidence": 0.9170488511542082,
+                "content": "great.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 28.66365516697988,
+        "transcript": "Okay now I'm gonna have to change what it was originally",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 19.48,
+            "end_time": 19.8,
+            "alternatives": [
+              {
+                "confidence": 0.6449749523287106,
+                "content": "Okay",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 19.8,
+            "end_time": 19.96,
+            "alternatives": [
+              {
+                "confidence": 0.9300613067825386,
+                "content": "now",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 19.96,
+            "end_time": 20.12,
+            "alternatives": [
+              {
+                "confidence": 0.9740187743413806,
+                "content": "I'm",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 20.12,
+            "end_time": 20.36,
+            "alternatives": [
+              {
+                "confidence": 0.8623358044413566,
+                "content": "gonna",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 20.36,
+            "end_time": 20.52,
+            "alternatives": [
+              {
+                "confidence": 0.9754041098415795,
+                "content": "have",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 20.52,
+            "end_time": 20.68,
+            "alternatives": [
+              {
+                "confidence": 0.9965954499876624,
+                "content": "to",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 20.68,
+            "end_time": 20.92,
+            "alternatives": [
+              {
+                "confidence": 0.9980292763833019,
+                "content": "change",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 20.92,
+            "end_time": 21.16,
+            "alternatives": [
+              {
+                "confidence": 0.993035993401187,
+                "content": "what",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 21.16,
+            "end_time": 21.32,
+            "alternatives": [
+              {
+                "confidence": 0.9885662009063871,
+                "content": "it",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 21.32,
+            "end_time": 21.560000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9945363740993458,
+                "content": "was",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 21.560000000000002,
+            "end_time": 22.12,
+            "alternatives": [
+              {
+                "confidence": 0.9966643531920182,
+                "content": "originally",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 38.2830940419808,
+        "transcript": "be because that looks like a beak now.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 22.32,
+            "end_time": 22.64,
+            "alternatives": [
+              {
+                "confidence": 0.7737426302338534,
+                "content": "be",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 22.64,
+            "end_time": 22.8,
+            "alternatives": [
+              {
+                "confidence": 0.98219059695082,
+                "content": "because",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 22.8,
+            "end_time": 22.96,
+            "alternatives": [
+              {
+                "confidence": 0.984388457859867,
+                "content": "that",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 22.96,
+            "end_time": 23.12,
+            "alternatives": [
+              {
+                "confidence": 0.9952324566496275,
+                "content": "looks",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 23.12,
+            "end_time": 23.200000000000003,
+            "alternatives": [
+              {
+                "confidence": 0.9994333618720955,
+                "content": "like",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 23.200000000000003,
+            "end_time": 23.36,
+            "alternatives": [
+              {
+                "confidence": 0.9955884198980027,
+                "content": "a",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 23.36,
+            "end_time": 23.76,
+            "alternatives": [
+              {
+                "confidence": 0.7176268534806582,
+                "content": "beak",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 23.76,
+            "end_time": 31.04,
+            "alternatives": [
+              {
+                "confidence": 0.7013298060538301,
+                "content": "now.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 40.873159624869004,
+        "transcript": "Crocodile.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 31.08,
+            "end_time": 35.96,
+            "alternatives": [
+              {
+                "confidence": 0.8865133825326289,
+                "content": "Crocodile.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 43.861374916974455,
+        "transcript": "can be a crocodile.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 36.08,
+            "end_time": 36.24,
+            "alternatives": [
+              {
+                "confidence": 0.995028067069621,
+                "content": "can",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 36.24,
+            "end_time": 36.4,
+            "alternatives": [
+              {
+                "confidence": 0.9993469214708518,
+                "content": "be",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 36.4,
+            "end_time": 36.48,
+            "alternatives": [
+              {
+                "confidence": 0.9914085340275781,
+                "content": "a",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 36.48,
+            "end_time": 37.84,
+            "alternatives": [
+              {
+                "confidence": 0.9489388702177247,
+                "content": "crocodile.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 46.94948104186915,
+        "transcript": "it was it was",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 38.120000000000005,
+            "end_time": 38.2,
+            "alternatives": [
+              {
+                "confidence": 0.8234801622267396,
+                "content": "it",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 38.2,
+            "end_time": 38.440000000000005,
+            "alternatives": [
+              {
+                "confidence": 0.9647225551911187,
+                "content": "was",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 38.440000000000005,
+            "end_time": 38.6,
+            "alternatives": [
+              {
+                "confidence": 0.5591673274232545,
+                "content": "it",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 38.6,
+            "end_time": 39.88,
+            "alternatives": [
+              {
+                "confidence": 0.9916370675747143,
+                "content": "was",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 63.37639420898631,
+        "transcript": "Firstly it was an attempt at a",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 39.92,
+            "end_time": 40.24,
+            "alternatives": [
+              {
+                "confidence": 0.7366248619986913,
+                "content": "Firstly",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 40.24,
+            "end_time": 40.32,
+            "alternatives": [
+              {
+                "confidence": 0.9722118012603312,
+                "content": "it",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 40.32,
+            "end_time": 40.480000000000004,
+            "alternatives": [
+              {
+                "confidence": 0.9957898047118217,
+                "content": "was",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 40.480000000000004,
+            "end_time": 40.56,
+            "alternatives": [
+              {
+                "confidence": 0.9976930317321118,
+                "content": "an",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 40.56,
+            "end_time": 40.800000000000004,
+            "alternatives": [
+              {
+                "confidence": 0.9983655644495909,
+                "content": "attempt",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 40.800000000000004,
+            "end_time": 40.96,
+            "alternatives": [
+              {
+                "confidence": 0.9699435266641816,
+                "content": "at",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 40.96,
+            "end_time": 41.120000000000005,
+            "alternatives": [
+              {
+                "confidence": 0.7282255744817832,
+                "content": "a",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 66.78797824983485,
+        "transcript": "And then it sort of changed into a pelican, but it can be a",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 42.120000000000005,
+            "end_time": 42.36000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.8737517110339559,
+                "content": "And",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 42.36000000000001,
+            "end_time": 42.68000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.9985564357844546,
+                "content": "then",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 42.68000000000001,
+            "end_time": 42.92,
+            "alternatives": [
+              {
+                "confidence": 0.9733290275191825,
+                "content": "it",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 42.92,
+            "end_time": 43.24,
+            "alternatives": [
+              {
+                "confidence": 0.8605183215718969,
+                "content": "sort",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 43.24,
+            "end_time": 43.400000000000006,
+            "alternatives": [
+              {
+                "confidence": 0.9847376720826594,
+                "content": "of",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 43.400000000000006,
+            "end_time": 43.720000000000006,
+            "alternatives": [
+              {
+                "confidence": 0.9899969085392751,
+                "content": "changed",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 43.720000000000006,
+            "end_time": 43.88,
+            "alternatives": [
+              {
+                "confidence": 0.9975441359669228,
+                "content": "into",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 43.88,
+            "end_time": 43.96000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.9968088505314546,
+                "content": "a",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 43.96000000000001,
+            "end_time": 44.60000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.8803131593201103,
+                "content": "pelican,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 44.60000000000001,
+            "end_time": 44.68000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.9976745211308403,
+                "content": "but",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 44.68000000000001,
+            "end_time": 44.760000000000005,
+            "alternatives": [
+              {
+                "confidence": 0.9921632123537885,
+                "content": "it",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 44.760000000000005,
+            "end_time": 44.92,
+            "alternatives": [
+              {
+                "confidence": 0.9832638081024785,
+                "content": "can",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 44.92,
+            "end_time": 45.00000000000001,
+            "alternatives": [
+              {
+                "confidence": 0.9869117785519655,
+                "content": "be",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 45.00000000000001,
+            "end_time": 45.160000000000004,
+            "alternatives": [
+              {
+                "confidence": 0.8708605762387611,
+                "content": "a",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 72.84900287492201,
+        "transcript": "That's lovely.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 59.84,
+            "end_time": 60.400000000000006,
+            "alternatives": [
+              {
+                "confidence": 0.769788932161016,
+                "content": "That's",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 60.400000000000006,
+            "end_time": 69.0,
+            "alternatives": [
+              {
+                "confidence": 0.7625591770406679,
+                "content": "lovely.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 80.9268419588916,
+        "transcript": "scary strong",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 69.04,
+            "end_time": 72.88,
+            "alternatives": [
+              {
+                "confidence": 0.9808798545656809,
+                "content": "scary",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 72.88,
+            "end_time": 78.0,
+            "alternatives": [
+              {
+                "confidence": 0.7111379677121161,
+                "content": "strong",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 100.02810674998909,
+        "transcript": "Okay.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 81.72,
+            "end_time": 82.92,
+            "alternatives": [
+              {
+                "confidence": 0.6029056882418719,
+                "content": "Okay.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 117.93845966691151,
+        "transcript": "I'm very impressed with your artistic skills. Mine's are dreadful. Oops this is now coming apart. We just put the top in. I hope that clicks in. I'll just I'll hold it on. Yeah. Oops. Oh dear. What happened there? Technical help. Hopefully that'll stay on. Two handed version.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 83.362,
+            "end_time": 83.6944,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "I'm",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 83.6944,
+            "end_time": 84.02680000000001,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "very",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 84.02680000000001,
+            "end_time": 84.3592,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "impressed",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 84.3592,
+            "end_time": 84.69160000000001,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "with",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 84.69160000000001,
+            "end_time": 85.024,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "your",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 85.024,
+            "end_time": 85.35640000000001,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "artistic",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 85.35640000000001,
+            "end_time": 85.6888,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "skills.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 85.6888,
+            "end_time": 86.02120000000001,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "Mine's",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 86.02120000000001,
+            "end_time": 86.3536,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "are",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 86.3536,
+            "end_time": 86.686,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "dreadful.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 87.938,
+            "end_time": 88.21466666666667,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "Oops",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 88.21466666666667,
+            "end_time": 88.49133333333333,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "this",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 88.49133333333333,
+            "end_time": 88.768,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "is",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 88.768,
+            "end_time": 89.04466666666667,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "now",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 89.04466666666667,
+            "end_time": 89.32133333333334,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "coming",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 89.32133333333334,
+            "end_time": 89.598,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "apart.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 89.69800000000001,
+            "end_time": 89.99600000000001,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "We",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 89.99600000000001,
+            "end_time": 90.294,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "just",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 90.294,
+            "end_time": 90.592,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "put",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 90.592,
+            "end_time": 90.89,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "the",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 90.89,
+            "end_time": 91.188,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "top",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 91.188,
+            "end_time": 91.486,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "in.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 93.986,
+            "end_time": 94.22200000000001,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "I",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 94.22200000000001,
+            "end_time": 94.458,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "hope",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 94.458,
+            "end_time": 94.694,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "that",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 94.694,
+            "end_time": 94.93,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "clicks",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 94.93,
+            "end_time": 95.166,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "in.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 95.266,
+            "end_time": 95.43066666666667,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "I'll",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 95.43066666666667,
+            "end_time": 95.59533333333333,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "just",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 95.59533333333333,
+            "end_time": 95.76,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "I'll",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 95.76,
+            "end_time": 95.92466666666667,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "hold",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 95.92466666666667,
+            "end_time": 96.08933333333333,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "it",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 96.08933333333333,
+            "end_time": 96.254,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "on.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 96.514,
+            "end_time": 97.342,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "Yeah.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 97.95400000000001,
+            "end_time": 98.398,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "Oops.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 98.498,
+            "end_time": 98.816,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "Oh",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 98.816,
+            "end_time": 99.134,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "dear.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 99.842,
+            "end_time": 100.12866666666667,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "What",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 100.12866666666667,
+            "end_time": 100.41533333333334,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "happened",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 100.41533333333334,
+            "end_time": 100.702,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "there?",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 101.154,
+            "end_time": 101.648,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "Technical",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 101.648,
+            "end_time": 102.142,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "help.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 105.44200000000001,
+            "end_time": 105.8935,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "Hopefully",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 105.8935,
+            "end_time": 106.345,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "that'll",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 106.345,
+            "end_time": 106.79650000000001,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "stay",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 106.79650000000001,
+            "end_time": 107.248,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "on.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 107.248,
+            "end_time": 107.6995,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "Two",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 107.6995,
+            "end_time": 108.15100000000001,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "handed",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 108.15100000000001,
+            "end_time": 108.6025,
+            "alternatives": [
+              {
+                "confidence": 1.0,
+                "content": "version.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 120.849720624974,
+        "transcript": "Okay.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 108.72250000000001,
+            "end_time": 114.16250000000001,
+            "alternatives": [
+              {
+                "confidence": 0.6891789948098492,
+                "content": "Okay.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 123.82285437500104,
+        "transcript": "this is off the top of my head. I was",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 114.64,
+            "end_time": 114.8,
+            "alternatives": [
+              {
+                "confidence": 0.987711257281529,
+                "content": "this",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 114.8,
+            "end_time": 114.96,
+            "alternatives": [
+              {
+                "confidence": 0.9966956255773702,
+                "content": "is",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 114.96,
+            "end_time": 115.2,
+            "alternatives": [
+              {
+                "confidence": 0.9929761614972467,
+                "content": "off",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 115.2,
+            "end_time": 115.28,
+            "alternatives": [
+              {
+                "confidence": 0.9992113377461398,
+                "content": "the",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 115.28,
+            "end_time": 115.44,
+            "alternatives": [
+              {
+                "confidence": 0.9992688568404146,
+                "content": "top",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 115.44,
+            "end_time": 115.52,
+            "alternatives": [
+              {
+                "confidence": 0.9989612175591674,
+                "content": "of",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 115.52,
+            "end_time": 115.6,
+            "alternatives": [
+              {
+                "confidence": 0.9994027607145949,
+                "content": "my",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 115.6,
+            "end_time": 115.92,
+            "alternatives": [
+              {
+                "confidence": 0.8901916063816474,
+                "content": "head.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 115.92,
+            "end_time": 116.0,
+            "alternatives": [
+              {
+                "confidence": 0.9426237908176724,
+                "content": "I",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 116.0,
+            "end_time": 116.08,
+            "alternatives": [
+              {
+                "confidence": 0.9961153366622313,
+                "content": "was",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 130.21180804190226,
+        "transcript": "gonna do a big",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 116.12,
+            "end_time": 116.28,
+            "alternatives": [
+              {
+                "confidence": 0.7301734212912782,
+                "content": "gonna",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 116.28,
+            "end_time": 116.44,
+            "alternatives": [
+              {
+                "confidence": 0.9986792388125157,
+                "content": "do",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 116.44,
+            "end_time": 116.52,
+            "alternatives": [
+              {
+                "confidence": 0.9874686040142733,
+                "content": "a",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 116.52,
+            "end_time": 116.84,
+            "alternatives": [
+              {
+                "confidence": 0.9352083636850647,
+                "content": "big",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 133.46711729187518,
+        "transcript": "too.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 117.28,
+            "end_time": 129.0,
+            "alternatives": [
+              {
+                "confidence": 0.9406313874145902,
+                "content": "too.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 158.95557908387855,
+        "transcript": "vampire bat, honestly.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 129.04,
+            "end_time": 129.52,
+            "alternatives": [
+              {
+                "confidence": 0.9923908432833655,
+                "content": "vampire",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 129.52,
+            "end_time": 129.92,
+            "alternatives": [
+              {
+                "confidence": 0.7343366688070645,
+                "content": "bat,",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 129.92,
+            "end_time": 145.52,
+            "alternatives": [
+              {
+                "confidence": 0.9081220058287316,
+                "content": "honestly.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 161.08570199995302,
+        "transcript": "have been a seagull. I never thought of a seagull. An eagle. Um again I'm thinking on my feet. Goodness.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 145.72,
+            "end_time": 145.88000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.7758586058554062,
+                "content": "have",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 145.88000000000002,
+            "end_time": 146.04000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9988567800723356,
+                "content": "been",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 146.04000000000002,
+            "end_time": 146.12,
+            "alternatives": [
+              {
+                "confidence": 0.9913032089927551,
+                "content": "a",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 146.12,
+            "end_time": 146.60000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.8952565110260057,
+                "content": "seagull.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 146.60000000000002,
+            "end_time": 146.68,
+            "alternatives": [
+              {
+                "confidence": 0.8688837782233926,
+                "content": "I",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 146.68,
+            "end_time": 146.84,
+            "alternatives": [
+              {
+                "confidence": 0.9980453769451336,
+                "content": "never",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 146.84,
+            "end_time": 147.0,
+            "alternatives": [
+              {
+                "confidence": 0.9956352980931302,
+                "content": "thought",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 147.0,
+            "end_time": 147.16,
+            "alternatives": [
+              {
+                "confidence": 0.9927896599107432,
+                "content": "of",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 147.16,
+            "end_time": 147.24,
+            "alternatives": [
+              {
+                "confidence": 0.9963009602985086,
+                "content": "a",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 147.24,
+            "end_time": 148.04000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9342156621651454,
+                "content": "seagull.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 148.04000000000002,
+            "end_time": 148.20000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.7853235641826363,
+                "content": "An",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 148.20000000000002,
+            "end_time": 148.68,
+            "alternatives": [
+              {
+                "confidence": 0.9284428003020905,
+                "content": "eagle.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 148.68,
+            "end_time": 149.0,
+            "alternatives": [
+              {
+                "confidence": 0.7323199703132557,
+                "content": "Um",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 149.0,
+            "end_time": 149.32000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9797851600468507,
+                "content": "again",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 149.32000000000002,
+            "end_time": 149.48000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9959849553821424,
+                "content": "I'm",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 149.48000000000002,
+            "end_time": 149.8,
+            "alternatives": [
+              {
+                "confidence": 0.9995723011620414,
+                "content": "thinking",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 149.8,
+            "end_time": 149.96,
+            "alternatives": [
+              {
+                "confidence": 0.9966952702916076,
+                "content": "on",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 149.96,
+            "end_time": 150.04000000000002,
+            "alternatives": [
+              {
+                "confidence": 0.9979048847647638,
+                "content": "my",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 150.04000000000002,
+            "end_time": 150.52,
+            "alternatives": [
+              {
+                "confidence": 0.8510897706329376,
+                "content": "feet.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 150.52,
+            "end_time": 156.0,
+            "alternatives": [
+              {
+                "confidence": 0.9020760294587636,
+                "content": "Goodness.",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 166.55246604187414,
+        "transcript": "Um",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 157.92,
+            "end_time": 159.92,
+            "alternatives": [
+              {
+                "confidence": 0.5912472559074339,
+                "content": "Um",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "t": 173.0703296668362,
+        "transcript": "Did you say they're good at golf?",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 163.0,
+            "end_time": 163.23999999999998,
+            "alternatives": [
+              {
+                "confidence": 0.7674410327834924,
+                "content": "Did",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 163.23999999999998,
+            "end_time": 163.32,
+            "alternatives": [
+              {
+                "confidence": 0.9964159894262947,
+                "content": "you",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 163.32,
+            "end_time": 163.48,
+            "alternatives": [
+              {
+                "confidence": 0.9973588788985763,
+                "content": "say",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 163.48,
+            "end_time": 163.64,
+            "alternatives": [
+              {
+                "confidence": 0.9495903127763339,
+                "content": "they're",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 163.64,
+            "end_time": 163.79999999999998,
+            "alternatives": [
+              {
+                "confidence": 0.9987046829801388,
+                "content": "good",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 163.79999999999998,
+            "end_time": 163.95999999999998,
+            "alternatives": [
+              {
+                "confidence": 0.998829782144509,
+                "content": "at",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          },
+          {
+            "type": "word",
+            "start_time": 163.95999999999998,
+            "end_time": 167.07999999999998,
+            "alternatives": [
+              {
+                "confidence": 0.7780965081079313,
+                "content": "golf?",
+                "language": "en",
+                "speaker": "S1"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "wer": null
+}

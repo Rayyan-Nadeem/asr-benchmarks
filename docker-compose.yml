@@ -1,0 +1,36 @@
+# depodash-asr — M2 deliverable.
+#
+# Exposes ws://localhost:9000/v2 speaking the Speechmatics realtime protocol.
+# DepoDash middleware swaps engines via ENGINE / DIARIZER env vars; nothing
+# else changes.
+
+services:
+  depodash-asr:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    image: depodash-asr:dev
+    ports:
+      - "9000:9000"
+    environment:
+      ENGINE: ${ENGINE:-noop}
+      DIARIZER: ${DIARIZER:-passthrough}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      # parakeet-nemo / pyannote pickups
+      HF_TOKEN: ${HF_TOKEN:-}
+      SPEECHMATICS_PROXY_URL: ${SPEECHMATICS_PROXY_URL:-}
+    # GPU passthrough on a CUDA host — uncomment when running parakeet-nemo or
+    # sortformer-streaming. Requires nvidia-container-toolkit.
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:9000/ready')"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+    restart: unless-stopped

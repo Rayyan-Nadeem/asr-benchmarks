@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Model Playground</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #fafaf9;
+    --surface: #ffffff;
+    --surface-2: #f5f5f4;
+    --border: #e7e5e4;
+    --text: #1c1917;
+    --muted: #78716c;
+    --accent: #2563eb;
+    --accent-hover: #1d4ed8;
+    --danger: #dc2626;
+    --danger-hover: #b91c1c;
+    --good: #16a34a;
+    --speaker: #2563eb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0c0a09;
+      --surface: #1c1917;
+      --surface-2: #292524;
+      --border: #44403c;
+      --text: #fafaf9;
+      --muted: #a8a29e;
+      --speaker: #60a5fa;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .page { max-width: 720px; margin: 0 auto; padding: 56px 24px 96px; }
+
+  /* header */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .titleblock { flex: 1 1 auto; min-width: 0; }
+  .titleblock h1 {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 4px;
+    white-space: nowrap;
+  }
+  .titleblock .tagline {
+    color: var(--muted);
+    margin: 0;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @media (max-width: 600px) {
+    .titleblock .tagline { white-space: normal; }
+  }
+  .live-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    font-size: 12px;
+    color: var(--muted);
+    font-family: ui-monospace, monospace;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .live-pill .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--muted);
+    box-shadow: 0 0 0 0 transparent;
+  }
+  .live-pill.ok .dot {
+    background: var(--good);
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+  }
+  .live-pill.bad .dot { background: var(--danger); }
+  .live-pill.busy .dot {
+    background: #f59e0b;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  /* card */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 14px;
+  }
+  .config-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 560px) {
+    header { flex-direction: column; align-items: flex-start; }
+  }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .field label .req,
+  .field label .opt {
+    font-weight: 400;
+    font-size: 10px;
+    opacity: 0.6;
+    font-family: ui-monospace, monospace;
+  }
+  .field select {
+    appearance: none;
+    -webkit-appearance: none;
+    font: inherit;
+    font-size: 14px;
+    padding: 11px 36px 11px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface-2);
+    color: var(--text);
+    cursor: pointer;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23999' d='M6 8L0 0h12z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: border-color 0.15s;
+  }
+  .field select:hover { border-color: var(--accent); }
+  .field select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .field select:disabled { opacity: 0.5; cursor: wait; }
+
+  /* action row */
+  .action {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+    align-items: center;
+    padding: 18px 20px;
+  }
+  button#btn {
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    background: var(--accent);
+    color: white;
+    transition: background 0.15s, transform 0.05s;
+    min-width: 110px;
+  }
+  button#btn:hover { background: var(--accent-hover); }
+  button#btn:active { transform: scale(0.98); }
+  button#btn:disabled { opacity: 0.5; cursor: wait; }
+  button#btn.recording { background: var(--danger); }
+  button#btn.recording:hover { background: var(--danger-hover); }
+  .meter-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+  .meter {
+    height: 4px;
+    background: var(--surface-2);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .meter-bar { height: 100%; background: var(--good); width: 0%; transition: width 60ms linear; }
+  .status-line {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: ui-monospace, monospace;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* transcript area */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  #partial {
+    padding: 16px 18px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    min-height: 56px;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  #finals {
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    min-height: 280px;
+    max-height: 480px;
+    overflow-y: auto;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+  #finals:empty::before {
+    content: "Final transcripts will appear here once you start speaking.";
+    color: var(--muted);
+    font-style: italic;
+  }
+  #finals .line { margin-bottom: 10px; padding-left: 0; }
+  #finals .line:last-child { margin-bottom: 0; }
+  #finals .speaker {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-right: 8px;
+    vertical-align: middle;
+    letter-spacing: 0.02em;
+    /* Fallback chip — JS overrides with a deterministic hue per speaker.
+       Falls back to the accent color if the JS hash hasn't run yet so the
+       pill is never invisible/black. */
+    color: var(--speaker);
+    background: rgba(96, 165, 250, 0.18);
+  }
+
+  /* advanced */
+  details.advanced { margin-top: 16px; }
+  details.advanced > summary {
+    cursor: pointer;
+    font-size: 13px;
+    color: var(--muted);
+    user-select: none;
+    list-style: none;
+    padding: 6px 0;
+  }
+  details.advanced > summary::-webkit-details-marker { display: none; }
+  details.advanced > summary::before { content: "▸ "; }
+  details.advanced[open] > summary::before { content: "▾ "; }
+  .advanced-fields {
+    margin-top: 10px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .advanced-fields input[type=text] {
+    font: inherit;
+    font-size: 13px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--surface-2);
+    color: var(--text);
+    width: 280px;
+  }
+  .advanced-fields label.toggle { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; color: var(--muted); }
+
+  /* tabs */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+  .tabs button {
+    appearance: none;
+    background: transparent;
+    border: 0;
+    color: var(--muted);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tabs button:hover { color: var(--text); }
+  .tabs button.active {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* scoreboard */
+  .sb-section { margin-bottom: 28px; }
+  .sb-section h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .sb-section .sb-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 0 12px;
+    line-height: 1.45;
+  }
+  /* Wrap tables in a horizontal-scroll container so wide tables don't
+     burst the card on narrow viewports. */
+  .sb-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -4px;
+  }
+  table.sb {
+    width: 100%;
+    min-width: 480px;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  table.sb th, table.sb td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.sb th {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  table.sb td.num {
+    font-family: ui-monospace, monospace;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  table.sb tr.sm-row {
+    background: rgba(120, 113, 108, 0.08);
+  }
+  table.sb tr.sm-row td:first-child { font-style: italic; }
+  table.sb tr.winner td.num { color: var(--good); font-weight: 600; }
+  table.sb tr.loss td.num { color: var(--danger); }
+  .sb-legend {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    color: var(--muted);
+    font-family: ui-monospace, monospace;
+    margin-top: 8px;
+  }
+  .sb-legend .dot-good, .sb-legend .dot-loss, .sb-legend .dot-sm {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .sb-legend .dot-good { background: var(--good); }
+  .sb-legend .dot-loss { background: var(--danger); }
+  .sb-legend .dot-sm  { background: rgba(120, 113, 108, 0.6); }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<header>
+  <div class="titleblock">
+    <h1>Model Playground</h1>
+    <p class="tagline">Streaming speech-to-text. Engine + diarizer swappable at boot.</p>
+  </div>
+  <span id="livePill" class="live-pill"><span class="dot"></span><span id="endpointInfo">connecting…</span></span>
+</header>
+
+<div class="tabs" role="tablist">
+  <button id="tabPlaygroundBtn" class="active" role="tab" aria-controls="tabPlayground">Playground</button>
+  <button id="tabScoreboardBtn" role="tab" aria-controls="tabScoreboard">Scoreboard</button>
+</div>
+
+<div id="tabPlayground" class="tab-panel active" role="tabpanel">
+
+<div class="card">
+  <div class="config-grid">
+    <div class="field">
+      <label for="engineSel">ASR engine <span class="req">·  required</span></label>
+      <select id="engineSel"></select>
+    </div>
+    <div class="field">
+      <label for="diarSel">Diarizer <span class="opt">·  optional</span></label>
+      <select id="diarSel"></select>
+    </div>
+    <div class="field">
+      <label for="punctSel">Punctuation <span class="opt">·  post-process</span></label>
+      <select id="punctSel"></select>
+    </div>
+  </div>
+
+  <details class="advanced">
+    <summary>Advanced</summary>
+    <div class="advanced-fields">
+      <input id="url" type="text" placeholder="ws://localhost:9000/v2">
+      <label class="toggle"><input id="partials" type="checkbox" checked> partials</label>
+      <label class="toggle">max_speakers
+        <input id="maxSpeakers" type="number" min="1" max="50" value="4" style="width: 60px; margin-left: 4px;">
+      </label>
+    </div>
+    <div class="sb-note" style="margin-top: 6px; font-size: 11px;">
+      <code>max_speakers ≤ 4</code> → Auto routes to Multitalker (overlap-aware).
+      <code>&gt; 4</code> → routes to Nemotron Native + Sortformer fallback (multi-party / oral argument).
+    </div>
+  </details>
+</div>
+
+<div class="card action">
+  <button id="btn">Start</button>
+  <div class="meter-wrap">
+    <div class="meter"><div class="meter-bar" id="meterBar"></div></div>
+    <div class="status-line" id="status">Ready</div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="section-label">Live (interim)</div>
+  <div id="partial">Waiting for audio…</div>
+</div>
+
+<div class="card">
+  <div class="section-label">Transcript</div>
+  <div id="finals"></div>
+</div>
+
+</div><!-- /#tabPlayground -->
+
+<div id="tabScoreboard" class="tab-panel" role="tabpanel">
+
+  <div class="card">
+    <div class="sb-section">
+      <h3>Streaming WER · rolling LA2 (apples-to-apples with Speechmatics)</h3>
+      <p class="sb-note">Every row emits committed finals every ~3–5 s during the audio — same shape as the SM container's live transcript. <code>n=1</code> per cell; gaps under 1 pp are noise.</p>
+      <div class="sb-table-wrap"><table class="sb">
+        <thead>
+          <tr><th>Combo</th><th>Hardware</th><th>LibriSpeech</th><th>SCOTUS</th><th>Per-final lag</th></tr>
+        </thead>
+        <tbody>
+          <tr class="sm-row"><td>Speechmatics + native (frozen)</td><td>$4 k Alienware · 16 GB VRAM</td><td class="num">2.98 %</td><td class="num">14.87 %</td><td class="num">5–19 s p95</td></tr>
+          <tr class="winner"><td><strong>Parakeet-NeMo + Sortformer-overlay</strong> (LA2 rolling)</td><td>$0.81/hr cloud L4</td><td class="num">2.96 %</td><td class="num">7.63 %</td><td class="num">~4 s</td></tr>
+          <tr class="winner"><td>Parakeet-NeMo + pyannote (LA2 rolling)</td><td>$0.81/hr cloud L4</td><td class="num">0.59 %</td><td class="num">7.63 %</td><td class="num">~5 s</td></tr>
+        </tbody>
+      </table></div>
+      <p class="sb-note" style="margin-top: 10px;"><strong>Headline:</strong> Parakeet-NeMo + Sortformer-overlay ties SM on LibriSpeech clean read (2.96 % vs 2.98 %) and beats SM on SCOTUS legal long-form (7.63 % vs 14.87 % &mdash; <strong>−49 % relative</strong>) at comparable latency.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sb-section">
+      <h3>Speaker confusion · the editor-pain metric (measured 2026-06-03, streaming via WS)</h3>
+      <p class="sb-note">Confusion % = among speech the engine correctly detected, how often it labeled the wrong speaker. This is what the court reporter sees and has to fix. Lower is better.</p>
+      <div class="sb-table-wrap"><table class="sb">
+        <thead>
+          <tr><th>Stack</th><th>SCOTUS confusion</th><th>AMI confusion</th><th>Speakers found · SCOTUS</th><th>Speakers found · AMI</th></tr>
+        </thead>
+        <tbody>
+          <tr class="winner"><td><strong>Multitalker Parakeet + passthrough</strong> (true streaming)</td><td class="num">0.4 %</td><td class="num">3.3 %</td><td class="num">3 / 3 </td><td class="num">4 / 4 </td></tr>
+          <tr><td>Nemotron Native + Sortformer-streaming v2.1 (true streaming)</td><td class="num">12.8 %</td><td class="num">14.8 %</td><td class="num">3 / 3 </td><td class="num">4 / 4 </td></tr>
+          <tr><td>Parakeet-NeMo + Sortformer-streaming (frozen, chunked-offline)</td><td class="num">—</td><td class="num">0.5 %</td><td class="num">—</td><td class="num">4 / 4 </td></tr>
+          <tr><td>Parakeet-ONNX + pyannote (frozen)</td><td class="num">—</td><td class="num">3.5 %</td><td class="num">—</td><td class="num">3 / 4</td></tr>
+        </tbody>
+      </table></div>
+      <p class="sb-note" style="margin-top: 10px;"><strong>Multitalker streaming wins on speaker accuracy.</strong> 0.4 % confusion on SCOTUS = virtually perfect labels on clean turn-taking. 3.3 % confusion on AMI overlap-heavy meeting puts it in the same tier as our best frozen chunked-offline runs &mdash; while running true incremental streaming with partials. <strong>Multitalker is the only streaming engine in the stack that detects all reference speakers on both AMI and SCOTUS.</strong></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sb-section">
+      <h3>Auto-router validation · &gt;4-speaker fallback path (measured 2026-06-04)</h3>
+      <p class="sb-note">When <code>transcription_config.speaker_diarization_config.max_speakers &gt; 4</code>, the auto-multispeaker meta-engine routes to nemotron-native + sortformer-streaming v2.1 instead of multitalker. Same SCOTUS oral-argument audio streamed at <code>max_speakers=12</code> to validate the routing fires correctly and the fallback handles a real high-speaker-count hint without breaking.</p>
+      <div class="sb-table-wrap"><table class="sb">
+        <thead>
+          <tr><th>Test condition</th><th>Route taken</th><th>Speakers · ref / hyp</th><th>Confusion</th><th>TTFT</th></tr>
+        </thead>
+        <tbody>
+          <tr class="winner"><td><strong>SCOTUS @ <code>max_speakers=4</code></strong></td><td>Multitalker</td><td class="num">3 / 3 </td><td class="num">0.4 %</td><td class="num">~2.5 s</td></tr>
+          <tr><td><strong>SCOTUS @ <code>max_speakers=12</code></strong></td><td>Nemotron + Sortformer-streaming</td><td class="num">3 / 3 </td><td class="num">13.6 %</td><td class="num">~17 s cold / ~2 s warm</td></tr>
+        </tbody>
+      </table></div>
+      <p class="sb-note" style="margin-top: 10px;"><strong>Validates routing end-to-end.</strong> Same audio (3 real speakers — Roberts, Thomas, Waxman) dispatched to two different engine stacks based on the upper-bound hint. <em>Both</em> identify the correct speaker count without hallucinating extras &mdash; the <code>max_speakers</code> field semantically behaves as an upper bound, not a forced N. Multitalker wins on confusion% on its native ≤4 turf (0.4 vs 13.6); fallback is the safety net for sessions that exceed the 4-channel architecture (multi-party depos, mediations, oral arguments).</p>
+      <p class="sb-note" style="margin-top: 6px;"><strong>Trade-off documented:</strong> first &gt;4-spk session per container has a ~17 s cold-load to bring up the fallback model (subsequent sessions ~2 s). Multitalker stays the default for solo/standard depositions; fallback kicks in only when the session shape requires it.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sb-section">
+      <h3>Diarization DER · overall (frozen reference data)</h3>
+      <p class="sb-note">SCOTUS = clean turn-taking (~3 speakers). AMI = overlap-heavy meetings (4 speakers, ~17 % overlap). Lower is better. SM rows frozen 2026-04-27.</p>
+      <div class="sb-table-wrap"><table class="sb">
+        <thead>
+          <tr><th>Combo</th><th>SCOTUS DER</th><th>AMI DER</th></tr>
+        </thead>
+        <tbody>
+          <tr class="sm-row"><td>Speechmatics + native (frozen)</td><td class="num">2.00 %</td><td class="num">45.02 %</td></tr>
+          <tr class="sm-row"><td>Speechmatics + pyannote overlay (frozen)</td><td class="num">—</td><td class="num">40.12 %</td></tr>
+          <tr class="winner"><td><strong>Parakeet-ONNX + pyannote</strong></td><td class="num">4.46 %</td><td class="num">38.94 %</td></tr>
+          <tr class="winner"><td>Parakeet-ONNX + Sortformer-overlay</td><td class="num">2.25 %</td><td class="num">41.88 %</td></tr>
+          <tr><td>Parakeet-NeMo + Sortformer-overlay</td><td class="num">3.15 %</td><td class="num">44.34 %</td></tr>
+          <tr><td>Whisper + Sortformer-overlay</td><td class="num">5.23 %</td><td class="num">50.99 %</td></tr>
+          <tr><td><em>pyannote alone</em> (batch ceiling)</td><td class="num">—</td><td class="num">24.80 %</td></tr>
+        </tbody>
+      </table></div>
+      <p class="sb-note" style="margin-top: 10px;"><strong>SCOTUS clean turn-taking:</strong> SM 2.00 %, ours best 2.25 % — tied within measurement noise. <strong>AMI overlap-heavy:</strong> Parakeet-ONNX + pyannote 38.94 % beats SM native 45.02 % by ~6 pp and SM+pyannote 40.12 % by ~1 pp. <strong>Open problem industry-wide:</strong> every streaming approach lands in 38–46 % on AMI — closing the gap to the pyannote-batch ceiling (24.80 %) is the active research front.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sb-section">
+      <h3>Per-engine fit · which engine to pick when</h3>
+      <div class="sb-table-wrap"><table class="sb">
+        <thead>
+          <tr><th>Engine</th><th>Best for</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Nemotron Native Streaming</strong></td><td>Solo-witness depositions, single-attorney examinations</td><td>True cache-aware streaming. 560 ms latency. Partials live. Default pick.</td></tr>
+          <tr><td><strong>Multitalker Parakeet 0.6B</strong></td><td>Cross-examination, objections, multi-attorney calls</td><td>Per-speaker parallel transcripts &mdash; the only engine that handles true overlapping speech. Hurts WER on single-speaker; pair with passthrough diarizer.</td></tr>
+          <tr><td>Parakeet TDT 0.6B (chunked-offline)</td><td>Post-session reference / cleanup</td><td>Best WER ceiling (LS 0.59 % / SCOTUS 6.36 %). Finals emit at end of segment, not live.</td></tr>
+          <tr><td>FastConformer Hybrid 114M</td><td>Mid-tier general-purpose / 8 GB GPU constrained</td><td>Multi-latency cache-aware, CC-BY-4.0.</td></tr>
+          <tr><td>Parakeet TDT INT8 (ONNX)</td><td>CPU laptop fallback (no GPU)</td><td>~2 GB RAM. Cross-platform. Mac M-series + Intel + AMD.</td></tr>
+          <tr><td>Whisper Large v3</td><td>Short audio only</td><td>Drops ~22 % of words on long-form courtroom audio — chunk-boundary loss. Not viable for production.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sb-section">
+      <h3>Hardware footprint</h3>
+      <div class="sb-table-wrap"><table class="sb">
+        <thead>
+          <tr><th>Stack</th><th>Engine VRAM</th><th>Diarizer VRAM</th><th>Per-stream total</th><th>Min GPU spec</th></tr>
+        </thead>
+        <tbody>
+          <tr class="sm-row"><td>Speechmatics + native</td><td class="num">~14–15 GB</td><td class="num">(built-in)</td><td class="num">~14–15 GB used</td><td class="num"><strong>16 GB hard floor</strong></td></tr>
+          <tr class="sm-row"><td>Speechmatics + pyannote</td><td class="num">~14–15 GB</td><td class="num">~4 GB</td><td class="num">~18–19 GB used</td><td class="num"><strong>24 GB card</strong></td></tr>
+          <tr class="winner"><td>Multitalker Parakeet + passthrough</td><td class="num">~5 GB</td><td class="num">(built-in)</td><td class="num">~5 GB</td><td class="num">8 GB card</td></tr>
+          <tr class="winner"><td>Nemotron Native + Sortformer-streaming</td><td class="num">~3 GB</td><td class="num">~1.5 GB</td><td class="num">~4.5 GB</td><td class="num">8 GB card</td></tr>
+          <tr class="winner"><td>Parakeet-NeMo + Sortformer-overlay</td><td class="num">~5 GB</td><td class="num">~1.5 GB</td><td class="num">~6.5 GB</td><td class="num">8 GB card</td></tr>
+          <tr class="winner"><td>Parakeet-ONNX + pyannote (cloud)</td><td class="num">~2 GB RAM</td><td class="num">~4 GB</td><td class="num">~2 GB RAM + 4 GB VRAM</td><td class="num">any GPU</td></tr>
+          <tr class="winner"><td>Parakeet-ONNX + passthrough (Mac M-series)</td><td class="num">~2 GB RAM</td><td class="num">—</td><td class="num">~2 GB RAM, 0 GB VRAM</td><td class="num"><strong>no GPU</strong></td></tr>
+        </tbody>
+      </table></div>
+      <p class="sb-note" style="margin-top: 10px;"><strong>Hardware floor story.</strong> Speechmatics on-prem documents <strong>16 GB VRAM as a hard minimum</strong> — the enhanced model alone consumes ~14–15 GB just to load, and the container refuses to start below that. Adding pyannote on top realistically requires a 24 GB card. <strong>Our M2 stack drops the floor:</strong> Multitalker fits in a $400 RTX 4060 8 GB; CPU-only Parakeet-ONNX runs in ~2 GB RAM on any modern laptop with no GPU at all. That's a $4 k laptop spec → $500 laptop spec move, plus a per-courthouse "shared server" option on a $700 used RTX 3060 / RTX 3090.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="sb-section">
+      <h3>Post-process layers · selectable on top of any engine</h3>
+      <p class="sb-note">Two optional layers stack on top of the engine + diarizer to clean up the output. Toggle them on/off from the Playground tab to A-B compare.</p>
+      <div class="sb-table-wrap"><table class="sb">
+        <thead>
+          <tr><th>Layer</th><th>Default</th><th>What it does</th><th>Cost</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Speaker-label smoother</strong><br><span class="sb-note" style="font-size: 11px;">built into Multitalker</span></td><td class="num">always on</td><td>Hysteresis + min-speaker-duration post-process. Words attributed to a speaker with &lt;500 ms sustained activity in the surrounding ±600 ms window get reassigned to the dominant speaker in that window. Eliminates phantom S3/S4 ghosts from diarizer single-frame flicker. Per Streaming Sortformer paper (arXiv 2507.18446) §IV.</td><td class="num">~0.9 s buffer latency</td></tr>
+          <tr><td><strong>Punctuation post-process</strong><br><span class="sb-note" style="font-size: 11px;">DistilBERT or passthrough</span></td><td class="num">passthrough</td><td>Optional NVIDIA <code>punctuation_en_distilbert</code> model (110 MB, CC-BY-4.0) restores periods, commas, question marks + capitalization on the final words list. Same two-stage cascade pattern Speechmatics / AssemblyAI / Deepgram use. Toggle in the Playground dropdown to compare raw vs punctuated output.</td><td class="num">~10 ms GPU / ~50 ms CPU per emission</td></tr>
+        </tbody>
+      </table></div>
+      <p class="sb-note" style="margin-top: 10px;"><strong>Why these are layered, not baked in:</strong> court reporters editing live want different things than batch reviewers. Smoother is always on because phantom-speaker artifacts are never useful. Punctuation defaults off so you can see what the model actually emits before any sweetening — turn it on in the Playground tab dropdown to see the production-shape output.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <p class="sb-note" style="margin: 0;">
+      <strong>Methodology disclaimers.</strong>
+      n=1 per cell. No multi-seed variance. Untuned defaults (no KenLM / beam / vocab biasing).
+      All rows: DepoDash production <code>transcription_config</code>, 1× realtime streaming through this same WebSocket pipeline.
+      Speechmatics rows are frozen reference data (eval license expired 2026-05-10); SM rows are not actively re-measured.
+      Full methodology + caveats live in <code>results/SCOREBOARD.md</code> in the asr-benchmarks repo.
+    </p>
+  </div>
+
+</div><!-- /#tabScoreboard -->
+
+</div>
+
+<script>
+// Tab switching
+(function() {
+  const playBtn = document.getElementById('tabPlaygroundBtn');
+  const sbBtn   = document.getElementById('tabScoreboardBtn');
+  const playPanel = document.getElementById('tabPlayground');
+  const sbPanel   = document.getElementById('tabScoreboard');
+  function activate(which) {
+    const onPlay = which === 'playground';
+    playBtn.classList.toggle('active', onPlay);
+    sbBtn.classList.toggle('active', !onPlay);
+    playPanel.classList.toggle('active', onPlay);
+    sbPanel.classList.toggle('active', !onPlay);
+  }
+  playBtn.addEventListener('click', () => activate('playground'));
+  sbBtn.addEventListener('click',   () => activate('scoreboard'));
+})();
+</script>
+
+<script>
+const TARGET_RATE = 16000;
+// 4096 samples @ 48 kHz = 85 ms per frame. Smaller buffers (1024 = 21 ms)
+// produce 47 frames/sec and overflow the WebSocket send queue under
+// production-rate diarization, which Chrome handles by silently closing
+// the connection — symptom: page shows "Finishing transcription…" mid-call.
+const PROCESSOR_BUFFER = 4096;
+
+// Deterministic per-label colors. AOSC indexes speakers in arrival order,
+// so S1 is always the first voice the diarizer locks onto, S2 the second,
+// etc. — colors are fixed per ordinal so you can track who's talking
+// visually without having to learn a new mapping each session.
+//   S1 blue  ·  S2 red  ·  S3 green  ·  S4 yellow  ·  S5 orange
+//   S6+ cycle through purple / teal / pink / lime
+function speakerHue(name) {
+  const FIXED = {
+    'S1': 210,  // blue
+    'S2': 0,    // red
+    'S3': 135,  // green
+    'S4': 50,   // yellow
+    'S5': 28,   // orange
+  };
+  if (FIXED[name] !== undefined) return FIXED[name];
+  // Fallback cycle for S6, S7, ...
+  const CYCLE = [280, 175, 320, 90, 240];
+  const n = parseInt(name?.slice(1), 10);
+  if (Number.isFinite(n) && n >= 6) return CYCLE[(n - 6) % CYCLE.length];
+  // Unknown label (should not happen with AOSC) — neutral gray.
+  return 220;
+}
+
+// Two independent axes — ASR engine + diarizer — managed by the orchestrator
+// on :9100. Changing either dropdown fires POST /switch with both current
+// values; the orchestrator kills the depodash-asr child and reboots with new
+// env vars. The WebSocket URL is fixed at ws://localhost:9000/v2 — what's
+// behind it changes.
+// Empty string = relative URLs. Resolves to whatever host served the page,
+// which is the orchestrator behind Caddy in production. Setting this to
+// 'http://localhost:9100' (the old dev value) made the browser fetch from
+// the USER's local machine, not the cloud box — silently breaking in prod.
+const CONTROL_URL = '';
+// Derive WebSocket URL from the page's own host so the demo works whether
+// it's loaded over the cloud box's Caddy (wss://depodash-lab.acmeplexus.com/v2)
+// or local dev (ws://localhost:9100/v2). The Caddyfile routes /v2 → uvicorn
+// on :9000 and everything else → orchestrator on :9100, so the page host
+// works for both. Hardcoding `ws://localhost:9000/v2` only worked when you
+// were running the demo on the same machine as the engine.
+const WS_URL = (() => {
+  const proto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+  return `${proto}//${location.host}/v2`;
+})();
+
+const engineSel = document.getElementById('engineSel');
+const diarSel = document.getElementById('diarSel');
+const punctSel = document.getElementById('punctSel');
+const urlInput = document.getElementById('url');
+const endpointInfo = document.getElementById('endpointInfo');
+const switchBtn = document.getElementById('btn');
+
+urlInput.value = WS_URL;
+
+function fillSelect(sel, items) {
+  sel.innerHTML = '';
+  for (const [key, info] of Object.entries(items)) {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = info.label;
+    sel.appendChild(opt);
+  }
+}
+
+// Controls that lock during a /switch round-trip.
+const switchControls = [engineSel, diarSel, punctSel, switchBtn];
+
+async function loadOptions() {
+  try {
+    // Cache-buster query string is treated as a distinct resource by
+    // browsers, so previously-cached /engines responses can't satisfy
+    // these requests. (Sufficient on its own; no cache: 'no-store' needed.)
+    const bust = Date.now();
+    const [engines, diarizers, punctuators, current] = await Promise.all([
+      fetch(`${CONTROL_URL}/engines?_=${bust}`).then(r => r.json()),
+      fetch(`${CONTROL_URL}/diarizers?_=${bust}`).then(r => r.json()),
+      fetch(`${CONTROL_URL}/punctuators?_=${bust}`).then(r => r.json()),
+      fetch(`${CONTROL_URL}/current?_=${bust}`).then(r => r.json()),
+    ]);
+    fillSelect(engineSel, engines);
+    fillSelect(diarSel, diarizers);
+    fillSelect(punctSel, punctuators);
+    if (current.engine) engineSel.value = current.engine;
+    if (current.diarizer) diarSel.value = current.diarizer;
+    if (current.punctuator) punctSel.value = current.punctuator;
+  } catch (e) {
+    setLivePill('bad', 'orchestrator offline');
+    return;
+  }
+  refreshReady();
+}
+
+async function applyCombo() {
+  const engine = engineSel.value;
+  const diarizer = diarSel.value;
+  const punctuator = punctSel.value;
+  if (!engine || !diarizer || !punctuator) return;
+  setStatus(`switching to ${engine} + ${diarizer} + ${punctuator}…`);
+  setLivePill('busy', 'loading…');
+  switchControls.forEach(c => c.disabled = true);
+  try {
+    const q = new URLSearchParams({ engine, diarizer, punctuator });
+    const r = await fetch(`${CONTROL_URL}/switch?${q}`, { method: 'POST' });
+    const j = await r.json();
+    if (!r.ok) setStatus(`switch failed: ${j.error || 'unknown'}`);
+  } catch (e) {
+    setStatus(`switch failed: ${e.message}`);
+  } finally {
+    switchControls.forEach(c => c.disabled = false);
+    await refreshReady();
+    if (statusEl.textContent.startsWith('switching')) setStatus('Ready');
+  }
+}
+
+engineSel.addEventListener('change', applyCombo);
+diarSel.addEventListener('change', applyCombo);
+punctSel.addEventListener('change', applyCombo);
+urlInput.addEventListener('input', refreshReady);
+loadOptions();
+
+const livePill = document.getElementById('livePill');
+function setLivePill(state, text) {
+  livePill.classList.remove('ok', 'bad', 'busy');
+  if (state) livePill.classList.add(state);
+  endpointInfo.textContent = text;
+}
+
+async function refreshReady() {
+  const url = urlInput.value.trim();
+  if (!url.startsWith('ws')) {
+    setLivePill('bad', 'no url');
+    return;
+  }
+  const httpUrl = url.replace(/^ws/, 'http').replace(/\/v2\/?$/, '/ready');
+  try {
+    const r = await fetch(httpUrl, { method: 'GET' });
+    if (!r.ok) { setLivePill('bad', 'offline'); return; }
+    const j = await r.json();
+    setLivePill('ok', `${j.engine} + ${j.diarizer}`);
+  } catch (_) {
+    setLivePill('bad', 'offline');
+  }
+}
+
+let ws = null, audioCtx = null, processor = null, source = null, stream = null;
+let running = false;
+let lastSeq = 0;
+let drainTimer = null;
+let currentSpeaker = null, currentLineEl = null;
+
+const btn = document.getElementById('btn');
+const statusEl = document.getElementById('status');
+const partialEl = document.getElementById('partial');
+const finalsEl = document.getElementById('finals');
+const meterBar = document.getElementById('meterBar');
+
+const setStatus = s => statusEl.textContent = s;
+
+btn.onclick = async () => { running ? stop() : await start(); };
+
+async function start() {
+  partialEl.textContent = 'Listening…';
+  finalsEl.innerHTML = '';
+  currentSpeaker = null;
+  currentLineEl = null;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({
+      audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true }
+    });
+  } catch (e) {
+    setStatus('mic permission denied');
+    return;
+  }
+
+  const url = urlInput.value.trim();
+  ws = new WebSocket(url);
+  ws.binaryType = 'arraybuffer';
+  setStatus('connecting…');
+
+  ws.onopen = () => {
+    // Diarization mode follows the diarizer selection: pyannote/sortformer
+    // need diarization=speaker; passthrough doesn't care.
+    const diar = (diarSel.value && diarSel.value !== 'passthrough') ? 'speaker' : 'none';
+    const cfg = {
+      message: 'StartRecognition',
+      audio_format: { type: 'raw', encoding: 'pcm_s16le', sample_rate: TARGET_RATE },
+      transcription_config: {
+        language: 'en',
+        operating_point: 'enhanced',
+        diarization: diar,
+        enable_partials: document.getElementById('partials').checked,
+        max_delay: diar === 'none' ? 3.0 : 5.0,
+        max_delay_mode: 'flexible',
+        output_locale: 'en-US',
+        enable_entities: false,
+        punctuation_overrides: { permitted_marks: [',', '.', '?'] },
+      },
+    };
+    // Always send speaker_diarization_config.max_speakers — even when the
+    // wire-level diarization is 'none' — because the auto-multispeaker
+    // router on the server uses this field to pick the underlying engine.
+    const maxSpkInput = document.getElementById('maxSpeakers');
+    const maxSpk = Math.max(1, Math.min(50, parseInt(maxSpkInput.value, 10) || 4));
+    cfg.transcription_config.speaker_diarization_config = { max_speakers: maxSpk };
+    ws.send(JSON.stringify(cfg));
+    setStatus('handshake…');
+  };
+
+  ws.onmessage = (e) => {
+    const msg = JSON.parse(e.data);
+    // Trace every server message in DevTools console so we can diagnose
+    // disconnects without server access. Filter out per-frame AudioAdded
+    // spam — it'd flood the console at 12 msg/sec.
+    if (msg.message !== 'AudioAdded') console.log('[ws<-]', msg.message, msg);
+    switch (msg.message) {
+      case 'RecognitionStarted':
+        setStatus('listening');
+        break;
+      case 'AddPartialTranscript':
+        partialEl.textContent = msg.metadata?.transcript || '…';
+        break;
+      case 'AddTranscript': {
+        const results = msg.results || [];
+        const groups = [];
+        for (const r of results) {
+          const speaker = r.speaker || r.alternatives?.[0]?.speaker || null;
+          const content = r.alternatives?.[0]?.content || '';
+          if (!content) continue;
+          if (groups.length && groups[groups.length - 1].speaker === speaker) {
+            groups[groups.length - 1].words.push(r);
+          } else {
+            groups.push({ speaker, words: [r] });
+          }
+        }
+        for (const g of groups) {
+          let line;
+          if (currentSpeaker === g.speaker && currentLineEl) {
+            line = currentLineEl;
+          } else {
+            line = document.createElement('div');
+            line.className = 'line';
+            if (g.speaker) {
+              const sp = document.createElement('span');
+              sp.className = 'speaker';
+              sp.textContent = g.speaker;
+              const hue = speakerHue(g.speaker);
+              sp.style.color = `hsl(${hue}, 75%, 70%)`;
+              sp.style.background = `hsla(${hue}, 75%, 55%, 0.18)`;
+              line.appendChild(sp);
+            }
+            const textNode = document.createTextNode('');
+            line.appendChild(textNode);
+            line._text = textNode;
+            finalsEl.appendChild(line);
+            currentLineEl = line;
+            currentSpeaker = g.speaker;
+          }
+          let text = line._text.nodeValue || '';
+          for (const r of g.words) {
+            const c = r.alternatives?.[0]?.content || '';
+            if (r.type === 'punctuation') text += c;
+            else text += (text && !text.endsWith(' ') ? ' ' : '') + c;
+          }
+          line._text.nodeValue = text;
+        }
+        finalsEl.scrollTop = finalsEl.scrollHeight;
+        partialEl.textContent = 'Listening…';
+        break;
+      }
+      case 'EndOfTranscript':
+        setStatus('done');
+        teardownSocket();
+        break;
+      case 'Error':
+        setStatus('error: ' + (msg.reason || 'unknown'));
+        stop();
+        break;
+    }
+  };
+  ws.onerror = () => setStatus('connection failed');
+  ws.onclose = () => setStatus('disconnected');
+
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const sourceRate = audioCtx.sampleRate;
+  const ratio = sourceRate / TARGET_RATE;
+  source = audioCtx.createMediaStreamSource(stream);
+  processor = audioCtx.createScriptProcessor(PROCESSOR_BUFFER, 1, 1);
+
+  // Cap on outstanding outbound bytes. Chrome's WebSocket close-with-1006
+  // behavior kicks in around ~16 MB queued; we keep two orders of magnitude
+  // of headroom and drop a frame rather than backlog when the server is
+  // catching up on diarization.
+  const MAX_BUFFERED_BYTES = 256 * 1024;
+
+  processor.onaudioprocess = (e) => {
+    if (!ws || ws.readyState !== WebSocket.OPEN) return;
+    if (ws.bufferedAmount > MAX_BUFFERED_BYTES) {
+      // Server is behind — drop this frame instead of growing the socket
+      // buffer and tripping a forced close.
+      return;
+    }
+    const input = e.inputBuffer.getChannelData(0);
+    const outLen = Math.floor(input.length / ratio);
+    const int16 = new Int16Array(outLen);
+    let peak = 0;
+    for (let i = 0; i < outLen; i++) {
+      const start = Math.floor(i * ratio);
+      const end = Math.floor((i + 1) * ratio);
+      let sum = 0;
+      for (let j = start; j < end; j++) sum += input[j];
+      const s = sum / Math.max(1, end - start);
+      const a = Math.abs(s);
+      if (a > peak) peak = a;
+      int16[i] = Math.max(-1, Math.min(1, s)) * 32767;
+    }
+    ws.send(int16.buffer);
+    lastSeq++;
+    meterBar.style.width = Math.min(100, peak * 200) + '%';
+  };
+
+  source.connect(processor);
+  processor.connect(audioCtx.destination);
+
+  btn.textContent = 'Stop';
+  btn.classList.add('recording');
+  running = true;
+}
+
+function stop() {
+  running = false;
+  btn.textContent = 'Start';
+  btn.classList.remove('recording');
+  meterBar.style.width = '0%';
+
+  // Stop capturing audio immediately…
+  if (processor) { try { processor.disconnect(); } catch (_) {} processor = null; }
+  if (source) { try { source.disconnect(); } catch (_) {} source = null; }
+  if (audioCtx) { try { audioCtx.close(); } catch (_) {} audioCtx = null; }
+  if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+
+  // …but keep the socket OPEN so the server can drain its final transcribe
+  // pass and deliver the trailing AddTranscript + EndOfTranscript. We close
+  // on EndOfTranscript (see onmessage) or after a safety timeout.
+  try {
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify({ message: 'EndOfStream', last_seq_no: lastSeq }));
+      setStatus('finishing…');
+      partialEl.textContent = 'Finishing transcription…';
+      if (drainTimer) clearTimeout(drainTimer);
+      drainTimer = setTimeout(teardownSocket, 20000);
+      return;
+    }
+  } catch (_) {}
+  teardownSocket();
+}
+
+function teardownSocket() {
+  if (drainTimer) { clearTimeout(drainTimer); drainTimer = null; }
+  if (ws && ws.readyState <= 1) { try { ws.close(); } catch (_) {} }
+  ws = null;
+  lastSeq = 0;
+  partialEl.textContent = 'Waiting for audio…';
+  refreshReady();
+}
+</script>
+</body>
+</html>

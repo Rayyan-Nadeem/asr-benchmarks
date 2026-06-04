@@ -1,0 +1,7267 @@
+{
+  "engine": "parakeet-nemo",
+  "diarizer": "passthrough",
+  "case": "ami-es2004a-5min",
+  "tag": "gpu-l4-streaming",
+  "url": "ws://127.0.0.1:9000/v2",
+  "config": {
+    "language": "en",
+    "operating_point": "enhanced",
+    "diarization": "none",
+    "enable_partials": false,
+    "max_delay": 3.0,
+    "max_delay_mode": "flexible",
+    "output_locale": "en-US",
+    "enable_entities": false,
+    "punctuation_overrides": {
+      "permitted_marks": [
+        ",",
+        ".",
+        "?"
+      ]
+    }
+  },
+  "measured": {
+    "audio_duration_s": 300.0,
+    "wall_clock_s": 304.962230309,
+    "ttft_s": 304.96191530299984,
+    "first_final_s": 304.96191530299984,
+    "rtf": 1.0165407676966667,
+    "partial_count": 0,
+    "final_count": 1,
+    "transcript": "We standing on a chair. Well, since you guys have chosen the ones I wanted to do. Okay. And also my drawing skill isn't that great. Well, as you can see, the quality of the work today is um I think it's outstandingly good. Okay, now I'm gonna have to change what it was originally gonna be because that looks like a beak now, so crocodile. Yeah, it can be a crocodile. It can be a crocodile. Well it was it was anybody firstly it was an attempt at a T Rex, and then it sort of changed into a pelican, but it can be a crocodile That's lovely. Yeah, and uh I'll have to think on the spot of uh things that it is. Um scary uh strong. Yeah, that's about it, I think. Okay. I'm I'm very impressed with your artistic skills. Mines are dreadful. Oops, this is now coming apart. Let me just put the top in. I hope that clicks in. I'll just I'll hold it on. Okay. Oops. Oh dear. What happened there? Technical help. Hopefully that'll stay on. Two-handed version. Okay. Okay. Uh again, this is off the top of my head. I was gonna do a big cat too. Um dear, it doesn't look quite like what I want it to be. Uh it's not a vampire bat, honestly. Uh and somewhere there's a body behind. Okay. That's my dreadful. That's the worst. Yeah, it's meant to be an eagle. Right. You can tell it's a flying animal. Could have been a seagull. I never thought of a seagull. An eagle. Um again, I'm thinking on my feet, goodness. I suppose they're also independent. I'd put that one down again. Um depend independent, right? Did you say they're good at golf? Yeah. Are they? Eagle. Oh right, okay. I'm not good at golf. I'll say they're quite free-spirited. Flying around everywhere. Doing their own thing. And uh birds of prey, aren't they? Oh dear. Intrepid. Intrepid. There we go. That's that pen's gonna be okay. Whoops. Okay. That was fine. Right. Um finance-wise, we've got uh selling price at twenty-five euros, which I don't actually know what that is in pounds at all. Any ideas? It's about seventeen. One point four would make a bone or something like that. Yeah, yeah, something like that. So, okay. That's expensive. Should we be making notes of this? We can just refer to this later, can't we? I think so. Yeah, I think so. I'd be able to um put it up or put it in the shared folder or something. Having said that though, if you want to get one of those, the the ones on the market at the moment they're about twenty pounds anyway. So we had to buy one. So I suppose later it depends if we want to undercut the price. We d or or is it going to make our product look a cheapy cheapy option? Yeah. Um production costs at twelve fifty. So pretty huge module. Half of the selling prices taken up by building it. Um profit aim is fifteen million euros, which is uh in our first year. Yep, yes. Um, yeah. I presume so. Um You've got market range international, and you did say earlier it's got to be uh um accessible and usable by sort of all age groups. Just we're not focusing on business market any particular thing. It's everyone, user friendly to everyone. Okay. Big target group. Yes. Yes. I don't think we have to I don't think it's a case of worrying about different",
+    "finals": [
+      {
+        "t": 304.96191530299984,
+        "transcript": "We standing on a chair. Well, since you guys have chosen the ones I wanted to do. Okay. And also my drawing skill isn't that great. Well, as you can see, the quality of the work today is um I think it's outstandingly good. Okay, now I'm gonna have to change what it was originally gonna be because that looks like a beak now, so crocodile. Yeah, it can be a crocodile. It can be a crocodile. Well it was it was anybody firstly it was an attempt at a T Rex, and then it sort of changed into a pelican, but it can be a crocodile That's lovely. Yeah, and uh I'll have to think on the spot of uh things that it is. Um scary uh strong. Yeah, that's about it, I think. Okay. I'm I'm very impressed with your artistic skills. Mines are dreadful. Oops, this is now coming apart. Let me just put the top in. I hope that clicks in. I'll just I'll hold it on. Okay. Oops. Oh dear. What happened there? Technical help. Hopefully that'll stay on. Two-handed version. Okay. Okay. Uh again, this is off the top of my head. I was gonna do a big cat too. Um dear, it doesn't look quite like what I want it to be. Uh it's not a vampire bat, honestly. Uh and somewhere there's a body behind. Okay. That's my dreadful. That's the worst. Yeah, it's meant to be an eagle. Right. You can tell it's a flying animal. Could have been a seagull. I never thought of a seagull. An eagle. Um again, I'm thinking on my feet, goodness. I suppose they're also independent. I'd put that one down again. Um depend independent, right? Did you say they're good at golf? Yeah. Are they? Eagle. Oh right, okay. I'm not good at golf. I'll say they're quite free-spirited. Flying around everywhere. Doing their own thing. And uh birds of prey, aren't they? Oh dear. Intrepid. Intrepid. There we go. That's that pen's gonna be okay. Whoops. Okay. That was fine. Right. Um finance-wise, we've got uh selling price at twenty-five euros, which I don't actually know what that is in pounds at all. Any ideas? It's about seventeen. One point four would make a bone or something like that. Yeah, yeah, something like that. So, okay. That's expensive. Should we be making notes of this? We can just refer to this later, can't we? I think so. Yeah, I think so. I'd be able to um put it up or put it in the shared folder or something. Having said that though, if you want to get one of those, the the ones on the market at the moment they're about twenty pounds anyway. So we had to buy one. So I suppose later it depends if we want to undercut the price. We d or or is it going to make our product look a cheapy cheapy option? Yeah. Um production costs at twelve fifty. So pretty huge module. Half of the selling prices taken up by building it. Um profit aim is fifteen million euros, which is uh in our first year. Yep, yes. Um, yeah. I presume so. Um You've got market range international, and you did say earlier it's got to be uh um accessible and usable by sort of all age groups. Just we're not focusing on business market any particular thing. It's everyone, user friendly to everyone. Okay. Big target group. Yes. Yes. I don't think we have to I don't think it's a case of worrying about different",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 0.4,
+            "end_time": 0.56,
+            "alternatives": [
+              {
+                "content": "We",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 0.8,
+            "end_time": 1.12,
+            "alternatives": [
+              {
+                "content": "standing",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 1.12,
+            "end_time": 1.28,
+            "alternatives": [
+              {
+                "content": "on",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 1.28,
+            "end_time": 1.36,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 1.36,
+            "end_time": 1.52,
+            "alternatives": [
+              {
+                "content": "chair.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 1.84,
+            "end_time": 2.0,
+            "alternatives": [
+              {
+                "content": "Well,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 2.08,
+            "end_time": 2.32,
+            "alternatives": [
+              {
+                "content": "since",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 2.32,
+            "end_time": 2.48,
+            "alternatives": [
+              {
+                "content": "you",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 2.48,
+            "end_time": 2.64,
+            "alternatives": [
+              {
+                "content": "guys",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 2.64,
+            "end_time": 2.8000000000000003,
+            "alternatives": [
+              {
+                "content": "have",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 2.8000000000000003,
+            "end_time": 3.2,
+            "alternatives": [
+              {
+                "content": "chosen",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 3.2,
+            "end_time": 3.44,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 3.44,
+            "end_time": 3.68,
+            "alternatives": [
+              {
+                "content": "ones",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 3.68,
+            "end_time": 3.84,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 3.84,
+            "end_time": 4.08,
+            "alternatives": [
+              {
+                "content": "wanted",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 4.08,
+            "end_time": 4.16,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 4.16,
+            "end_time": 4.32,
+            "alternatives": [
+              {
+                "content": "do.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 4.88,
+            "end_time": 5.12,
+            "alternatives": [
+              {
+                "content": "Okay.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 11.28,
+            "end_time": 11.6,
+            "alternatives": [
+              {
+                "content": "And",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 11.68,
+            "end_time": 11.92,
+            "alternatives": [
+              {
+                "content": "also",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 12.08,
+            "end_time": 12.32,
+            "alternatives": [
+              {
+                "content": "my",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 12.32,
+            "end_time": 12.8,
+            "alternatives": [
+              {
+                "content": "drawing",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 12.8,
+            "end_time": 13.040000000000001,
+            "alternatives": [
+              {
+                "content": "skill",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 13.040000000000001,
+            "end_time": 13.280000000000001,
+            "alternatives": [
+              {
+                "content": "isn't",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 13.280000000000001,
+            "end_time": 13.44,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 13.44,
+            "end_time": 13.68,
+            "alternatives": [
+              {
+                "content": "great.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 13.92,
+            "end_time": 14.08,
+            "alternatives": [
+              {
+                "content": "Well,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 14.16,
+            "end_time": 14.32,
+            "alternatives": [
+              {
+                "content": "as",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 14.32,
+            "end_time": 14.48,
+            "alternatives": [
+              {
+                "content": "you",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 14.48,
+            "end_time": 14.64,
+            "alternatives": [
+              {
+                "content": "can",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 14.64,
+            "end_time": 14.8,
+            "alternatives": [
+              {
+                "content": "see,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 14.88,
+            "end_time": 15.040000000000001,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 15.040000000000001,
+            "end_time": 15.36,
+            "alternatives": [
+              {
+                "content": "quality",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 15.36,
+            "end_time": 15.52,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 15.52,
+            "end_time": 15.76,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 15.76,
+            "end_time": 16.0,
+            "alternatives": [
+              {
+                "content": "work",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 16.0,
+            "end_time": 16.16,
+            "alternatives": [
+              {
+                "content": "today",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 16.240000000000002,
+            "end_time": 16.32,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 16.48,
+            "end_time": 16.56,
+            "alternatives": [
+              {
+                "content": "um",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 16.8,
+            "end_time": 16.88,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 16.88,
+            "end_time": 17.04,
+            "alternatives": [
+              {
+                "content": "think",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 17.04,
+            "end_time": 17.28,
+            "alternatives": [
+              {
+                "content": "it's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 17.28,
+            "end_time": 18.0,
+            "alternatives": [
+              {
+                "content": "outstandingly",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 18.0,
+            "end_time": 18.16,
+            "alternatives": [
+              {
+                "content": "good.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 19.44,
+            "end_time": 19.6,
+            "alternatives": [
+              {
+                "content": "Okay,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 19.76,
+            "end_time": 20.0,
+            "alternatives": [
+              {
+                "content": "now",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 20.0,
+            "end_time": 20.16,
+            "alternatives": [
+              {
+                "content": "I'm",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 20.16,
+            "end_time": 20.400000000000002,
+            "alternatives": [
+              {
+                "content": "gonna",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 20.400000000000002,
+            "end_time": 20.56,
+            "alternatives": [
+              {
+                "content": "have",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 20.56,
+            "end_time": 20.64,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 20.64,
+            "end_time": 20.96,
+            "alternatives": [
+              {
+                "content": "change",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 20.96,
+            "end_time": 21.12,
+            "alternatives": [
+              {
+                "content": "what",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 21.12,
+            "end_time": 21.36,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 21.36,
+            "end_time": 21.6,
+            "alternatives": [
+              {
+                "content": "was",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 21.6,
+            "end_time": 21.92,
+            "alternatives": [
+              {
+                "content": "originally",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.080000000000002,
+            "end_time": 22.32,
+            "alternatives": [
+              {
+                "content": "gonna",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.32,
+            "end_time": 22.48,
+            "alternatives": [
+              {
+                "content": "be",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.64,
+            "end_time": 22.8,
+            "alternatives": [
+              {
+                "content": "because",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.8,
+            "end_time": 22.96,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.96,
+            "end_time": 23.2,
+            "alternatives": [
+              {
+                "content": "looks",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 23.2,
+            "end_time": 23.28,
+            "alternatives": [
+              {
+                "content": "like",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 23.28,
+            "end_time": 23.52,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 23.52,
+            "end_time": 23.92,
+            "alternatives": [
+              {
+                "content": "beak",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 23.92,
+            "end_time": 24.16,
+            "alternatives": [
+              {
+                "content": "now,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 24.32,
+            "end_time": 24.64,
+            "alternatives": [
+              {
+                "content": "so",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 30.96,
+            "end_time": 32.160000000000004,
+            "alternatives": [
+              {
+                "content": "crocodile.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 34.56,
+            "end_time": 34.64,
+            "alternatives": [
+              {
+                "content": "Yeah,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 34.72,
+            "end_time": 34.800000000000004,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 34.800000000000004,
+            "end_time": 34.96,
+            "alternatives": [
+              {
+                "content": "can",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 34.96,
+            "end_time": 35.04,
+            "alternatives": [
+              {
+                "content": "be",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 35.04,
+            "end_time": 35.12,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 35.12,
+            "end_time": 35.76,
+            "alternatives": [
+              {
+                "content": "crocodile.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 35.92,
+            "end_time": 36.0,
+            "alternatives": [
+              {
+                "content": "It",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 36.0,
+            "end_time": 36.160000000000004,
+            "alternatives": [
+              {
+                "content": "can",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 36.160000000000004,
+            "end_time": 36.32,
+            "alternatives": [
+              {
+                "content": "be",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 36.32,
+            "end_time": 36.480000000000004,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 36.480000000000004,
+            "end_time": 37.28,
+            "alternatives": [
+              {
+                "content": "crocodile.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 37.84,
+            "end_time": 38.0,
+            "alternatives": [
+              {
+                "content": "Well",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 38.08,
+            "end_time": 38.160000000000004,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 38.160000000000004,
+            "end_time": 38.24,
+            "alternatives": [
+              {
+                "content": "was",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 38.480000000000004,
+            "end_time": 38.56,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 38.56,
+            "end_time": 38.64,
+            "alternatives": [
+              {
+                "content": "was",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 38.72,
+            "end_time": 39.28,
+            "alternatives": [
+              {
+                "content": "anybody",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 39.92,
+            "end_time": 40.160000000000004,
+            "alternatives": [
+              {
+                "content": "firstly",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 40.24,
+            "end_time": 40.32,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 40.32,
+            "end_time": 40.480000000000004,
+            "alternatives": [
+              {
+                "content": "was",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 40.480000000000004,
+            "end_time": 40.56,
+            "alternatives": [
+              {
+                "content": "an",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 40.56,
+            "end_time": 40.88,
+            "alternatives": [
+              {
+                "content": "attempt",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 40.88,
+            "end_time": 40.96,
+            "alternatives": [
+              {
+                "content": "at",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 40.96,
+            "end_time": 41.12,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 41.12,
+            "end_time": 41.28,
+            "alternatives": [
+              {
+                "content": "T",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 41.52,
+            "end_time": 41.84,
+            "alternatives": [
+              {
+                "content": "Rex,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 42.160000000000004,
+            "end_time": 42.4,
+            "alternatives": [
+              {
+                "content": "and",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 42.4,
+            "end_time": 42.64,
+            "alternatives": [
+              {
+                "content": "then",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 42.64,
+            "end_time": 42.88,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 42.96,
+            "end_time": 43.2,
+            "alternatives": [
+              {
+                "content": "sort",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 43.2,
+            "end_time": 43.36,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 43.36,
+            "end_time": 43.68,
+            "alternatives": [
+              {
+                "content": "changed",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 43.68,
+            "end_time": 43.84,
+            "alternatives": [
+              {
+                "content": "into",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 43.84,
+            "end_time": 44.0,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 44.0,
+            "end_time": 44.480000000000004,
+            "alternatives": [
+              {
+                "content": "pelican,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 44.56,
+            "end_time": 44.72,
+            "alternatives": [
+              {
+                "content": "but",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 44.72,
+            "end_time": 44.800000000000004,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 44.800000000000004,
+            "end_time": 44.88,
+            "alternatives": [
+              {
+                "content": "can",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 44.88,
+            "end_time": 44.96,
+            "alternatives": [
+              {
+                "content": "be",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 44.96,
+            "end_time": 45.04,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 45.04,
+            "end_time": 45.52,
+            "alternatives": [
+              {
+                "content": "crocodile",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 59.92,
+            "end_time": 60.4,
+            "alternatives": [
+              {
+                "content": "That's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 60.4,
+            "end_time": 60.800000000000004,
+            "alternatives": [
+              {
+                "content": "lovely.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 60.96,
+            "end_time": 61.120000000000005,
+            "alternatives": [
+              {
+                "content": "Yeah,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 61.92,
+            "end_time": 62.0,
+            "alternatives": [
+              {
+                "content": "and",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 62.08,
+            "end_time": 62.32,
+            "alternatives": [
+              {
+                "content": "uh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 62.480000000000004,
+            "end_time": 62.88,
+            "alternatives": [
+              {
+                "content": "I'll",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 62.88,
+            "end_time": 63.04,
+            "alternatives": [
+              {
+                "content": "have",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 63.04,
+            "end_time": 63.120000000000005,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 63.120000000000005,
+            "end_time": 63.36,
+            "alternatives": [
+              {
+                "content": "think",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 63.36,
+            "end_time": 63.52,
+            "alternatives": [
+              {
+                "content": "on",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 63.52,
+            "end_time": 63.68,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 63.68,
+            "end_time": 64.0,
+            "alternatives": [
+              {
+                "content": "spot",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 64.0,
+            "end_time": 64.16,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 64.16,
+            "end_time": 64.4,
+            "alternatives": [
+              {
+                "content": "uh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 64.4,
+            "end_time": 64.8,
+            "alternatives": [
+              {
+                "content": "things",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 64.8,
+            "end_time": 65.04,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 65.04,
+            "end_time": 65.36,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 65.36,
+            "end_time": 65.68,
+            "alternatives": [
+              {
+                "content": "is.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 66.08,
+            "end_time": 66.4,
+            "alternatives": [
+              {
+                "content": "Um",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 69.04,
+            "end_time": 69.68,
+            "alternatives": [
+              {
+                "content": "scary",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 72.4,
+            "end_time": 72.64,
+            "alternatives": [
+              {
+                "content": "uh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 72.96000000000001,
+            "end_time": 73.52,
+            "alternatives": [
+              {
+                "content": "strong.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 78.4,
+            "end_time": 78.72,
+            "alternatives": [
+              {
+                "content": "Yeah,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 78.8,
+            "end_time": 79.2,
+            "alternatives": [
+              {
+                "content": "that's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 79.2,
+            "end_time": 79.36,
+            "alternatives": [
+              {
+                "content": "about",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 79.36,
+            "end_time": 79.52,
+            "alternatives": [
+              {
+                "content": "it,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 79.68,
+            "end_time": 79.84,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 79.84,
+            "end_time": 80.08,
+            "alternatives": [
+              {
+                "content": "think.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 81.84,
+            "end_time": 82.16,
+            "alternatives": [
+              {
+                "content": "Okay.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 82.88,
+            "end_time": 83.2,
+            "alternatives": [
+              {
+                "content": "I'm",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 83.2,
+            "end_time": 83.52,
+            "alternatives": [
+              {
+                "content": "I'm",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 83.52,
+            "end_time": 83.68,
+            "alternatives": [
+              {
+                "content": "very",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 83.68,
+            "end_time": 84.08,
+            "alternatives": [
+              {
+                "content": "impressed",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 84.08,
+            "end_time": 84.32000000000001,
+            "alternatives": [
+              {
+                "content": "with",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 84.32000000000001,
+            "end_time": 84.48,
+            "alternatives": [
+              {
+                "content": "your",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 84.48,
+            "end_time": 84.96000000000001,
+            "alternatives": [
+              {
+                "content": "artistic",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 84.96000000000001,
+            "end_time": 85.28,
+            "alternatives": [
+              {
+                "content": "skills.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 85.36,
+            "end_time": 85.60000000000001,
+            "alternatives": [
+              {
+                "content": "Mines",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 85.76,
+            "end_time": 86.0,
+            "alternatives": [
+              {
+                "content": "are",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 86.0,
+            "end_time": 86.88,
+            "alternatives": [
+              {
+                "content": "dreadful.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 87.60000000000001,
+            "end_time": 88.08,
+            "alternatives": [
+              {
+                "content": "Oops,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 88.16,
+            "end_time": 88.32000000000001,
+            "alternatives": [
+              {
+                "content": "this",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 88.32000000000001,
+            "end_time": 88.48,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 88.48,
+            "end_time": 88.64,
+            "alternatives": [
+              {
+                "content": "now",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 88.64,
+            "end_time": 88.96000000000001,
+            "alternatives": [
+              {
+                "content": "coming",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 88.96000000000001,
+            "end_time": 89.36,
+            "alternatives": [
+              {
+                "content": "apart.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 89.44,
+            "end_time": 89.60000000000001,
+            "alternatives": [
+              {
+                "content": "Let",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 89.60000000000001,
+            "end_time": 89.76,
+            "alternatives": [
+              {
+                "content": "me",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 89.76,
+            "end_time": 89.92,
+            "alternatives": [
+              {
+                "content": "just",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 89.92,
+            "end_time": 90.16,
+            "alternatives": [
+              {
+                "content": "put",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 90.16,
+            "end_time": 90.24,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 90.24,
+            "end_time": 90.64,
+            "alternatives": [
+              {
+                "content": "top",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 90.64,
+            "end_time": 90.88,
+            "alternatives": [
+              {
+                "content": "in.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 93.68,
+            "end_time": 93.84,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 93.92,
+            "end_time": 94.24,
+            "alternatives": [
+              {
+                "content": "hope",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 94.24,
+            "end_time": 94.4,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 94.4,
+            "end_time": 94.8,
+            "alternatives": [
+              {
+                "content": "clicks",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 94.8,
+            "end_time": 94.96000000000001,
+            "alternatives": [
+              {
+                "content": "in.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 95.12,
+            "end_time": 95.28,
+            "alternatives": [
+              {
+                "content": "I'll",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 95.28,
+            "end_time": 95.36,
+            "alternatives": [
+              {
+                "content": "just",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 95.52,
+            "end_time": 95.68,
+            "alternatives": [
+              {
+                "content": "I'll",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 95.68,
+            "end_time": 95.92,
+            "alternatives": [
+              {
+                "content": "hold",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 95.92,
+            "end_time": 96.16,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 96.16,
+            "end_time": 96.32000000000001,
+            "alternatives": [
+              {
+                "content": "on.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 96.48,
+            "end_time": 96.72,
+            "alternatives": [
+              {
+                "content": "Okay.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 97.76,
+            "end_time": 98.24000000000001,
+            "alternatives": [
+              {
+                "content": "Oops.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 98.4,
+            "end_time": 98.64,
+            "alternatives": [
+              {
+                "content": "Oh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 98.8,
+            "end_time": 99.28,
+            "alternatives": [
+              {
+                "content": "dear.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 99.60000000000001,
+            "end_time": 99.92,
+            "alternatives": [
+              {
+                "content": "What",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 99.92,
+            "end_time": 100.48,
+            "alternatives": [
+              {
+                "content": "happened",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 100.48,
+            "end_time": 100.72,
+            "alternatives": [
+              {
+                "content": "there?",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 101.04,
+            "end_time": 101.84,
+            "alternatives": [
+              {
+                "content": "Technical",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 101.84,
+            "end_time": 102.48,
+            "alternatives": [
+              {
+                "content": "help.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 105.12,
+            "end_time": 105.68,
+            "alternatives": [
+              {
+                "content": "Hopefully",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 105.76,
+            "end_time": 106.16,
+            "alternatives": [
+              {
+                "content": "that'll",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 106.16,
+            "end_time": 106.4,
+            "alternatives": [
+              {
+                "content": "stay",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 106.4,
+            "end_time": 106.56,
+            "alternatives": [
+              {
+                "content": "on.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 106.72,
+            "end_time": 107.52,
+            "alternatives": [
+              {
+                "content": "Two-handed",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 107.52,
+            "end_time": 107.84,
+            "alternatives": [
+              {
+                "content": "version.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 108.08,
+            "end_time": 108.4,
+            "alternatives": [
+              {
+                "content": "Okay.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 108.64,
+            "end_time": 108.96000000000001,
+            "alternatives": [
+              {
+                "content": "Okay.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 109.68,
+            "end_time": 110.32000000000001,
+            "alternatives": [
+              {
+                "content": "Uh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 114.08,
+            "end_time": 114.48,
+            "alternatives": [
+              {
+                "content": "again,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 114.56,
+            "end_time": 114.8,
+            "alternatives": [
+              {
+                "content": "this",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 114.8,
+            "end_time": 114.96000000000001,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 114.96000000000001,
+            "end_time": 115.2,
+            "alternatives": [
+              {
+                "content": "off",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 115.2,
+            "end_time": 115.28,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 115.28,
+            "end_time": 115.44,
+            "alternatives": [
+              {
+                "content": "top",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 115.44,
+            "end_time": 115.52,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 115.52,
+            "end_time": 115.60000000000001,
+            "alternatives": [
+              {
+                "content": "my",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 115.60000000000001,
+            "end_time": 115.84,
+            "alternatives": [
+              {
+                "content": "head.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 115.92,
+            "end_time": 116.0,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 116.0,
+            "end_time": 116.16,
+            "alternatives": [
+              {
+                "content": "was",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 116.16,
+            "end_time": 116.32000000000001,
+            "alternatives": [
+              {
+                "content": "gonna",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 116.32000000000001,
+            "end_time": 116.48,
+            "alternatives": [
+              {
+                "content": "do",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 116.48,
+            "end_time": 116.56,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 116.56,
+            "end_time": 116.88,
+            "alternatives": [
+              {
+                "content": "big",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 116.88,
+            "end_time": 117.12,
+            "alternatives": [
+              {
+                "content": "cat",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 117.28,
+            "end_time": 117.92,
+            "alternatives": [
+              {
+                "content": "too.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 118.24000000000001,
+            "end_time": 118.56,
+            "alternatives": [
+              {
+                "content": "Um",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 121.2,
+            "end_time": 121.44,
+            "alternatives": [
+              {
+                "content": "dear,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 121.60000000000001,
+            "end_time": 121.68,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 121.68,
+            "end_time": 121.92,
+            "alternatives": [
+              {
+                "content": "doesn't",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 121.92,
+            "end_time": 122.08,
+            "alternatives": [
+              {
+                "content": "look",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 122.08,
+            "end_time": 122.24000000000001,
+            "alternatives": [
+              {
+                "content": "quite",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 122.24000000000001,
+            "end_time": 122.4,
+            "alternatives": [
+              {
+                "content": "like",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 122.4,
+            "end_time": 122.56,
+            "alternatives": [
+              {
+                "content": "what",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 122.56,
+            "end_time": 122.72,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 122.72,
+            "end_time": 122.88,
+            "alternatives": [
+              {
+                "content": "want",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 122.88,
+            "end_time": 123.12,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 123.12,
+            "end_time": 123.36,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 123.36,
+            "end_time": 123.52,
+            "alternatives": [
+              {
+                "content": "be.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 126.88000000000001,
+            "end_time": 127.28,
+            "alternatives": [
+              {
+                "content": "Uh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 128.4,
+            "end_time": 128.72,
+            "alternatives": [
+              {
+                "content": "it's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 128.72,
+            "end_time": 128.88,
+            "alternatives": [
+              {
+                "content": "not",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 128.88,
+            "end_time": 128.96,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 128.96,
+            "end_time": 129.36,
+            "alternatives": [
+              {
+                "content": "vampire",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 129.52,
+            "end_time": 129.76,
+            "alternatives": [
+              {
+                "content": "bat,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 129.84,
+            "end_time": 130.4,
+            "alternatives": [
+              {
+                "content": "honestly.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 132.64000000000001,
+            "end_time": 132.88,
+            "alternatives": [
+              {
+                "content": "Uh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 132.96,
+            "end_time": 133.2,
+            "alternatives": [
+              {
+                "content": "and",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 133.2,
+            "end_time": 133.6,
+            "alternatives": [
+              {
+                "content": "somewhere",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 133.68,
+            "end_time": 134.0,
+            "alternatives": [
+              {
+                "content": "there's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 134.0,
+            "end_time": 134.08,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 134.08,
+            "end_time": 134.48,
+            "alternatives": [
+              {
+                "content": "body",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 134.48,
+            "end_time": 135.12,
+            "alternatives": [
+              {
+                "content": "behind.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 137.12,
+            "end_time": 137.36,
+            "alternatives": [
+              {
+                "content": "Okay.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 137.76,
+            "end_time": 138.0,
+            "alternatives": [
+              {
+                "content": "That's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 138.0,
+            "end_time": 138.16,
+            "alternatives": [
+              {
+                "content": "my",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 138.16,
+            "end_time": 138.56,
+            "alternatives": [
+              {
+                "content": "dreadful.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 138.8,
+            "end_time": 139.04,
+            "alternatives": [
+              {
+                "content": "That's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 139.04,
+            "end_time": 139.12,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 139.12,
+            "end_time": 139.52,
+            "alternatives": [
+              {
+                "content": "worst.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 139.68,
+            "end_time": 139.84,
+            "alternatives": [
+              {
+                "content": "Yeah,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 140.4,
+            "end_time": 140.64000000000001,
+            "alternatives": [
+              {
+                "content": "it's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 140.64000000000001,
+            "end_time": 140.8,
+            "alternatives": [
+              {
+                "content": "meant",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 140.8,
+            "end_time": 140.88,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 140.88,
+            "end_time": 141.04,
+            "alternatives": [
+              {
+                "content": "be",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 141.04,
+            "end_time": 141.12,
+            "alternatives": [
+              {
+                "content": "an",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 141.12,
+            "end_time": 141.36,
+            "alternatives": [
+              {
+                "content": "eagle.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 141.84,
+            "end_time": 142.0,
+            "alternatives": [
+              {
+                "content": "Right.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 142.96,
+            "end_time": 143.04,
+            "alternatives": [
+              {
+                "content": "You",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 143.04,
+            "end_time": 143.20000000000002,
+            "alternatives": [
+              {
+                "content": "can",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 143.20000000000002,
+            "end_time": 143.36,
+            "alternatives": [
+              {
+                "content": "tell",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 143.36,
+            "end_time": 143.68,
+            "alternatives": [
+              {
+                "content": "it's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 143.68,
+            "end_time": 143.76,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 143.76,
+            "end_time": 144.24,
+            "alternatives": [
+              {
+                "content": "flying",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 144.24,
+            "end_time": 144.8,
+            "alternatives": [
+              {
+                "content": "animal.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 145.44,
+            "end_time": 145.76,
+            "alternatives": [
+              {
+                "content": "Could",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 145.76,
+            "end_time": 145.84,
+            "alternatives": [
+              {
+                "content": "have",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 145.84,
+            "end_time": 146.0,
+            "alternatives": [
+              {
+                "content": "been",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 146.0,
+            "end_time": 146.08,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 146.08,
+            "end_time": 146.48,
+            "alternatives": [
+              {
+                "content": "seagull.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 146.56,
+            "end_time": 146.72,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 146.72,
+            "end_time": 146.88,
+            "alternatives": [
+              {
+                "content": "never",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 146.88,
+            "end_time": 147.04,
+            "alternatives": [
+              {
+                "content": "thought",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 147.04,
+            "end_time": 147.12,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 147.12,
+            "end_time": 147.28,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 147.28,
+            "end_time": 147.76,
+            "alternatives": [
+              {
+                "content": "seagull.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 148.0,
+            "end_time": 148.24,
+            "alternatives": [
+              {
+                "content": "An",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 148.24,
+            "end_time": 148.64000000000001,
+            "alternatives": [
+              {
+                "content": "eagle.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 148.72,
+            "end_time": 148.88,
+            "alternatives": [
+              {
+                "content": "Um",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 149.04,
+            "end_time": 149.20000000000002,
+            "alternatives": [
+              {
+                "content": "again,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 149.28,
+            "end_time": 149.52,
+            "alternatives": [
+              {
+                "content": "I'm",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 149.52,
+            "end_time": 149.84,
+            "alternatives": [
+              {
+                "content": "thinking",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 149.84,
+            "end_time": 150.0,
+            "alternatives": [
+              {
+                "content": "on",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 150.0,
+            "end_time": 150.16,
+            "alternatives": [
+              {
+                "content": "my",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 150.16,
+            "end_time": 150.4,
+            "alternatives": [
+              {
+                "content": "feet,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 150.56,
+            "end_time": 151.04,
+            "alternatives": [
+              {
+                "content": "goodness.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 151.28,
+            "end_time": 151.36,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 151.36,
+            "end_time": 151.52,
+            "alternatives": [
+              {
+                "content": "suppose",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 151.68,
+            "end_time": 151.92000000000002,
+            "alternatives": [
+              {
+                "content": "they're",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 151.92000000000002,
+            "end_time": 152.0,
+            "alternatives": [
+              {
+                "content": "also",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 152.16,
+            "end_time": 152.72,
+            "alternatives": [
+              {
+                "content": "independent.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 152.8,
+            "end_time": 153.12,
+            "alternatives": [
+              {
+                "content": "I'd",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 153.12,
+            "end_time": 153.28,
+            "alternatives": [
+              {
+                "content": "put",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 153.28,
+            "end_time": 153.44,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 153.44,
+            "end_time": 153.68,
+            "alternatives": [
+              {
+                "content": "one",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 153.68,
+            "end_time": 154.0,
+            "alternatives": [
+              {
+                "content": "down",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 154.0,
+            "end_time": 154.64000000000001,
+            "alternatives": [
+              {
+                "content": "again.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 157.92000000000002,
+            "end_time": 158.16,
+            "alternatives": [
+              {
+                "content": "Um",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 160.72,
+            "end_time": 161.12,
+            "alternatives": [
+              {
+                "content": "depend",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 161.44,
+            "end_time": 162.4,
+            "alternatives": [
+              {
+                "content": "independent,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 162.48,
+            "end_time": 162.8,
+            "alternatives": [
+              {
+                "content": "right?",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 162.96,
+            "end_time": 163.12,
+            "alternatives": [
+              {
+                "content": "Did",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 163.28,
+            "end_time": 163.36,
+            "alternatives": [
+              {
+                "content": "you",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 163.36,
+            "end_time": 163.52,
+            "alternatives": [
+              {
+                "content": "say",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 163.52,
+            "end_time": 163.68,
+            "alternatives": [
+              {
+                "content": "they're",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 163.68,
+            "end_time": 163.84,
+            "alternatives": [
+              {
+                "content": "good",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 163.84,
+            "end_time": 163.92000000000002,
+            "alternatives": [
+              {
+                "content": "at",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 163.92000000000002,
+            "end_time": 164.24,
+            "alternatives": [
+              {
+                "content": "golf?",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 164.4,
+            "end_time": 164.56,
+            "alternatives": [
+              {
+                "content": "Yeah.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 164.8,
+            "end_time": 164.96,
+            "alternatives": [
+              {
+                "content": "Are",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 164.96,
+            "end_time": 165.12,
+            "alternatives": [
+              {
+                "content": "they?",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 165.6,
+            "end_time": 165.84,
+            "alternatives": [
+              {
+                "content": "Eagle.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 166.0,
+            "end_time": 166.08,
+            "alternatives": [
+              {
+                "content": "Oh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 167.28,
+            "end_time": 167.52,
+            "alternatives": [
+              {
+                "content": "right,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 167.6,
+            "end_time": 167.76,
+            "alternatives": [
+              {
+                "content": "okay.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 167.84,
+            "end_time": 168.08,
+            "alternatives": [
+              {
+                "content": "I'm",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 168.08,
+            "end_time": 168.16,
+            "alternatives": [
+              {
+                "content": "not",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 168.16,
+            "end_time": 168.32,
+            "alternatives": [
+              {
+                "content": "good",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 168.32,
+            "end_time": 168.4,
+            "alternatives": [
+              {
+                "content": "at",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 168.4,
+            "end_time": 168.72,
+            "alternatives": [
+              {
+                "content": "golf.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 169.04,
+            "end_time": 169.28,
+            "alternatives": [
+              {
+                "content": "I'll",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 169.28,
+            "end_time": 169.44,
+            "alternatives": [
+              {
+                "content": "say",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 169.52,
+            "end_time": 169.68,
+            "alternatives": [
+              {
+                "content": "they're",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 169.68,
+            "end_time": 169.92000000000002,
+            "alternatives": [
+              {
+                "content": "quite",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 169.92000000000002,
+            "end_time": 171.20000000000002,
+            "alternatives": [
+              {
+                "content": "free-spirited.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 171.76,
+            "end_time": 172.4,
+            "alternatives": [
+              {
+                "content": "Flying",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 172.4,
+            "end_time": 172.8,
+            "alternatives": [
+              {
+                "content": "around",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 172.8,
+            "end_time": 173.68,
+            "alternatives": [
+              {
+                "content": "everywhere.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 175.36,
+            "end_time": 175.92000000000002,
+            "alternatives": [
+              {
+                "content": "Doing",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 175.92000000000002,
+            "end_time": 176.16,
+            "alternatives": [
+              {
+                "content": "their",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 176.16,
+            "end_time": 176.56,
+            "alternatives": [
+              {
+                "content": "own",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 176.56,
+            "end_time": 177.20000000000002,
+            "alternatives": [
+              {
+                "content": "thing.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 181.44,
+            "end_time": 181.76,
+            "alternatives": [
+              {
+                "content": "And",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 182.0,
+            "end_time": 182.32,
+            "alternatives": [
+              {
+                "content": "uh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 183.44,
+            "end_time": 183.92000000000002,
+            "alternatives": [
+              {
+                "content": "birds",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 183.92000000000002,
+            "end_time": 184.08,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 184.08,
+            "end_time": 184.32,
+            "alternatives": [
+              {
+                "content": "prey,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 184.4,
+            "end_time": 184.64000000000001,
+            "alternatives": [
+              {
+                "content": "aren't",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 184.64000000000001,
+            "end_time": 184.8,
+            "alternatives": [
+              {
+                "content": "they?",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 184.96,
+            "end_time": 185.12,
+            "alternatives": [
+              {
+                "content": "Oh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 185.20000000000002,
+            "end_time": 185.68,
+            "alternatives": [
+              {
+                "content": "dear.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 186.0,
+            "end_time": 186.8,
+            "alternatives": [
+              {
+                "content": "Intrepid.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 187.84,
+            "end_time": 188.64000000000001,
+            "alternatives": [
+              {
+                "content": "Intrepid.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 193.36,
+            "end_time": 193.76,
+            "alternatives": [
+              {
+                "content": "There",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 193.76,
+            "end_time": 194.0,
+            "alternatives": [
+              {
+                "content": "we",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 194.0,
+            "end_time": 194.16,
+            "alternatives": [
+              {
+                "content": "go.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 194.32,
+            "end_time": 194.48000000000002,
+            "alternatives": [
+              {
+                "content": "That's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 195.12,
+            "end_time": 195.28,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 195.28,
+            "end_time": 195.68,
+            "alternatives": [
+              {
+                "content": "pen's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 195.68,
+            "end_time": 195.92000000000002,
+            "alternatives": [
+              {
+                "content": "gonna",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 195.92000000000002,
+            "end_time": 196.16,
+            "alternatives": [
+              {
+                "content": "be",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 196.16,
+            "end_time": 196.8,
+            "alternatives": [
+              {
+                "content": "okay.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 198.4,
+            "end_time": 199.20000000000002,
+            "alternatives": [
+              {
+                "content": "Whoops.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 201.04,
+            "end_time": 201.36,
+            "alternatives": [
+              {
+                "content": "Okay.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 202.8,
+            "end_time": 203.12,
+            "alternatives": [
+              {
+                "content": "That",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 203.12,
+            "end_time": 203.44,
+            "alternatives": [
+              {
+                "content": "was",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 203.44,
+            "end_time": 204.0,
+            "alternatives": [
+              {
+                "content": "fine.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 204.24,
+            "end_time": 204.8,
+            "alternatives": [
+              {
+                "content": "Right.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 205.36,
+            "end_time": 205.6,
+            "alternatives": [
+              {
+                "content": "Um",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 206.08,
+            "end_time": 207.04,
+            "alternatives": [
+              {
+                "content": "finance-wise,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 207.12,
+            "end_time": 207.52,
+            "alternatives": [
+              {
+                "content": "we've",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 207.52,
+            "end_time": 207.68,
+            "alternatives": [
+              {
+                "content": "got",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 207.76,
+            "end_time": 208.0,
+            "alternatives": [
+              {
+                "content": "uh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 208.16,
+            "end_time": 208.48000000000002,
+            "alternatives": [
+              {
+                "content": "selling",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 208.48000000000002,
+            "end_time": 208.8,
+            "alternatives": [
+              {
+                "content": "price",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 208.8,
+            "end_time": 208.96,
+            "alternatives": [
+              {
+                "content": "at",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 208.96,
+            "end_time": 209.52,
+            "alternatives": [
+              {
+                "content": "twenty-five",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 209.52,
+            "end_time": 210.08,
+            "alternatives": [
+              {
+                "content": "euros,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 210.24,
+            "end_time": 210.56,
+            "alternatives": [
+              {
+                "content": "which",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 210.56,
+            "end_time": 210.72,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 210.72,
+            "end_time": 211.04,
+            "alternatives": [
+              {
+                "content": "don't",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 211.04,
+            "end_time": 211.44,
+            "alternatives": [
+              {
+                "content": "actually",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 211.44,
+            "end_time": 211.76,
+            "alternatives": [
+              {
+                "content": "know",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 211.76,
+            "end_time": 212.0,
+            "alternatives": [
+              {
+                "content": "what",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 212.0,
+            "end_time": 212.24,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 212.24,
+            "end_time": 212.4,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 212.56,
+            "end_time": 212.8,
+            "alternatives": [
+              {
+                "content": "in",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 212.8,
+            "end_time": 213.36,
+            "alternatives": [
+              {
+                "content": "pounds",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 213.36,
+            "end_time": 213.68,
+            "alternatives": [
+              {
+                "content": "at",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 213.68,
+            "end_time": 214.0,
+            "alternatives": [
+              {
+                "content": "all.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 214.4,
+            "end_time": 214.72,
+            "alternatives": [
+              {
+                "content": "Any",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 214.72,
+            "end_time": 215.04,
+            "alternatives": [
+              {
+                "content": "ideas?",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 215.28,
+            "end_time": 215.44,
+            "alternatives": [
+              {
+                "content": "It's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 215.44,
+            "end_time": 215.52,
+            "alternatives": [
+              {
+                "content": "about",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 216.32,
+            "end_time": 216.64000000000001,
+            "alternatives": [
+              {
+                "content": "seventeen.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 218.56,
+            "end_time": 218.8,
+            "alternatives": [
+              {
+                "content": "One",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 218.8,
+            "end_time": 218.88,
+            "alternatives": [
+              {
+                "content": "point",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 219.04,
+            "end_time": 219.20000000000002,
+            "alternatives": [
+              {
+                "content": "four",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 219.76,
+            "end_time": 219.84,
+            "alternatives": [
+              {
+                "content": "would",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 219.92000000000002,
+            "end_time": 220.0,
+            "alternatives": [
+              {
+                "content": "make",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 220.08,
+            "end_time": 220.16,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 220.24,
+            "end_time": 220.48000000000002,
+            "alternatives": [
+              {
+                "content": "bone",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 220.56,
+            "end_time": 220.64000000000001,
+            "alternatives": [
+              {
+                "content": "or",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 220.64000000000001,
+            "end_time": 220.8,
+            "alternatives": [
+              {
+                "content": "something",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 220.8,
+            "end_time": 220.88,
+            "alternatives": [
+              {
+                "content": "like",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 220.88,
+            "end_time": 220.96,
+            "alternatives": [
+              {
+                "content": "that.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 221.20000000000002,
+            "end_time": 221.28,
+            "alternatives": [
+              {
+                "content": "Yeah,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 221.36,
+            "end_time": 221.44,
+            "alternatives": [
+              {
+                "content": "yeah,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 221.68,
+            "end_time": 221.92000000000002,
+            "alternatives": [
+              {
+                "content": "something",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 221.92000000000002,
+            "end_time": 222.16,
+            "alternatives": [
+              {
+                "content": "like",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 222.16,
+            "end_time": 222.32,
+            "alternatives": [
+              {
+                "content": "that.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 222.48000000000002,
+            "end_time": 222.64000000000001,
+            "alternatives": [
+              {
+                "content": "So,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 226.32,
+            "end_time": 226.4,
+            "alternatives": [
+              {
+                "content": "okay.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 227.36,
+            "end_time": 227.6,
+            "alternatives": [
+              {
+                "content": "That's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 227.6,
+            "end_time": 228.0,
+            "alternatives": [
+              {
+                "content": "expensive.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 228.24,
+            "end_time": 228.56,
+            "alternatives": [
+              {
+                "content": "Should",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 228.56,
+            "end_time": 228.72,
+            "alternatives": [
+              {
+                "content": "we",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 228.72,
+            "end_time": 228.8,
+            "alternatives": [
+              {
+                "content": "be",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 228.8,
+            "end_time": 229.04,
+            "alternatives": [
+              {
+                "content": "making",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 229.04,
+            "end_time": 229.28,
+            "alternatives": [
+              {
+                "content": "notes",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 229.28,
+            "end_time": 229.36,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 229.36,
+            "end_time": 229.52,
+            "alternatives": [
+              {
+                "content": "this?",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 229.6,
+            "end_time": 229.76,
+            "alternatives": [
+              {
+                "content": "We",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 229.76,
+            "end_time": 229.84,
+            "alternatives": [
+              {
+                "content": "can",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 229.84,
+            "end_time": 229.92000000000002,
+            "alternatives": [
+              {
+                "content": "just",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 229.92000000000002,
+            "end_time": 230.16,
+            "alternatives": [
+              {
+                "content": "refer",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 230.16,
+            "end_time": 230.24,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 230.24,
+            "end_time": 230.4,
+            "alternatives": [
+              {
+                "content": "this",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 230.4,
+            "end_time": 230.56,
+            "alternatives": [
+              {
+                "content": "later,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 230.64000000000001,
+            "end_time": 230.8,
+            "alternatives": [
+              {
+                "content": "can't",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 230.88,
+            "end_time": 230.96,
+            "alternatives": [
+              {
+                "content": "we?",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 231.20000000000002,
+            "end_time": 231.28,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 231.28,
+            "end_time": 231.44,
+            "alternatives": [
+              {
+                "content": "think",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 231.44,
+            "end_time": 231.52,
+            "alternatives": [
+              {
+                "content": "so.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 231.6,
+            "end_time": 231.76,
+            "alternatives": [
+              {
+                "content": "Yeah,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 231.84,
+            "end_time": 231.92000000000002,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 231.92000000000002,
+            "end_time": 232.0,
+            "alternatives": [
+              {
+                "content": "think",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 232.08,
+            "end_time": 232.16,
+            "alternatives": [
+              {
+                "content": "so.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 232.24,
+            "end_time": 232.48000000000002,
+            "alternatives": [
+              {
+                "content": "I'd",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 232.48000000000002,
+            "end_time": 232.56,
+            "alternatives": [
+              {
+                "content": "be",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 232.56,
+            "end_time": 232.72,
+            "alternatives": [
+              {
+                "content": "able",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 232.72,
+            "end_time": 232.8,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 232.88,
+            "end_time": 232.96,
+            "alternatives": [
+              {
+                "content": "um",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 233.12,
+            "end_time": 233.20000000000002,
+            "alternatives": [
+              {
+                "content": "put",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 233.28,
+            "end_time": 233.44,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 233.44,
+            "end_time": 233.52,
+            "alternatives": [
+              {
+                "content": "up",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 233.68,
+            "end_time": 233.76,
+            "alternatives": [
+              {
+                "content": "or",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 234.08,
+            "end_time": 234.16,
+            "alternatives": [
+              {
+                "content": "put",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 234.24,
+            "end_time": 234.32,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 234.32,
+            "end_time": 234.4,
+            "alternatives": [
+              {
+                "content": "in",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 234.4,
+            "end_time": 234.48000000000002,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 234.48000000000002,
+            "end_time": 234.72,
+            "alternatives": [
+              {
+                "content": "shared",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 234.72,
+            "end_time": 234.96,
+            "alternatives": [
+              {
+                "content": "folder",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 235.04,
+            "end_time": 235.12,
+            "alternatives": [
+              {
+                "content": "or",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 235.12,
+            "end_time": 235.20000000000002,
+            "alternatives": [
+              {
+                "content": "something.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 235.44,
+            "end_time": 235.68,
+            "alternatives": [
+              {
+                "content": "Having",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 235.68,
+            "end_time": 235.84,
+            "alternatives": [
+              {
+                "content": "said",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 235.84,
+            "end_time": 235.92000000000002,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 236.0,
+            "end_time": 236.24,
+            "alternatives": [
+              {
+                "content": "though,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 236.4,
+            "end_time": 236.56,
+            "alternatives": [
+              {
+                "content": "if",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 236.56,
+            "end_time": 236.72,
+            "alternatives": [
+              {
+                "content": "you",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 236.72,
+            "end_time": 236.88,
+            "alternatives": [
+              {
+                "content": "want",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 236.88,
+            "end_time": 236.96,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 236.96,
+            "end_time": 237.12,
+            "alternatives": [
+              {
+                "content": "get",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 237.12,
+            "end_time": 237.28,
+            "alternatives": [
+              {
+                "content": "one",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 237.28,
+            "end_time": 237.44,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 237.44,
+            "end_time": 237.76,
+            "alternatives": [
+              {
+                "content": "those,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 237.92000000000002,
+            "end_time": 238.24,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 238.24,
+            "end_time": 238.4,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 238.4,
+            "end_time": 238.72,
+            "alternatives": [
+              {
+                "content": "ones",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 238.72,
+            "end_time": 238.88,
+            "alternatives": [
+              {
+                "content": "on",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 238.88,
+            "end_time": 238.96,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 238.96,
+            "end_time": 239.28,
+            "alternatives": [
+              {
+                "content": "market",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 239.28,
+            "end_time": 239.36,
+            "alternatives": [
+              {
+                "content": "at",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 239.36,
+            "end_time": 239.44,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 239.44,
+            "end_time": 239.6,
+            "alternatives": [
+              {
+                "content": "moment",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 240.24,
+            "end_time": 240.56,
+            "alternatives": [
+              {
+                "content": "they're",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 240.56,
+            "end_time": 240.88,
+            "alternatives": [
+              {
+                "content": "about",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 240.88,
+            "end_time": 241.20000000000002,
+            "alternatives": [
+              {
+                "content": "twenty",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 241.36,
+            "end_time": 241.68,
+            "alternatives": [
+              {
+                "content": "pounds",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 241.84,
+            "end_time": 242.48000000000002,
+            "alternatives": [
+              {
+                "content": "anyway.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 242.96,
+            "end_time": 243.12,
+            "alternatives": [
+              {
+                "content": "So",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 245.36,
+            "end_time": 245.68,
+            "alternatives": [
+              {
+                "content": "we",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 245.68,
+            "end_time": 245.84,
+            "alternatives": [
+              {
+                "content": "had",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 245.84,
+            "end_time": 246.0,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 246.0,
+            "end_time": 246.32,
+            "alternatives": [
+              {
+                "content": "buy",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 246.32,
+            "end_time": 246.56,
+            "alternatives": [
+              {
+                "content": "one.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 247.76000000000002,
+            "end_time": 247.92000000000002,
+            "alternatives": [
+              {
+                "content": "So",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 248.08,
+            "end_time": 248.16,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 248.16,
+            "end_time": 248.48000000000002,
+            "alternatives": [
+              {
+                "content": "suppose",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 248.48000000000002,
+            "end_time": 248.72,
+            "alternatives": [
+              {
+                "content": "later",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 248.8,
+            "end_time": 248.96,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 248.96,
+            "end_time": 249.28,
+            "alternatives": [
+              {
+                "content": "depends",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 249.28,
+            "end_time": 249.44,
+            "alternatives": [
+              {
+                "content": "if",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 249.44,
+            "end_time": 249.52,
+            "alternatives": [
+              {
+                "content": "we",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 249.52,
+            "end_time": 249.6,
+            "alternatives": [
+              {
+                "content": "want",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 249.6,
+            "end_time": 249.76000000000002,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 249.76000000000002,
+            "end_time": 250.0,
+            "alternatives": [
+              {
+                "content": "undercut",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 250.16,
+            "end_time": 250.24,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 250.24,
+            "end_time": 250.48000000000002,
+            "alternatives": [
+              {
+                "content": "price.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 250.56,
+            "end_time": 250.64000000000001,
+            "alternatives": [
+              {
+                "content": "We",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 250.72,
+            "end_time": 250.8,
+            "alternatives": [
+              {
+                "content": "d",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 250.88,
+            "end_time": 251.12,
+            "alternatives": [
+              {
+                "content": "or",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 251.12,
+            "end_time": 251.36,
+            "alternatives": [
+              {
+                "content": "or",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 251.36,
+            "end_time": 251.44,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 251.44,
+            "end_time": 251.6,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 251.6,
+            "end_time": 251.76000000000002,
+            "alternatives": [
+              {
+                "content": "going",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 251.76000000000002,
+            "end_time": 251.84,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 251.84,
+            "end_time": 252.0,
+            "alternatives": [
+              {
+                "content": "make",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 252.0,
+            "end_time": 252.16,
+            "alternatives": [
+              {
+                "content": "our",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 252.16,
+            "end_time": 252.4,
+            "alternatives": [
+              {
+                "content": "product",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 252.4,
+            "end_time": 252.56,
+            "alternatives": [
+              {
+                "content": "look",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 252.56,
+            "end_time": 252.64000000000001,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 252.64000000000001,
+            "end_time": 253.04,
+            "alternatives": [
+              {
+                "content": "cheapy",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 253.12,
+            "end_time": 253.44,
+            "alternatives": [
+              {
+                "content": "cheapy",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 253.44,
+            "end_time": 253.6,
+            "alternatives": [
+              {
+                "content": "option?",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 253.92000000000002,
+            "end_time": 254.08,
+            "alternatives": [
+              {
+                "content": "Yeah.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 254.4,
+            "end_time": 254.56,
+            "alternatives": [
+              {
+                "content": "Um",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 254.8,
+            "end_time": 255.12,
+            "alternatives": [
+              {
+                "content": "production",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 255.36,
+            "end_time": 255.68,
+            "alternatives": [
+              {
+                "content": "costs",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 255.68,
+            "end_time": 255.84,
+            "alternatives": [
+              {
+                "content": "at",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 255.84,
+            "end_time": 256.16,
+            "alternatives": [
+              {
+                "content": "twelve",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 256.32,
+            "end_time": 256.96,
+            "alternatives": [
+              {
+                "content": "fifty.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 257.2,
+            "end_time": 257.44,
+            "alternatives": [
+              {
+                "content": "So",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 258.16,
+            "end_time": 258.48,
+            "alternatives": [
+              {
+                "content": "pretty",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 258.48,
+            "end_time": 258.72,
+            "alternatives": [
+              {
+                "content": "huge",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 258.72,
+            "end_time": 259.04,
+            "alternatives": [
+              {
+                "content": "module.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 259.44,
+            "end_time": 259.92,
+            "alternatives": [
+              {
+                "content": "Half",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 260.16,
+            "end_time": 260.4,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 260.4,
+            "end_time": 260.64,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 260.64,
+            "end_time": 261.12,
+            "alternatives": [
+              {
+                "content": "selling",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 261.12,
+            "end_time": 261.44,
+            "alternatives": [
+              {
+                "content": "prices",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 261.76,
+            "end_time": 262.32,
+            "alternatives": [
+              {
+                "content": "taken",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 262.32,
+            "end_time": 262.56,
+            "alternatives": [
+              {
+                "content": "up",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 262.56,
+            "end_time": 262.88,
+            "alternatives": [
+              {
+                "content": "by",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 262.88,
+            "end_time": 263.44,
+            "alternatives": [
+              {
+                "content": "building",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 263.44,
+            "end_time": 263.76,
+            "alternatives": [
+              {
+                "content": "it.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 264.4,
+            "end_time": 264.72,
+            "alternatives": [
+              {
+                "content": "Um",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 265.84000000000003,
+            "end_time": 266.32,
+            "alternatives": [
+              {
+                "content": "profit",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 266.32,
+            "end_time": 266.64,
+            "alternatives": [
+              {
+                "content": "aim",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 266.64,
+            "end_time": 266.8,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 266.8,
+            "end_time": 267.28000000000003,
+            "alternatives": [
+              {
+                "content": "fifteen",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 267.28000000000003,
+            "end_time": 267.84000000000003,
+            "alternatives": [
+              {
+                "content": "million",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 267.84000000000003,
+            "end_time": 268.48,
+            "alternatives": [
+              {
+                "content": "euros,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 268.72,
+            "end_time": 268.96,
+            "alternatives": [
+              {
+                "content": "which",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 268.96,
+            "end_time": 269.2,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 269.28000000000003,
+            "end_time": 269.52,
+            "alternatives": [
+              {
+                "content": "uh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 270.16,
+            "end_time": 270.4,
+            "alternatives": [
+              {
+                "content": "in",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 270.56,
+            "end_time": 270.72,
+            "alternatives": [
+              {
+                "content": "our",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 270.72,
+            "end_time": 270.96,
+            "alternatives": [
+              {
+                "content": "first",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 270.96,
+            "end_time": 271.12,
+            "alternatives": [
+              {
+                "content": "year.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 271.36,
+            "end_time": 271.6,
+            "alternatives": [
+              {
+                "content": "Yep,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 271.76,
+            "end_time": 272.32,
+            "alternatives": [
+              {
+                "content": "yes.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 272.64,
+            "end_time": 272.96,
+            "alternatives": [
+              {
+                "content": "Um,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 273.2,
+            "end_time": 273.84000000000003,
+            "alternatives": [
+              {
+                "content": "yeah.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 274.32,
+            "end_time": 274.64,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 274.64,
+            "end_time": 275.2,
+            "alternatives": [
+              {
+                "content": "presume",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 275.2,
+            "end_time": 275.44,
+            "alternatives": [
+              {
+                "content": "so.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 276.56,
+            "end_time": 276.8,
+            "alternatives": [
+              {
+                "content": "Um",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 277.76,
+            "end_time": 278.08,
+            "alternatives": [
+              {
+                "content": "You've",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 278.08,
+            "end_time": 278.32,
+            "alternatives": [
+              {
+                "content": "got",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 278.32,
+            "end_time": 278.48,
+            "alternatives": [
+              {
+                "content": "market",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 278.72,
+            "end_time": 279.12,
+            "alternatives": [
+              {
+                "content": "range",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 279.12,
+            "end_time": 279.6,
+            "alternatives": [
+              {
+                "content": "international,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 279.68,
+            "end_time": 279.84000000000003,
+            "alternatives": [
+              {
+                "content": "and",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 279.84000000000003,
+            "end_time": 280.0,
+            "alternatives": [
+              {
+                "content": "you",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 280.0,
+            "end_time": 280.16,
+            "alternatives": [
+              {
+                "content": "did",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 280.16,
+            "end_time": 280.40000000000003,
+            "alternatives": [
+              {
+                "content": "say",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 280.40000000000003,
+            "end_time": 280.72,
+            "alternatives": [
+              {
+                "content": "earlier",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 280.8,
+            "end_time": 281.12,
+            "alternatives": [
+              {
+                "content": "it's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 281.12,
+            "end_time": 281.28000000000003,
+            "alternatives": [
+              {
+                "content": "got",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 281.28000000000003,
+            "end_time": 281.44,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 281.44,
+            "end_time": 281.52,
+            "alternatives": [
+              {
+                "content": "be",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 281.6,
+            "end_time": 281.68,
+            "alternatives": [
+              {
+                "content": "uh",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 281.76,
+            "end_time": 281.92,
+            "alternatives": [
+              {
+                "content": "um",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 282.0,
+            "end_time": 282.64,
+            "alternatives": [
+              {
+                "content": "accessible",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 282.64,
+            "end_time": 282.88,
+            "alternatives": [
+              {
+                "content": "and",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 282.88,
+            "end_time": 283.52,
+            "alternatives": [
+              {
+                "content": "usable",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 283.52,
+            "end_time": 283.84000000000003,
+            "alternatives": [
+              {
+                "content": "by",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 283.84000000000003,
+            "end_time": 284.0,
+            "alternatives": [
+              {
+                "content": "sort",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 284.0,
+            "end_time": 284.16,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 284.16,
+            "end_time": 284.40000000000003,
+            "alternatives": [
+              {
+                "content": "all",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 284.40000000000003,
+            "end_time": 284.72,
+            "alternatives": [
+              {
+                "content": "age",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 284.72,
+            "end_time": 285.12,
+            "alternatives": [
+              {
+                "content": "groups.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 285.28000000000003,
+            "end_time": 285.52,
+            "alternatives": [
+              {
+                "content": "Just",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 285.92,
+            "end_time": 286.32,
+            "alternatives": [
+              {
+                "content": "we're",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 286.32,
+            "end_time": 286.56,
+            "alternatives": [
+              {
+                "content": "not",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 286.56,
+            "end_time": 287.12,
+            "alternatives": [
+              {
+                "content": "focusing",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 287.12,
+            "end_time": 287.36,
+            "alternatives": [
+              {
+                "content": "on",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 287.36,
+            "end_time": 287.84000000000003,
+            "alternatives": [
+              {
+                "content": "business",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 287.84000000000003,
+            "end_time": 288.0,
+            "alternatives": [
+              {
+                "content": "market",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 288.24,
+            "end_time": 288.48,
+            "alternatives": [
+              {
+                "content": "any",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 288.48,
+            "end_time": 288.8,
+            "alternatives": [
+              {
+                "content": "particular",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 288.8,
+            "end_time": 288.96,
+            "alternatives": [
+              {
+                "content": "thing.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 289.04,
+            "end_time": 289.28000000000003,
+            "alternatives": [
+              {
+                "content": "It's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 289.28000000000003,
+            "end_time": 289.52,
+            "alternatives": [
+              {
+                "content": "everyone,",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 289.68,
+            "end_time": 289.92,
+            "alternatives": [
+              {
+                "content": "user",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 290.0,
+            "end_time": 290.40000000000003,
+            "alternatives": [
+              {
+                "content": "friendly",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 290.40000000000003,
+            "end_time": 290.48,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 290.48,
+            "end_time": 290.96,
+            "alternatives": [
+              {
+                "content": "everyone.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 291.2,
+            "end_time": 291.52,
+            "alternatives": [
+              {
+                "content": "Okay.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 293.12,
+            "end_time": 293.6,
+            "alternatives": [
+              {
+                "content": "Big",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 293.6,
+            "end_time": 294.0,
+            "alternatives": [
+              {
+                "content": "target",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 294.0,
+            "end_time": 294.32,
+            "alternatives": [
+              {
+                "content": "group.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 294.56,
+            "end_time": 294.88,
+            "alternatives": [
+              {
+                "content": "Yes.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 295.12,
+            "end_time": 295.44,
+            "alternatives": [
+              {
+                "content": "Yes.",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 295.6,
+            "end_time": 295.76,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 295.76,
+            "end_time": 296.0,
+            "alternatives": [
+              {
+                "content": "don't",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 296.0,
+            "end_time": 296.16,
+            "alternatives": [
+              {
+                "content": "think",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 296.16,
+            "end_time": 296.32,
+            "alternatives": [
+              {
+                "content": "we",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 296.32,
+            "end_time": 296.48,
+            "alternatives": [
+              {
+                "content": "have",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 296.48,
+            "end_time": 296.72,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 296.8,
+            "end_time": 296.96,
+            "alternatives": [
+              {
+                "content": "I",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 296.96,
+            "end_time": 297.12,
+            "alternatives": [
+              {
+                "content": "don't",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 297.12,
+            "end_time": 297.28000000000003,
+            "alternatives": [
+              {
+                "content": "think",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 297.28000000000003,
+            "end_time": 297.6,
+            "alternatives": [
+              {
+                "content": "it's",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 297.6,
+            "end_time": 297.68,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 297.68,
+            "end_time": 298.08,
+            "alternatives": [
+              {
+                "content": "case",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 298.08,
+            "end_time": 298.32,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 298.32,
+            "end_time": 298.96,
+            "alternatives": [
+              {
+                "content": "worrying",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 298.96,
+            "end_time": 299.2,
+            "alternatives": [
+              {
+                "content": "about",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 299.2,
+            "end_time": 299.52,
+            "alternatives": [
+              {
+                "content": "different",
+                "confidence": 1.0
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      }
+    ]
+  },
+  "wer": null
+}

@@ -1,0 +1,2933 @@
+{
+  "run_id": "2026-05-12T02-09-18Z__whisper__librispeech-test-clean-mini__mac-first-run",
+  "timestamp_utc": "2026-05-12T02-09-18Z",
+  "engine": "whisper",
+  "case": "librispeech-test-clean-mini",
+  "diarizer": "native",
+  "tag": "mac-first-run",
+  "case_meta": {
+    "name": "librispeech-test-clean-mini",
+    "description": "10-utterance subset of LibriSpeech test-clean from speaker 1089\n(chapter 134686, utterances 0000-0009), concatenated into a single\n70-second mono 16 kHz WAV. Read English speech from public-domain\naudiobooks via LibriVox. Industry-standard sanity baseline for ASR \u2014\nany production engine should hit < 5% WER on this. If it doesn't,\nsomething in the pipeline is broken.\n",
+    "source": "https://www.openslr.org/12/  (LibriSpeech test-clean)",
+    "license": "Audio: public domain (LibriVox).\nMetadata + alignments: CC-BY 4.0.\nFully redistributable.\n",
+    "duration_s": 70,
+    "speakers": 1,
+    "domain": "read-english",
+    "language": "en",
+    "monitor_containers": [
+      "sm-triton",
+      "sm-rt-transcriber"
+    ],
+    "key_terms": [
+      "Bertie",
+      "Nelly",
+      "Shelley"
+    ],
+    "ground_truth": {
+      "reference_text": "reference.txt",
+      "reference_rttm": null,
+      "notes": "Concatenated from LibriSpeech test-clean files 1089-134686-{0000..0009}.flac\nvia ffmpeg. Reference is the union of those utterances' canonical\n.trans.txt entries, lowercased, single line.\n"
+    }
+  },
+  "scores": {
+    "diarizer": "native",
+    "wer": {
+      "wer": 0.03571428571428571,
+      "cer": 0.05660377358490566,
+      "substitutions": 4,
+      "deletions": 1,
+      "insertions": 1,
+      "hits": 163,
+      "ref_word_count": 168,
+      "hyp_word_count": 168
+    },
+    "entity": {
+      "total": 3,
+      "preserved": 2,
+      "missing": [
+        "Nelly"
+      ]
+    },
+    "latency": {
+      "ttft_ms": 137638.98316698032,
+      "ttfp_ms": null,
+      "final_lag_p50_ms": 68518.98316698032,
+      "final_lag_p95_ms": 68518.98316698032,
+      "final_lag_p99_ms": 68518.98316698032,
+      "rtf": 1.9662694336877835,
+      "finals_count": 1,
+      "partials_count": 0
+    },
+    "resources": {
+      "samples": 117,
+      "gpu_mem_used_mb_peak": null,
+      "gpu_mem_used_mb_p50": null,
+      "gpu_util_percent_peak": null,
+      "gpu_util_percent_p50": null,
+      "gpu_temp_c_peak": null,
+      "container_cpu_peak": {},
+      "container_mem_mb_peak": {}
+    },
+    "confidence": {
+      "words_scored": 169,
+      "mean": 0.9826378512041942,
+      "p10": 0.9639168977737427,
+      "low_conf_rate": 0.01775147928994083
+    }
+  },
+  "result": {
+    "engine": "whisper",
+    "audio_path": "/Users/rayyannadeem/speechmaticsContainer/asr-benchmarks/cases/librispeech-test-clean-mini/audio.wav",
+    "config": {
+      "model": "large-v3",
+      "language": "en",
+      "initial_prompt": null,
+      "_mode": "batch"
+    },
+    "transcript": "He hoped there would be stew for dinner, turnips and carrots and bruised potatoes and fat mutton pieces to be ladled out in thick, peppered, flour-fattened sauce. Stuff it into you, his belly counseled him. After early nightfall, the yellow lamps would light up here and there, the squalid quarter of the brothels. Hello, Bertie. Any good in your mind? Number ten. Fresh Nellie is waiting on you. Good night, husband. The music came nearer, and he recalled the words, the words of Shelley's fragment upon the moon wandering companionless, pale for weariness. The dull light fell more faintly upon the page, whereon another equation began to unfold itself slowly and to spread abroad its widening tail. A cold, lucid indifference reigned in his soul. The chaos in which his ardor extinguished itself. It was a cold, indifferent knowledge of himself. At most, by an alms given to a beggar whose blessing he fled from, he might hope wearily to win for himself some measure of actual grace.",
+    "words": [
+      {
+        "content": "He",
+        "start_time": 0.0,
+        "end_time": 0.56,
+        "speaker": null,
+        "confidence": 0.9586607217788696,
+        "is_punctuation": false
+      },
+      {
+        "content": "hoped",
+        "start_time": 0.56,
+        "end_time": 0.86,
+        "speaker": null,
+        "confidence": 0.9999545812606812,
+        "is_punctuation": false
+      },
+      {
+        "content": "there",
+        "start_time": 0.86,
+        "end_time": 1.06,
+        "speaker": null,
+        "confidence": 0.9999834299087524,
+        "is_punctuation": false
+      },
+      {
+        "content": "would",
+        "start_time": 1.06,
+        "end_time": 1.18,
+        "speaker": null,
+        "confidence": 0.9999884366989136,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 1.18,
+        "end_time": 1.34,
+        "speaker": null,
+        "confidence": 0.9999948740005493,
+        "is_punctuation": false
+      },
+      {
+        "content": "stew",
+        "start_time": 1.34,
+        "end_time": 1.68,
+        "speaker": null,
+        "confidence": 0.9998693466186523,
+        "is_punctuation": false
+      },
+      {
+        "content": "for",
+        "start_time": 1.68,
+        "end_time": 1.88,
+        "speaker": null,
+        "confidence": 0.9999828338623047,
+        "is_punctuation": false
+      },
+      {
+        "content": "dinner,",
+        "start_time": 1.88,
+        "end_time": 2.16,
+        "speaker": null,
+        "confidence": 0.9999810457229614,
+        "is_punctuation": false
+      },
+      {
+        "content": "turnips",
+        "start_time": 2.32,
+        "end_time": 2.96,
+        "speaker": null,
+        "confidence": 0.998906284570694,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 2.96,
+        "end_time": 3.1,
+        "speaker": null,
+        "confidence": 0.9995995163917542,
+        "is_punctuation": false
+      },
+      {
+        "content": "carrots",
+        "start_time": 3.1,
+        "end_time": 3.5,
+        "speaker": null,
+        "confidence": 0.9999812841415405,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 3.5,
+        "end_time": 3.82,
+        "speaker": null,
+        "confidence": 0.9983429908752441,
+        "is_punctuation": false
+      },
+      {
+        "content": "bruised",
+        "start_time": 3.82,
+        "end_time": 4.28,
+        "speaker": null,
+        "confidence": 0.9997349679470062,
+        "is_punctuation": false
+      },
+      {
+        "content": "potatoes",
+        "start_time": 4.28,
+        "end_time": 4.56,
+        "speaker": null,
+        "confidence": 0.9999616146087646,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 4.56,
+        "end_time": 5.08,
+        "speaker": null,
+        "confidence": 0.961181104183197,
+        "is_punctuation": false
+      },
+      {
+        "content": "fat",
+        "start_time": 5.08,
+        "end_time": 5.4,
+        "speaker": null,
+        "confidence": 0.9999755620956421,
+        "is_punctuation": false
+      },
+      {
+        "content": "mutton",
+        "start_time": 5.4,
+        "end_time": 5.94,
+        "speaker": null,
+        "confidence": 0.9997845590114594,
+        "is_punctuation": false
+      },
+      {
+        "content": "pieces",
+        "start_time": 5.94,
+        "end_time": 6.18,
+        "speaker": null,
+        "confidence": 0.978809654712677,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 6.18,
+        "end_time": 6.58,
+        "speaker": null,
+        "confidence": 0.9998852014541626,
+        "is_punctuation": false
+      },
+      {
+        "content": "be",
+        "start_time": 6.58,
+        "end_time": 6.68,
+        "speaker": null,
+        "confidence": 0.9999985694885254,
+        "is_punctuation": false
+      },
+      {
+        "content": "ladled",
+        "start_time": 6.68,
+        "end_time": 7.1,
+        "speaker": null,
+        "confidence": 0.9994246363639832,
+        "is_punctuation": false
+      },
+      {
+        "content": "out",
+        "start_time": 7.1,
+        "end_time": 7.42,
+        "speaker": null,
+        "confidence": 0.9999966621398926,
+        "is_punctuation": false
+      },
+      {
+        "content": "in",
+        "start_time": 7.42,
+        "end_time": 7.62,
+        "speaker": null,
+        "confidence": 0.9999667406082153,
+        "is_punctuation": false
+      },
+      {
+        "content": "thick,",
+        "start_time": 7.62,
+        "end_time": 8.04,
+        "speaker": null,
+        "confidence": 0.9999505281448364,
+        "is_punctuation": false
+      },
+      {
+        "content": "peppered,",
+        "start_time": 8.08,
+        "end_time": 8.6,
+        "speaker": null,
+        "confidence": 0.9992865920066833,
+        "is_punctuation": false
+      },
+      {
+        "content": "flour",
+        "start_time": 8.6,
+        "end_time": 8.92,
+        "speaker": null,
+        "confidence": 0.9858347773551941,
+        "is_punctuation": false
+      },
+      {
+        "content": "-fattened",
+        "start_time": 8.92,
+        "end_time": 9.48,
+        "speaker": null,
+        "confidence": 0.9615049809217453,
+        "is_punctuation": false
+      },
+      {
+        "content": "sauce.",
+        "start_time": 9.48,
+        "end_time": 9.8,
+        "speaker": null,
+        "confidence": 0.9999686479568481,
+        "is_punctuation": false
+      },
+      {
+        "content": "Stuff",
+        "start_time": 10.5,
+        "end_time": 11.08,
+        "speaker": null,
+        "confidence": 0.9321251511573792,
+        "is_punctuation": false
+      },
+      {
+        "content": "it",
+        "start_time": 11.08,
+        "end_time": 11.22,
+        "speaker": null,
+        "confidence": 0.9945428371429443,
+        "is_punctuation": false
+      },
+      {
+        "content": "into",
+        "start_time": 11.22,
+        "end_time": 11.46,
+        "speaker": null,
+        "confidence": 0.9973830580711365,
+        "is_punctuation": false
+      },
+      {
+        "content": "you,",
+        "start_time": 11.46,
+        "end_time": 11.68,
+        "speaker": null,
+        "confidence": 0.9999805688858032,
+        "is_punctuation": false
+      },
+      {
+        "content": "his",
+        "start_time": 11.8,
+        "end_time": 12.06,
+        "speaker": null,
+        "confidence": 0.999620795249939,
+        "is_punctuation": false
+      },
+      {
+        "content": "belly",
+        "start_time": 12.06,
+        "end_time": 12.42,
+        "speaker": null,
+        "confidence": 0.998158872127533,
+        "is_punctuation": false
+      },
+      {
+        "content": "counseled",
+        "start_time": 12.42,
+        "end_time": 13.0,
+        "speaker": null,
+        "confidence": 0.9903387725353241,
+        "is_punctuation": false
+      },
+      {
+        "content": "him.",
+        "start_time": 13.0,
+        "end_time": 13.14,
+        "speaker": null,
+        "confidence": 0.9999767541885376,
+        "is_punctuation": false
+      },
+      {
+        "content": "After",
+        "start_time": 13.68,
+        "end_time": 14.26,
+        "speaker": null,
+        "confidence": 0.9999500513076782,
+        "is_punctuation": false
+      },
+      {
+        "content": "early",
+        "start_time": 14.26,
+        "end_time": 14.6,
+        "speaker": null,
+        "confidence": 0.9999712705612183,
+        "is_punctuation": false
+      },
+      {
+        "content": "nightfall,",
+        "start_time": 14.6,
+        "end_time": 15.24,
+        "speaker": null,
+        "confidence": 0.9986064732074738,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 15.4,
+        "end_time": 15.54,
+        "speaker": null,
+        "confidence": 0.9999516010284424,
+        "is_punctuation": false
+      },
+      {
+        "content": "yellow",
+        "start_time": 15.54,
+        "end_time": 15.76,
+        "speaker": null,
+        "confidence": 0.9999452829360962,
+        "is_punctuation": false
+      },
+      {
+        "content": "lamps",
+        "start_time": 15.76,
+        "end_time": 16.12,
+        "speaker": null,
+        "confidence": 0.9999358654022217,
+        "is_punctuation": false
+      },
+      {
+        "content": "would",
+        "start_time": 16.12,
+        "end_time": 16.36,
+        "speaker": null,
+        "confidence": 0.9999957084655762,
+        "is_punctuation": false
+      },
+      {
+        "content": "light",
+        "start_time": 16.36,
+        "end_time": 16.62,
+        "speaker": null,
+        "confidence": 0.9999935626983643,
+        "is_punctuation": false
+      },
+      {
+        "content": "up",
+        "start_time": 16.62,
+        "end_time": 16.86,
+        "speaker": null,
+        "confidence": 0.9999995231628418,
+        "is_punctuation": false
+      },
+      {
+        "content": "here",
+        "start_time": 16.86,
+        "end_time": 17.1,
+        "speaker": null,
+        "confidence": 0.9696834087371826,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 17.1,
+        "end_time": 17.28,
+        "speaker": null,
+        "confidence": 0.9999909400939941,
+        "is_punctuation": false
+      },
+      {
+        "content": "there,",
+        "start_time": 17.28,
+        "end_time": 17.56,
+        "speaker": null,
+        "confidence": 0.9999971389770508,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 17.68,
+        "end_time": 17.86,
+        "speaker": null,
+        "confidence": 0.9999246597290039,
+        "is_punctuation": false
+      },
+      {
+        "content": "squalid",
+        "start_time": 17.86,
+        "end_time": 18.34,
+        "speaker": null,
+        "confidence": 0.9987227022647858,
+        "is_punctuation": false
+      },
+      {
+        "content": "quarter",
+        "start_time": 18.34,
+        "end_time": 18.68,
+        "speaker": null,
+        "confidence": 0.9996840953826904,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 18.68,
+        "end_time": 19.04,
+        "speaker": null,
+        "confidence": 0.9999959468841553,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 19.04,
+        "end_time": 19.16,
+        "speaker": null,
+        "confidence": 0.9999687671661377,
+        "is_punctuation": false
+      },
+      {
+        "content": "brothels.",
+        "start_time": 19.16,
+        "end_time": 19.68,
+        "speaker": null,
+        "confidence": 0.9994122385978699,
+        "is_punctuation": false
+      },
+      {
+        "content": "Hello,",
+        "start_time": 20.340000000000003,
+        "end_time": 20.92,
+        "speaker": null,
+        "confidence": 0.9568438529968262,
+        "is_punctuation": false
+      },
+      {
+        "content": "Bertie.",
+        "start_time": 20.94,
+        "end_time": 21.38,
+        "speaker": null,
+        "confidence": 0.9998898506164551,
+        "is_punctuation": false
+      },
+      {
+        "content": "Any",
+        "start_time": 21.46,
+        "end_time": 21.7,
+        "speaker": null,
+        "confidence": 0.9999147653579712,
+        "is_punctuation": false
+      },
+      {
+        "content": "good",
+        "start_time": 21.7,
+        "end_time": 21.94,
+        "speaker": null,
+        "confidence": 0.9998902082443237,
+        "is_punctuation": false
+      },
+      {
+        "content": "in",
+        "start_time": 21.94,
+        "end_time": 22.14,
+        "speaker": null,
+        "confidence": 0.9998194575309753,
+        "is_punctuation": false
+      },
+      {
+        "content": "your",
+        "start_time": 22.14,
+        "end_time": 22.24,
+        "speaker": null,
+        "confidence": 0.9999942779541016,
+        "is_punctuation": false
+      },
+      {
+        "content": "mind?",
+        "start_time": 22.24,
+        "end_time": 22.6,
+        "speaker": null,
+        "confidence": 0.9999909400939941,
+        "is_punctuation": false
+      },
+      {
+        "content": "Number",
+        "start_time": 22.9,
+        "end_time": 23.48,
+        "speaker": null,
+        "confidence": 0.9679611921310425,
+        "is_punctuation": false
+      },
+      {
+        "content": "ten.",
+        "start_time": 23.48,
+        "end_time": 23.86,
+        "speaker": null,
+        "confidence": 0.9171415567398071,
+        "is_punctuation": false
+      },
+      {
+        "content": "Fresh",
+        "start_time": 24.18,
+        "end_time": 24.7,
+        "speaker": null,
+        "confidence": 0.9995021820068359,
+        "is_punctuation": false
+      },
+      {
+        "content": "Nellie",
+        "start_time": 24.7,
+        "end_time": 25.28,
+        "speaker": null,
+        "confidence": 0.8453118602434794,
+        "is_punctuation": false
+      },
+      {
+        "content": "is",
+        "start_time": 25.28,
+        "end_time": 25.46,
+        "speaker": null,
+        "confidence": 0.9999865293502808,
+        "is_punctuation": false
+      },
+      {
+        "content": "waiting",
+        "start_time": 25.46,
+        "end_time": 25.72,
+        "speaker": null,
+        "confidence": 0.9999754428863525,
+        "is_punctuation": false
+      },
+      {
+        "content": "on",
+        "start_time": 25.72,
+        "end_time": 25.98,
+        "speaker": null,
+        "confidence": 0.9999837875366211,
+        "is_punctuation": false
+      },
+      {
+        "content": "you.",
+        "start_time": 25.98,
+        "end_time": 26.22,
+        "speaker": null,
+        "confidence": 0.9999967813491821,
+        "is_punctuation": false
+      },
+      {
+        "content": "Good",
+        "start_time": 26.22,
+        "end_time": 27.16,
+        "speaker": null,
+        "confidence": 0.6224125623703003,
+        "is_punctuation": false
+      },
+      {
+        "content": "night,",
+        "start_time": 27.16,
+        "end_time": 27.4,
+        "speaker": null,
+        "confidence": 0.929648220539093,
+        "is_punctuation": false
+      },
+      {
+        "content": "husband.",
+        "start_time": 27.46,
+        "end_time": 27.72,
+        "speaker": null,
+        "confidence": 0.9949086308479309,
+        "is_punctuation": false
+      },
+      {
+        "content": "The",
+        "start_time": 28.3,
+        "end_time": 28.64,
+        "speaker": null,
+        "confidence": 0.9891334176063538,
+        "is_punctuation": false
+      },
+      {
+        "content": "music",
+        "start_time": 28.64,
+        "end_time": 28.94,
+        "speaker": null,
+        "confidence": 0.9992173910140991,
+        "is_punctuation": false
+      },
+      {
+        "content": "came",
+        "start_time": 28.94,
+        "end_time": 29.26,
+        "speaker": null,
+        "confidence": 0.9998564720153809,
+        "is_punctuation": false
+      },
+      {
+        "content": "nearer,",
+        "start_time": 29.26,
+        "end_time": 29.86,
+        "speaker": null,
+        "confidence": 0.9998757541179657,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 29.86,
+        "end_time": 30.06,
+        "speaker": null,
+        "confidence": 0.9968683123588562,
+        "is_punctuation": false
+      },
+      {
+        "content": "he",
+        "start_time": 30.06,
+        "end_time": 30.16,
+        "speaker": null,
+        "confidence": 0.9999212026596069,
+        "is_punctuation": false
+      },
+      {
+        "content": "recalled",
+        "start_time": 30.16,
+        "end_time": 30.56,
+        "speaker": null,
+        "confidence": 0.999886155128479,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 30.56,
+        "end_time": 30.82,
+        "speaker": null,
+        "confidence": 0.999969482421875,
+        "is_punctuation": false
+      },
+      {
+        "content": "words,",
+        "start_time": 30.82,
+        "end_time": 31.22,
+        "speaker": null,
+        "confidence": 0.9999754428863525,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 31.38,
+        "end_time": 31.84,
+        "speaker": null,
+        "confidence": 0.9977098703384399,
+        "is_punctuation": false
+      },
+      {
+        "content": "words",
+        "start_time": 31.84,
+        "end_time": 32.2,
+        "speaker": null,
+        "confidence": 0.9999639987945557,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 32.2,
+        "end_time": 32.38,
+        "speaker": null,
+        "confidence": 0.9999790191650391,
+        "is_punctuation": false
+      },
+      {
+        "content": "Shelley's",
+        "start_time": 32.38,
+        "end_time": 32.9,
+        "speaker": null,
+        "confidence": 0.9835605323314667,
+        "is_punctuation": false
+      },
+      {
+        "content": "fragment",
+        "start_time": 32.9,
+        "end_time": 33.24,
+        "speaker": null,
+        "confidence": 0.9992793202400208,
+        "is_punctuation": false
+      },
+      {
+        "content": "upon",
+        "start_time": 33.24,
+        "end_time": 33.6,
+        "speaker": null,
+        "confidence": 0.9996813535690308,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 33.6,
+        "end_time": 33.82,
+        "speaker": null,
+        "confidence": 0.9999861717224121,
+        "is_punctuation": false
+      },
+      {
+        "content": "moon",
+        "start_time": 33.82,
+        "end_time": 34.14,
+        "speaker": null,
+        "confidence": 0.999286949634552,
+        "is_punctuation": false
+      },
+      {
+        "content": "wandering",
+        "start_time": 34.14,
+        "end_time": 34.68,
+        "speaker": null,
+        "confidence": 0.9532535076141357,
+        "is_punctuation": false
+      },
+      {
+        "content": "companionless,",
+        "start_time": 34.68,
+        "end_time": 35.62,
+        "speaker": null,
+        "confidence": 0.9997106790542603,
+        "is_punctuation": false
+      },
+      {
+        "content": "pale",
+        "start_time": 35.74,
+        "end_time": 36.38,
+        "speaker": null,
+        "confidence": 0.9998608827590942,
+        "is_punctuation": false
+      },
+      {
+        "content": "for",
+        "start_time": 36.38,
+        "end_time": 36.66,
+        "speaker": null,
+        "confidence": 0.9999715089797974,
+        "is_punctuation": false
+      },
+      {
+        "content": "weariness.",
+        "start_time": 36.66,
+        "end_time": 37.2,
+        "speaker": null,
+        "confidence": 0.9997524619102478,
+        "is_punctuation": false
+      },
+      {
+        "content": "The",
+        "start_time": 37.74,
+        "end_time": 38.42,
+        "speaker": null,
+        "confidence": 0.9999340772628784,
+        "is_punctuation": false
+      },
+      {
+        "content": "dull",
+        "start_time": 38.42,
+        "end_time": 38.66,
+        "speaker": null,
+        "confidence": 0.9999479055404663,
+        "is_punctuation": false
+      },
+      {
+        "content": "light",
+        "start_time": 38.66,
+        "end_time": 39.02,
+        "speaker": null,
+        "confidence": 0.9999079704284668,
+        "is_punctuation": false
+      },
+      {
+        "content": "fell",
+        "start_time": 39.02,
+        "end_time": 39.42,
+        "speaker": null,
+        "confidence": 0.9999839067459106,
+        "is_punctuation": false
+      },
+      {
+        "content": "more",
+        "start_time": 39.42,
+        "end_time": 39.68,
+        "speaker": null,
+        "confidence": 0.9999467134475708,
+        "is_punctuation": false
+      },
+      {
+        "content": "faintly",
+        "start_time": 39.68,
+        "end_time": 40.26,
+        "speaker": null,
+        "confidence": 0.9999203681945801,
+        "is_punctuation": false
+      },
+      {
+        "content": "upon",
+        "start_time": 40.26,
+        "end_time": 40.42,
+        "speaker": null,
+        "confidence": 0.9999481439590454,
+        "is_punctuation": false
+      },
+      {
+        "content": "the",
+        "start_time": 40.42,
+        "end_time": 40.64,
+        "speaker": null,
+        "confidence": 0.9999779462814331,
+        "is_punctuation": false
+      },
+      {
+        "content": "page,",
+        "start_time": 40.64,
+        "end_time": 41.0,
+        "speaker": null,
+        "confidence": 0.9997783303260803,
+        "is_punctuation": false
+      },
+      {
+        "content": "whereon",
+        "start_time": 41.06,
+        "end_time": 41.54,
+        "speaker": null,
+        "confidence": 0.9987287521362305,
+        "is_punctuation": false
+      },
+      {
+        "content": "another",
+        "start_time": 41.54,
+        "end_time": 41.86,
+        "speaker": null,
+        "confidence": 0.9999291896820068,
+        "is_punctuation": false
+      },
+      {
+        "content": "equation",
+        "start_time": 41.86,
+        "end_time": 42.26,
+        "speaker": null,
+        "confidence": 0.9995736479759216,
+        "is_punctuation": false
+      },
+      {
+        "content": "began",
+        "start_time": 42.26,
+        "end_time": 42.86,
+        "speaker": null,
+        "confidence": 0.9998894929885864,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 42.86,
+        "end_time": 43.2,
+        "speaker": null,
+        "confidence": 0.9999715089797974,
+        "is_punctuation": false
+      },
+      {
+        "content": "unfold",
+        "start_time": 43.2,
+        "end_time": 43.44,
+        "speaker": null,
+        "confidence": 0.9999361038208008,
+        "is_punctuation": false
+      },
+      {
+        "content": "itself",
+        "start_time": 43.44,
+        "end_time": 44.04,
+        "speaker": null,
+        "confidence": 0.999903678894043,
+        "is_punctuation": false
+      },
+      {
+        "content": "slowly",
+        "start_time": 44.04,
+        "end_time": 44.66,
+        "speaker": null,
+        "confidence": 0.9998800754547119,
+        "is_punctuation": false
+      },
+      {
+        "content": "and",
+        "start_time": 44.66,
+        "end_time": 45.42,
+        "speaker": null,
+        "confidence": 0.6444061398506165,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 45.42,
+        "end_time": 45.62,
+        "speaker": null,
+        "confidence": 0.9997958540916443,
+        "is_punctuation": false
+      },
+      {
+        "content": "spread",
+        "start_time": 45.62,
+        "end_time": 45.96,
+        "speaker": null,
+        "confidence": 0.999953031539917,
+        "is_punctuation": false
+      },
+      {
+        "content": "abroad",
+        "start_time": 45.96,
+        "end_time": 46.28,
+        "speaker": null,
+        "confidence": 0.9987412095069885,
+        "is_punctuation": false
+      },
+      {
+        "content": "its",
+        "start_time": 46.28,
+        "end_time": 46.74,
+        "speaker": null,
+        "confidence": 0.999785840511322,
+        "is_punctuation": false
+      },
+      {
+        "content": "widening",
+        "start_time": 46.74,
+        "end_time": 47.3,
+        "speaker": null,
+        "confidence": 0.9990493953227997,
+        "is_punctuation": false
+      },
+      {
+        "content": "tail.",
+        "start_time": 47.3,
+        "end_time": 47.62,
+        "speaker": null,
+        "confidence": 0.8895794749259949,
+        "is_punctuation": false
+      },
+      {
+        "content": "A",
+        "start_time": 48.32,
+        "end_time": 49.0,
+        "speaker": null,
+        "confidence": 0.9998276233673096,
+        "is_punctuation": false
+      },
+      {
+        "content": "cold,",
+        "start_time": 49.0,
+        "end_time": 49.34,
+        "speaker": null,
+        "confidence": 0.9999527931213379,
+        "is_punctuation": false
+      },
+      {
+        "content": "lucid",
+        "start_time": 49.52,
+        "end_time": 50.16,
+        "speaker": null,
+        "confidence": 0.9998825490474701,
+        "is_punctuation": false
+      },
+      {
+        "content": "indifference",
+        "start_time": 50.16,
+        "end_time": 50.82,
+        "speaker": null,
+        "confidence": 0.9999022483825684,
+        "is_punctuation": false
+      },
+      {
+        "content": "reigned",
+        "start_time": 50.82,
+        "end_time": 51.48,
+        "speaker": null,
+        "confidence": 0.9933622479438782,
+        "is_punctuation": false
+      },
+      {
+        "content": "in",
+        "start_time": 51.48,
+        "end_time": 51.64,
+        "speaker": null,
+        "confidence": 0.9999692440032959,
+        "is_punctuation": false
+      },
+      {
+        "content": "his",
+        "start_time": 51.64,
+        "end_time": 51.78,
+        "speaker": null,
+        "confidence": 0.9999096393585205,
+        "is_punctuation": false
+      },
+      {
+        "content": "soul.",
+        "start_time": 51.78,
+        "end_time": 52.14,
+        "speaker": null,
+        "confidence": 0.9996994733810425,
+        "is_punctuation": false
+      },
+      {
+        "content": "The",
+        "start_time": 52.56,
+        "end_time": 53.24,
+        "speaker": null,
+        "confidence": 0.9997029900550842,
+        "is_punctuation": false
+      },
+      {
+        "content": "chaos",
+        "start_time": 53.24,
+        "end_time": 53.6,
+        "speaker": null,
+        "confidence": 0.9998819828033447,
+        "is_punctuation": false
+      },
+      {
+        "content": "in",
+        "start_time": 53.6,
+        "end_time": 53.94,
+        "speaker": null,
+        "confidence": 0.9950652718544006,
+        "is_punctuation": false
+      },
+      {
+        "content": "which",
+        "start_time": 53.94,
+        "end_time": 54.12,
+        "speaker": null,
+        "confidence": 0.9999860525131226,
+        "is_punctuation": false
+      },
+      {
+        "content": "his",
+        "start_time": 54.12,
+        "end_time": 54.32,
+        "speaker": null,
+        "confidence": 0.9998964071273804,
+        "is_punctuation": false
+      },
+      {
+        "content": "ardor",
+        "start_time": 54.32,
+        "end_time": 54.86,
+        "speaker": null,
+        "confidence": 0.9328576922416687,
+        "is_punctuation": false
+      },
+      {
+        "content": "extinguished",
+        "start_time": 54.86,
+        "end_time": 55.5,
+        "speaker": null,
+        "confidence": 0.9977984627087911,
+        "is_punctuation": false
+      },
+      {
+        "content": "itself.",
+        "start_time": 55.5,
+        "end_time": 55.8,
+        "speaker": null,
+        "confidence": 0.9994713664054871,
+        "is_punctuation": false
+      },
+      {
+        "content": "It",
+        "start_time": 56.22,
+        "end_time": 56.3,
+        "speaker": null,
+        "confidence": 0.00102566322311759,
+        "is_punctuation": false
+      },
+      {
+        "content": "was",
+        "start_time": 56.3,
+        "end_time": 56.3,
+        "speaker": null,
+        "confidence": 0.9481709599494934,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 56.3,
+        "end_time": 56.36,
+        "speaker": null,
+        "confidence": 0.9811829328536987,
+        "is_punctuation": false
+      },
+      {
+        "content": "cold,",
+        "start_time": 56.36,
+        "end_time": 56.86,
+        "speaker": null,
+        "confidence": 0.9994094371795654,
+        "is_punctuation": false
+      },
+      {
+        "content": "indifferent",
+        "start_time": 56.98,
+        "end_time": 57.42,
+        "speaker": null,
+        "confidence": 0.999237060546875,
+        "is_punctuation": false
+      },
+      {
+        "content": "knowledge",
+        "start_time": 57.42,
+        "end_time": 58.28,
+        "speaker": null,
+        "confidence": 0.971524178981781,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 58.28,
+        "end_time": 58.54,
+        "speaker": null,
+        "confidence": 0.9978804588317871,
+        "is_punctuation": false
+      },
+      {
+        "content": "himself.",
+        "start_time": 58.54,
+        "end_time": 58.78,
+        "speaker": null,
+        "confidence": 0.9898812174797058,
+        "is_punctuation": false
+      },
+      {
+        "content": "At",
+        "start_time": 59.36,
+        "end_time": 59.92,
+        "speaker": null,
+        "confidence": 0.9975021481513977,
+        "is_punctuation": false
+      },
+      {
+        "content": "most,",
+        "start_time": 59.92,
+        "end_time": 60.3,
+        "speaker": null,
+        "confidence": 0.9960355162620544,
+        "is_punctuation": false
+      },
+      {
+        "content": "by",
+        "start_time": 60.44,
+        "end_time": 60.98,
+        "speaker": null,
+        "confidence": 0.9986473917961121,
+        "is_punctuation": false
+      },
+      {
+        "content": "an",
+        "start_time": 60.98,
+        "end_time": 61.14,
+        "speaker": null,
+        "confidence": 0.9893696308135986,
+        "is_punctuation": false
+      },
+      {
+        "content": "alms",
+        "start_time": 61.14,
+        "end_time": 61.54,
+        "speaker": null,
+        "confidence": 0.9990289509296417,
+        "is_punctuation": false
+      },
+      {
+        "content": "given",
+        "start_time": 61.54,
+        "end_time": 61.76,
+        "speaker": null,
+        "confidence": 0.9605979323387146,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 61.76,
+        "end_time": 62.02,
+        "speaker": null,
+        "confidence": 0.9993675351142883,
+        "is_punctuation": false
+      },
+      {
+        "content": "a",
+        "start_time": 62.02,
+        "end_time": 62.14,
+        "speaker": null,
+        "confidence": 0.9980475902557373,
+        "is_punctuation": false
+      },
+      {
+        "content": "beggar",
+        "start_time": 62.14,
+        "end_time": 62.6,
+        "speaker": null,
+        "confidence": 0.9991698861122131,
+        "is_punctuation": false
+      },
+      {
+        "content": "whose",
+        "start_time": 62.6,
+        "end_time": 62.86,
+        "speaker": null,
+        "confidence": 0.9639168977737427,
+        "is_punctuation": false
+      },
+      {
+        "content": "blessing",
+        "start_time": 62.86,
+        "end_time": 63.26,
+        "speaker": null,
+        "confidence": 0.9916398525238037,
+        "is_punctuation": false
+      },
+      {
+        "content": "he",
+        "start_time": 63.26,
+        "end_time": 63.52,
+        "speaker": null,
+        "confidence": 0.998744010925293,
+        "is_punctuation": false
+      },
+      {
+        "content": "fled",
+        "start_time": 63.52,
+        "end_time": 63.74,
+        "speaker": null,
+        "confidence": 0.9991459846496582,
+        "is_punctuation": false
+      },
+      {
+        "content": "from,",
+        "start_time": 63.74,
+        "end_time": 64.02,
+        "speaker": null,
+        "confidence": 0.9994205236434937,
+        "is_punctuation": false
+      },
+      {
+        "content": "he",
+        "start_time": 64.18,
+        "end_time": 64.82,
+        "speaker": null,
+        "confidence": 0.98945552110672,
+        "is_punctuation": false
+      },
+      {
+        "content": "might",
+        "start_time": 64.82,
+        "end_time": 65.04,
+        "speaker": null,
+        "confidence": 0.9995705485343933,
+        "is_punctuation": false
+      },
+      {
+        "content": "hope",
+        "start_time": 65.04,
+        "end_time": 65.38,
+        "speaker": null,
+        "confidence": 0.9981265664100647,
+        "is_punctuation": false
+      },
+      {
+        "content": "wearily",
+        "start_time": 65.38,
+        "end_time": 65.82,
+        "speaker": null,
+        "confidence": 0.998690128326416,
+        "is_punctuation": false
+      },
+      {
+        "content": "to",
+        "start_time": 65.82,
+        "end_time": 66.14,
+        "speaker": null,
+        "confidence": 0.9978320002555847,
+        "is_punctuation": false
+      },
+      {
+        "content": "win",
+        "start_time": 66.14,
+        "end_time": 66.34,
+        "speaker": null,
+        "confidence": 0.9997794032096863,
+        "is_punctuation": false
+      },
+      {
+        "content": "for",
+        "start_time": 66.34,
+        "end_time": 66.56,
+        "speaker": null,
+        "confidence": 0.9994199275970459,
+        "is_punctuation": false
+      },
+      {
+        "content": "himself",
+        "start_time": 66.56,
+        "end_time": 66.84,
+        "speaker": null,
+        "confidence": 0.9997501969337463,
+        "is_punctuation": false
+      },
+      {
+        "content": "some",
+        "start_time": 66.84,
+        "end_time": 67.54,
+        "speaker": null,
+        "confidence": 0.9985694885253906,
+        "is_punctuation": false
+      },
+      {
+        "content": "measure",
+        "start_time": 67.54,
+        "end_time": 67.98,
+        "speaker": null,
+        "confidence": 0.9997712969779968,
+        "is_punctuation": false
+      },
+      {
+        "content": "of",
+        "start_time": 67.98,
+        "end_time": 68.28,
+        "speaker": null,
+        "confidence": 0.9994764924049377,
+        "is_punctuation": false
+      },
+      {
+        "content": "actual",
+        "start_time": 68.28,
+        "end_time": 68.64,
+        "speaker": null,
+        "confidence": 0.9986500144004822,
+        "is_punctuation": false
+      },
+      {
+        "content": "grace.",
+        "start_time": 68.64,
+        "end_time": 69.12,
+        "speaker": null,
+        "confidence": 0.9938865303993225,
+        "is_punctuation": false
+      }
+    ],
+    "metadata": {
+      "audio_duration_s": 70.0000625,
+      "wall_clock_s": 137.63898324998445,
+      "first_audio_send": 183614.282095666,
+      "first_final_recv": 183751.921078833,
+      "first_partial_recv": null
+    },
+    "raw_dump": [
+      {
+        "_direction": "in",
+        "message": "WhisperResult",
+        "text": " He hoped there would be stew for dinner, turnips and carrots and bruised potatoes and fat mutton pieces to be ladled out in thick, peppered, flour-fattened sauce. Stuff it into you, his belly counseled him. After early nightfall, the yellow lamps would light up here and there, the squalid quarter of the brothels. Hello, Bertie. Any good in your mind? Number ten. Fresh Nellie is waiting on you. Good night, husband. The music came nearer, and he recalled the words, the words of Shelley's fragment upon the moon wandering companionless, pale for weariness. The dull light fell more faintly upon the page, whereon another equation began to unfold itself slowly and to spread abroad its widening tail. A cold, lucid indifference reigned in his soul. The chaos in which his ardor extinguished itself. It was a cold, indifferent knowledge of himself. At most, by an alms given to a beggar whose blessing he fled from, he might hope wearily to win for himself some measure of actual grace.",
+        "language": "en"
+      },
+      {
+        "_direction": "in",
+        "message": "WhisperSegment",
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 9.8,
+        "text": " He hoped there would be stew for dinner, turnips and carrots and bruised potatoes and fat mutton pieces to be ladled out in thick, peppered, flour-fattened sauce.",
+        "tokens": [
+          50365,
+          634,
+          19737,
+          456,
+          576,
+          312,
+          22654,
+          337,
+          6148,
+          11,
+          1261,
+          2600,
+          293,
+          21005,
+          293,
+          25267,
+          2640,
+          11811,
+          293,
+          4046,
+          5839,
+          1756,
+          3755,
+          281,
+          312,
+          6632,
+          1493,
+          484,
+          294,
+          5060,
+          11,
+          8532,
+          292,
+          11,
+          7693,
+          12,
+          69,
+          32733,
+          292,
+          4880,
+          13,
+          50867
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1169097293506969,
+        "compression_ratio": 1.5529411764705883,
+        "no_speech_prob": 0.00019847361545544118,
+        "words": [
+          {
+            "word": " He",
+            "start": 0.0,
+            "end": 0.56,
+            "probability": 0.9586607217788696
+          },
+          {
+            "word": " hoped",
+            "start": 0.56,
+            "end": 0.86,
+            "probability": 0.9999545812606812
+          },
+          {
+            "word": " there",
+            "start": 0.86,
+            "end": 1.06,
+            "probability": 0.9999834299087524
+          },
+          {
+            "word": " would",
+            "start": 1.06,
+            "end": 1.18,
+            "probability": 0.9999884366989136
+          },
+          {
+            "word": " be",
+            "start": 1.18,
+            "end": 1.34,
+            "probability": 0.9999948740005493
+          },
+          {
+            "word": " stew",
+            "start": 1.34,
+            "end": 1.68,
+            "probability": 0.9998693466186523
+          },
+          {
+            "word": " for",
+            "start": 1.68,
+            "end": 1.88,
+            "probability": 0.9999828338623047
+          },
+          {
+            "word": " dinner,",
+            "start": 1.88,
+            "end": 2.16,
+            "probability": 0.9999810457229614
+          },
+          {
+            "word": " turnips",
+            "start": 2.32,
+            "end": 2.96,
+            "probability": 0.998906284570694
+          },
+          {
+            "word": " and",
+            "start": 2.96,
+            "end": 3.1,
+            "probability": 0.9995995163917542
+          },
+          {
+            "word": " carrots",
+            "start": 3.1,
+            "end": 3.5,
+            "probability": 0.9999812841415405
+          },
+          {
+            "word": " and",
+            "start": 3.5,
+            "end": 3.82,
+            "probability": 0.9983429908752441
+          },
+          {
+            "word": " bruised",
+            "start": 3.82,
+            "end": 4.28,
+            "probability": 0.9997349679470062
+          },
+          {
+            "word": " potatoes",
+            "start": 4.28,
+            "end": 4.56,
+            "probability": 0.9999616146087646
+          },
+          {
+            "word": " and",
+            "start": 4.56,
+            "end": 5.08,
+            "probability": 0.961181104183197
+          },
+          {
+            "word": " fat",
+            "start": 5.08,
+            "end": 5.4,
+            "probability": 0.9999755620956421
+          },
+          {
+            "word": " mutton",
+            "start": 5.4,
+            "end": 5.94,
+            "probability": 0.9997845590114594
+          },
+          {
+            "word": " pieces",
+            "start": 5.94,
+            "end": 6.18,
+            "probability": 0.978809654712677
+          },
+          {
+            "word": " to",
+            "start": 6.18,
+            "end": 6.58,
+            "probability": 0.9998852014541626
+          },
+          {
+            "word": " be",
+            "start": 6.58,
+            "end": 6.68,
+            "probability": 0.9999985694885254
+          },
+          {
+            "word": " ladled",
+            "start": 6.68,
+            "end": 7.1,
+            "probability": 0.9994246363639832
+          },
+          {
+            "word": " out",
+            "start": 7.1,
+            "end": 7.42,
+            "probability": 0.9999966621398926
+          },
+          {
+            "word": " in",
+            "start": 7.42,
+            "end": 7.62,
+            "probability": 0.9999667406082153
+          },
+          {
+            "word": " thick,",
+            "start": 7.62,
+            "end": 8.04,
+            "probability": 0.9999505281448364
+          },
+          {
+            "word": " peppered,",
+            "start": 8.08,
+            "end": 8.6,
+            "probability": 0.9992865920066833
+          },
+          {
+            "word": " flour",
+            "start": 8.6,
+            "end": 8.92,
+            "probability": 0.9858347773551941
+          },
+          {
+            "word": "-fattened",
+            "start": 8.92,
+            "end": 9.48,
+            "probability": 0.9615049809217453
+          },
+          {
+            "word": " sauce.",
+            "start": 9.48,
+            "end": 9.8,
+            "probability": 0.9999686479568481
+          }
+        ]
+      },
+      {
+        "_direction": "in",
+        "message": "WhisperSegment",
+        "id": 1,
+        "seek": 0,
+        "start": 10.5,
+        "end": 13.14,
+        "text": " Stuff it into you, his belly counseled him.",
+        "tokens": [
+          50906,
+          31347,
+          309,
+          666,
+          291,
+          11,
+          702,
+          11696,
+          10351,
+          292,
+          796,
+          13,
+          51026
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1169097293506969,
+        "compression_ratio": 1.5529411764705883,
+        "no_speech_prob": 0.00019847361545544118,
+        "words": [
+          {
+            "word": " Stuff",
+            "start": 10.5,
+            "end": 11.08,
+            "probability": 0.9321251511573792
+          },
+          {
+            "word": " it",
+            "start": 11.08,
+            "end": 11.22,
+            "probability": 0.9945428371429443
+          },
+          {
+            "word": " into",
+            "start": 11.22,
+            "end": 11.46,
+            "probability": 0.9973830580711365
+          },
+          {
+            "word": " you,",
+            "start": 11.46,
+            "end": 11.68,
+            "probability": 0.9999805688858032
+          },
+          {
+            "word": " his",
+            "start": 11.8,
+            "end": 12.06,
+            "probability": 0.999620795249939
+          },
+          {
+            "word": " belly",
+            "start": 12.06,
+            "end": 12.42,
+            "probability": 0.998158872127533
+          },
+          {
+            "word": " counseled",
+            "start": 12.42,
+            "end": 13.0,
+            "probability": 0.9903387725353241
+          },
+          {
+            "word": " him.",
+            "start": 13.0,
+            "end": 13.14,
+            "probability": 0.9999767541885376
+          }
+        ]
+      },
+      {
+        "_direction": "in",
+        "message": "WhisperSegment",
+        "id": 2,
+        "seek": 0,
+        "start": 13.68,
+        "end": 19.68,
+        "text": " After early nightfall, the yellow lamps would light up here and there, the squalid quarter of the brothels.",
+        "tokens": [
+          51070,
+          2381,
+          2440,
+          1818,
+          6691,
+          11,
+          264,
+          5566,
+          34887,
+          576,
+          1442,
+          493,
+          510,
+          293,
+          456,
+          11,
+          264,
+          2339,
+          31509,
+          6555,
+          295,
+          264,
+          18872,
+          1625,
+          13,
+          51354
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1169097293506969,
+        "compression_ratio": 1.5529411764705883,
+        "no_speech_prob": 0.00019847361545544118,
+        "words": [
+          {
+            "word": " After",
+            "start": 13.68,
+            "end": 14.26,
+            "probability": 0.9999500513076782
+          },
+          {
+            "word": " early",
+            "start": 14.26,
+            "end": 14.6,
+            "probability": 0.9999712705612183
+          },
+          {
+            "word": " nightfall,",
+            "start": 14.6,
+            "end": 15.24,
+            "probability": 0.9986064732074738
+          },
+          {
+            "word": " the",
+            "start": 15.4,
+            "end": 15.54,
+            "probability": 0.9999516010284424
+          },
+          {
+            "word": " yellow",
+            "start": 15.54,
+            "end": 15.76,
+            "probability": 0.9999452829360962
+          },
+          {
+            "word": " lamps",
+            "start": 15.76,
+            "end": 16.12,
+            "probability": 0.9999358654022217
+          },
+          {
+            "word": " would",
+            "start": 16.12,
+            "end": 16.36,
+            "probability": 0.9999957084655762
+          },
+          {
+            "word": " light",
+            "start": 16.36,
+            "end": 16.62,
+            "probability": 0.9999935626983643
+          },
+          {
+            "word": " up",
+            "start": 16.62,
+            "end": 16.86,
+            "probability": 0.9999995231628418
+          },
+          {
+            "word": " here",
+            "start": 16.86,
+            "end": 17.1,
+            "probability": 0.9696834087371826
+          },
+          {
+            "word": " and",
+            "start": 17.1,
+            "end": 17.28,
+            "probability": 0.9999909400939941
+          },
+          {
+            "word": " there,",
+            "start": 17.28,
+            "end": 17.56,
+            "probability": 0.9999971389770508
+          },
+          {
+            "word": " the",
+            "start": 17.68,
+            "end": 17.86,
+            "probability": 0.9999246597290039
+          },
+          {
+            "word": " squalid",
+            "start": 17.86,
+            "end": 18.34,
+            "probability": 0.9987227022647858
+          },
+          {
+            "word": " quarter",
+            "start": 18.34,
+            "end": 18.68,
+            "probability": 0.9996840953826904
+          },
+          {
+            "word": " of",
+            "start": 18.68,
+            "end": 19.04,
+            "probability": 0.9999959468841553
+          },
+          {
+            "word": " the",
+            "start": 19.04,
+            "end": 19.16,
+            "probability": 0.9999687671661377
+          },
+          {
+            "word": " brothels.",
+            "start": 19.16,
+            "end": 19.68,
+            "probability": 0.9994122385978699
+          }
+        ]
+      },
+      {
+        "_direction": "in",
+        "message": "WhisperSegment",
+        "id": 3,
+        "seek": 0,
+        "start": 20.340000000000003,
+        "end": 22.6,
+        "text": " Hello, Bertie. Any good in your mind?",
+        "tokens": [
+          51399,
+          2425,
+          11,
+          29594,
+          414,
+          13,
+          2639,
+          665,
+          294,
+          428,
+          1575,
+          30,
+          51500
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1169097293506969,
+        "compression_ratio": 1.5529411764705883,
+        "no_speech_prob": 0.00019847361545544118,
+        "words": [
+          {
+            "word": " Hello,",
+            "start": 20.340000000000003,
+            "end": 20.92,
+            "probability": 0.9568438529968262
+          },
+          {
+            "word": " Bertie.",
+            "start": 20.94,
+            "end": 21.38,
+            "probability": 0.9998898506164551
+          },
+          {
+            "word": " Any",
+            "start": 21.46,
+            "end": 21.7,
+            "probability": 0.9999147653579712
+          },
+          {
+            "word": " good",
+            "start": 21.7,
+            "end": 21.94,
+            "probability": 0.9998902082443237
+          },
+          {
+            "word": " in",
+            "start": 21.94,
+            "end": 22.14,
+            "probability": 0.9998194575309753
+          },
+          {
+            "word": " your",
+            "start": 22.14,
+            "end": 22.24,
+            "probability": 0.9999942779541016
+          },
+          {
+            "word": " mind?",
+            "start": 22.24,
+            "end": 22.6,
+            "probability": 0.9999909400939941
+          }
+        ]
+      },
+      {
+        "_direction": "in",
+        "message": "WhisperSegment",
+        "id": 4,
+        "seek": 0,
+        "start": 22.9,
+        "end": 26.22,
+        "text": " Number ten. Fresh Nellie is waiting on you.",
+        "tokens": [
+          51528,
+          5118,
+          2064,
+          13,
+          22843,
+          426,
+          898,
+          414,
+          307,
+          3806,
+          322,
+          291,
+          13,
+          51683
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.1169097293506969,
+        "compression_ratio": 1.5529411764705883,
+        "no_speech_prob": 0.00019847361545544118,
+        "words": [
+          {
+            "word": " Number",
+            "start": 22.9,
+            "end": 23.48,
+            "probability": 0.9679611921310425
+          },
+          {
+            "word": " ten.",
+            "start": 23.48,
+            "end": 23.86,
+            "probability": 0.9171415567398071
+          },
+          {
+            "word": " Fresh",
+            "start": 24.18,
+            "end": 24.7,
+            "probability": 0.9995021820068359
+          },
+          {
+            "word": " Nellie",
+            "start": 24.7,
+            "end": 25.28,
+            "probability": 0.8453118602434794
+          },
+          {
+            "word": " is",
+            "start": 25.28,
+            "end": 25.46,
+            "probability": 0.9999865293502808
+          },
+          {
+            "word": " waiting",
+            "start": 25.46,
+            "end": 25.72,
+            "probability": 0.9999754428863525
+          },
+          {
+            "word": " on",
+            "start": 25.72,
+            "end": 25.98,
+            "probability": 0.9999837875366211
+          },
+          {
+            "word": " you.",
+            "start": 25.98,
+            "end": 26.22,
+            "probability": 0.9999967813491821
+          }
+        ]
+      },
+      {
+        "_direction": "in",
+        "message": "WhisperSegment",
+        "id": 5,
+        "seek": 2622,
+        "start": 26.22,
+        "end": 27.72,
+        "text": " Good night, husband.",
+        "tokens": [
+          50365,
+          2205,
+          1818,
+          11,
+          5213,
+          13,
+          50448
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.14161338428459544,
+        "compression_ratio": 1.608,
+        "no_speech_prob": 4.9559312174096704e-05,
+        "words": [
+          {
+            "word": " Good",
+            "start": 26.22,
+            "end": 27.16,
+            "probability": 0.6224125623703003
+          },
+          {
+            "word": " night,",
+            "start": 27.16,
+            "end": 27.4,
+            "probability": 0.929648220539093
+          },
+          {
+            "word": " husband.",
+            "start": 27.46,
+            "end": 27.72,
+            "probability": 0.9949086308479309
+          }
+        ]
+      },
+      {
+        "_direction": "in",
+        "message": "WhisperSegment",
+        "id": 6,
+        "seek": 2622,
+        "start": 28.56,
+        "end": 37.2,
+        "text": " The music came nearer, and he recalled the words, the words of Shelley's fragment upon the moon wandering companionless, pale for weariness.",
+        "tokens": [
+          50482,
+          440,
+          1318,
+          1361,
+          2651,
+          260,
+          11,
+          293,
+          415,
+          39301,
+          264,
+          2283,
+          11,
+          264,
+          2283,
+          295,
+          42337,
+          311,
+          26424,
+          3564,
+          264,
+          7135,
+          26396,
+          22363,
+          1832,
+          11,
+          19546,
+          337,
+          3728,
+          1324,
+          13,
+          50920
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.14161338428459544,
+        "compression_ratio": 1.608,
+        "no_speech_prob": 4.9559312174096704e-05,
+        "words": [
+          {
+            "word": " The",
+            "start": 28.3,
+            "end": 28.64,
+            "probability": 0.9891334176063538
+          },
+          {
+            "word": " music",
+            "start": 28.64,
+            "end": 28.94,
+            "probability": 0.9992173910140991
+          },
+          {
+            "word": " came",
+            "start": 28.94,
+            "end": 29.26,
+            "probability": 0.9998564720153809
+          },
+          {
+            "word": " nearer,",
+            "start": 29.26,
+            "end": 29.86,
+            "probability": 0.9998757541179657
+          },
+          {
+            "word": " and",
+            "start": 29.86,
+            "end": 30.06,
+            "probability": 0.9968683123588562
+          },
+          {
+            "word": " he",
+            "start": 30.06,
+            "end": 30.16,
+            "probability": 0.9999212026596069
+          },
+          {
+            "word": " recalled",
+            "start": 30.16,
+            "end": 30.56,
+            "probability": 0.999886155128479
+          },
+          {
+            "word": " the",
+            "start": 30.56,
+            "end": 30.82,
+            "probability": 0.999969482421875
+          },
+          {
+            "word": " words,",
+            "start": 30.82,
+            "end": 31.22,
+            "probability": 0.9999754428863525
+          },
+          {
+            "word": " the",
+            "start": 31.38,
+            "end": 31.84,
+            "probability": 0.9977098703384399
+          },
+          {
+            "word": " words",
+            "start": 31.84,
+            "end": 32.2,
+            "probability": 0.9999639987945557
+          },
+          {
+            "word": " of",
+            "start": 32.2,
+            "end": 32.38,
+            "probability": 0.9999790191650391
+          },
+          {
+            "word": " Shelley's",
+            "start": 32.38,
+            "end": 32.9,
+            "probability": 0.9835605323314667
+          },
+          {
+            "word": " fragment",
+            "start": 32.9,
+            "end": 33.24,
+            "probability": 0.9992793202400208
+          },
+          {
+            "word": " upon",
+            "start": 33.24,
+            "end": 33.6,
+            "probability": 0.9996813535690308
+          },
+          {
+            "word": " the",
+            "start": 33.6,
+            "end": 33.82,
+            "probability": 0.9999861717224121
+          },
+          {
+            "word": " moon",
+            "start": 33.82,
+            "end": 34.14,
+            "probability": 0.999286949634552
+          },
+          {
+            "word": " wandering",
+            "start": 34.14,
+            "end": 34.68,
+            "probability": 0.9532535076141357
+          },
+          {
+            "word": " companionless,",
+            "start": 34.68,
+            "end": 35.62,
+            "probability": 0.9997106790542603
+          },
+          {
+            "word": " pale",
+            "start": 35.74,
+            "end": 36.38,
+            "probability": 0.9998608827590942
+          },
+          {
+            "word": " for",
+            "start": 36.38,
+            "end": 36.66,
+            "probability": 0.9999715089797974
+          },
+          {
+            "word": " weariness.",
+            "start": 36.66,
+            "end": 37.2,
+            "probability": 0.9997524619102478
+          }
+        ]
+      },
+      {
+        "_direction": "in",
+        "message": "WhisperSegment",
+        "id": 7,
+        "seek": 2622,
+        "start": 37.74,
+        "end": 47.62,
+        "text": " The dull light fell more faintly upon the page, whereon another equation began to unfold itself slowly and to spread abroad its widening tail.",
+        "tokens": [
+          50952,
+          440,
+          23471,
+          1442,
+          5696,
+          544,
+          21104,
+          356,
+          3564,
+          264,
+          3028,
+          11,
+          689,
+          266,
+          1071,
+          5367,
+          4283,
+          281,
+          17980,
+          2564,
+          5692,
+          293,
+          281,
+          3974,
+          12637,
+          1080,
+          32552,
+          278,
+          6838,
+          13,
+          51446
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.14161338428459544,
+        "compression_ratio": 1.608,
+        "no_speech_prob": 4.9559312174096704e-05,
+        "words": [
+          {
+            "word": " The",
+            "start": 37.74,
+            "end": 38.42,
+            "probability": 0.9999340772628784
+          },
+          {
+            "word": " dull",
+            "start": 38.42,
+            "end": 38.66,
+            "probability": 0.9999479055404663
+          },
+          {
+            "word": " light",
+            "start": 38.66,
+            "end": 39.02,
+            "probability": 0.9999079704284668
+          },
+          {
+            "word": " fell",
+            "start": 39.02,
+            "end": 39.42,
+            "probability": 0.9999839067459106
+          },
+          {
+            "word": " more",
+            "start": 39.42,
+            "end": 39.68,
+            "probability": 0.9999467134475708
+          },
+          {
+            "word": " faintly",
+            "start": 39.68,
+            "end": 40.26,
+            "probability": 0.9999203681945801
+          },
+          {
+            "word": " upon",
+            "start": 40.26,
+            "end": 40.42,
+            "probability": 0.9999481439590454
+          },
+          {
+            "word": " the",
+            "start": 40.42,
+            "end": 40.64,
+            "probability": 0.9999779462814331
+          },
+          {
+            "word": " page,",
+            "start": 40.64,
+            "end": 41.0,
+            "probability": 0.9997783303260803
+          },
+          {
+            "word": " whereon",
+            "start": 41.06,
+            "end": 41.54,
+            "probability": 0.9987287521362305
+          },
+          {
+            "word": " another",
+            "start": 41.54,
+            "end": 41.86,
+            "probability": 0.9999291896820068
+          },
+          {
+            "word": " equation",
+            "start": 41.86,
+            "end": 42.26,
+            "probability": 0.9995736479759216
+          },
+          {
+            "word": " began",
+            "start": 42.26,
+            "end": 42.86,
+            "probability": 0.9998894929885864
+          },
+          {
+            "word": " to",
+            "start": 42.86,
+            "end": 43.2,
+            "probability": 0.9999715089797974
+          },
+          {
+            "word": " unfold",
+            "start": 43.2,
+            "end": 43.44,
+            "probability": 0.9999361038208008
+          },
+          {
+            "word": " itself",
+            "start": 43.44,
+            "end": 44.04,
+            "probability": 0.999903678894043
+          },
+          {
+            "word": " slowly",
+            "start": 44.04,
+            "end": 44.66,
+            "probability": 0.9998800754547119
+          },
+          {
+            "word": " and",
+            "start": 44.66,
+            "end": 45.42,
+            "probability": 0.6444061398506165
+          },
+          {
+            "word": " to",
+            "start": 45.42,
+            "end": 45.62,
+            "probability": 0.9997958540916443
+          },
+          {
+            "word": " spread",
+            "start": 45.62,
+            "end": 45.96,
+            "probability": 0.999953031539917
+          },
+          {
+            "word": " abroad",
+            "start": 45.96,
+            "end": 46.28,
+            "probability": 0.9987412095069885
+          },
+          {
+            "word": " its",
+            "start": 46.28,
+            "end": 46.74,
+            "probability": 0.999785840511322
+          },
+          {
+            "word": " widening",
+            "start": 46.74,
+            "end": 47.3,
+            "probability": 0.9990493953227997
+          },
+          {
+            "word": " tail.",
+            "start": 47.3,
+            "end": 47.62,
+            "probability": 0.8895794749259949
+          }
+        ]
+      },
+      {
+        "_direction": "in",
+        "message": "WhisperSegment",
+        "id": 8,
+        "seek": 2622,
+        "start": 48.32,
+        "end": 52.14,
+        "text": " A cold, lucid indifference reigned in his soul.",
+        "tokens": [
+          51488,
+          316,
+          3554,
+          11,
+          21296,
+          327,
+          1016,
+          351,
+          5158,
+          319,
+          16690,
+          294,
+          702,
+          5133,
+          13,
+          51667
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.14161338428459544,
+        "compression_ratio": 1.608,
+        "no_speech_prob": 4.9559312174096704e-05,
+        "words": [
+          {
+            "word": " A",
+            "start": 48.32,
+            "end": 49.0,
+            "probability": 0.9998276233673096
+          },
+          {
+            "word": " cold,",
+            "start": 49.0,
+            "end": 49.34,
+            "probability": 0.9999527931213379
+          },
+          {
+            "word": " lucid",
+            "start": 49.52,
+            "end": 50.16,
+            "probability": 0.9998825490474701
+          },
+          {
+            "word": " indifference",
+            "start": 50.16,
+            "end": 50.82,
+            "probability": 0.9999022483825684
+          },
+          {
+            "word": " reigned",
+            "start": 50.82,
+            "end": 51.48,
+            "probability": 0.9933622479438782
+          },
+          {
+            "word": " in",
+            "start": 51.48,
+            "end": 51.64,
+            "probability": 0.9999692440032959
+          },
+          {
+            "word": " his",
+            "start": 51.64,
+            "end": 51.78,
+            "probability": 0.9999096393585205
+          },
+          {
+            "word": " soul.",
+            "start": 51.78,
+            "end": 52.14,
+            "probability": 0.9996994733810425
+          }
+        ]
+      },
+      {
+        "_direction": "in",
+        "message": "WhisperSegment",
+        "id": 9,
+        "seek": 2622,
+        "start": 52.56,
+        "end": 55.8,
+        "text": " The chaos in which his ardor extinguished itself.",
+        "tokens": [
+          51684,
+          440,
+          14158,
+          294,
+          597,
+          702,
+          44856,
+          284,
+          33829,
+          84,
+          4729,
+          2564,
+          13,
+          51857
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.14161338428459544,
+        "compression_ratio": 1.608,
+        "no_speech_prob": 4.9559312174096704e-05,
+        "words": [
+          {
+            "word": " The",
+            "start": 52.56,
+            "end": 53.24,
+            "probability": 0.9997029900550842
+          },
+          {
+            "word": " chaos",
+            "start": 53.24,
+            "end": 53.6,
+            "probability": 0.9998819828033447
+          },
+          {
+            "word": " in",
+            "start": 53.6,
+            "end": 53.94,
+            "probability": 0.9950652718544006
+          },
+          {
+            "word": " which",
+            "start": 53.94,
+            "end": 54.12,
+            "probability": 0.9999860525131226
+          },
+          {
+            "word": " his",
+            "start": 54.12,
+            "end": 54.32,
+            "probability": 0.9998964071273804
+          },
+          {
+            "word": " ardor",
+            "start": 54.32,
+            "end": 54.86,
+            "probability": 0.9328576922416687
+          },
+          {
+            "word": " extinguished",
+            "start": 54.86,
+            "end": 55.5,
+            "probability": 0.9977984627087911
+          },
+          {
+            "word": " itself.",
+            "start": 55.5,
+            "end": 55.8,
+            "probability": 0.9994713664054871
+          }
+        ]
+      },
+      {
+        "_direction": "in",
+        "message": "WhisperSegment",
+        "id": 10,
+        "seek": 5622,
+        "start": 56.22,
+        "end": 58.78,
+        "text": " It was a cold, indifferent knowledge of himself.",
+        "tokens": [
+          50365,
+          467,
+          390,
+          257,
+          3554,
+          11,
+          48502,
+          3601,
+          295,
+          3647,
+          13,
+          50507
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.09181097149848938,
+        "compression_ratio": 1.3381294964028776,
+        "no_speech_prob": 0.002088085049763322,
+        "words": [
+          {
+            "word": " It",
+            "start": 56.22,
+            "end": 56.3,
+            "probability": 0.00102566322311759
+          },
+          {
+            "word": " was",
+            "start": 56.3,
+            "end": 56.3,
+            "probability": 0.9481709599494934
+          },
+          {
+            "word": " a",
+            "start": 56.3,
+            "end": 56.36,
+            "probability": 0.9811829328536987
+          },
+          {
+            "word": " cold,",
+            "start": 56.36,
+            "end": 56.86,
+            "probability": 0.9994094371795654
+          },
+          {
+            "word": " indifferent",
+            "start": 56.98,
+            "end": 57.42,
+            "probability": 0.999237060546875
+          },
+          {
+            "word": " knowledge",
+            "start": 57.42,
+            "end": 58.28,
+            "probability": 0.971524178981781
+          },
+          {
+            "word": " of",
+            "start": 58.28,
+            "end": 58.54,
+            "probability": 0.9978804588317871
+          },
+          {
+            "word": " himself.",
+            "start": 58.54,
+            "end": 58.78,
+            "probability": 0.9898812174797058
+          }
+        ]
+      },
+      {
+        "_direction": "in",
+        "message": "WhisperSegment",
+        "id": 11,
+        "seek": 5622,
+        "start": 59.36,
+        "end": 69.12,
+        "text": " At most, by an alms given to a beggar whose blessing he fled from, he might hope wearily to win for himself some measure of actual grace.",
+        "tokens": [
+          50546,
+          1711,
+          881,
+          11,
+          538,
+          364,
+          419,
+          2592,
+          2212,
+          281,
+          257,
+          44914,
+          289,
+          6104,
+          13869,
+          415,
+          24114,
+          490,
+          11,
+          415,
+          1062,
+          1454,
+          321,
+          3289,
+          281,
+          1942,
+          337,
+          3647,
+          512,
+          3481,
+          295,
+          3539,
+          10042,
+          13,
+          51021
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.09181097149848938,
+        "compression_ratio": 1.3381294964028776,
+        "no_speech_prob": 0.002088085049763322,
+        "words": [
+          {
+            "word": " At",
+            "start": 59.36,
+            "end": 59.92,
+            "probability": 0.9975021481513977
+          },
+          {
+            "word": " most,",
+            "start": 59.92,
+            "end": 60.3,
+            "probability": 0.9960355162620544
+          },
+          {
+            "word": " by",
+            "start": 60.44,
+            "end": 60.98,
+            "probability": 0.9986473917961121
+          },
+          {
+            "word": " an",
+            "start": 60.98,
+            "end": 61.14,
+            "probability": 0.9893696308135986
+          },
+          {
+            "word": " alms",
+            "start": 61.14,
+            "end": 61.54,
+            "probability": 0.9990289509296417
+          },
+          {
+            "word": " given",
+            "start": 61.54,
+            "end": 61.76,
+            "probability": 0.9605979323387146
+          },
+          {
+            "word": " to",
+            "start": 61.76,
+            "end": 62.02,
+            "probability": 0.9993675351142883
+          },
+          {
+            "word": " a",
+            "start": 62.02,
+            "end": 62.14,
+            "probability": 0.9980475902557373
+          },
+          {
+            "word": " beggar",
+            "start": 62.14,
+            "end": 62.6,
+            "probability": 0.9991698861122131
+          },
+          {
+            "word": " whose",
+            "start": 62.6,
+            "end": 62.86,
+            "probability": 0.9639168977737427
+          },
+          {
+            "word": " blessing",
+            "start": 62.86,
+            "end": 63.26,
+            "probability": 0.9916398525238037
+          },
+          {
+            "word": " he",
+            "start": 63.26,
+            "end": 63.52,
+            "probability": 0.998744010925293
+          },
+          {
+            "word": " fled",
+            "start": 63.52,
+            "end": 63.74,
+            "probability": 0.9991459846496582
+          },
+          {
+            "word": " from,",
+            "start": 63.74,
+            "end": 64.02,
+            "probability": 0.9994205236434937
+          },
+          {
+            "word": " he",
+            "start": 64.18,
+            "end": 64.82,
+            "probability": 0.98945552110672
+          },
+          {
+            "word": " might",
+            "start": 64.82,
+            "end": 65.04,
+            "probability": 0.9995705485343933
+          },
+          {
+            "word": " hope",
+            "start": 65.04,
+            "end": 65.38,
+            "probability": 0.9981265664100647
+          },
+          {
+            "word": " wearily",
+            "start": 65.38,
+            "end": 65.82,
+            "probability": 0.998690128326416
+          },
+          {
+            "word": " to",
+            "start": 65.82,
+            "end": 66.14,
+            "probability": 0.9978320002555847
+          },
+          {
+            "word": " win",
+            "start": 66.14,
+            "end": 66.34,
+            "probability": 0.9997794032096863
+          },
+          {
+            "word": " for",
+            "start": 66.34,
+            "end": 66.56,
+            "probability": 0.9994199275970459
+          },
+          {
+            "word": " himself",
+            "start": 66.56,
+            "end": 66.84,
+            "probability": 0.9997501969337463
+          },
+          {
+            "word": " some",
+            "start": 66.84,
+            "end": 67.54,
+            "probability": 0.9985694885253906
+          },
+          {
+            "word": " measure",
+            "start": 67.54,
+            "end": 67.98,
+            "probability": 0.9997712969779968
+          },
+          {
+            "word": " of",
+            "start": 67.98,
+            "end": 68.28,
+            "probability": 0.9994764924049377
+          },
+          {
+            "word": " actual",
+            "start": 68.28,
+            "end": 68.64,
+            "probability": 0.9986500144004822
+          },
+          {
+            "word": " grace.",
+            "start": 68.64,
+            "end": 69.12,
+            "probability": 0.9938865303993225
+          }
+        ]
+      }
+    ],
+    "error": null
+  },
+  "resources_path": "results/runs/2026-05-12T02-09-18Z__whisper__librispeech-test-clean-mini__mac-first-run__resources.jsonl"
+}

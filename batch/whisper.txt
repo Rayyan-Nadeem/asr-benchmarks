@@ -1,0 +1,9 @@
+# OpenAI Whisper adapter — batch (offline) large-v3.
+# Pair with any diarizer for DER scoring.
+#
+# On Mac (no NVIDIA): inference is CPU-only; RTF ~2x (slower than realtime).
+# On NVIDIA: torch picks up CUDA automatically; RTF drops to ~0.05.
+
+openai-whisper>=20240930
+torch>=2.7
+torchaudio>=2.7

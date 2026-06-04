@@ -1,0 +1,3313 @@
+{
+  "engine": "parakeet-onnx",
+  "diarizer": "passthrough",
+  "case": "scotus-glossip-v-oklahoma",
+  "tag": "t4-8gb",
+  "url": "ws://127.0.0.1:9000/v2",
+  "config": {
+    "language": "en",
+    "operating_point": "enhanced",
+    "diarization": "none",
+    "enable_partials": false,
+    "max_delay": 3.0,
+    "max_delay_mode": "flexible",
+    "output_locale": "en-US",
+    "enable_entities": false,
+    "punctuation_overrides": {
+      "permitted_marks": [
+        ",",
+        ".",
+        "?"
+      ]
+    }
+  },
+  "measured": {
+    "audio_duration_s": 300.0,
+    "wall_clock_s": 304.0310730380006,
+    "ttft_s": 3.2485098020006262,
+    "first_final_s": 6.38492938499985,
+    "rtf": 1.0134369101266687,
+    "partial_count": 46,
+    "final_count": 26,
+    "transcript": "We will hear argument this morning in case twenty two four sixty six, Glossop versus Oklahoma. Justin Sneed, the undisputed murderer in this case. Oklahoma has now disclosed evidence revealing that Mr Sneed lied to the jury about his history of psychiatric treatment, including the fact that a prison psychiatrist prescribed lithium to treat his previously undiagnosed disorder. The prosecution suppressed that evidence and then failed to correct Mr Sneed's perjured denial, just as it suppressed evidence that in the middle of trial, in violation of the Court's sequestration order, Sneed altered his testimony about the knife on the victim at the request of the prosecutor, who then falsely denied to the court her prior knowledge. There is no adequate or independent jurisdictional barter review and no warrant for an evidentiary hearing. As to independence, the Court's opinion is suffused with merit's determination on the Brady and Napo claims, and certainly there is no, clear and express statement that the Court's decision is based on a bona fidee separate, adequate and independent grounds as long required by this Court preclude review, nor is there any adequate bar. By rejecting the State's waiver, the a jurisdictional threshold it had never in any other case. The disposition was, quote, without support in prior State law, as required over sixty years of this Court's precedent to establish adequacy. No evidentiary hearing could alter the conclusion Mr Glossop was denied due process. There is no dispute that, contrary to Sneed's sworn testimony, the State's own record shows that he was in fact treated by",
+    "finals": [
+      {
+        "t": 6.38492938499985,
+        "transcript": "We will hear argument this morning in case twenty two",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 0.4,
+            "end_time": 0.48,
+            "alternatives": [
+              {
+                "content": "We",
+                "confidence": 0.8676315565790069
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 0.48,
+            "end_time": 0.64,
+            "alternatives": [
+              {
+                "content": "will",
+                "confidence": 0.995383573048203
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 0.64,
+            "end_time": 0.96,
+            "alternatives": [
+              {
+                "content": "hear",
+                "confidence": 0.9969205620544028
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 0.96,
+            "end_time": 1.36,
+            "alternatives": [
+              {
+                "content": "argument",
+                "confidence": 0.9968168908287931
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 1.36,
+            "end_time": 1.6,
+            "alternatives": [
+              {
+                "content": "this",
+                "confidence": 0.9978914705412517
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 1.6,
+            "end_time": 1.92,
+            "alternatives": [
+              {
+                "content": "morning",
+                "confidence": 0.9996154289610092
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 1.92,
+            "end_time": 2.08,
+            "alternatives": [
+              {
+                "content": "in",
+                "confidence": 0.9745833219222444
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 2.08,
+            "end_time": 2.56,
+            "alternatives": [
+              {
+                "content": "case",
+                "confidence": 0.9562542851380167
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 2.56,
+            "end_time": 2.88,
+            "alternatives": [
+              {
+                "content": "twenty",
+                "confidence": 0.9917952030572912
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 2.88,
+            "end_time": 3.2800000000000002,
+            "alternatives": [
+              {
+                "content": "two",
+                "confidence": 0.9975211230971502
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 9.533912058001079,
+        "transcript": "four",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 3.64,
+            "end_time": 3.96,
+            "alternatives": [
+              {
+                "content": "four",
+                "confidence": 0.9993000061053166
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 12.59724199500124,
+        "transcript": "sixty six,",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 4.08,
+            "end_time": 4.4,
+            "alternatives": [
+              {
+                "content": "sixty",
+                "confidence": 0.9931434179304092
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 4.4,
+            "end_time": 4.88,
+            "alternatives": [
+              {
+                "content": "six,",
+                "confidence": 0.7795406440173092
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 22.041429950000747,
+        "transcript": "Glossop versus Oklahoma.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 4.92,
+            "end_time": 5.64,
+            "alternatives": [
+              {
+                "content": "Glossop",
+                "confidence": 0.8215077524913478
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 5.64,
+            "end_time": 5.96,
+            "alternatives": [
+              {
+                "content": "versus",
+                "confidence": 0.9256566330446763
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 5.96,
+            "end_time": 12.04,
+            "alternatives": [
+              {
+                "content": "Oklahoma.",
+                "confidence": 0.9793370166990822
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 28.04432605399961,
+        "transcript": "Justin Sneed, the undisputed murderer in this case. Oklahoma has now disclosed evidence revealing that",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 16.08,
+            "end_time": 16.64,
+            "alternatives": [
+              {
+                "content": "Justin",
+                "confidence": 0.995832676494542
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 16.64,
+            "end_time": 17.36,
+            "alternatives": [
+              {
+                "content": "Sneed,",
+                "confidence": 0.9167628520483789
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 17.36,
+            "end_time": 17.52,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9994944506998004
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 17.52,
+            "end_time": 18.32,
+            "alternatives": [
+              {
+                "content": "undisputed",
+                "confidence": 0.9993080215733734
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 18.32,
+            "end_time": 18.88,
+            "alternatives": [
+              {
+                "content": "murderer",
+                "confidence": 0.9998834354188256
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 18.88,
+            "end_time": 19.119999999999997,
+            "alternatives": [
+              {
+                "content": "in",
+                "confidence": 0.99989784807358
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 19.119999999999997,
+            "end_time": 19.36,
+            "alternatives": [
+              {
+                "content": "this",
+                "confidence": 0.9997528210462462
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 19.36,
+            "end_time": 20.240000000000002,
+            "alternatives": [
+              {
+                "content": "case.",
+                "confidence": 0.9878443084888365
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 20.240000000000002,
+            "end_time": 21.2,
+            "alternatives": [
+              {
+                "content": "Oklahoma",
+                "confidence": 0.9977240243920329
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 21.2,
+            "end_time": 21.36,
+            "alternatives": [
+              {
+                "content": "has",
+                "confidence": 0.9904797795518187
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 21.36,
+            "end_time": 21.6,
+            "alternatives": [
+              {
+                "content": "now",
+                "confidence": 0.9988161052589607
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 21.6,
+            "end_time": 22.32,
+            "alternatives": [
+              {
+                "content": "disclosed",
+                "confidence": 0.9997781032394807
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.32,
+            "end_time": 22.88,
+            "alternatives": [
+              {
+                "content": "evidence",
+                "confidence": 0.9993725116981678
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 22.88,
+            "end_time": 23.6,
+            "alternatives": [
+              {
+                "content": "revealing",
+                "confidence": 0.9995185217149372
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 23.6,
+            "end_time": 23.84,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 0.9984126294369245
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 33.8281109920008,
+        "transcript": "Mr Sneed lied to the jury about his history of psychiatric treatment, including the fact that",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 23.88,
+            "end_time": 24.2,
+            "alternatives": [
+              {
+                "content": "Mr",
+                "confidence": 0.996748643795418
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 24.2,
+            "end_time": 24.92,
+            "alternatives": [
+              {
+                "content": "Sneed",
+                "confidence": 0.7986694236085237
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 24.92,
+            "end_time": 25.24,
+            "alternatives": [
+              {
+                "content": "lied",
+                "confidence": 0.9998550107302641
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 25.24,
+            "end_time": 25.4,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 0.9999892712787918
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 25.4,
+            "end_time": 25.48,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9999322937076363
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 25.48,
+            "end_time": 26.04,
+            "alternatives": [
+              {
+                "content": "jury",
+                "confidence": 0.9995591429625754
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 26.04,
+            "end_time": 26.36,
+            "alternatives": [
+              {
+                "content": "about",
+                "confidence": 0.9997751026695952
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 26.36,
+            "end_time": 26.6,
+            "alternatives": [
+              {
+                "content": "his",
+                "confidence": 0.9988293063305839
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 26.6,
+            "end_time": 26.92,
+            "alternatives": [
+              {
+                "content": "history",
+                "confidence": 0.9999577429786861
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 26.92,
+            "end_time": 27.08,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 0.9998842611647071
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 27.08,
+            "end_time": 27.96,
+            "alternatives": [
+              {
+                "content": "psychiatric",
+                "confidence": 0.9999577426321832
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 27.96,
+            "end_time": 28.52,
+            "alternatives": [
+              {
+                "content": "treatment,",
+                "confidence": 0.9712286130620643
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 28.52,
+            "end_time": 29.08,
+            "alternatives": [
+              {
+                "content": "including",
+                "confidence": 0.9998539678013663
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 29.08,
+            "end_time": 29.240000000000002,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9996298729709874
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 29.240000000000002,
+            "end_time": 29.72,
+            "alternatives": [
+              {
+                "content": "fact",
+                "confidence": 0.999684123497964
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 29.72,
+            "end_time": 29.96,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 0.9999075021477618
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 39.904880979000154,
+        "transcript": "a prison psychiatrist prescribed lithium to treat his previously undiagnosed",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 30.0,
+            "end_time": 30.16,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 0.9835070521139854
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 30.16,
+            "end_time": 30.560000000000002,
+            "alternatives": [
+              {
+                "content": "prison",
+                "confidence": 0.9992670029021896
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 30.560000000000002,
+            "end_time": 31.6,
+            "alternatives": [
+              {
+                "content": "psychiatrist",
+                "confidence": 0.9992930194702744
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 31.6,
+            "end_time": 32.160000000000004,
+            "alternatives": [
+              {
+                "content": "prescribed",
+                "confidence": 0.9738295408927163
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 32.160000000000004,
+            "end_time": 33.2,
+            "alternatives": [
+              {
+                "content": "lithium",
+                "confidence": 0.9969095403398127
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 33.2,
+            "end_time": 33.52,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 0.9948442153703113
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 33.52,
+            "end_time": 33.84,
+            "alternatives": [
+              {
+                "content": "treat",
+                "confidence": 0.9997135626418445
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 33.84,
+            "end_time": 34.160000000000004,
+            "alternatives": [
+              {
+                "content": "his",
+                "confidence": 0.9949145384738645
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 34.160000000000004,
+            "end_time": 34.96,
+            "alternatives": [
+              {
+                "content": "previously",
+                "confidence": 0.9999186440121269
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 34.96,
+            "end_time": 36.08,
+            "alternatives": [
+              {
+                "content": "undiagnosed",
+                "confidence": 0.9977088868602997
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 42.80340030200023,
+        "transcript": "disorder.",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 36.8,
+            "end_time": 37.84,
+            "alternatives": [
+              {
+                "content": "disorder.",
+                "confidence": 0.8869974286546645
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 48.99855941200076,
+        "transcript": "The prosecution suppressed that evidence and then failed to correct Mr Sneed's perjured denial, just as it",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 37.88,
+            "end_time": 38.120000000000005,
+            "alternatives": [
+              {
+                "content": "The",
+                "confidence": 0.9875080118803395
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 38.120000000000005,
+            "end_time": 39.0,
+            "alternatives": [
+              {
+                "content": "prosecution",
+                "confidence": 0.9941412617006677
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 39.0,
+            "end_time": 39.64,
+            "alternatives": [
+              {
+                "content": "suppressed",
+                "confidence": 0.9997583838551365
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 39.64,
+            "end_time": 39.88,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 0.9973451236958648
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 39.88,
+            "end_time": 40.440000000000005,
+            "alternatives": [
+              {
+                "content": "evidence",
+                "confidence": 0.999612827480441
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 40.440000000000005,
+            "end_time": 40.6,
+            "alternatives": [
+              {
+                "content": "and",
+                "confidence": 0.9983703273027535
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 40.6,
+            "end_time": 40.84,
+            "alternatives": [
+              {
+                "content": "then",
+                "confidence": 0.983987434085425
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 40.84,
+            "end_time": 41.24,
+            "alternatives": [
+              {
+                "content": "failed",
+                "confidence": 0.9995185369049734
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 41.24,
+            "end_time": 41.400000000000006,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 0.9998999934056426
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 41.400000000000006,
+            "end_time": 41.800000000000004,
+            "alternatives": [
+              {
+                "content": "correct",
+                "confidence": 0.9999390094305989
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 41.800000000000004,
+            "end_time": 42.120000000000005,
+            "alternatives": [
+              {
+                "content": "Mr",
+                "confidence": 0.9987027380654244
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 42.120000000000005,
+            "end_time": 42.84,
+            "alternatives": [
+              {
+                "content": "Sneed's",
+                "confidence": 0.9448106697835424
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 42.84,
+            "end_time": 43.400000000000006,
+            "alternatives": [
+              {
+                "content": "perjured",
+                "confidence": 0.9726822065807267
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 43.400000000000006,
+            "end_time": 44.28,
+            "alternatives": [
+              {
+                "content": "denial,",
+                "confidence": 0.9584487987614488
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 44.28,
+            "end_time": 44.52,
+            "alternatives": [
+              {
+                "content": "just",
+                "confidence": 0.99906746168228
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 44.52,
+            "end_time": 44.760000000000005,
+            "alternatives": [
+              {
+                "content": "as",
+                "confidence": 0.9976428411034555
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 44.760000000000005,
+            "end_time": 45.0,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 0.9686124441785569
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 55.010738973000116,
+        "transcript": "suppressed evidence that in the middle of trial, in violation of the Court's sequestration order,",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 45.04,
+            "end_time": 45.68,
+            "alternatives": [
+              {
+                "content": "suppressed",
+                "confidence": 0.998127017735946
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 45.68,
+            "end_time": 46.32,
+            "alternatives": [
+              {
+                "content": "evidence",
+                "confidence": 0.9985998674630168
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 46.32,
+            "end_time": 46.64,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 0.9958036351468034
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 46.64,
+            "end_time": 46.8,
+            "alternatives": [
+              {
+                "content": "in",
+                "confidence": 0.9988961497100106
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 46.8,
+            "end_time": 46.96,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9994912353103317
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 46.96,
+            "end_time": 47.28,
+            "alternatives": [
+              {
+                "content": "middle",
+                "confidence": 0.9996669618352719
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 47.28,
+            "end_time": 47.44,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 0.9996210581041057
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 47.44,
+            "end_time": 48.08,
+            "alternatives": [
+              {
+                "content": "trial,",
+                "confidence": 0.865928988693949
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 48.08,
+            "end_time": 48.24,
+            "alternatives": [
+              {
+                "content": "in",
+                "confidence": 0.9985258884456626
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 48.24,
+            "end_time": 48.8,
+            "alternatives": [
+              {
+                "content": "violation",
+                "confidence": 0.9999163222057695
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 48.8,
+            "end_time": 48.96,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 0.9991196997286066
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 48.96,
+            "end_time": 49.12,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9992115757440685
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 49.12,
+            "end_time": 49.6,
+            "alternatives": [
+              {
+                "content": "Court's",
+                "confidence": 0.8442764101652217
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 49.6,
+            "end_time": 50.480000000000004,
+            "alternatives": [
+              {
+                "content": "sequestration",
+                "confidence": 0.997222590993939
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 50.480000000000004,
+            "end_time": 51.2,
+            "alternatives": [
+              {
+                "content": "order,",
+                "confidence": 0.9907003748993313
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 61.06141446699985,
+        "transcript": "Sneed altered his testimony about the knife on the victim at the",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 51.24,
+            "end_time": 51.96,
+            "alternatives": [
+              {
+                "content": "Sneed",
+                "confidence": 0.7875849410630908
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 51.96,
+            "end_time": 52.440000000000005,
+            "alternatives": [
+              {
+                "content": "altered",
+                "confidence": 0.9872624200661737
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 52.440000000000005,
+            "end_time": 52.6,
+            "alternatives": [
+              {
+                "content": "his",
+                "confidence": 0.9737935260860183
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 52.6,
+            "end_time": 53.32,
+            "alternatives": [
+              {
+                "content": "testimony",
+                "confidence": 0.998983206121923
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 53.32,
+            "end_time": 53.64,
+            "alternatives": [
+              {
+                "content": "about",
+                "confidence": 0.9590065868011625
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 53.64,
+            "end_time": 53.800000000000004,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9837349552851388
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 53.800000000000004,
+            "end_time": 55.0,
+            "alternatives": [
+              {
+                "content": "knife",
+                "confidence": 0.8814835862795564
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 55.0,
+            "end_time": 55.160000000000004,
+            "alternatives": [
+              {
+                "content": "on",
+                "confidence": 0.9576645446493974
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 55.160000000000004,
+            "end_time": 55.400000000000006,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9965881092617924
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 55.400000000000006,
+            "end_time": 56.2,
+            "alternatives": [
+              {
+                "content": "victim",
+                "confidence": 0.9992093748324671
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 56.2,
+            "end_time": 56.440000000000005,
+            "alternatives": [
+              {
+                "content": "at",
+                "confidence": 0.9799000701678132
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 56.440000000000005,
+            "end_time": 56.68000000000001,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9794498569470417
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 63.99153171299986,
+        "transcript": "request of the prosecutor, who then",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 57.24,
+            "end_time": 57.8,
+            "alternatives": [
+              {
+                "content": "request",
+                "confidence": 0.9999462003295528
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 57.8,
+            "end_time": 57.96,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 0.9995567379670581
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 57.96,
+            "end_time": 58.2,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9991425481936388
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 58.2,
+            "end_time": 59.16,
+            "alternatives": [
+              {
+                "content": "prosecutor,",
+                "confidence": 0.9408530358613154
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 59.16,
+            "end_time": 59.480000000000004,
+            "alternatives": [
+              {
+                "content": "who",
+                "confidence": 0.9784609563865763
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 59.480000000000004,
+            "end_time": 59.8,
+            "alternatives": [
+              {
+                "content": "then",
+                "confidence": 0.9994188350624195
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 70.15330081000138,
+        "transcript": "falsely denied to the court her prior knowledge. There is no adequate or independent",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 59.839999999999996,
+            "end_time": 60.48,
+            "alternatives": [
+              {
+                "content": "falsely",
+                "confidence": 0.9999578828667095
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 60.48,
+            "end_time": 61.04,
+            "alternatives": [
+              {
+                "content": "denied",
+                "confidence": 0.9970632272292047
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 61.04,
+            "end_time": 61.199999999999996,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 0.9973568630360374
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 61.199999999999996,
+            "end_time": 61.36,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9998098973429976
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 61.36,
+            "end_time": 61.76,
+            "alternatives": [
+              {
+                "content": "court",
+                "confidence": 0.7756254785621335
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 61.76,
+            "end_time": 62.08,
+            "alternatives": [
+              {
+                "content": "her",
+                "confidence": 0.9994440786360776
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 62.08,
+            "end_time": 62.559999999999995,
+            "alternatives": [
+              {
+                "content": "prior",
+                "confidence": 0.9999005928702215
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 62.559999999999995,
+            "end_time": 63.599999999999994,
+            "alternatives": [
+              {
+                "content": "knowledge.",
+                "confidence": 0.9889624553443526
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 63.599999999999994,
+            "end_time": 63.839999999999996,
+            "alternatives": [
+              {
+                "content": "There",
+                "confidence": 0.9964086516462572
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 63.839999999999996,
+            "end_time": 64.08,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 0.9970260163141976
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 64.08,
+            "end_time": 64.32,
+            "alternatives": [
+              {
+                "content": "no",
+                "confidence": 0.9999207321075279
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 64.32,
+            "end_time": 64.96,
+            "alternatives": [
+              {
+                "content": "adequate",
+                "confidence": 0.9997374333536734
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 64.96,
+            "end_time": 65.2,
+            "alternatives": [
+              {
+                "content": "or",
+                "confidence": 0.9998868831852484
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 65.2,
+            "end_time": 65.84,
+            "alternatives": [
+              {
+                "content": "independent",
+                "confidence": 0.9999819601082406
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 79.74162281400095,
+        "transcript": "jurisdictional",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 65.96000000000001,
+            "end_time": 66.68,
+            "alternatives": [
+              {
+                "content": "jurisdictional",
+                "confidence": 0.9950565683983822
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 89.4640689099997,
+        "transcript": "barter review and no warrant for an evidentiary hearing. As to independence, the Court's opinion is suffused with merit's determination on the Brady and Napo claims, and certainly there is no,",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 66.72000000000001,
+            "end_time": 67.28,
+            "alternatives": [
+              {
+                "content": "barter",
+                "confidence": 0.8112385376827111
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 67.28,
+            "end_time": 67.68,
+            "alternatives": [
+              {
+                "content": "review",
+                "confidence": 0.9981557668470625
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 67.68,
+            "end_time": 67.84,
+            "alternatives": [
+              {
+                "content": "and",
+                "confidence": 0.9995358952895045
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 67.84,
+            "end_time": 68.08000000000001,
+            "alternatives": [
+              {
+                "content": "no",
+                "confidence": 0.9998387358160128
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 68.08000000000001,
+            "end_time": 68.48,
+            "alternatives": [
+              {
+                "content": "warrant",
+                "confidence": 0.9999611396218737
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 68.48,
+            "end_time": 68.64,
+            "alternatives": [
+              {
+                "content": "for",
+                "confidence": 0.9997670001414862
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 68.64,
+            "end_time": 68.80000000000001,
+            "alternatives": [
+              {
+                "content": "an",
+                "confidence": 0.9993350163091848
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 68.80000000000001,
+            "end_time": 69.52000000000001,
+            "alternatives": [
+              {
+                "content": "evidentiary",
+                "confidence": 0.9980420401976074
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 69.52000000000001,
+            "end_time": 70.48,
+            "alternatives": [
+              {
+                "content": "hearing.",
+                "confidence": 0.9349874679975801
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 70.48,
+            "end_time": 70.72000000000001,
+            "alternatives": [
+              {
+                "content": "As",
+                "confidence": 0.9961155729950316
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 70.72000000000001,
+            "end_time": 70.96000000000001,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 0.9989503921217897
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 70.96000000000001,
+            "end_time": 71.92,
+            "alternatives": [
+              {
+                "content": "independence,",
+                "confidence": 0.9015524501878205
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 71.92,
+            "end_time": 72.08000000000001,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9991504025450513
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 72.08000000000001,
+            "end_time": 72.56,
+            "alternatives": [
+              {
+                "content": "Court's",
+                "confidence": 0.9629969924937747
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 72.56,
+            "end_time": 73.04,
+            "alternatives": [
+              {
+                "content": "opinion",
+                "confidence": 0.9997468449309208
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 73.04,
+            "end_time": 73.36000000000001,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 0.9990462824457622
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 73.36000000000001,
+            "end_time": 74.32000000000001,
+            "alternatives": [
+              {
+                "content": "suffused",
+                "confidence": 0.9644271570598092
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 74.32000000000001,
+            "end_time": 74.56,
+            "alternatives": [
+              {
+                "content": "with",
+                "confidence": 0.9998377824705392
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 74.56,
+            "end_time": 75.2,
+            "alternatives": [
+              {
+                "content": "merit's",
+                "confidence": 0.7480485115529856
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 75.2,
+            "end_time": 75.92,
+            "alternatives": [
+              {
+                "content": "determination",
+                "confidence": 0.9971902876199402
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 75.92,
+            "end_time": 76.08000000000001,
+            "alternatives": [
+              {
+                "content": "on",
+                "confidence": 0.9991539728256508
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 76.08000000000001,
+            "end_time": 76.24000000000001,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9976100954783347
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 76.24000000000001,
+            "end_time": 76.88000000000001,
+            "alternatives": [
+              {
+                "content": "Brady",
+                "confidence": 0.9991314879858874
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 76.88000000000001,
+            "end_time": 77.04,
+            "alternatives": [
+              {
+                "content": "and",
+                "confidence": 0.9992281199379415
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 77.04,
+            "end_time": 77.76,
+            "alternatives": [
+              {
+                "content": "Napo",
+                "confidence": 0.7439039862592786
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 77.76,
+            "end_time": 78.4,
+            "alternatives": [
+              {
+                "content": "claims,",
+                "confidence": 0.9645662384453922
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 78.4,
+            "end_time": 78.64000000000001,
+            "alternatives": [
+              {
+                "content": "and",
+                "confidence": 0.983554097063872
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 78.64000000000001,
+            "end_time": 79.44000000000001,
+            "alternatives": [
+              {
+                "content": "certainly",
+                "confidence": 0.9998260141269095
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 79.44000000000001,
+            "end_time": 79.68,
+            "alternatives": [
+              {
+                "content": "there",
+                "confidence": 0.9906578111431554
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 79.68,
+            "end_time": 79.84,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 0.9978162159900997
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 79.84,
+            "end_time": 80.24000000000001,
+            "alternatives": [
+              {
+                "content": "no,",
+                "confidence": 0.7078741509483086
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 91.66642218500056,
+        "transcript": "clear and express statement that the Court's decision is based on a bona",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 80.76,
+            "end_time": 81.16000000000001,
+            "alternatives": [
+              {
+                "content": "clear",
+                "confidence": 0.9893205852934789
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 81.16000000000001,
+            "end_time": 81.4,
+            "alternatives": [
+              {
+                "content": "and",
+                "confidence": 0.9879345985003896
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 81.4,
+            "end_time": 82.12,
+            "alternatives": [
+              {
+                "content": "express",
+                "confidence": 0.999810138404237
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 82.12,
+            "end_time": 83.16000000000001,
+            "alternatives": [
+              {
+                "content": "statement",
+                "confidence": 0.9977077062276176
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 83.16000000000001,
+            "end_time": 83.4,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 0.9961087131046212
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 83.4,
+            "end_time": 83.56,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9976411802897904
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 83.56,
+            "end_time": 84.12,
+            "alternatives": [
+              {
+                "content": "Court's",
+                "confidence": 0.9375359383427163
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 84.12,
+            "end_time": 84.52000000000001,
+            "alternatives": [
+              {
+                "content": "decision",
+                "confidence": 0.9995625376534737
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 84.52000000000001,
+            "end_time": 84.76,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 0.9937300507431315
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 84.76,
+            "end_time": 85.08000000000001,
+            "alternatives": [
+              {
+                "content": "based",
+                "confidence": 0.9994963885895668
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 85.08000000000001,
+            "end_time": 85.24000000000001,
+            "alternatives": [
+              {
+                "content": "on",
+                "confidence": 0.9999126272133094
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 85.24000000000001,
+            "end_time": 85.48,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 0.6417335722304265
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 85.48,
+            "end_time": 85.88000000000001,
+            "alternatives": [
+              {
+                "content": "bona",
+                "confidence": 0.9253922204216081
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 97.74963174100048,
+        "transcript": "fidee separate, adequate and independent grounds as long required by this Court",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 85.92000000000002,
+            "end_time": 86.56000000000002,
+            "alternatives": [
+              {
+                "content": "fidee",
+                "confidence": 0.8523840060582234
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 86.56000000000002,
+            "end_time": 87.2,
+            "alternatives": [
+              {
+                "content": "separate,",
+                "confidence": 0.9806994483548115
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 87.2,
+            "end_time": 87.84,
+            "alternatives": [
+              {
+                "content": "adequate",
+                "confidence": 0.9990927024014846
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 87.84,
+            "end_time": 88.00000000000001,
+            "alternatives": [
+              {
+                "content": "and",
+                "confidence": 0.9977709973586708
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 88.00000000000001,
+            "end_time": 88.72000000000001,
+            "alternatives": [
+              {
+                "content": "independent",
+                "confidence": 0.9998386403928238
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 88.72000000000001,
+            "end_time": 89.52000000000001,
+            "alternatives": [
+              {
+                "content": "grounds",
+                "confidence": 0.9987112071660085
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 89.52000000000001,
+            "end_time": 89.84,
+            "alternatives": [
+              {
+                "content": "as",
+                "confidence": 0.9848737491922271
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 89.84,
+            "end_time": 90.32000000000001,
+            "alternatives": [
+              {
+                "content": "long",
+                "confidence": 0.9990742439595548
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 90.32000000000001,
+            "end_time": 90.96000000000001,
+            "alternatives": [
+              {
+                "content": "required",
+                "confidence": 0.9913909757502644
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 90.96000000000001,
+            "end_time": 91.12,
+            "alternatives": [
+              {
+                "content": "by",
+                "confidence": 0.9992803749349437
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 91.12,
+            "end_time": 91.36000000000001,
+            "alternatives": [
+              {
+                "content": "this",
+                "confidence": 0.998430810846512
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 91.36000000000001,
+            "end_time": 92.00000000000001,
+            "alternatives": [
+              {
+                "content": "Court",
+                "confidence": 0.91861992324647
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 103.48428423900077,
+        "transcript": "preclude review, nor is there any adequate bar. By rejecting the State's waiver, the",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 92.04000000000002,
+            "end_time": 92.60000000000001,
+            "alternatives": [
+              {
+                "content": "preclude",
+                "confidence": 0.9865974362525083
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 92.60000000000001,
+            "end_time": 93.24000000000001,
+            "alternatives": [
+              {
+                "content": "review,",
+                "confidence": 0.9286026276929708
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 93.24000000000001,
+            "end_time": 93.48000000000002,
+            "alternatives": [
+              {
+                "content": "nor",
+                "confidence": 0.9985217282080969
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 93.48000000000002,
+            "end_time": 93.64000000000001,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 0.9963035634624473
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 93.64000000000001,
+            "end_time": 93.88000000000001,
+            "alternatives": [
+              {
+                "content": "there",
+                "confidence": 0.999668231449699
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 93.88000000000001,
+            "end_time": 94.12000000000002,
+            "alternatives": [
+              {
+                "content": "any",
+                "confidence": 0.9990560390280591
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 94.12000000000002,
+            "end_time": 94.76000000000002,
+            "alternatives": [
+              {
+                "content": "adequate",
+                "confidence": 0.9998697154357187
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 94.76000000000002,
+            "end_time": 95.56000000000002,
+            "alternatives": [
+              {
+                "content": "bar.",
+                "confidence": 0.9910878256448031
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 95.56000000000002,
+            "end_time": 95.88000000000001,
+            "alternatives": [
+              {
+                "content": "By",
+                "confidence": 0.9989656191952937
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 95.88000000000001,
+            "end_time": 96.44000000000001,
+            "alternatives": [
+              {
+                "content": "rejecting",
+                "confidence": 0.9999304180940672
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 96.44000000000001,
+            "end_time": 96.68,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.999045092595386
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 96.68,
+            "end_time": 97.16000000000001,
+            "alternatives": [
+              {
+                "content": "State's",
+                "confidence": 0.9764622319520444
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 97.16000000000001,
+            "end_time": 98.04000000000002,
+            "alternatives": [
+              {
+                "content": "waiver,",
+                "confidence": 0.9801147306087292
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 98.04000000000002,
+            "end_time": 98.28000000000002,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9971274635509702
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 106.37357016700116,
+        "transcript": "a jurisdictional threshold it had never",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 99.24,
+            "end_time": 99.48,
+            "alternatives": [
+              {
+                "content": "a",
+                "confidence": 0.8522162240960555
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 99.48,
+            "end_time": 100.36,
+            "alternatives": [
+              {
+                "content": "jurisdictional",
+                "confidence": 0.996502003663512
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 100.36,
+            "end_time": 101.24,
+            "alternatives": [
+              {
+                "content": "threshold",
+                "confidence": 0.997813152772252
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 101.24,
+            "end_time": 101.48,
+            "alternatives": [
+              {
+                "content": "it",
+                "confidence": 0.9877039304820979
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 101.48,
+            "end_time": 101.72,
+            "alternatives": [
+              {
+                "content": "had",
+                "confidence": 0.9931971870467129
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 101.72,
+            "end_time": 102.12,
+            "alternatives": [
+              {
+                "content": "never",
+                "confidence": 0.9985452456560818
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 109.3987996550004,
+        "transcript": "in any other case. The",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 102.72,
+            "end_time": 102.96,
+            "alternatives": [
+              {
+                "content": "in",
+                "confidence": 0.9977225792073257
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 102.96,
+            "end_time": 103.2,
+            "alternatives": [
+              {
+                "content": "any",
+                "confidence": 0.9997157666715902
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 103.2,
+            "end_time": 103.52,
+            "alternatives": [
+              {
+                "content": "other",
+                "confidence": 0.9998350415709925
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 103.52,
+            "end_time": 104.48,
+            "alternatives": [
+              {
+                "content": "case.",
+                "confidence": 0.9535593902110708
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 104.48,
+            "end_time": 104.72,
+            "alternatives": [
+              {
+                "content": "The",
+                "confidence": 0.9826482857424359
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 115.552895498,
+        "transcript": "disposition was, quote, without support in prior State law, as required",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 104.76,
+            "end_time": 105.64,
+            "alternatives": [
+              {
+                "content": "disposition",
+                "confidence": 0.9988771232515167
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 105.64,
+            "end_time": 106.03999999999999,
+            "alternatives": [
+              {
+                "content": "was,",
+                "confidence": 0.8475153083899544
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 106.03999999999999,
+            "end_time": 106.67999999999999,
+            "alternatives": [
+              {
+                "content": "quote,",
+                "confidence": 0.9555832728101696
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 106.67999999999999,
+            "end_time": 107.32,
+            "alternatives": [
+              {
+                "content": "without",
+                "confidence": 0.9983447229092326
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 107.32,
+            "end_time": 107.88,
+            "alternatives": [
+              {
+                "content": "support",
+                "confidence": 0.999993681966728
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 107.88,
+            "end_time": 108.2,
+            "alternatives": [
+              {
+                "content": "in",
+                "confidence": 0.9938347145255458
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 108.2,
+            "end_time": 108.84,
+            "alternatives": [
+              {
+                "content": "prior",
+                "confidence": 0.999704536913012
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 108.84,
+            "end_time": 109.24,
+            "alternatives": [
+              {
+                "content": "State",
+                "confidence": 0.7674453441053
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 109.24,
+            "end_time": 110.03999999999999,
+            "alternatives": [
+              {
+                "content": "law,",
+                "confidence": 0.7532726993618074
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 110.03999999999999,
+            "end_time": 110.36,
+            "alternatives": [
+              {
+                "content": "as",
+                "confidence": 0.9998021517262233
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 110.36,
+            "end_time": 111.16,
+            "alternatives": [
+              {
+                "content": "required",
+                "confidence": 0.9993593724740876
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 118.4788561990008,
+        "transcript": "over sixty years of this Court's precedent",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 111.48,
+            "end_time": 111.88,
+            "alternatives": [
+              {
+                "content": "over",
+                "confidence": 0.9991869390715952
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 111.88,
+            "end_time": 112.36,
+            "alternatives": [
+              {
+                "content": "sixty",
+                "confidence": 0.9965571912049375
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 112.36,
+            "end_time": 112.68,
+            "alternatives": [
+              {
+                "content": "years",
+                "confidence": 0.9978573567713805
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 112.68,
+            "end_time": 112.92,
+            "alternatives": [
+              {
+                "content": "of",
+                "confidence": 0.9966417461165618
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 112.92,
+            "end_time": 113.16,
+            "alternatives": [
+              {
+                "content": "this",
+                "confidence": 0.9968622741295182
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 113.16,
+            "end_time": 113.64,
+            "alternatives": [
+              {
+                "content": "Court's",
+                "confidence": 0.9464237999887339
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 113.64,
+            "end_time": 114.2,
+            "alternatives": [
+              {
+                "content": "precedent",
+                "confidence": 0.9968384092220022
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 124.61272422000002,
+        "transcript": "to establish adequacy. No evidentiary hearing could alter the conclusion",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 114.24000000000001,
+            "end_time": 114.48,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 0.9987414246417039
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 114.48,
+            "end_time": 115.04,
+            "alternatives": [
+              {
+                "content": "establish",
+                "confidence": 0.9999121951611747
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 115.04,
+            "end_time": 116.4,
+            "alternatives": [
+              {
+                "content": "adequacy.",
+                "confidence": 0.9840654626446178
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 116.4,
+            "end_time": 116.8,
+            "alternatives": [
+              {
+                "content": "No",
+                "confidence": 0.9997568721646198
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 116.8,
+            "end_time": 117.60000000000001,
+            "alternatives": [
+              {
+                "content": "evidentiary",
+                "confidence": 0.9971935562005062
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 117.60000000000001,
+            "end_time": 118.08,
+            "alternatives": [
+              {
+                "content": "hearing",
+                "confidence": 0.9998652436079916
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 118.08,
+            "end_time": 118.32000000000001,
+            "alternatives": [
+              {
+                "content": "could",
+                "confidence": 0.9994394347452066
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 118.32000000000001,
+            "end_time": 118.8,
+            "alternatives": [
+              {
+                "content": "alter",
+                "confidence": 0.999917275743749
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 118.8,
+            "end_time": 118.96000000000001,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.999928956304632
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 118.96000000000001,
+            "end_time": 119.84,
+            "alternatives": [
+              {
+                "content": "conclusion",
+                "confidence": 0.9999668219859046
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 127.55867279300037,
+        "transcript": "Mr Glossop was denied due process. There is no",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 120.08,
+            "end_time": 120.48,
+            "alternatives": [
+              {
+                "content": "Mr",
+                "confidence": 0.998428725024833
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 120.48,
+            "end_time": 121.36,
+            "alternatives": [
+              {
+                "content": "Glossop",
+                "confidence": 0.7807818389419144
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 121.36,
+            "end_time": 121.52,
+            "alternatives": [
+              {
+                "content": "was",
+                "confidence": 0.9987623531294957
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 121.52,
+            "end_time": 121.92,
+            "alternatives": [
+              {
+                "content": "denied",
+                "confidence": 0.9989072007780658
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 121.92,
+            "end_time": 122.16,
+            "alternatives": [
+              {
+                "content": "due",
+                "confidence": 0.9995899690304098
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 122.16,
+            "end_time": 122.72,
+            "alternatives": [
+              {
+                "content": "process.",
+                "confidence": 0.9665976327914123
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 122.72,
+            "end_time": 122.88,
+            "alternatives": [
+              {
+                "content": "There",
+                "confidence": 0.9815974822728128
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 122.88,
+            "end_time": 123.04,
+            "alternatives": [
+              {
+                "content": "is",
+                "confidence": 0.7075084697368609
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 123.04,
+            "end_time": 123.2,
+            "alternatives": [
+              {
+                "content": "no",
+                "confidence": 0.9999107202223038
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 133.693606412,
+        "transcript": "dispute that, contrary to Sneed's sworn testimony, the State's own",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 123.24000000000001,
+            "end_time": 123.96000000000001,
+            "alternatives": [
+              {
+                "content": "dispute",
+                "confidence": 0.9998497935037706
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 123.96000000000001,
+            "end_time": 124.36,
+            "alternatives": [
+              {
+                "content": "that,",
+                "confidence": 0.7381474790336496
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 124.36,
+            "end_time": 124.84,
+            "alternatives": [
+              {
+                "content": "contrary",
+                "confidence": 0.994504838650855
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 124.84,
+            "end_time": 125.0,
+            "alternatives": [
+              {
+                "content": "to",
+                "confidence": 0.999685386482417
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 125.0,
+            "end_time": 125.8,
+            "alternatives": [
+              {
+                "content": "Sneed's",
+                "confidence": 0.9093196079473821
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 125.8,
+            "end_time": 126.28,
+            "alternatives": [
+              {
+                "content": "sworn",
+                "confidence": 0.999777390048437
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 126.28,
+            "end_time": 127.24000000000001,
+            "alternatives": [
+              {
+                "content": "testimony,",
+                "confidence": 0.9992621656686344
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 127.24000000000001,
+            "end_time": 127.56,
+            "alternatives": [
+              {
+                "content": "the",
+                "confidence": 0.9983705649841399
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 127.56,
+            "end_time": 128.12,
+            "alternatives": [
+              {
+                "content": "State's",
+                "confidence": 0.974343114854366
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 128.12,
+            "end_time": 128.52,
+            "alternatives": [
+              {
+                "content": "own",
+                "confidence": 0.9954531275659129
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      },
+      {
+        "t": 136.63275332299963,
+        "transcript": "record shows that he was in fact treated by",
+        "results": [
+          {
+            "type": "word",
+            "start_time": 129.24,
+            "end_time": 129.88,
+            "alternatives": [
+              {
+                "content": "record",
+                "confidence": 0.999916145593359
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 129.88,
+            "end_time": 130.2,
+            "alternatives": [
+              {
+                "content": "shows",
+                "confidence": 0.9973445216198121
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 130.2,
+            "end_time": 130.44,
+            "alternatives": [
+              {
+                "content": "that",
+                "confidence": 0.9962161257441086
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 130.44,
+            "end_time": 130.6,
+            "alternatives": [
+              {
+                "content": "he",
+                "confidence": 0.9982247927727615
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 130.6,
+            "end_time": 130.84,
+            "alternatives": [
+              {
+                "content": "was",
+                "confidence": 0.9985531075144474
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 130.84,
+            "end_time": 131.0,
+            "alternatives": [
+              {
+                "content": "in",
+                "confidence": 0.989449701387983
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 131.0,
+            "end_time": 131.4,
+            "alternatives": [
+              {
+                "content": "fact",
+                "confidence": 0.9996726880739496
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 131.4,
+            "end_time": 131.88,
+            "alternatives": [
+              {
+                "content": "treated",
+                "confidence": 0.999784171603418
+              }
+            ],
+            "speaker": "S1"
+          },
+          {
+            "type": "word",
+            "start_time": 131.88,
+            "end_time": 132.04,
+            "alternatives": [
+              {
+                "content": "by",
+                "confidence": 0.9999395645463967
+              }
+            ],
+            "speaker": "S1"
+          }
+        ]
+      }
+    ]
+  },
+  "wer": 0.6426553672316384
+}
