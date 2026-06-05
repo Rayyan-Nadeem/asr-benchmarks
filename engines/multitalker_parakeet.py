@@ -331,6 +331,16 @@ class EmbeddingSpeakerVerifier:
     # different-speaker similarity ~0.20–0.40 — a wide unambiguous gap.
     # 0.70 is the literature threshold for ~1 % EER on VoxCeleb.
     SIMILARITY_THRESHOLD = 0.70
+    # Hysteresis: an alternative centroid must beat the current mapping
+    # target by at least this margin before we remap. Prevents thrashing
+    # on borderline chunks while still allowing convergence when one
+    # centroid is clearly closer than another.
+    REMAP_MARGIN = 0.05
+    # Pairwise centroid similarity above which two channels are merged
+    # outright (one is reassigned to the other). Set above the per-chunk
+    # remap threshold so the merge sweep is conservative — only acts on
+    # centroids that have demonstrably converged.
+    MERGE_THRESHOLD = 0.80
     # Need at least this many independent chunk-level embeddings before
     # the centroid is reliable enough to compare against.
     MIN_EMBEDDINGS_FOR_CENTROID = 3
@@ -339,9 +349,20 @@ class EmbeddingSpeakerVerifier:
     EMA_MOMENTUM = 0.90
     # When the diarizer says one speaker dominates a chunk by less than
     # this fraction of frames, the chunk is multi-speaker (overlap) and
-    # we skip TitaNet on it — we don't want muddy multi-speaker audio
-    # polluting any speaker's centroid.
-    DOMINANT_FRACTION = 0.75
+    # we skip TitaNet on it. Set tight (0.95) so TitaNet only ever
+    # ingests near-clean audio for the dominant speaker — at 0.75 the
+    # remaining 25 % of a chunk routinely contains the other speaker,
+    # which blends into TitaNet's embedding and drives centroid drift
+    # (measured 2026-06-05: sim(0,1) climbed 0.10 → 0.89 over a 2-min
+    # 2-speaker conversation because contaminated audio kept being
+    # absorbed under the loose gate).
+    DOMINANT_FRACTION = 0.95
+    # Period (in stream steps) for proactive pairwise centroid merge
+    # sweeps. Catches drift-together cases the per-chunk verify() might
+    # miss — even with hysteresis, if two channels' centroids converge
+    # gradually, no single chunk sees a sharp enough delta to trigger
+    # a remap. The sweep collapses anything above MERGE_THRESHOLD.
+    MERGE_SWEEP_EVERY = 50
 
     def __init__(self, n_spk: int = 4) -> None:
         self.n_spk = n_spk
@@ -381,28 +402,46 @@ class EmbeddingSpeakerVerifier:
             )
 
     def verify(self, raw_channel: int) -> int:
-        """Decide whether raw_channel is a known speaker (return their
-        committed final channel) or a genuinely new one (commit raw_channel
-        as itself)."""
+        """Map raw_channel to a verified channel. Re-evaluated on every
+        call (no committed-and-frozen cache) with hysteresis — an
+        alternative centroid must clear SIMILARITY_THRESHOLD AND beat the
+        current mapping target's similarity by REMAP_MARGIN before we
+        remap. Without this re-evaluation, centroids that drift together
+        mid-session stay mapped to separate identities for the rest of
+        the session (measured 2026-06-05: sim(0,1) hit 0.89 with mapping
+        still {0:0, 1:1, 2:2})."""
         import torch
-        # Stable mapping — never flip a committed decision.
-        if raw_channel in self._mapping:
-            return self._mapping[raw_channel]
-        # Need enough chunk-level embeddings on this channel before we
-        # trust its centroid for a verification comparison.
+        # Not enough evidence on this raw channel yet — return current
+        # mapping (or fall back to self) without committing anything.
         if (
             raw_channel not in self._centroids
             or self._n_embeddings.get(raw_channel, 0) < self.MIN_EMBEDDINGS_FOR_CENTROID
         ):
-            return raw_channel
+            return self._mapping.get(raw_channel, raw_channel)
+
         cur = self._centroids[raw_channel]
+        current_target = self._mapping.get(raw_channel, raw_channel)
+
+        # Sim from this channel's centroid to its current mapping target.
+        # Self-mapping is sim = 1.0 by definition.
+        if current_target == raw_channel:
+            current_sim = 1.0
+        elif current_target in self._centroids:
+            current_sim = float(torch.dot(cur, self._centroids[current_target]).item())
+        else:
+            # Mapping target's centroid was merged away — treat as ungrounded
+            # so any reasonable alternative wins.
+            current_sim = -2.0
+
+        # Find the best alternative live channel.
         best_match: int | None = None
         best_sim: float = -2.0
         for other_ch, other_centroid in self._centroids.items():
             if other_ch == raw_channel:
                 continue
-            # Skip ghosts — channels already merged into someone else;
-            # we'd compare against the merge target's centroid instead.
+            # Skip ghosts — channels already merged elsewhere; the merge
+            # target is the canonical centroid to compare against, and
+            # we'll already see it in this loop under its own key.
             if other_ch in self._mapping and self._mapping[other_ch] != other_ch:
                 continue
             if self._n_embeddings.get(other_ch, 0) < self.MIN_EMBEDDINGS_FOR_CENTROID:
@@ -411,12 +450,56 @@ class EmbeddingSpeakerVerifier:
             if sim > best_sim:
                 best_sim = sim
                 best_match = other_ch
-        if best_match is not None and best_sim > self.SIMILARITY_THRESHOLD:
+
+        # Hysteresis: alternative must clear absolute threshold AND beat
+        # the current mapping target by the margin.
+        if (
+            best_match is not None
+            and best_sim > self.SIMILARITY_THRESHOLD
+            and best_sim > current_sim + self.REMAP_MARGIN
+        ):
             self._mapping[raw_channel] = best_match
             return best_match
-        # Genuinely new speaker — commit raw_channel as its own identity.
-        self._mapping[raw_channel] = raw_channel
-        return raw_channel
+
+        # Stay with current mapping target (or self if never mapped).
+        self._mapping[raw_channel] = current_target
+        return current_target
+
+    def merge_sweep(self) -> dict[int, int]:
+        """Proactive pairwise centroid merge. Walks all live channels,
+        merges any pair whose centroids are within MERGE_THRESHOLD
+        cosine similarity. Lower channel index wins; the higher index
+        gets _mapping redirected to the lower. Centroids stay independent
+        (each raw channel keeps its own fingerprint history); only the
+        mapping changes. Returns the dict of merges applied this sweep
+        so the caller can log them. The per-chunk verify() catches sharp
+        differences; this sweep catches gradual drift-together cases
+        that no single chunk could see."""
+        import torch
+        live = sorted([
+            ch for ch in self._centroids
+            if self._n_embeddings.get(ch, 0) >= self.MIN_EMBEDDINGS_FOR_CENTROID
+            and self._mapping.get(ch, ch) == ch
+        ])
+        merges: dict[int, int] = {}
+        for i, a in enumerate(live):
+            if a in merges:
+                continue
+            ca = self._centroids[a]
+            for b in live[i + 1:]:
+                if b in merges:
+                    continue
+                cb = self._centroids[b]
+                sim = float(torch.dot(ca, cb).item())
+                if sim > self.MERGE_THRESHOLD:
+                    # Redirect b -> a, and any third party already
+                    # pointing at b -> a as well.
+                    self._mapping[b] = a
+                    for k, v in list(self._mapping.items()):
+                        if v == b:
+                            self._mapping[k] = a
+                    merges[b] = a
+        return merges
 
 
 def _group_consecutive_speakers(words):
@@ -807,10 +890,14 @@ class MultitalkerParakeet:
                                             int(dominant_spk), emb
                                         )
 
-                # Periodic diagnostic: dump similarity matrix so we can
-                # verify TitaNet's discriminative power vs the Sortformer
-                # baseline (0.75-0.89 between distinct AMI speakers).
-                if step_num > 0 and step_num % 50 == 0:
+                # Periodic merge sweep + diagnostic. The sweep is the
+                # backstop for gradual drift-together cases that no single
+                # verify() call could see (e.g. sim(0,1) climbing 0.10 →
+                # 0.89 over 600 chunks). The diagnostic prints the
+                # post-sweep state so the log reflects what the verifier
+                # is actually using, not the pre-merge view.
+                if step_num > 0 and step_num % verifier.MERGE_SWEEP_EVERY == 0:
+                    merges = verifier.merge_sweep()
                     sims = {}
                     cents = list(verifier._centroids.items())
                     for i, (a, ca) in enumerate(cents):
@@ -828,6 +915,7 @@ class MultitalkerParakeet:
                         f"[multitalker verifier] step={step_num} "
                         f"n_emb={dict(verifier._n_embeddings)} "
                         f"mapping={dict(verifier._mapping)} "
+                        f"merges_this_sweep={merges} "
                         f"pairwise_sim={sims}",
                         file=sys.stderr, flush=True,
                     )
