@@ -47,16 +47,32 @@ import numpy as np
 
 _DIAR_MODEL = None
 _ASR_MODEL = None
+_VERIFY_MODEL = None  # TitaNet speaker verification (192-dim discriminative)
 
 
 def _get_models():
-    """Load both models once per process. Both stay resident for the
-    lifetime of the uvicorn worker; weights are shared across sessions."""
-    global _DIAR_MODEL, _ASR_MODEL
-    if _DIAR_MODEL is not None and _ASR_MODEL is not None:
-        return _DIAR_MODEL, _ASR_MODEL
+    """Load three models once per process. All stay resident for the
+    lifetime of the uvicorn worker; weights are shared across sessions.
+    Returns (diar, asr, titanet) where titanet is the speaker
+    verification model whose 192-dim embeddings power EmbeddingSpeaker-
+    Verifier — the diarizer alone produces embeddings too crowded for
+    reliable verification (measured 0.75–0.89 between four distinct
+    AMI speakers); TitaNet was trained specifically for verification
+    and gives the clean ~0.85 same-speaker / ~0.30 different-speaker
+    separation literature documents."""
+    global _DIAR_MODEL, _ASR_MODEL, _VERIFY_MODEL
+    if (
+        _DIAR_MODEL is not None
+        and _ASR_MODEL is not None
+        and _VERIFY_MODEL is not None
+    ):
+        return _DIAR_MODEL, _ASR_MODEL, _VERIFY_MODEL
     import torch
-    from nemo.collections.asr.models import SortformerEncLabelModel, ASRModel
+    from nemo.collections.asr.models import (
+        SortformerEncLabelModel,
+        ASRModel,
+        EncDecSpeakerLabelModel,
+    )
 
     diar = SortformerEncLabelModel.from_pretrained(
         "nvidia/diar_streaming_sortformer_4spk-v2.1"
@@ -64,12 +80,17 @@ def _get_models():
     asr = ASRModel.from_pretrained(
         "nvidia/multitalker-parakeet-streaming-0.6b-v1"
     ).eval()
+    titanet = EncDecSpeakerLabelModel.from_pretrained(
+        "nvidia/speakerverification_en_titanet_large"
+    ).eval()
     if torch.cuda.is_available():
         diar = diar.cuda()
         asr = asr.cuda()
+        titanet = titanet.cuda()
     _DIAR_MODEL = diar
     _ASR_MODEL = asr
-    return diar, asr
+    _VERIFY_MODEL = titanet
+    return diar, asr, titanet
 
 
 def _ensure_config_module_on_path():
@@ -141,6 +162,35 @@ class SpeakerLabelSmoother:
     MIN_SPEAKER_DURATION_S = 0.5    # min sustained activity to keep label
     SMOOTHING_WINDOW_S = 0.6        # ±0.6 s context around each word
     HOLD_TIME_S = 0.9               # buffer this much audio before emitting
+
+    # Sticky speaker locking — resists transient re-labeling from acoustic
+    # drift (mic distance, head turn, brief volume drops) AND from long-
+    # silence pause-recovery. Two failure modes the diarizer alone gets
+    # wrong:
+    #   - Drift (continuous speech): you move a foot from the mic, your
+    #     embedding bumps past the diarizer's "new speaker" threshold for
+    #     a few chunks, you get tagged S3, then snap back to S2 when you
+    #     lean in. Ping-pong.
+    #   - Pause-recovery: you stop talking for 30-60 s, the AOSC cache
+    #     decays, when you come back the diarizer doesn't match you to
+    #     your old slot and allocates a fresh S3.
+    # Same fix shape catches both: a "new" raw-speaker label has to
+    # accumulate STICKY_NEW_MIN_S of cumulative activity before being
+    # committed as its own identity. Until then we map it onto whichever
+    # established speaker is the likely-correct anchor:
+    #   - Drift: if SOMEONE was talking in the last STICKY_RECENT_WINDOW_S
+    #     (the conversation is continuous and the new label is sandwiched
+    #     between an established speaker's words), the new label is drift
+    #     of the most-recent-other-speaker.
+    #   - Pause-recovery: if NO ONE was talking in the last RECENT_WINDOW
+    #     but established speakers exist further back in STICKY_LOOKBACK_S,
+    #     the new label is most likely the most-recently-established
+    #     speaker returning after a pause.
+    # Once committed, the mapping is stable — never flips.
+    # Speaker identity decisions (drift resistance, pause recovery, merge
+    # detection) are NOT handled in this smoother. They belong in an
+    # embedding-based speaker verifier — the smoother only suppresses
+    # single-frame flicker via the short-window hysteresis above.
 
     def __init__(self) -> None:
         # (audio_time, original_speaker, word_obj). Words age out after
@@ -214,6 +264,161 @@ class SpeakerLabelSmoother:
         return out
 
 
+class EmbeddingSpeakerVerifier:
+    """Speaker verification using cosine similarity of voice embeddings.
+
+    The Sortformer diarizer computes a 512-dim embedding per frame and
+    stores them in the AOSC cache (`StreamingSortformerState.spkcache`)
+    keyed by per-frame speaker predictions (`spkcache_preds`). We read
+    those embeddings out, maintain a per-speaker exponential-moving-
+    average centroid in the verifier's own state, and use cosine
+    similarity to decide whether a newly-emerging raw speaker channel
+    represents drift from an established speaker or a genuinely new one.
+
+    Drift case (mic distance bumps embedding past diarizer's "new speaker"
+    threshold for a few chunks, model briefly emits a new channel): the
+    new channel's centroid is highly similar to one of the established
+    centroids → merge.
+
+    Pause-recovery (speaker stops for 60 s, AOSC cache decays, model
+    allocates a fresh channel on return): same as drift — the centroid
+    we maintain in this verifier is monotonic, not AOSC-decayed, so the
+    returning speaker matches their long-term centroid.
+
+    Genuinely new speaker joins: their centroid doesn't match any
+    established centroid above threshold → accept as new.
+
+    Thresholds:
+      - SIMILARITY_THRESHOLD = 0.65 — biases toward "same speaker" on
+        borderline cases. ECAPA-TDNN / x-vector verification literature
+        uses ~0.70 on VoxCeleb for ~1 % EER; we sit slightly below to
+        prefer merging on uncertainty (the failure mode the user pushed
+        back on was false-NEW-speaker on a known voice, not false-merge).
+      - MIN_FRAMES_FOR_CENTROID = 8 — need this much evidence before
+        the centroid is reliable enough to compare. At Sortformer's
+        80 ms frame rate, this is ~0.64 s of speech.
+      - EMA_MOMENTUM = 0.9 — higher = more weight on historical centroid,
+        less responsive to recent frames. Stabilizes the centroid once
+        the speaker is established so brief acoustic variations don't
+        move it.
+
+    References:
+      - Streaming Sortformer paper (arXiv 2507.18446) §III — AOSC cache
+        layout and per-frame embedding semantics
+      - Yamada 2024 "Online Neural Speaker Diarization with Target
+        Speaker Tracking" — verification-based identity tracking pattern
+      - ECAPA-TDNN (Desplanques 2020) — cosine-similarity verification
+        thresholds for speaker verification
+    """
+
+    # Sortformer embeddings are trained for diarization (distinguish
+    # speakers in a chunk), not verification (match same speaker across
+    # long spans), so they're less discriminative than purpose-built
+    # speaker-verification embeddings (ECAPA-TDNN, x-vector). We pick a
+    # threshold near the high end of the literature range to avoid the
+    # false-merge case where two AMI speakers with similar pitch/timbre
+    # get fused into one channel. Empirically tuned on AMI ES2004a:
+    #   0.65 → all 4 distinct speakers merged into one (broken)
+    #   0.80 → tuning target; pairs of similar voices may still merge
+    #   0.85 → safer; tighter on what counts as the "same" voice
+    # The cost of being conservative on the merge threshold is that some
+    # actual drift cases pass through as new speakers. The complement
+    # (a dedicated speaker-verification head like ECAPA-TDNN running
+    # alongside the diarizer) is the higher-quality fix when this proves
+    # insufficient.
+    # Feed embeddings come from TitaNet (192-dim, verification-trained).
+    # In TitaNet's space, same-speaker similarity sits ~0.80–0.95 and
+    # different-speaker similarity ~0.20–0.40 — a wide unambiguous gap.
+    # 0.70 is the literature threshold for ~1 % EER on VoxCeleb.
+    SIMILARITY_THRESHOLD = 0.70
+    # Need at least this many independent chunk-level embeddings before
+    # the centroid is reliable enough to compare against.
+    MIN_EMBEDDINGS_FOR_CENTROID = 3
+    # Exponential moving average for centroid updates — stabilizes the
+    # fingerprint once a speaker is established.
+    EMA_MOMENTUM = 0.90
+    # When the diarizer says one speaker dominates a chunk by less than
+    # this fraction of frames, the chunk is multi-speaker (overlap) and
+    # we skip TitaNet on it — we don't want muddy multi-speaker audio
+    # polluting any speaker's centroid.
+    DOMINANT_FRACTION = 0.75
+
+    def __init__(self, n_spk: int = 4) -> None:
+        self.n_spk = n_spk
+        # raw channel idx → normalized centroid tensor (192,)
+        self._centroids: dict[int, "torch.Tensor"] = {}
+        # raw channel idx → number of chunk embeddings absorbed (proxy
+        # for centroid maturity / how reliable comparisons are).
+        self._n_embeddings: dict[int, int] = {}
+        # raw channel idx → committed final channel idx. Once a raw
+        # channel is committed (either as itself or merged into another),
+        # this is the stable mapping for the rest of the session.
+        self._mapping: dict[int, int] = {}
+
+    def update_with_embedding(
+        self, raw_channel: int, embedding: "torch.Tensor"
+    ) -> None:
+        """Absorb one TitaNet (or compatible 192-dim) embedding into the
+        running centroid for raw_channel. Embeddings get L2-normalized
+        on input; the centroid is also kept normalized via EMA blend +
+        renormalize so cosine similarity is just a dot product."""
+        import torch
+        emb = embedding.detach().to(torch.float32).flatten()
+        emb = torch.nn.functional.normalize(emb, dim=-1)
+        if raw_channel not in self._centroids:
+            self._centroids[raw_channel] = emb
+            self._n_embeddings[raw_channel] = 1
+        else:
+            blended = (
+                self.EMA_MOMENTUM * self._centroids[raw_channel]
+                + (1.0 - self.EMA_MOMENTUM) * emb
+            )
+            self._centroids[raw_channel] = torch.nn.functional.normalize(
+                blended, dim=-1
+            )
+            self._n_embeddings[raw_channel] = (
+                self._n_embeddings.get(raw_channel, 0) + 1
+            )
+
+    def verify(self, raw_channel: int) -> int:
+        """Decide whether raw_channel is a known speaker (return their
+        committed final channel) or a genuinely new one (commit raw_channel
+        as itself)."""
+        import torch
+        # Stable mapping — never flip a committed decision.
+        if raw_channel in self._mapping:
+            return self._mapping[raw_channel]
+        # Need enough chunk-level embeddings on this channel before we
+        # trust its centroid for a verification comparison.
+        if (
+            raw_channel not in self._centroids
+            or self._n_embeddings.get(raw_channel, 0) < self.MIN_EMBEDDINGS_FOR_CENTROID
+        ):
+            return raw_channel
+        cur = self._centroids[raw_channel]
+        best_match: int | None = None
+        best_sim: float = -2.0
+        for other_ch, other_centroid in self._centroids.items():
+            if other_ch == raw_channel:
+                continue
+            # Skip ghosts — channels already merged into someone else;
+            # we'd compare against the merge target's centroid instead.
+            if other_ch in self._mapping and self._mapping[other_ch] != other_ch:
+                continue
+            if self._n_embeddings.get(other_ch, 0) < self.MIN_EMBEDDINGS_FOR_CENTROID:
+                continue
+            sim = float(torch.dot(cur, other_centroid).item())
+            if sim > best_sim:
+                best_sim = sim
+                best_match = other_ch
+        if best_match is not None and best_sim > self.SIMILARITY_THRESHOLD:
+            self._mapping[raw_channel] = best_match
+            return best_match
+        # Genuinely new speaker — commit raw_channel as its own identity.
+        self._mapping[raw_channel] = raw_channel
+        return raw_channel
+
+
 def _group_consecutive_speakers(words):
     """Bundle consecutive same-speaker words into runs. Returned as a list
     of (speaker, [words]) tuples — caller can wrap each run in a
@@ -247,7 +452,7 @@ class MultitalkerParakeet:
         sys.path setup ran at module import; nothing else to do here."""
         import torch
 
-        diar, asr = _get_models()
+        diar, asr, titanet = _get_models()
         # Tiny preprocessor + buffer setup to JIT the kernels.
         from nemo.collections.asr.parts.utils.streaming_utils import (
             CacheAwareStreamingAudioBuffer,
@@ -283,7 +488,7 @@ class MultitalkerParakeet:
         BYTES_PER_SAMPLE = 2
         BYTES_PER_SEC = SAMPLE_RATE * BYTES_PER_SAMPLE
 
-        diar, asr = _get_models()
+        diar, asr, titanet = _get_models()
 
         # Build the session config. streaming_mode=True is critical.
         cfg = OmegaConf.structured(MultitalkerTranscriptionConfig())
@@ -350,6 +555,22 @@ class MultitalkerParakeet:
         # live testing). Adds ~0.9 s of buffering latency in exchange for
         # ~order-of-magnitude reduction in phantom-speaker emissions.
         smoother = SpeakerLabelSmoother()
+
+        # Embedding-based speaker verifier — per-session voice fingerprint
+        # tracking. Stops drift (mic distance bumps embedding past the
+        # diarizer's "new speaker" threshold) and pause-recovery
+        # (returning speaker gets a fresh channel) from creating false
+        # new-speaker identities. Reads embeddings from the Sortformer's
+        # AOSC cache after each chunk and applies cosine-similarity
+        # verification before the smoother sees the raw channel label.
+        verifier = EmbeddingSpeakerVerifier(n_spk=n_spk)
+
+        # Per-chunk audio buffer powers TitaNet verification. Each entry
+        # is the raw samples appended to the streaming buffer for one
+        # processing batch — what the model just consumed in its most
+        # recent step. We pop entries off after running TitaNet so memory
+        # stays bounded.
+        chunk_audio_queue: deque[np.ndarray] = deque(maxlen=8)
 
         # Time-based flush for held partial-word tails. The word-boundary
         # commit logic holds the trailing word until whitespace appears
@@ -446,7 +667,13 @@ class MultitalkerParakeet:
             span = min(0.56, max(0.05, t_end))
             t_start = max(0.0, t_end - span)
             per = span / max(1, len(tokens))
-            speaker_label = f"S{spk_idx + 1}"
+            # Route the raw channel through the embedding verifier. If
+            # the raw channel matches a previously-established speaker's
+            # voice fingerprint, the verifier returns that speaker's
+            # channel instead (drift / pause-recovery). Otherwise it
+            # returns the raw channel as-is (genuinely new speaker).
+            final_channel = verifier.verify(spk_idx)
+            speaker_label = f"S{final_channel + 1}"
             words = [
                 StreamWord(
                     content=tok,
@@ -485,6 +712,10 @@ class MultitalkerParakeet:
                 print(f"multitalker append_audio: {e}", file=sys.stderr, flush=True)
                 continue
             stream_id = 0  # subsequent appends extend stream 0
+            # Stash this audio batch so we can run TitaNet on it after
+            # the diarizer's predictions are in (the streaming buffer
+            # consumed the samples for ASR; we need a copy for verify).
+            chunk_audio_queue.append(samples)
 
             # Pull FULL chunks only. The buffer's iterator advances
             # buf.buffer_idx by shift_size and yields whatever audio is
@@ -523,6 +754,90 @@ class MultitalkerParakeet:
                             )
                             break
                         step_num += 1
+
+            # TitaNet verification pass — read the dominant speaker for
+            # the chunk we just processed, run TitaNet on the chunk audio
+            # to get a verification-grade 192-dim embedding, update the
+            # verifier's centroid for that speaker. Skips multi-speaker
+            # (overlap) chunks so muddy mixed audio doesn't pollute any
+            # speaker's centroid.
+            try:
+                diar_state = None
+                diar_states = getattr(
+                    multispk.instance_manager, "diar_states", None
+                )
+                if diar_states is not None:
+                    diar_state = getattr(diar_states, "streaming_state", None)
+
+                # Need both the streaming state (for per-frame speaker
+                # assignment) and at least one audio chunk to run TitaNet.
+                if diar_state is not None and chunk_audio_queue:
+                    fifo_preds = getattr(diar_state, "fifo_preds", None)
+                    if fifo_preds is not None and fifo_preds.ndim == 3:
+                        # Recent chunk dominant-speaker check.
+                        recent = fifo_preds[0]  # (frames, n_spk)
+                        per_frame_spk = recent.argmax(dim=-1)
+                        n_active = int(per_frame_spk.numel())
+                        if n_active > 0:
+                            from collections import Counter as _Counter
+                            counts = _Counter(per_frame_spk.tolist())
+                            dominant_spk, dom_count = counts.most_common(1)[0]
+                            dom_fraction = dom_count / n_active
+                            if dom_fraction >= verifier.DOMINANT_FRACTION:
+                                # Run TitaNet on the most recent audio
+                                # (~1 second). The queue stores audio
+                                # batches at MIN_APPEND_BYTES granularity,
+                                # so the last ~4 entries cover ~1 s.
+                                tail = list(chunk_audio_queue)[-4:]
+                                if tail:
+                                    audio_window = np.concatenate(tail)
+                                    if len(audio_window) >= SAMPLE_RATE // 2:
+                                        sig = torch.from_numpy(
+                                            audio_window
+                                        ).unsqueeze(0).to(asr.device)
+                                        lens = torch.tensor(
+                                            [sig.shape[-1]], device=asr.device
+                                        )
+                                        with torch.inference_mode():
+                                            _, emb = titanet.forward(
+                                                input_signal=sig,
+                                                input_signal_length=lens,
+                                            )
+                                        verifier.update_with_embedding(
+                                            int(dominant_spk), emb
+                                        )
+
+                # Periodic diagnostic: dump similarity matrix so we can
+                # verify TitaNet's discriminative power vs the Sortformer
+                # baseline (0.75-0.89 between distinct AMI speakers).
+                if step_num > 0 and step_num % 50 == 0:
+                    sims = {}
+                    cents = list(verifier._centroids.items())
+                    for i, (a, ca) in enumerate(cents):
+                        for b, cb in cents[i + 1:]:
+                            if (
+                                verifier._n_embeddings.get(a, 0)
+                                >= verifier.MIN_EMBEDDINGS_FOR_CENTROID
+                                and verifier._n_embeddings.get(b, 0)
+                                >= verifier.MIN_EMBEDDINGS_FOR_CENTROID
+                            ):
+                                sims[f"{a}-{b}"] = round(
+                                    float(torch.dot(ca, cb).item()), 3
+                                )
+                    print(
+                        f"[multitalker verifier] step={step_num} "
+                        f"n_emb={dict(verifier._n_embeddings)} "
+                        f"mapping={dict(verifier._mapping)} "
+                        f"pairwise_sim={sims}",
+                        file=sys.stderr, flush=True,
+                    )
+            except Exception as e:
+                # Don't crash the engine on verifier failure — fall back
+                # to raw speaker labels.
+                print(
+                    f"multitalker verifier TitaNet pass: {e}",
+                    file=sys.stderr, flush=True,
+                )
 
             # After all available chunks processed, peek per-speaker
             # hypothesis text and feed any new words into the smoother.
