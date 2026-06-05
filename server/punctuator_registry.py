@@ -28,7 +28,7 @@ _LAZY: dict[str, callable] = {
 
 
 def load_punctuator() -> Punctuator:
-    name = os.environ.get("PUNCTUATOR", "passthrough")
+    name = os.environ.get("PUNCTUATOR", "distilbert")
     if name in _LAZY:
         return _LAZY[name]()
     cls = _REGISTRY.get(name)

@@ -51,10 +51,10 @@ services:
       DIARIZER: ${DIARIZER:-passthrough}
 
       # ---- post-process layer ----
-      # passthrough = raw engine output. distilbert = NVIDIA
-      # punctuation_en_distilbert post-process (adds periods, commas,
-      # question marks, capitalization). +110 MB cold-load on first use.
-      PUNCTUATOR: ${PUNCTUATOR:-passthrough}
+      # distilbert = NVIDIA punctuation_en_distilbert (default; adds periods,
+      # commas, question marks, capitalization). passthrough = raw engine
+      # output, for A/B testing only. +110 MB cold-load on first use.
+      PUNCTUATOR: ${PUNCTUATOR:-distilbert}
 
       # ---- concurrency ----
       MAX_CONCURRENT_CONNECTIONS: ${MAX_CONCURRENT_CONNECTIONS:-4}

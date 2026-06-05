@@ -108,7 +108,7 @@ PUNCTUATORS: dict[str, dict] = {
 
 DEFAULT_ENGINE = "auto-multispeaker"
 DEFAULT_DIARIZER = "passthrough"
-DEFAULT_PUNCTUATOR = "passthrough"
+DEFAULT_PUNCTUATOR = "distilbert"
 
 _child: subprocess.Popen | None = None
 _current_engine: str | None = None

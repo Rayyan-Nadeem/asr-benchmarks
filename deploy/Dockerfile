@@ -73,7 +73,7 @@ ENV HF_HOME=/opt/hf-cache \
 # single-engine testing.
 ENV ENGINE=auto-multispeaker \
     DIARIZER=passthrough \
-    PUNCTUATOR=passthrough \
+    PUNCTUATOR=distilbert \
     MAX_CONCURRENT_CONNECTIONS=4
 
 # Cap VRAM per process — used by server/_gpu_cap.py to enforce a soft
