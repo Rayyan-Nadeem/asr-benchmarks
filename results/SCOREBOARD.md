@@ -13,6 +13,8 @@ DepoDash production `transcription_config` for every row (no vocab biasing, no K
 
 **DER methodology disclosure.** Speechmatics' frozen baseline numbers use strict simpleder (no collar, count overlap). The Sortformer / pyannote model cards report CALLHOME-style DER (0.25 s collar, skip overlap). When comparing this scoreboard to either source, match the methodology — strict scoring penalizes overlap segments heavily and gives 38–51 % DER on AMI for *every* approach (including SM); CALLHOME-style scoring drops the same approaches to 12–34 % on AMI. Both methodologies are honest; mixing them is not.
 
+**Production defaults as of 2026-06-05.** Container ships with `PUNCTUATOR=distilbert` on by default, and the multitalker-parakeet path now runs each dominant-channel chunk through an embedding-based speaker verifier (NVIDIA TitaNet large) for label stability under mic-distance drift. Measurement rows below predate both — the WER / DER numbers are still correctly attributed to the engine that produced them, but the container's out-of-box output now emits cased + punctuated text and a drift-stable speaker channel on the multitalker path. The "Speaker-identity stability" and "Post-process layers" sections below cover both additions.
+
 ---
 
 ## Headline WER — three deployment shapes
@@ -59,6 +61,32 @@ DepoDash production `transcription_config` for every row (no vocab biasing, no K
 |---|---|---|---|---|
 | `nemotron-nemo + sortformer` (T4 8 GB, **production pick**) | **0.84 s** | 1.03 | **0.59 %** | 8.33 % |
 | `nemotron-streaming + passthrough` (sherpa-onnx INT8, **deprecated**) | 0.82 s | 1.02 | 18.93 % | 24.29 % |
+
+---
+
+## Speaker-identity stability — TitaNet verification (rank-1 production fix)
+
+The multitalker path now runs each dominant-channel chunk through NVIDIA `speakerverification_en_titanet_large` to produce a 192-dim embedding, blended into an EMA centroid per verified channel (momentum 0.90). Subsequent chunks map to the nearest centroid by cosine similarity, threshold 0.70. Overlap chunks (no dominant channel ≥75 % of the AOSC FIFO frames) skip the verifier update. Replaces the previous heuristic sticky-lock + tentative-hold timing trade-off.
+
+**Why TitaNet, not Sortformer-internal embeddings.** Sortformer embeddings between AMI ES2004a's four distinct speakers span 0.75–0.89 cosine similarity — no single threshold safely separates "same speaker drifted" from "different speakers." TitaNet drops the same band to 0.14–0.60; the 0.70 threshold sits in the clean discriminative gap. Verification-trained networks give what verification-trained networks are designed to give.
+
+**AMI ES2004a no-regression (n=1).** Channel mapping `{0:0, 1:1, 2:2, 3:3}`, no false merges, breakdown S1:322 / S2:185 / S3:149 / S4:21 — identical to the pre-change baseline. Confirms the verifier doesn't make things worse on clean turn-taking.
+
+**Pending validation.** Live mic drift case (mic-distance change mid-utterance) and pause-recovery case (~45 s silence between turns by the same speaker) need confirmation on the lab box. Both are the cases the verifier was designed for; empirical n=1 confirmation is pending.
+
+**Adds.** Third NeMo model (~95 MB) GPU-resident alongside Sortformer + multitalker. Commit `37a2431`.
+
+---
+
+## Post-process layers — production defaults
+
+| Layer | Default | What it does |
+|---|---|---|
+| **Speaker-label smoother** (built into Multitalker) | always on | Hysteresis + min-speaker-duration filter from Streaming Sortformer paper §IV — suppresses single-frame phantom-speaker flicker. |
+| **TitaNet speaker verification** (built into Multitalker) | always on | Cross-chunk embedding-based label stability under mic-distance drift. See section above. |
+| **Punctuation post-process** (`PUNCTUATOR` env) | `distilbert` | NVIDIA `punctuation_en_distilbert` (~110 MB, CC-BY-4.0) restores periods, commas, question marks, capitalization on emitted finals. Adds ~10 ms GPU / ~50 ms CPU per emission. Switch to `passthrough` for A/B testing. |
+
+The two speaker-stability layers are stacked: the smoother handles single-frame flicker (intra-chunk), the TitaNet verifier handles drift across chunks (inter-chunk). Punctuation is a separate optional layer on top of the final words list, toggled via the `PUNCTUATOR` env or the live-demo dropdown.
 
 ---
 

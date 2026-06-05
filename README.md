@@ -55,16 +55,17 @@ overlapping voices to a single winner per word. We don't.
 | `pyannote` (3.1) | Arbitrary speaker counts, CPU paths | Slow on Mac; best on AMI overlap (38.94 % DER) |
 | `passthrough` | Multitalker + auto-multispeaker | No-op; preserves engine-set labels |
 
-### Layer 3 — Punctuation (optional polish layer)
+### Layer 3 — Punctuation
 
 | Punctuator | What it does |
 |---|---|
-| `distilbert` | NVIDIA punctuation_en_distilbert post-process — adds periods, commas, question marks, capitalization (~10 ms GPU / 50 ms CPU per emission) |
-| `passthrough` (default) | Raw engine output, no post-process |
+| `distilbert` (default) | NVIDIA punctuation_en_distilbert post-process — adds periods, commas, question marks, capitalization (~10 ms GPU / 50 ms CPU per emission) |
+| `passthrough` | Raw engine output, no post-process. Selectable for A/B testing only. |
 
 ### Always-on (built into engines)
 
-- **SpeakerLabelSmoother** (inside Multitalker) — hysteresis + min-speaker-duration filter from the Streaming Sortformer paper §IV. Suppresses single-frame phantom speakers.
+- **SpeakerLabelSmoother** (inside Multitalker) — hysteresis + min-speaker-duration filter from the Streaming Sortformer paper §IV. Suppresses single-frame phantom-speaker flicker.
+- **TitaNet speaker verification** (inside Multitalker) — after each multispk step, the dominant-channel chunk runs through NVIDIA `speakerverification_en_titanet_large` to produce a 192-dim embedding that feeds an EMA centroid per verified channel. Subsequent chunks map to the nearest centroid by cosine similarity (threshold 0.70). Replaces the previous heuristic sticky-lock for label stability under mic-distance drift. See `results/SCOREBOARD.md` for methodology + the AMI no-regression result.
 - **Word-boundary commit** (inside Multitalker) — only emits text through the last word boundary; holds the trailing partial word until completion or a 1.5 s stale-flush.
 - **Hybrid engine routing** (inside auto-multispeaker) — reads `transcription_config.speaker_diarization_config.max_speakers` and dispatches to Multitalker if ≤4, else Nemotron Native + Sortformer-streaming.
 - **Arrival-order speaker remap** (in session.py) — translates engine-native labels to Speechmatics-compatible `S1`/`S2`/`S3`.
@@ -191,10 +192,10 @@ curl http://localhost:9000/ready              # waits for first-boot model downl
 ```
 
 First boot pulls ~10 GB of model weights to a persistent volume; subsequent
-restarts come up in ~30 s. The `auto-multispeaker` engine and `passthrough`
-diarizer are the production defaults; override per session at the
-StartRecognition layer (see Integration below) or globally via the env vars
-documented in `deploy/.env.example`.
+restarts come up in ~30 s. The `auto-multispeaker` engine, `passthrough`
+diarizer, and `distilbert` punctuator are the production defaults; override
+per session at the StartRecognition layer (see Integration below) or globally
+via the env vars documented in `deploy/.env.example`.
 
 Day-to-day:
 
