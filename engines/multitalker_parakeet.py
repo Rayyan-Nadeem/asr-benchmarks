@@ -265,194 +265,263 @@ class SpeakerLabelSmoother:
 
 
 class EmbeddingSpeakerVerifier:
-    """Speaker verification using cosine similarity of voice embeddings.
+    """Multi-prototype speaker verification using TitaNet x-vector embeddings.
 
-    The Sortformer diarizer computes a 512-dim embedding per frame and
-    stores them in the AOSC cache (`StreamingSortformerState.spkcache`)
-    keyed by per-frame speaker predictions (`spkcache_preds`). We read
-    those embeddings out, maintain a per-speaker exponential-moving-
-    average centroid in the verifier's own state, and use cosine
-    similarity to decide whether a newly-emerging raw speaker channel
-    represents drift from an established speaker or a genuinely new one.
+    Each verified speaker is represented by up to MAX_PROTOTYPES_PER_CHANNEL
+    prototype embeddings rather than a single EMA centroid. This is the
+    pattern production NIST-SRE-grade speaker-verification systems use to
+    handle voice variation within a single speaker: someone speaking softly
+    and then loudly, sitting up vs leaning back, deliberately deepening
+    their voice to test the model — these are all the same identity but
+    can sit 0.50-0.70 cosine similarity apart in TitaNet's space, below
+    the 0.70 same-speaker threshold a single centroid would enforce. The
+    multi-prototype design lets one identity hold multiple "looks" so
+    voice variation registers as "matched against prototype 2 of channel 0"
+    instead of "below threshold against channel 0's only centroid → new
+    speaker."
 
-    Drift case (mic distance bumps embedding past diarizer's "new speaker"
-    threshold for a few chunks, model briefly emits a new channel): the
-    new channel's centroid is highly similar to one of the established
-    centroids → merge.
+    Three thresholds, asymmetric on purpose:
+      - SIMILARITY_THRESHOLD = 0.70 — required for an existing-channel
+        REASSIGNMENT in verify() (hysteresis-gated).
+      - EAGER_THRESHOLD = 0.55 — required to assign a brand-new raw
+        channel to an existing identity at first emission. Lower than
+        the reassignment threshold by design: a natural voice-variation
+        embedding can sit at 0.55-0.65 from any existing prototype but
+        is still the same speaker. Above 0.55 → assign to closest
+        existing; below 0.55 → genuinely new speaker.
+      - MERGE_THRESHOLD = 0.75 — required for the periodic pairwise merge
+        sweep. Conservative; the eager + per-chunk verify paths catch
+        most cases before merge_sweep ever needs to fire.
 
-    Pause-recovery (speaker stops for 60 s, AOSC cache decays, model
-    allocates a fresh channel on return): same as drift — the centroid
-    we maintain in this verifier is monotonic, not AOSC-decayed, so the
-    returning speaker matches their long-term centroid.
+    Prototype lifecycle (per channel):
+      - First embedding seeds prototype 0.
+      - New embedding's similarity to closest existing prototype:
+          > PROTOTYPE_MERGE_SIM (0.85) → EMA-blend into that prototype
+          ≤ PROTOTYPE_MERGE_SIM and < MAX_PROTOTYPES_PER_CHANNEL stored
+            → add as a new prototype (a new "look" for this speaker)
+          ≤ PROTOTYPE_MERGE_SIM and at MAX_PROTOTYPES_PER_CHANNEL → replace
+            the least-frequently-updated prototype.
+      - Channel-to-channel similarity is max-pairwise across both
+        channels' prototype sets (the best agreement under any "look"
+        each speaker has shown).
 
-    Genuinely new speaker joins: their centroid doesn't match any
-    established centroid above threshold → accept as new.
-
-    Thresholds:
-      - SIMILARITY_THRESHOLD = 0.65 — biases toward "same speaker" on
-        borderline cases. ECAPA-TDNN / x-vector verification literature
-        uses ~0.70 on VoxCeleb for ~1 % EER; we sit slightly below to
-        prefer merging on uncertainty (the failure mode the user pushed
-        back on was false-NEW-speaker on a known voice, not false-merge).
-      - MIN_FRAMES_FOR_CENTROID = 8 — need this much evidence before
-        the centroid is reliable enough to compare. At Sortformer's
-        80 ms frame rate, this is ~0.64 s of speech.
-      - EMA_MOMENTUM = 0.9 — higher = more weight on historical centroid,
-        less responsive to recent frames. Stabilizes the centroid once
-        the speaker is established so brief acoustic variations don't
-        move it.
+    Eager verification:
+      - When a raw channel first wants to emit text and has no prototypes
+        yet, the stream loop runs TitaNet eagerly on the current chunk
+        audio and calls eager_classify(emb). If the embedding is within
+        EAGER_THRESHOLD of any existing channel's prototypes, that raw
+        channel maps to the matched identity before its first emission
+        ever leaves the server. This is the core fix for the parallel-
+        emission case (channel 2 emitting the same person's voice as
+        channel 1) — the duplicate label is suppressed at emission time
+        rather than recovered after the fact.
 
     References:
-      - Streaming Sortformer paper (arXiv 2507.18446) §III — AOSC cache
-        layout and per-frame embedding semantics
-      - Yamada 2024 "Online Neural Speaker Diarization with Target
-        Speaker Tracking" — verification-based identity tracking pattern
-      - ECAPA-TDNN (Desplanques 2020) — cosine-similarity verification
-        thresholds for speaker verification
+      - Snyder et al 2018, "X-Vectors: Robust DNN Embeddings for Speaker
+        Recognition" — original x-vector / TitaNet prototype semantics
+      - Desplanques et al 2020, "ECAPA-TDNN" — cosine threshold tuning
+        on VoxCeleb
+      - Ramoji & Ganapathy 2020, "Supervised I-vector Modeling — Theory
+        and Applications" — multi-prototype as an enrollment-time
+        de-noiser for identity drift
     """
 
-    # Sortformer embeddings are trained for diarization (distinguish
-    # speakers in a chunk), not verification (match same speaker across
-    # long spans), so they're less discriminative than purpose-built
-    # speaker-verification embeddings (ECAPA-TDNN, x-vector). We pick a
-    # threshold near the high end of the literature range to avoid the
-    # false-merge case where two AMI speakers with similar pitch/timbre
-    # get fused into one channel. Empirically tuned on AMI ES2004a:
-    #   0.65 → all 4 distinct speakers merged into one (broken)
-    #   0.80 → tuning target; pairs of similar voices may still merge
-    #   0.85 → safer; tighter on what counts as the "same" voice
-    # The cost of being conservative on the merge threshold is that some
-    # actual drift cases pass through as new speakers. The complement
-    # (a dedicated speaker-verification head like ECAPA-TDNN running
-    # alongside the diarizer) is the higher-quality fix when this proves
-    # insufficient.
-    # Feed embeddings come from TitaNet (192-dim, verification-trained).
-    # In TitaNet's space, same-speaker similarity sits ~0.80–0.95 and
-    # different-speaker similarity ~0.20–0.40 — a wide unambiguous gap.
-    # 0.70 is the literature threshold for ~1 % EER on VoxCeleb.
+    # Reassignment of an existing raw channel to a different verified
+    # identity (verify() path). Stricter than EAGER_THRESHOLD because
+    # we already have evidence for the current target.
     SIMILARITY_THRESHOLD = 0.70
-    # Hysteresis: an alternative centroid must beat the current mapping
-    # target by at least this margin before we remap. Prevents thrashing
-    # on borderline chunks while still allowing convergence when one
-    # centroid is clearly closer than another.
+    # First-emission classification of a brand-new raw channel against
+    # existing identities (eager_classify path). Lower than the reassign
+    # threshold: natural voice-variation embeddings sit at 0.50-0.65 from
+    # any single existing prototype and would otherwise create a new
+    # speaker label every time someone modulates their voice.
+    EAGER_THRESHOLD = 0.55
+    # Hysteresis: an alternative identity must beat the current mapping
+    # target by this margin before verify() remaps. Prevents thrashing.
     REMAP_MARGIN = 0.05
-    # Pairwise centroid similarity above which two channels are merged
-    # outright (one is reassigned to the other). Set above the per-chunk
-    # remap threshold so the merge sweep is conservative — only acts on
-    # centroids that have demonstrably converged.
-    MERGE_THRESHOLD = 0.80
-    # Need at least this many independent chunk-level embeddings before
-    # the centroid is reliable enough to compare against.
-    MIN_EMBEDDINGS_FOR_CENTROID = 3
-    # Exponential moving average for centroid updates — stabilizes the
-    # fingerprint once a speaker is established.
+    # Pairwise max-prototype similarity above which two raw channels are
+    # collapsed by the periodic merge sweep. Lower index wins.
+    MERGE_THRESHOLD = 0.75
+    # Within a single channel, a new embedding within this similarity of
+    # an existing prototype gets blended into that prototype via EMA;
+    # below this it becomes a new prototype (a new "look" for the
+    # speaker, e.g. their deepened-voice fingerprint). Set high so the
+    # blend only happens on genuinely-redundant evidence.
+    PROTOTYPE_MERGE_SIM = 0.85
+    # Maximum number of prototype embeddings stored per channel. K=3
+    # covers the practical range of voice variation a single speaker
+    # exhibits (normal / loud / quiet, or normal / animated / tired).
+    # Replacement is least-frequently-updated when full.
+    MAX_PROTOTYPES_PER_CHANNEL = 3
+    # Minimum prototype count before a channel's identity is reliable
+    # enough to factor into verify()'s alternative search. Set to 1
+    # because eager_classify handles the cold-start case before this
+    # gate is reached.
+    MIN_EMBEDDINGS_FOR_CENTROID = 1
+    # EMA momentum for blending a new embedding into an existing
+    # prototype (when sim > PROTOTYPE_MERGE_SIM).
     EMA_MOMENTUM = 0.90
     # When the diarizer says one speaker dominates a chunk by less than
-    # this fraction of frames, the chunk is multi-speaker (overlap) and
-    # we skip TitaNet on it. Set tight (0.95) so TitaNet only ever
-    # ingests near-clean audio for the dominant speaker — at 0.75 the
-    # remaining 25 % of a chunk routinely contains the other speaker,
-    # which blends into TitaNet's embedding and drives centroid drift
-    # (measured 2026-06-05: sim(0,1) climbed 0.10 → 0.89 over a 2-min
-    # 2-speaker conversation because contaminated audio kept being
-    # absorbed under the loose gate).
+    # this fraction of AOSC FIFO frames, skip the verification update —
+    # the audio is mixed and would blend the prototype. 0.95 keeps
+    # ingested audio near-clean for the dominant speaker.
     DOMINANT_FRACTION = 0.95
-    # Period (in stream steps) for proactive pairwise centroid merge
-    # sweeps. Catches drift-together cases the per-chunk verify() might
-    # miss — even with hysteresis, if two channels' centroids converge
-    # gradually, no single chunk sees a sharp enough delta to trigger
-    # a remap. The sweep collapses anything above MERGE_THRESHOLD.
+    # Period (stream steps) for proactive pairwise merge sweeps. Backstop
+    # for gradual drift-together cases not caught by eager or per-chunk
+    # verify.
     MERGE_SWEEP_EVERY = 50
 
     def __init__(self, n_spk: int = 4) -> None:
         self.n_spk = n_spk
-        # raw channel idx → normalized centroid tensor (192,)
-        self._centroids: dict[int, "torch.Tensor"] = {}
-        # raw channel idx → number of chunk embeddings absorbed (proxy
-        # for centroid maturity / how reliable comparisons are).
+        # raw channel idx → list of (prototype tensor, update count).
+        # Each tensor is L2-normalized 192-dim.
+        self._prototypes: dict[int, list[tuple["torch.Tensor", int]]] = {}
+        # raw channel idx → total embeddings absorbed (across all
+        # prototypes). Used for diagnostics and the merge-sweep gate.
         self._n_embeddings: dict[int, int] = {}
-        # raw channel idx → committed final channel idx. Once a raw
-        # channel is committed (either as itself or merged into another),
-        # this is the stable mapping for the rest of the session.
+        # raw channel idx → currently-mapped verified channel idx.
+        # Re-evaluated on every verify() call with hysteresis.
         self._mapping: dict[int, int] = {}
 
+    @staticmethod
+    def _normalize(t: "torch.Tensor") -> "torch.Tensor":
+        import torch
+        return torch.nn.functional.normalize(
+            t.detach().to(torch.float32).flatten(), dim=-1
+        )
+
+    def add_embedding(
+        self, raw_channel: int, embedding: "torch.Tensor"
+    ) -> None:
+        """Absorb one TitaNet embedding into raw_channel's prototype set.
+
+        New prototype, blended into closest, or replacing the least-
+        frequently-updated existing prototype — depending on similarity
+        to existing prototypes and prototype-set capacity. See the class
+        docstring for the prototype lifecycle."""
+        import torch
+        emb = self._normalize(embedding)
+        if raw_channel not in self._prototypes:
+            self._prototypes[raw_channel] = [(emb, 1)]
+            self._n_embeddings[raw_channel] = 1
+            return
+        protos = self._prototypes[raw_channel]
+        sims = [float(torch.dot(emb, p).item()) for p, _ in protos]
+        best_idx = max(range(len(sims)), key=lambda i: sims[i])
+        best_sim = sims[best_idx]
+        if best_sim > self.PROTOTYPE_MERGE_SIM:
+            # Redundant evidence — refine the matching prototype via EMA.
+            old_proto, old_n = protos[best_idx]
+            blended = (
+                self.EMA_MOMENTUM * old_proto
+                + (1.0 - self.EMA_MOMENTUM) * emb
+            )
+            protos[best_idx] = (self._normalize(blended), old_n + 1)
+        elif len(protos) < self.MAX_PROTOTYPES_PER_CHANNEL:
+            # Distinct enough to be a new "look" for this speaker, and
+            # we have room — store as a separate prototype.
+            protos.append((emb, 1))
+        else:
+            # At capacity. Replace the prototype with the lowest update
+            # count (least-frequently-confirmed "look").
+            lru_idx = min(range(len(protos)), key=lambda i: protos[i][1])
+            protos[lru_idx] = (emb, 1)
+        self._n_embeddings[raw_channel] = (
+            self._n_embeddings.get(raw_channel, 0) + 1
+        )
+
+    # Backward-compatible alias for older call sites.
     def update_with_embedding(
         self, raw_channel: int, embedding: "torch.Tensor"
     ) -> None:
-        """Absorb one TitaNet (or compatible 192-dim) embedding into the
-        running centroid for raw_channel. Embeddings get L2-normalized
-        on input; the centroid is also kept normalized via EMA blend +
-        renormalize so cosine similarity is just a dot product."""
+        self.add_embedding(raw_channel, embedding)
+
+    def _max_pairwise_sim(self, ch_a: int, ch_b: int) -> float:
+        """Max cosine similarity across every prototype pair (p_a, p_b)
+        where p_a is a prototype of ch_a and p_b is a prototype of ch_b.
+        This is the channel-to-channel similarity metric — the best
+        agreement under any pair of "looks" each speaker has shown."""
         import torch
-        emb = embedding.detach().to(torch.float32).flatten()
-        emb = torch.nn.functional.normalize(emb, dim=-1)
-        if raw_channel not in self._centroids:
-            self._centroids[raw_channel] = emb
-            self._n_embeddings[raw_channel] = 1
-        else:
-            blended = (
-                self.EMA_MOMENTUM * self._centroids[raw_channel]
-                + (1.0 - self.EMA_MOMENTUM) * emb
-            )
-            self._centroids[raw_channel] = torch.nn.functional.normalize(
-                blended, dim=-1
-            )
-            self._n_embeddings[raw_channel] = (
-                self._n_embeddings.get(raw_channel, 0) + 1
-            )
+        if ch_a not in self._prototypes or ch_b not in self._prototypes:
+            return -2.0
+        best = -2.0
+        for pa, _ in self._prototypes[ch_a]:
+            for pb, _ in self._prototypes[ch_b]:
+                sim = float(torch.dot(pa, pb).item())
+                if sim > best:
+                    best = sim
+        return best
+
+    def eager_classify(
+        self, embedding: "torch.Tensor"
+    ) -> tuple[int | None, float]:
+        """Classify a brand-new raw channel's first embedding against
+        every existing live identity's prototype set. Returns
+        (matched_channel, max_sim) — matched_channel is None when no
+        existing identity is within EAGER_THRESHOLD.
+
+        Called from the stream loop before the first emission on a raw
+        channel that has no prototypes yet. The match decision (or the
+        explicit "no match → new speaker") is then applied to _mapping
+        so verify() returns the correct verified channel for the very
+        first text emission on this raw channel.
+        """
+        import torch
+        emb = self._normalize(embedding)
+        best_ch: int | None = None
+        best_sim: float = -2.0
+        for ch, protos in self._prototypes.items():
+            # Skip ghosts already merged into another identity — their
+            # canonical centroid is the merge target's, which we'll see
+            # under its own key.
+            if ch in self._mapping and self._mapping[ch] != ch:
+                continue
+            for proto, _ in protos:
+                sim = float(torch.dot(emb, proto).item())
+                if sim > best_sim:
+                    best_sim = sim
+                    best_ch = ch
+        if best_ch is not None and best_sim > self.EAGER_THRESHOLD:
+            return best_ch, best_sim
+        return None, best_sim
 
     def verify(self, raw_channel: int) -> int:
         """Map raw_channel to a verified channel. Re-evaluated on every
-        call (no committed-and-frozen cache) with hysteresis — an
-        alternative centroid must clear SIMILARITY_THRESHOLD AND beat the
-        current mapping target's similarity by REMAP_MARGIN before we
-        remap. Without this re-evaluation, centroids that drift together
-        mid-session stay mapped to separate identities for the rest of
-        the session (measured 2026-06-05: sim(0,1) hit 0.89 with mapping
-        still {0:0, 1:1, 2:2})."""
-        import torch
-        # Not enough evidence on this raw channel yet — return current
-        # mapping (or fall back to self) without committing anything.
-        if (
-            raw_channel not in self._centroids
-            or self._n_embeddings.get(raw_channel, 0) < self.MIN_EMBEDDINGS_FOR_CENTROID
-        ):
+        call with hysteresis — an alternative identity must clear
+        SIMILARITY_THRESHOLD AND beat the current mapping target by
+        REMAP_MARGIN before remap. Channel-to-channel similarity is
+        max-pairwise across both channels' prototype sets."""
+        if raw_channel not in self._prototypes or not self._prototypes[raw_channel]:
             return self._mapping.get(raw_channel, raw_channel)
 
-        cur = self._centroids[raw_channel]
         current_target = self._mapping.get(raw_channel, raw_channel)
 
-        # Sim from this channel's centroid to its current mapping target.
+        # Similarity from raw_channel to its current mapping target.
         # Self-mapping is sim = 1.0 by definition.
         if current_target == raw_channel:
             current_sim = 1.0
-        elif current_target in self._centroids:
-            current_sim = float(torch.dot(cur, self._centroids[current_target]).item())
+        elif current_target in self._prototypes:
+            current_sim = self._max_pairwise_sim(raw_channel, current_target)
         else:
-            # Mapping target's centroid was merged away — treat as ungrounded
-            # so any reasonable alternative wins.
+            # Mapping target's prototypes were dropped (e.g. merged away).
             current_sim = -2.0
 
-        # Find the best alternative live channel.
+        # Best alternative live identity.
         best_match: int | None = None
         best_sim: float = -2.0
-        for other_ch, other_centroid in self._centroids.items():
+        for other_ch in self._prototypes:
             if other_ch == raw_channel:
                 continue
-            # Skip ghosts — channels already merged elsewhere; the merge
-            # target is the canonical centroid to compare against, and
-            # we'll already see it in this loop under its own key.
+            # Skip ghosts — canonical identity is the merge target.
             if other_ch in self._mapping and self._mapping[other_ch] != other_ch:
                 continue
             if self._n_embeddings.get(other_ch, 0) < self.MIN_EMBEDDINGS_FOR_CENTROID:
                 continue
-            sim = float(torch.dot(cur, other_centroid).item())
+            sim = self._max_pairwise_sim(raw_channel, other_ch)
             if sim > best_sim:
                 best_sim = sim
                 best_match = other_ch
 
-        # Hysteresis: alternative must clear absolute threshold AND beat
-        # the current mapping target by the margin.
         if (
             best_match is not None
             and best_sim > self.SIMILARITY_THRESHOLD
@@ -461,39 +530,27 @@ class EmbeddingSpeakerVerifier:
             self._mapping[raw_channel] = best_match
             return best_match
 
-        # Stay with current mapping target (or self if never mapped).
         self._mapping[raw_channel] = current_target
         return current_target
 
     def merge_sweep(self) -> dict[int, int]:
-        """Proactive pairwise centroid merge. Walks all live channels,
-        merges any pair whose centroids are within MERGE_THRESHOLD
-        cosine similarity. Lower channel index wins; the higher index
-        gets _mapping redirected to the lower. Centroids stay independent
-        (each raw channel keeps its own fingerprint history); only the
-        mapping changes. Returns the dict of merges applied this sweep
-        so the caller can log them. The per-chunk verify() catches sharp
-        differences; this sweep catches gradual drift-together cases
-        that no single chunk could see."""
-        import torch
+        """Proactive pairwise merge over max-prototype similarity. Lower
+        channel index wins; the higher index gets _mapping redirected to
+        the lower. Prototype sets stay independent (each raw channel
+        keeps its own fingerprint history); only the mapping changes."""
         live = sorted([
-            ch for ch in self._centroids
-            if self._n_embeddings.get(ch, 0) >= self.MIN_EMBEDDINGS_FOR_CENTROID
-            and self._mapping.get(ch, ch) == ch
+            ch for ch in self._prototypes
+            if self._mapping.get(ch, ch) == ch
         ])
         merges: dict[int, int] = {}
         for i, a in enumerate(live):
             if a in merges:
                 continue
-            ca = self._centroids[a]
             for b in live[i + 1:]:
                 if b in merges:
                     continue
-                cb = self._centroids[b]
-                sim = float(torch.dot(ca, cb).item())
+                sim = self._max_pairwise_sim(a, b)
                 if sim > self.MERGE_THRESHOLD:
-                    # Redirect b -> a, and any third party already
-                    # pointing at b -> a as well.
                     self._mapping[b] = a
                     for k, v in list(self._mapping.items()):
                         if v == b:
@@ -750,11 +807,69 @@ class MultitalkerParakeet:
             span = min(0.56, max(0.05, t_end))
             t_start = max(0.0, t_end - span)
             per = span / max(1, len(tokens))
-            # Route the raw channel through the embedding verifier. If
-            # the raw channel matches a previously-established speaker's
-            # voice fingerprint, the verifier returns that speaker's
-            # channel instead (drift / pause-recovery). Otherwise it
-            # returns the raw channel as-is (genuinely new speaker).
+            # Eager verification — if this raw channel has no prototypes
+            # yet (multitalker just allocated it for what may be voice
+            # variation from an existing identity, not a real new
+            # speaker), run TitaNet on the recent audio now and check
+            # against every existing identity. Catches the parallel-
+            # emission case (multitalker emits the same person's voice
+            # on two channels) and the voice-modulation case (deepened /
+            # raised voice gets a new channel slot) BEFORE the duplicate
+            # label leaks into the transcript. Without this, the first
+            # ~3 chunks of any new channel emit as the raw channel index
+            # and the verifier can only fix labels going forward — the
+            # phantom S3 etc. is already out.
+            if spk_idx not in verifier._prototypes and chunk_audio_queue:
+                try:
+                    tail = list(chunk_audio_queue)[-4:]
+                    if tail:
+                        audio_window = np.concatenate(tail)
+                        if len(audio_window) >= SAMPLE_RATE // 2:
+                            sig = torch.from_numpy(
+                                audio_window
+                            ).unsqueeze(0).to(asr.device)
+                            lens = torch.tensor(
+                                [sig.shape[-1]], device=asr.device
+                            )
+                            with torch.inference_mode():
+                                _, eager_emb = titanet.forward(
+                                    input_signal=sig,
+                                    input_signal_length=lens,
+                                )
+                            matched, sim = verifier.eager_classify(eager_emb)
+                            if matched is not None:
+                                # Existing identity match — seed this raw
+                                # channel's prototypes AND route to the
+                                # matched identity so the very first emit
+                                # gets the right speaker label.
+                                verifier.add_embedding(spk_idx, eager_emb)
+                                verifier._mapping[spk_idx] = matched
+                                print(
+                                    f"[eager verify] spk_idx={spk_idx} "
+                                    f"matched ch={matched} sim={sim:.3f}",
+                                    file=sys.stderr, flush=True,
+                                )
+                            else:
+                                # No existing identity within
+                                # EAGER_THRESHOLD — accept as genuinely
+                                # new. Seed prototypes so subsequent
+                                # verify() calls have evidence.
+                                verifier.add_embedding(spk_idx, eager_emb)
+                                print(
+                                    f"[eager verify] spk_idx={spk_idx} "
+                                    f"new identity (best_sim={sim:.3f})",
+                                    file=sys.stderr, flush=True,
+                                )
+                except Exception as e:
+                    print(
+                        f"eager verify err: {e}",
+                        file=sys.stderr, flush=True,
+                    )
+
+            # Route the raw channel through the embedding verifier. After
+            # the eager pass above, raw channels that match an existing
+            # identity already have _mapping set; verify() respects that
+            # and only re-evaluates if prototype evidence diverges later.
             final_channel = verifier.verify(spk_idx)
             speaker_label = f"S{final_channel + 1}"
             words = [
@@ -886,7 +1001,7 @@ class MultitalkerParakeet:
                                                 input_signal=sig,
                                                 input_signal_length=lens,
                                             )
-                                        verifier.update_with_embedding(
+                                        verifier.add_embedding(
                                             int(dominant_spk), emb
                                         )
 
@@ -898,22 +1013,24 @@ class MultitalkerParakeet:
                 # is actually using, not the pre-merge view.
                 if step_num > 0 and step_num % verifier.MERGE_SWEEP_EVERY == 0:
                     merges = verifier.merge_sweep()
+                    # Pairwise channel similarity = max across both
+                    # channels' prototype sets (the metric verify() and
+                    # merge_sweep() actually use).
                     sims = {}
-                    cents = list(verifier._centroids.items())
-                    for i, (a, ca) in enumerate(cents):
-                        for b, cb in cents[i + 1:]:
-                            if (
-                                verifier._n_embeddings.get(a, 0)
-                                >= verifier.MIN_EMBEDDINGS_FOR_CENTROID
-                                and verifier._n_embeddings.get(b, 0)
-                                >= verifier.MIN_EMBEDDINGS_FOR_CENTROID
-                            ):
-                                sims[f"{a}-{b}"] = round(
-                                    float(torch.dot(ca, cb).item()), 3
-                                )
+                    chans = sorted(verifier._prototypes.keys())
+                    for i, a in enumerate(chans):
+                        for b in chans[i + 1:]:
+                            sims[f"{a}-{b}"] = round(
+                                verifier._max_pairwise_sim(a, b), 3
+                            )
+                    n_proto = {
+                        ch: len(protos)
+                        for ch, protos in verifier._prototypes.items()
+                    }
                     print(
                         f"[multitalker verifier] step={step_num} "
                         f"n_emb={dict(verifier._n_embeddings)} "
+                        f"n_proto={n_proto} "
                         f"mapping={dict(verifier._mapping)} "
                         f"merges_this_sweep={merges} "
                         f"pairwise_sim={sims}",
