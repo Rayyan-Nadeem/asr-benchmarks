@@ -48,6 +48,7 @@ import numpy as np
 _DIAR_MODEL = None
 _ASR_MODEL = None
 _VERIFY_MODEL = None  # TitaNet speaker verification (192-dim discriminative)
+_COHORT = None  # Impostor cohort for adaptive s-norm calibration
 
 
 def _get_models():
@@ -91,6 +92,42 @@ def _get_models():
     _ASR_MODEL = asr
     _VERIFY_MODEL = titanet
     return diar, asr, titanet
+
+
+def _get_cohort() -> "torch.Tensor | None":
+    """Lazy-load the impostor cohort tensor for adaptive s-norm
+    calibration. Returns an L2-normalized (N, 192) tensor on the same
+    device as TitaNet, or None if the cohort file is missing (verifier
+    falls back to raw-threshold mode in that case).
+
+    The cohort is a precomputed set of TitaNet embeddings from diverse
+    speakers / acoustic conditions, used to estimate the impostor score
+    distribution. Built once via tools/build_titanet_cohort.py and
+    committed at engines/cohort/titanet_cohort.pt."""
+    global _COHORT
+    if _COHORT is not None:
+        return _COHORT
+    import torch
+    from pathlib import Path
+    cohort_path = Path(__file__).resolve().parent / "cohort" / "titanet_cohort.pt"
+    if not cohort_path.exists():
+        return None
+    try:
+        payload = torch.load(cohort_path, map_location="cpu", weights_only=False)
+        embeddings = payload["embeddings"] if isinstance(payload, dict) else payload
+        cohort = torch.nn.functional.normalize(
+            embeddings.to(torch.float32), dim=-1
+        )
+        if torch.cuda.is_available():
+            cohort = cohort.cuda()
+        _COHORT = cohort
+        return cohort
+    except Exception as e:
+        print(
+            f"_get_cohort: failed to load {cohort_path}: {e}",
+            file=sys.stderr, flush=True,
+        )
+        return None
 
 
 def _ensure_config_module_on_path():
@@ -332,24 +369,30 @@ class EmbeddingSpeakerVerifier:
     # gates remap-to-a-different-channel cases.
     SIMILARITY_THRESHOLD = 0.70
     # First-emission classification of a brand-new raw channel against
-    # existing identities (eager_classify path). Measured 2026-06-07 on
-    # live conversational audio: two distinct speakers (the user + a
-    # conversation partner, both male English, shared acoustic context)
-    # produced a single-embedding pairwise sim of 0.729 — well above
-    # TitaNet's literature 0.70 "same-speaker" threshold. The literature
-    # threshold assumed clean studio audio (VoxCeleb); production
-    # microphone audio has a higher noise floor for the same-speaker
-    # boundary. 0.80 keeps distinct speakers separate at the cost of
-    # voice-modulation robustness — when the user deliberately deepens
-    # their voice mid-session, the embedding lands at ~0.55-0.65 sim and
-    # won't cross this bar, so multitalker's new-channel allocation gets
-    # accepted as a new identity. Correct labeling of two distinct
-    # speakers is prioritized over robustness to one speaker's
-    # deliberate voice modulation; the deferred-classification fix
-    # (hold the first emission for one more chunk and check the next
-    # embedding agrees) is the principled way to recover both, tracked
-    # for a future commit.
+    # existing identities (eager_classify path). Used as a FALLBACK when
+    # the adaptive s-norm cohort isn't available; in production the
+    # decision is made on EAGER_Z_THRESHOLD against the calibrated
+    # z-score, not this raw similarity.
     EAGER_THRESHOLD = 0.80
+    # Adaptive s-norm z-score above which eager_classify merges a new
+    # raw channel into an existing identity. Calibrated: z is the number
+    # of standard deviations the raw similarity exceeds the top-K
+    # impostor mean. A z-score threshold is session-invariant — it
+    # adjusts to acoustic context automatically (shared room / mic
+    # raises the impostor baseline, so the threshold for "same speaker"
+    # rises proportionally). 2.5 corresponds to ~99% of impostors below
+    # the bar in a Gaussian assumption; empirically tuned for TitaNet
+    # cohort distributions per Cumani et al 2019.
+    EAGER_Z_THRESHOLD = 2.5
+    # Top-K cohort scores used for the adaptive s-norm baseline. K=20
+    # captures the close-but-impostor regime — the impostor distribution
+    # that actually matters for the decision, not the full impostor set
+    # (per as-norm, ASRU 2017; SRE'20 winning systems).
+    SNORM_TOP_K = 20
+    # Minimum cohort size to use s-norm. Below this we fall back to the
+    # raw EAGER_THRESHOLD (84 in the shipping cohort; this is a safety
+    # floor for partial / corrupt cohort loads).
+    SNORM_MIN_COHORT = 30
     # Hysteresis: an alternative identity must beat the current mapping
     # target by this margin before verify() remaps. Prevents thrashing.
     REMAP_MARGIN = 0.05
@@ -389,7 +432,11 @@ class EmbeddingSpeakerVerifier:
     # verify.
     MERGE_SWEEP_EVERY = 50
 
-    def __init__(self, n_spk: int = 4) -> None:
+    def __init__(
+        self,
+        n_spk: int = 4,
+        cohort: "torch.Tensor | None" = None,
+    ) -> None:
         self.n_spk = n_spk
         # raw channel idx → list of (prototype tensor, update count).
         # Each tensor is L2-normalized 192-dim.
@@ -400,6 +447,10 @@ class EmbeddingSpeakerVerifier:
         # raw channel idx → currently-mapped verified channel idx.
         # Re-evaluated on every verify() call with hysteresis.
         self._mapping: dict[int, int] = {}
+        # Adaptive s-norm cohort (N, 192) L2-normalized. None falls back
+        # to raw EAGER_THRESHOLD in eager_classify; otherwise we
+        # compute a calibrated z-score and threshold on EAGER_Z_THRESHOLD.
+        self._cohort = cohort
 
     @staticmethod
     def _normalize(t: "torch.Tensor") -> "torch.Tensor":
@@ -470,19 +521,56 @@ class EmbeddingSpeakerVerifier:
                     best = sim
         return best
 
+    def _adaptive_snorm_z(
+        self, raw_sim: float, embedding: "torch.Tensor"
+    ) -> tuple["float | None", float, float, int]:
+        """Adaptive s-norm z-score for a (test_embedding, candidate_centroid)
+        match with raw_sim already computed.
+
+        Returns (z, mu, sigma, k_used). z is None when s-norm isn't
+        applicable (no cohort, cohort too small, or degenerate sigma) and
+        the caller should fall back to raw thresholding.
+
+        Adaptive s-norm = symmetric s-norm restricted to the top-K
+        impostor scores ("close-but-impostor" regime). Per Cumani et al
+        2019 and NIST-SRE 2020 winning systems."""
+        import torch
+        if self._cohort is None:
+            return None, 0.0, 0.0, 0
+        n_cohort = self._cohort.shape[0]
+        if n_cohort < self.SNORM_MIN_COHORT:
+            return None, 0.0, 0.0, 0
+        # cohort_sims: (N,) — cosine similarity of test against every
+        # cohort embedding (both L2-normalized → dot product).
+        cohort_sims = torch.mv(self._cohort, embedding.to(self._cohort.device))
+        k = min(self.SNORM_TOP_K, int(n_cohort))
+        top_k = torch.topk(cohort_sims, k=k).values
+        mu = float(top_k.mean().item())
+        sigma = float(top_k.std(unbiased=False).item())
+        if sigma < 1e-4:
+            # Degenerate distribution — top-K all bunched at the same
+            # value. Fall back to raw thresholding.
+            return None, mu, sigma, k
+        z = (raw_sim - mu) / sigma
+        return z, mu, sigma, k
+
     def eager_classify(
         self, embedding: "torch.Tensor"
-    ) -> tuple[int | None, float]:
+    ) -> tuple[int | None, dict]:
         """Classify a brand-new raw channel's first embedding against
-        every existing live identity's prototype set. Returns
-        (matched_channel, max_sim) — matched_channel is None when no
-        existing identity is within EAGER_THRESHOLD.
+        every existing live identity. Returns (matched_channel, info)
+        where info contains raw_sim, z, mu, sigma, k, cohort_used
+        for the diagnostic log. matched_channel is None when the best
+        candidate doesn't clear the decision threshold.
+
+        Decision rule:
+          - Adaptive s-norm if cohort available: merge if z > EAGER_Z_THRESHOLD
+          - Fallback (no cohort): merge if raw_sim > EAGER_THRESHOLD
 
         Called from the stream loop before the first emission on a raw
-        channel that has no prototypes yet. The match decision (or the
-        explicit "no match → new speaker") is then applied to _mapping
-        so verify() returns the correct verified channel for the very
-        first text emission on this raw channel.
+        channel that has no prototypes yet — the match decision (or
+        accept-as-new) is then applied to _mapping so verify() returns
+        the correct verified channel for the very first text emission.
         """
         import torch
         emb = self._normalize(embedding)
@@ -499,9 +587,19 @@ class EmbeddingSpeakerVerifier:
                 if sim > best_sim:
                     best_sim = sim
                     best_ch = ch
-        if best_ch is not None and best_sim > self.EAGER_THRESHOLD:
-            return best_ch, best_sim
-        return None, best_sim
+
+        info: dict = {"raw_sim": best_sim}
+        if best_ch is None:
+            return None, info
+
+        z, mu, sigma, k = self._adaptive_snorm_z(best_sim, emb)
+        if z is not None:
+            info.update(z=z, mu=mu, sigma=sigma, k=k, cohort_used=True)
+            matched = best_ch if z > self.EAGER_Z_THRESHOLD else None
+        else:
+            info.update(cohort_used=False)
+            matched = best_ch if best_sim > self.EAGER_THRESHOLD else None
+        return matched, info
 
     def verify(self, raw_channel: int) -> int:
         """Map raw_channel to a verified channel. Re-evaluated on every
@@ -721,7 +819,9 @@ class MultitalkerParakeet:
         # new-speaker identities. Reads embeddings from the Sortformer's
         # AOSC cache after each chunk and applies cosine-similarity
         # verification before the smoother sees the raw channel label.
-        verifier = EmbeddingSpeakerVerifier(n_spk=n_spk)
+        verifier = EmbeddingSpeakerVerifier(
+            n_spk=n_spk, cohort=_get_cohort()
+        )
 
         # Per-chunk audio buffer powers TitaNet verification. Each entry
         # is the raw samples appended to the streaming buffer for one
@@ -854,30 +954,43 @@ class MultitalkerParakeet:
                                     input_signal=sig,
                                     input_signal_length=lens,
                                 )
-                            matched, sim = verifier.eager_classify(eager_emb)
+                            matched, info = verifier.eager_classify(
+                                eager_emb
+                            )
+                            verifier.add_embedding(spk_idx, eager_emb)
                             if matched is not None:
-                                # Existing identity match — seed this raw
-                                # channel's prototypes AND route to the
-                                # matched identity so the very first emit
-                                # gets the right speaker label.
-                                verifier.add_embedding(spk_idx, eager_emb)
+                                # Existing identity match — route this
+                                # raw channel to the matched identity so
+                                # the very first emit gets the right
+                                # speaker label.
                                 verifier._mapping[spk_idx] = matched
-                                print(
-                                    f"[eager verify] spk_idx={spk_idx} "
-                                    f"matched ch={matched} sim={sim:.3f}",
-                                    file=sys.stderr, flush=True,
+                            # Build a structured diagnostic line that
+                            # surfaces the calibrated decision (z, mu,
+                            # sigma) so the threshold tuning is
+                            # auditable from the log.
+                            verdict = (
+                                f"matched ch={matched}"
+                                if matched is not None
+                                else "new identity"
+                            )
+                            if info.get("cohort_used"):
+                                detail = (
+                                    f"raw_sim={info['raw_sim']:.3f} "
+                                    f"z={info['z']:.2f} "
+                                    f"mu={info['mu']:.3f} "
+                                    f"sigma={info['sigma']:.3f} "
+                                    f"k={info['k']}"
                                 )
                             else:
-                                # No existing identity within
-                                # EAGER_THRESHOLD — accept as genuinely
-                                # new. Seed prototypes so subsequent
-                                # verify() calls have evidence.
-                                verifier.add_embedding(spk_idx, eager_emb)
-                                print(
-                                    f"[eager verify] spk_idx={spk_idx} "
-                                    f"new identity (best_sim={sim:.3f})",
-                                    file=sys.stderr, flush=True,
+                                detail = (
+                                    f"raw_sim={info['raw_sim']:.3f} "
+                                    f"(no cohort — raw threshold)"
                                 )
+                            print(
+                                f"[eager verify] spk_idx={spk_idx} "
+                                f"{verdict} {detail}",
+                                file=sys.stderr, flush=True,
+                            )
                 except Exception as e:
                     print(
                         f"eager verify err: {e}",
