@@ -327,21 +327,39 @@ class EmbeddingSpeakerVerifier:
     """
 
     # Reassignment of an existing raw channel to a different verified
-    # identity (verify() path). Stricter than EAGER_THRESHOLD because
-    # we already have evidence for the current target.
+    # identity (verify() path). The hysteresis margin in verify() means
+    # self-mapping (current_sim = 1.0) is sticky, so this threshold only
+    # gates remap-to-a-different-channel cases.
     SIMILARITY_THRESHOLD = 0.70
     # First-emission classification of a brand-new raw channel against
-    # existing identities (eager_classify path). Lower than the reassign
-    # threshold: natural voice-variation embeddings sit at 0.50-0.65 from
-    # any single existing prototype and would otherwise create a new
-    # speaker label every time someone modulates their voice.
-    EAGER_THRESHOLD = 0.55
+    # existing identities (eager_classify path). Measured 2026-06-07 on
+    # live conversational audio: two distinct speakers (the user + a
+    # conversation partner, both male English, shared acoustic context)
+    # produced a single-embedding pairwise sim of 0.729 — well above
+    # TitaNet's literature 0.70 "same-speaker" threshold. The literature
+    # threshold assumed clean studio audio (VoxCeleb); production
+    # microphone audio has a higher noise floor for the same-speaker
+    # boundary. 0.80 keeps distinct speakers separate at the cost of
+    # voice-modulation robustness — when the user deliberately deepens
+    # their voice mid-session, the embedding lands at ~0.55-0.65 sim and
+    # won't cross this bar, so multitalker's new-channel allocation gets
+    # accepted as a new identity. Correct labeling of two distinct
+    # speakers is prioritized over robustness to one speaker's
+    # deliberate voice modulation; the deferred-classification fix
+    # (hold the first emission for one more chunk and check the next
+    # embedding agrees) is the principled way to recover both, tracked
+    # for a future commit.
+    EAGER_THRESHOLD = 0.80
     # Hysteresis: an alternative identity must beat the current mapping
     # target by this margin before verify() remaps. Prevents thrashing.
     REMAP_MARGIN = 0.05
     # Pairwise max-prototype similarity above which two raw channels are
-    # collapsed by the periodic merge sweep. Lower index wins.
-    MERGE_THRESHOLD = 0.75
+    # collapsed by the periodic merge sweep. Set above EAGER_THRESHOLD
+    # so a borderline pair caught early by eager classify (sim 0.78,
+    # accepted as separate) isn't retroactively merged by the sweep at
+    # a lower bar — the sweep is the conservative backstop, not the
+    # primary merge mechanism.
+    MERGE_THRESHOLD = 0.85
     # Within a single channel, a new embedding within this similarity of
     # an existing prototype gets blended into that prototype via EMA;
     # below this it becomes a new prototype (a new "look" for the
