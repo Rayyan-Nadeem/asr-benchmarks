@@ -436,6 +436,17 @@ class EmbeddingSpeakerVerifier:
     # raw EAGER_THRESHOLD (84 in the shipping cohort; this is a safety
     # floor for partial / corrupt cohort loads).
     SNORM_MIN_COHORT = 30
+    # Anomaly upper bound for eager-classify merges. raw_sim above this
+    # means the test embedding effectively matches the candidate
+    # centroid 1:1 — which in the eager path is almost always the
+    # shared-audio-window artifact (the dominant-channel update fed the
+    # same audio into the candidate centroid milliseconds earlier),
+    # not a real same-speaker match. Genuine same-speaker raw_sim
+    # against an ESTABLISHED centroid in a 2-speaker session typically
+    # sits in the 0.80-0.93 band; values approaching 1.0 are the
+    # duplicate-audio artifact. Capping at 0.95 blocks the artifact
+    # while still allowing legitimate strong matches.
+    DUPLICATE_AUDIO_CEILING = 0.95
     # Hysteresis: an alternative identity must beat the current mapping
     # target by this margin before verify() remaps. Prevents thrashing.
     REMAP_MARGIN = 0.05
@@ -695,30 +706,40 @@ class EmbeddingSpeakerVerifier:
         # few in-session impostors exist (early-session decisions).
         trial_cohort = self._trial_cohort(exclude_channel=best_ch)
         z, mu, sigma, k = self._adaptive_snorm_z(best_sim, emb, trial_cohort)
+        # Anomaly gate: raw_sim above DUPLICATE_AUDIO_CEILING in the eager
+        # path is suspicious. The TitaNet embedding for the eager-classify
+        # call uses the same audio window the dominant-channel update
+        # just ingested. When multitalker emits on a NEW channel in the
+        # same step as a different channel's dominant update, the eager
+        # embedding can be effectively identical to the just-updated
+        # centroid (raw_sim → 1.0), producing a false-positive merge of
+        # two genuinely distinct speakers. Measured 2026-06-08: user +
+        # AI partner, raw_sim 1.000 / z 20.32 — clearly an artifact of
+        # shared-audio compare, not same-speaker. Cap the upper bound on
+        # eager merge.
         if z is not None:
             info.update(
                 z=z, mu=mu, sigma=sigma, k=k, cohort_used=True,
                 cohort_size=int(trial_cohort.shape[0]),
             )
-            # Defense in depth: require BOTH the calibrated z-score AND
-            # the raw cosine floor before merging. Measured 2026-06-08
-            # on live mic without trial-side normalization: distinct
-            # speakers in a mic context the static cohort didn't cover
-            # produced raw_sim 0.229 / z 2.61 — z crossed threshold
-            # because cohort mu was 0.094 (very far from the live
-            # acoustic space). With trial-side normalization the
-            # in-session impostors raise mu to something realistic for
-            # the live acoustic space; the raw floor remains as defense
-            # in depth against pathological edge cases.
+            # Defense in depth: require z above EAGER_Z_THRESHOLD AND
+            # raw_sim in the (EAGER_THRESHOLD, DUPLICATE_AUDIO_CEILING)
+            # band. The lower bound blocks distinct-speakers-in-shared-
+            # acoustic-context false merges. The upper bound blocks
+            # the shared-audio-window false merges described above.
             matched = (
                 best_ch
                 if (z > self.EAGER_Z_THRESHOLD
-                    and best_sim > self.EAGER_THRESHOLD)
+                    and self.EAGER_THRESHOLD < best_sim < self.DUPLICATE_AUDIO_CEILING)
                 else None
             )
         else:
             info.update(cohort_used=False)
-            matched = best_ch if best_sim > self.EAGER_THRESHOLD else None
+            matched = (
+                best_ch
+                if self.EAGER_THRESHOLD < best_sim < self.DUPLICATE_AUDIO_CEILING
+                else None
+            )
         return matched, info
 
     def verify(self, raw_channel: int) -> int:
