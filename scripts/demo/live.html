@@ -784,7 +784,12 @@ let ws = null, audioCtx = null, processor = null, source = null, stream = null;
 let running = false;
 let lastSeq = 0;
 let drainTimer = null;
-let currentSpeaker = null, currentLineEl = null;
+// Per-speaker most-recent bubble tracking — keyed by speaker label
+// ("S1", "S2", …), value { el: HTMLDivElement, lastTs: ms }. Used by
+// the AddTranscript handler to consolidate same-speaker turns even
+// across other-speaker interruptions within MERGE_WINDOW_MS, so
+// rapid overlap doesn't produce a wall of single-fragment bubbles.
+let speakerLines = {};
 
 const btn = document.getElementById('btn');
 const statusEl = document.getElementById('status');
@@ -799,8 +804,7 @@ btn.onclick = async () => { running ? stop() : await start(); };
 async function start() {
   partialEl.textContent = 'Listening…';
   finalsEl.innerHTML = '';
-  currentSpeaker = null;
-  currentLineEl = null;
+  speakerLines = {};
   try {
     stream = await navigator.mediaDevices.getUserMedia({
       audio: { channelCount: 1, echoCancellation: true, noiseSuppression: true, autoGainControl: true }
@@ -870,10 +874,25 @@ async function start() {
             groups.push({ speaker, words: [r] });
           }
         }
+        // Deposition-style per-speaker turn consolidation. Track each
+        // speaker's most recent bubble; if the new emission for that
+        // speaker arrives within MERGE_WINDOW_MS of the last one,
+        // append to the existing bubble even when other speakers'
+        // bubbles were created between them. Without this, rapid
+        // overlap produces alternating S1/S2/S1/S2 fragments that
+        // each get their own row — readable as live captioning but
+        // wrong shape for a deposition. With this, the same overlap
+        // produces ONE bubble per speaker per "turn," matching the
+        // NCRA / West / Atkinson-Baker layout where each speaker's
+        // continuous speech is merged even when chronologically
+        // interleaved with the other party.
+        const MERGE_WINDOW_MS = 2000;
+        const nowTs = performance.now();
         for (const g of groups) {
           let line;
-          if (currentSpeaker === g.speaker && currentLineEl) {
-            line = currentLineEl;
+          const existing = speakerLines[g.speaker];
+          if (existing && (nowTs - existing.lastTs) < MERGE_WINDOW_MS) {
+            line = existing.el;
           } else {
             line = document.createElement('div');
             line.className = 'line';
@@ -890,8 +909,6 @@ async function start() {
             line.appendChild(textNode);
             line._text = textNode;
             finalsEl.appendChild(line);
-            currentLineEl = line;
-            currentSpeaker = g.speaker;
           }
           let text = line._text.nodeValue || '';
           for (const r of g.words) {
@@ -900,6 +917,7 @@ async function start() {
             else text += (text && !text.endsWith(' ') ? ' ' : '') + c;
           }
           line._text.nodeValue = text;
+          speakerLines[g.speaker] = { el: line, lastTs: nowTs };
         }
         finalsEl.scrollTop = finalsEl.scrollHeight;
         partialEl.textContent = 'Listening…';
