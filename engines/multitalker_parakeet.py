@@ -502,6 +502,20 @@ class EmbeddingSpeakerVerifier:
             t.detach().to(torch.float32).flatten(), dim=-1
         )
 
+    def n_identities(self) -> int:
+        """Count of distinct verified identities currently established —
+        i.e. live channels (not merged into another) with enough evidence
+        to be reliable. This is what the user-declared max_speakers cap
+        gates against: when n_identities() >= self.n_spk, eager_classify
+        must force-route to the closest existing match instead of
+        allocating a new identity, because the session's declared shape
+        says S{n_spk+1} should never exist."""
+        return sum(
+            1 for ch in self._prototypes
+            if self._mapping.get(ch, ch) == ch
+            and self._n_embeddings.get(ch, 0) >= self.MIN_EMBEDDINGS_FOR_CENTROID
+        )
+
     def add_embedding(
         self, raw_channel: int, embedding: "torch.Tensor"
     ) -> None:
@@ -683,6 +697,22 @@ class EmbeddingSpeakerVerifier:
         if best_ch is None:
             return None, info
 
+        # MAX-IDENTITIES CAP. When the session has already established
+        # self.n_spk distinct verified identities (the user's declared
+        # max_speakers), eager_classify must force-route this candidate to
+        # the closest existing identity. A genuine new speaker cannot
+        # legitimately appear once the cap is reached; the only honest
+        # interpretation of multitalker allocating a new channel is voice
+        # variation from an existing speaker, which by definition must
+        # match one of the established identities. This is the
+        # session-enrollment paradigm (Proposal D from workflow
+        # wiqg71kms): once enrolled, only re-identify. Bypasses the
+        # threshold gates below because the threshold question is moot —
+        # there is no "new identity" option in a capped session.
+        if self.n_identities() >= self.n_spk:
+            info.update(forced_to_closest=True, cap=self.n_spk)
+            return best_ch, info
+
         # Trial-side normalization: build a cohort that EXCLUDES the
         # candidate channel we're judging against, so we're not using
         # the candidate as its own impostor (which would bias mu upward
@@ -726,11 +756,64 @@ class EmbeddingSpeakerVerifier:
         call with hysteresis — an alternative identity must clear
         SIMILARITY_THRESHOLD AND beat the current mapping target by
         REMAP_MARGIN before remap. Channel-to-channel similarity is
-        max-pairwise across both channels' prototype sets."""
+        max-pairwise across both channels' prototype sets. Hard cap:
+        once self.n_identities() reaches self.n_spk, raw_channel cannot
+        be allocated as its own new identity even if it has no
+        established mapping yet — it gets force-routed to the best
+        max-pairwise match instead."""
         if raw_channel not in self._prototypes or not self._prototypes[raw_channel]:
-            return self._mapping.get(raw_channel, raw_channel)
+            # Cap fast-path: this raw channel has no evidence yet AND
+            # would otherwise default to self-identity. If the cap is
+            # already reached, find the closest established identity and
+            # route there. This prevents a raw channel populated by the
+            # dominant-channel update (which doesn't go through
+            # eager_classify) from leaking out as a new S-label.
+            existing = self._mapping.get(raw_channel)
+            if existing is not None:
+                return existing
+            if self.n_identities() >= self.n_spk:
+                # Find closest established channel by prototype set
+                # presence; no embedding available so use any
+                # already-populated channel as a fallback.
+                live = [
+                    ch for ch in self._prototypes
+                    if self._mapping.get(ch, ch) == ch
+                    and self._n_embeddings.get(ch, 0) >= self.MIN_EMBEDDINGS_FOR_CENTROID
+                ]
+                if live:
+                    fallback = min(live)
+                    self._mapping[raw_channel] = fallback
+                    return fallback
+            return raw_channel
 
         current_target = self._mapping.get(raw_channel, raw_channel)
+
+        # Cap enforcement on the EVIDENCE path too. If this raw channel
+        # currently maps to itself (i.e. allocated as its own identity)
+        # but the cap is now reached AND this channel is the OVERFLOW
+        # (highest index in the live set), demote it to the closest
+        # other established identity. This handles the case where the
+        # cap was reached AFTER this channel was allocated — without
+        # this demotion, the overflow channel would persist as its own
+        # identity forever via the stable self-mapping.
+        if (
+            current_target == raw_channel
+            and self.n_identities() > self.n_spk
+        ):
+            live = [
+                ch for ch in self._prototypes
+                if ch != raw_channel
+                and self._mapping.get(ch, ch) == ch
+                and self._n_embeddings.get(ch, 0) >= self.MIN_EMBEDDINGS_FOR_CENTROID
+            ]
+            if live:
+                # Route to the live identity with highest max-pairwise
+                # similarity to this channel.
+                best_alt = max(
+                    live, key=lambda c: self._max_pairwise_sim(raw_channel, c)
+                )
+                self._mapping[raw_channel] = best_alt
+                return best_alt
 
         # Similarity from raw_channel to its current mapping target.
         # Self-mapping is sim = 1.0 by definition.
@@ -949,8 +1032,33 @@ class MultitalkerParakeet:
         # new-speaker identities. Reads embeddings from the Sortformer's
         # AOSC cache after each chunk and applies cosine-similarity
         # verification before the smoother sees the raw channel label.
+        # Read the user-declared max_speakers from the Speechmatics-protocol
+        # transcription_config and use it as a HARD CAP on the verifier's
+        # identity allocation. For a known 2-speaker deposition, S3/S4
+        # should NEVER appear in the transcript — voice variation must be
+        # force-routed to one of the two established identities rather than
+        # spawning a new label. This is the session-enrollment paradigm
+        # (workflow wiqg71kms Proposal D) applied at runtime. Falls back to
+        # multitalker's architectural cap (4) if the client doesn't send a
+        # max_speakers field. Bounded below by 1 and above by n_spk because
+        # the underlying model can't track more channels than its 4-channel
+        # speaker-kernel architecture supports.
+        max_identities = n_spk
+        if isinstance(transcription_config, dict):
+            sdc = transcription_config.get("speaker_diarization_config") or {}
+            if isinstance(sdc, dict):
+                requested = sdc.get("max_speakers")
+                if requested is not None:
+                    try:
+                        max_identities = max(1, min(int(requested), n_spk))
+                    except (TypeError, ValueError):
+                        max_identities = n_spk
+        print(
+            f"[verifier-cap] max_identities={max_identities} (n_spk={n_spk})",
+            file=sys.stderr, flush=True,
+        )
         verifier = EmbeddingSpeakerVerifier(
-            n_spk=n_spk, cohort=_get_cohort()
+            n_spk=max_identities, cohort=_get_cohort()
         )
 
         # Per-chunk audio buffer powers TitaNet verification. Each entry
