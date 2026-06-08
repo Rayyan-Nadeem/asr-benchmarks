@@ -868,10 +868,12 @@ class MultitalkerParakeet:
         # starts within INTERRUPTION_WINDOW_S of the current run's end AND
         # the current run doesn't terminate in sentence-final punctuation,
         # append " --" to mark the speaker as cut off (NCRA / West /
-        # Atkinson-Baker convention). The window is chosen tighter than a
-        # typical conversational pause (~1 s) so naturally-ending speakers
-        # whose turn happens to be followed quickly aren't false-marked.
-        INTERRUPTION_WINDOW_S = 0.5
+        # Atkinson-Baker convention). Bumped from 0.5 → 1.0 on 2026-06-08
+        # after live-mic test showed interruptions where the cut-in
+        # speaker started ~0.6-0.8 s after the cut-off speaker — within
+        # what a court reporter would consider an interruption but
+        # outside the original tight window.
+        INTERRUPTION_WINDOW_S = 1.0
         _SENTENCE_TERMINAL = {".", "!", "?"}
 
         diar, asr, titanet = _get_models()
