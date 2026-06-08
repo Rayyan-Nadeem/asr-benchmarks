@@ -309,6 +309,41 @@ class SpeakerLabelSmoother:
         return out
 
 
+# TODO(enterprise-grade roadmap, ordered by leverage):
+#   1. CALIBRATION SWEEP. Run AMI ES2004a + SCOTUS + LibriSpeech through
+#      the verifier at a grid of threshold combinations (EAGER_THRESHOLD,
+#      EAGER_Z_THRESHOLD, SIMILARITY_THRESHOLD, MERGE_THRESHOLD,
+#      HOLD_TIME_S). Score speaker confusion % / DER per combo. Pick the
+#      operating point that minimizes DER on the dev set. This turns
+#      every hardcoded number into a defensible "minimum-EER point on
+#      labeled dev set X" rather than picked-from-the-air. This is the
+#      minimum step to make a NIST-SRE-style reviewer happy. Tracked
+#      separately; harness lives at tools/sweep_verifier_thresholds.py
+#      (TODO).
+#   2. PLDA REPLACEMENT. Cosine similarity is the simplest possible
+#      decision metric. The actual NIST-SRE / VoxCeleb-grade approach
+#      uses PLDA (Probabilistic Linear Discriminant Analysis) trained on
+#      labeled same-speaker / different-speaker pairs. PLDA outputs a
+#      calibrated log-likelihood ratio — the "threshold" becomes a
+#      target operating point on the LLR distribution. Replace
+#      cosine + threshold with PLDA + LLR. Per Prince & Elder 2007,
+#      Brümmer & du Preez 2006 (score calibration via logistic
+#      regression). NeMo has PLDA helpers; train on ~1K labeled pairs.
+#   3. BAYESIAN ONLINE SPEAKER TRACKING. The "should I allocate a new
+#      speaker?" decision can be a Bayesian posterior under a Chinese
+#      Restaurant Process prior (Dirichlet Process Mixture). One
+#      interpretable parameter (concentration α = expected new speaker
+#      rate) replaces all the per-trial thresholds. Per Fox et al 2011
+#      ("The Sticky HDP-HMM for Speaker Diarization"). Doable in pure
+#      code, no extra training data.
+#   4. END-TO-END NEURAL DIARIZATION. Replace the whole verify-and-
+#      threshold pipeline with a small transformer that takes TitaNet
+#      embeddings + temporal context and outputs speaker assignments
+#      directly. This is what production cloud diarization services do.
+#      4-8 weeks + GPU budget. Per Fujita et al 2019, Park et al 2022
+#      (EEND, EEND-EDA, EEND-VC).
+
+
 class EmbeddingSpeakerVerifier:
     """Multi-prototype speaker verification using TitaNet x-vector embeddings.
 
@@ -529,28 +564,76 @@ class EmbeddingSpeakerVerifier:
                     best = sim
         return best
 
+    def _trial_cohort(
+        self, exclude_channel: "int | None" = None
+    ) -> "torch.Tensor | None":
+        """Build a per-trial cohort: the static (pre-loaded) cohort plus
+        the centroids of all other in-session channels except
+        exclude_channel. This is the symmetric-s-norm 'trial-side
+        normalization' pattern from NIST SRE — when judging 'is this
+        embedding the same as channel X?', the impostor cohort should be
+        embeddings definitely NOT from channel X. Other channels in the
+        same session are exactly that: in the same acoustic context AND
+        known to be different speakers, so they're better impostors than
+        the static cohort which was recorded under different conditions.
+
+        Static cohort is kept as a backstop for sessions with very few
+        established channels (early-session decisions need SOME cohort
+        to normalize against)."""
+        import torch
+        in_session: list[torch.Tensor] = []
+        for ch, protos in self._prototypes.items():
+            if ch == exclude_channel:
+                continue
+            # Skip ghosts (already merged into another identity).
+            if ch in self._mapping and self._mapping[ch] != ch:
+                continue
+            if self._n_embeddings.get(ch, 0) < self.MIN_EMBEDDINGS_FOR_CENTROID:
+                continue
+            for proto, _ in protos:
+                in_session.append(proto)
+        if not in_session and self._cohort is None:
+            return None
+        if not in_session:
+            return self._cohort
+        device = (
+            self._cohort.device if self._cohort is not None
+            else in_session[0].device
+        )
+        in_session_tensor = torch.stack(in_session).to(device)
+        if self._cohort is None:
+            return in_session_tensor
+        return torch.cat([self._cohort, in_session_tensor], dim=0)
+
     def _adaptive_snorm_z(
-        self, raw_sim: float, embedding: "torch.Tensor"
+        self,
+        raw_sim: float,
+        embedding: "torch.Tensor",
+        cohort: "torch.Tensor | None" = None,
     ) -> tuple["float | None", float, float, int]:
         """Adaptive s-norm z-score for a (test_embedding, candidate_centroid)
-        match with raw_sim already computed.
+        match with raw_sim already computed. Uses the supplied cohort
+        (or falls back to self._cohort if None). Caller is expected to
+        pass a per-trial cohort built via _trial_cohort() for the
+        principled trial-side-normalization path.
 
         Returns (z, mu, sigma, k_used). z is None when s-norm isn't
-        applicable (no cohort, cohort too small, or degenerate sigma) and
-        the caller should fall back to raw thresholding.
+        applicable (no cohort, cohort too small, or degenerate sigma)
+        and the caller should fall back to raw thresholding.
 
         Adaptive s-norm = symmetric s-norm restricted to the top-K
         impostor scores ("close-but-impostor" regime). Per Cumani et al
         2019 and NIST-SRE 2020 winning systems."""
         import torch
-        if self._cohort is None:
+        cohort_t = cohort if cohort is not None else self._cohort
+        if cohort_t is None:
             return None, 0.0, 0.0, 0
-        n_cohort = self._cohort.shape[0]
+        n_cohort = cohort_t.shape[0]
         if n_cohort < self.SNORM_MIN_COHORT:
             return None, 0.0, 0.0, 0
         # cohort_sims: (N,) — cosine similarity of test against every
         # cohort embedding (both L2-normalized → dot product).
-        cohort_sims = torch.mv(self._cohort, embedding.to(self._cohort.device))
+        cohort_sims = torch.mv(cohort_t, embedding.to(cohort_t.device))
         k = min(self.SNORM_TOP_K, int(n_cohort))
         top_k = torch.topk(cohort_sims, k=k).values
         mu = float(top_k.mean().item())
@@ -600,19 +683,33 @@ class EmbeddingSpeakerVerifier:
         if best_ch is None:
             return None, info
 
-        z, mu, sigma, k = self._adaptive_snorm_z(best_sim, emb)
+        # Trial-side normalization: build a cohort that EXCLUDES the
+        # candidate channel we're judging against, so we're not using
+        # the candidate as its own impostor (which would bias mu upward
+        # and z downward against merging — a self-reinforcing error).
+        # Other in-session channels become the most informative cohort:
+        # they're definitely-not-this-speaker AND share the live
+        # acoustic space, so cohort mu becomes a faithful baseline for
+        # "what's the impostor distribution in THIS room with THIS mic?"
+        # Static pre-loaded cohort is appended as a backstop when too
+        # few in-session impostors exist (early-session decisions).
+        trial_cohort = self._trial_cohort(exclude_channel=best_ch)
+        z, mu, sigma, k = self._adaptive_snorm_z(best_sim, emb, trial_cohort)
         if z is not None:
-            info.update(z=z, mu=mu, sigma=sigma, k=k, cohort_used=True)
+            info.update(
+                z=z, mu=mu, sigma=sigma, k=k, cohort_used=True,
+                cohort_size=int(trial_cohort.shape[0]),
+            )
             # Defense in depth: require BOTH the calibrated z-score AND
             # the raw cosine floor before merging. Measured 2026-06-08
-            # on live mic: distinct speakers in a mic context the cohort
-            # doesn't cover (the cohort was built from clean AMI/SCOTUS/
-            # LibriSpeech, the live audio is room-mic) produced raw_sim
-            # 0.229 / z 2.61 — z crosses threshold because cohort mu is
-            # only 0.094 (very far from the live acoustic space), but
-            # raw_sim 0.229 is clearly not same-speaker in TitaNet's own
-            # scale. The raw floor blocks this false merge while the
-            # z-score keeps providing calibrated evidence when it agrees.
+            # on live mic without trial-side normalization: distinct
+            # speakers in a mic context the static cohort didn't cover
+            # produced raw_sim 0.229 / z 2.61 — z crossed threshold
+            # because cohort mu was 0.094 (very far from the live
+            # acoustic space). With trial-side normalization the
+            # in-session impostors raise mu to something realistic for
+            # the live acoustic space; the raw floor remains as defense
+            # in depth against pathological edge cases.
             matched = (
                 best_ch
                 if (z > self.EAGER_Z_THRESHOLD
