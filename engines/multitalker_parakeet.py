@@ -1314,29 +1314,56 @@ class MultitalkerParakeet:
             batch_states = getattr(multispk.instance_manager, "batch_asr_states", None) or []
             prev_hyps = batch_states[0].previous_hypothesis if batch_states else None
             if prev_hyps:
+                # Interruption-flush: if ANOTHER speaker has emitted new
+                # text within the last INTERRUPT_FLUSH_WINDOW_S and THIS
+                # speaker has pending un-emitted tail, force-flush this
+                # speaker's tail NOW. Without this, when multitalker's
+                # attention shifts to the new speaker the prior speaker's
+                # last 1-3 words can get dropped before they ever commit
+                # (measured 2026-06-08: "writing, coding, analysis, and
+                # creative" lost the "and creative" tail when the user
+                # interrupted mid-flow). The stale-tail flush at
+                # STALE_HOLD_S = 1.5 s runs too late to catch this; the
+                # 0.5 s interrupt flush is the production-friendly
+                # tighter trigger that only fires when there's clear
+                # evidence the interrupted speaker is being talked over.
+                INTERRUPT_FLUSH_WINDOW_S = 0.5
                 for spk_idx, hyp in enumerate(prev_hyps):
                     if hyp is None:
                         continue
                     text = getattr(hyp, "text", None) or ""
 
-                    # Detect stale held tails — when the hypothesis hasn't
-                    # changed for STALE_HOLD_S of audio but we have buffered
-                    # text waiting for a boundary, force-flush it so the
-                    # last word doesn't pile up indefinitely.
+                    other_active = any(
+                        i != spk_idx
+                        and last_hyp_change_at[i] >= 0
+                        and (audio_seconds - last_hyp_change_at[i])
+                        < INTERRUPT_FLUSH_WINDOW_S
+                        for i in range(n_spk)
+                    )
+
                     if text != prev_hyp_text[spk_idx]:
                         prev_hyp_text[spk_idx] = text
                         last_hyp_change_at[spk_idx] = audio_seconds
                         final = _emit_speaker_delta(spk_idx, text)
+                    elif (
+                        other_active
+                        and emitted_text[spk_idx] != text
+                    ):
+                        # Another speaker is talking over this one and
+                        # we have un-emitted tail — flush now so the
+                        # words don't get dropped when multitalker
+                        # shifts focus.
+                        final = _emit_speaker_delta(spk_idx, text, force_flush=True)
+                        last_hyp_change_at[spk_idx] = -1.0
                     elif (
                         last_hyp_change_at[spk_idx] >= 0
                         and audio_seconds - last_hyp_change_at[spk_idx]
                         >= STALE_HOLD_S
                         and emitted_text[spk_idx] != text
                     ):
-                        # Same hypothesis, but emitted_text != text means
-                        # we're holding a partial-word tail. Flush it.
+                        # Stale tail (no interruption pressure, just a
+                        # natural pause that left a partial word held).
                         final = _emit_speaker_delta(spk_idx, text, force_flush=True)
-                        # Reset so we don't keep flushing on every poll.
                         last_hyp_change_at[spk_idx] = -1.0
                     else:
                         final = None
