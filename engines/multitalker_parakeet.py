@@ -447,6 +447,18 @@ class EmbeddingSpeakerVerifier:
     # duplicate-audio artifact. Capping at 0.95 blocks the artifact
     # while still allowing legitimate strong matches.
     DUPLICATE_AUDIO_CEILING = 0.95
+    # Below this similarity to its current mapping target, a channel's
+    # mapping is bogus and gets reverted to self-identity. Catches the
+    # case where an erroneous early merge persists after centroids
+    # diverge: e.g. eager_classify merges ch1 → ch0 at first emission
+    # due to the shared-audio artifact (capped above, but if some
+    # edge case slips past, this is the safety net), then ch1
+    # accumulates real ch1-voice embeddings while ch0 stays as the
+    # user's voice. By step 200 the centroids might be 0.15 apart but
+    # verify() leaves the mapping at ch1 → ch0 because no OTHER channel
+    # has sim > SIMILARITY_THRESHOLD. UNMAP_THRESHOLD says: if your
+    # current mapping target isn't even close, fall back to self.
+    UNMAP_THRESHOLD = 0.50
     # Hysteresis: an alternative identity must beat the current mapping
     # target by this margin before verify() remaps. Prevents thrashing.
     REMAP_MARGIN = 0.05
@@ -762,6 +774,20 @@ class EmbeddingSpeakerVerifier:
         else:
             # Mapping target's prototypes were dropped (e.g. merged away).
             current_sim = -2.0
+
+        # Bogus-mapping check: if we're routed to a target we don't
+        # actually resemble (current_sim very low), revert to self-
+        # identity. Catches early-merge mistakes that persist after the
+        # centroids diverge — verify()'s alternative-search alone can't
+        # un-merge because it only remaps when ANOTHER channel beats the
+        # current target, but if no other channel matches well, the
+        # bogus mapping silently sticks.
+        if (
+            current_target != raw_channel
+            and current_sim < self.UNMAP_THRESHOLD
+        ):
+            self._mapping[raw_channel] = raw_channel
+            return raw_channel
 
         # Best alternative live identity.
         best_match: int | None = None
