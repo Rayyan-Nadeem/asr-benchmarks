@@ -893,6 +893,20 @@ async function start() {
           const existing = speakerLines[g.speaker];
           if (existing && (nowTs - existing.lastTs) < MERGE_WINDOW_MS) {
             line = existing.el;
+            // The engine appends " --" when a speaker's emission is
+            // immediately followed by a different speaker, signaling
+            // a cutoff. But if THIS same speaker comes back within
+            // MERGE_WINDOW_MS we're consolidating their turn — so
+            // the earlier "cutoff" wasn't a true interrupt, it was a
+            // brief overlap that the speaker spoke through. Strip
+            // the stranded marker before appending the continuation
+            // so the merged text doesn't read " ... so I -- actually
+            // have this thing ..." with a mid-sentence em-dash.
+            let existingText = line._text.nodeValue || '';
+            if (existingText.endsWith(' --')) {
+              existingText = existingText.slice(0, -3);
+              line._text.nodeValue = existingText;
+            }
           } else {
             line = document.createElement('div');
             line.className = 'line';
