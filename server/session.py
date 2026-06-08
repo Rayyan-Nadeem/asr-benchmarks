@@ -125,40 +125,7 @@ class Session:
             yield chunk
 
     async def _engine_loop(self) -> None:
-        """Forward engine events to the client as protocol frames.
-
-        Buffers one StreamFinal so the deposition-style " --"
-        interruption marker can be applied AFTER the punctuator runs
-        (which previously stripped or overrode the engine-side marker).
-        When the next final arrives, if it's from a different speaker
-        within INTERRUPTION_WINDOW_S and the buffered final didn't
-        already terminate in sentence-final punctuation, strip any
-        trailing terminal punctuation (".?!,;:") plus any engine-side
-        " --" / "..." from the buffered transcript and append " --".
-        The session layer is the authoritative final word on the marker
-        because it has both the punctuator's output AND knowledge of
-        the next emission's speaker. Cost: +1 final of latency on
-        every emission; acceptable for deposition-grade output."""
-        INTERRUPTION_WINDOW_S = 1.0
-        TERMINAL_PUNCT = {".", "!", "?"}
-        STRIP_TRAILING = ".!?,;:"
-
-        # buffered final state: dict with transcript / event / words /
-        # speaker. None when nothing is pending. Flushed on the next
-        # final or at end-of-stream.
-        buffered: dict | None = None
-
-        def _last_non_punct_char(s: str) -> str:
-            t = s.rstrip()
-            # Treat " --" and trailing "..." as non-terminal — they're
-            # the marker / trail-off shapes we want to overwrite when
-            # an interruption is confirmed.
-            if t.endswith(" --"):
-                t = t[:-3].rstrip()
-            while t.endswith("."):
-                t = t[:-1].rstrip()
-            return t[-1] if t else ""
-
+        """Forward engine events to the client as protocol frames."""
         async for event in self.engine.stream(self._audio_iter(), self.transcription_config):
             if isinstance(event, StreamPartial):
                 await self._send(AddPartialTranscript(
@@ -167,84 +134,30 @@ class Session:
                     end_time=event.end_time,
                     results=[],
                 ))
-                continue
-
-            if not isinstance(event, StreamFinal):
-                continue
-
-            labeled_words = await self.diarizer.label(event.words, bytes(self.audio_so_far))
-            # Punctuation post-process — passthrough by default (raw
-            # model output), distilbert when the user toggles it on.
-            punctuated_words = await self.punctuator.punctuate(labeled_words)
-            # Rebuild the human-readable transcript from the
-            # punctuated words so the AddTranscript.transcript field
-            # reflects the punctuator's output, not the engine's raw.
-            if punctuated_words is not labeled_words:
-                parts: list[str] = []
-                for w in punctuated_words:
-                    if w.is_punctuation:
-                        parts.append(w.content)
-                    else:
-                        parts.append((" " if parts else "") + w.content)
-                transcript = "".join(parts).strip()
-            else:
-                transcript = event.transcript
-
-            cur_speaker = next(
-                (w.speaker for w in punctuated_words if w.speaker), None
-            )
-
-            # If a previous final is buffered, decide whether to mark
-            # it as interrupted before emitting.
-            if buffered is not None:
-                buf_speaker = buffered["speaker"]
-                buf_end = buffered["end_time"]
-                gap = max(0.0, event.start_time - buf_end)
-                buf_transcript: str = buffered["transcript"]
-                if (
-                    cur_speaker
-                    and buf_speaker
-                    and cur_speaker != buf_speaker
-                    and gap < INTERRUPTION_WINDOW_S
-                    and _last_non_punct_char(buf_transcript) not in TERMINAL_PUNCT
-                ):
-                    # Interruption confirmed. Strip any engine-side
-                    # marker, trailing terminal punctuation, and
-                    # trail-off ellipsis from the buffered transcript;
-                    # then append the authoritative " --".
-                    stripped = buf_transcript.rstrip()
-                    if stripped.endswith(" --"):
-                        stripped = stripped[:-3].rstrip()
-                    while stripped and stripped[-1] in STRIP_TRAILING:
-                        stripped = stripped[:-1].rstrip()
-                    buf_transcript = (stripped + " --") if stripped else stripped
-
+            elif isinstance(event, StreamFinal):
+                labeled_words = await self.diarizer.label(event.words, bytes(self.audio_so_far))
+                # Punctuation post-process — passthrough by default (raw
+                # model output), distilbert when the user toggles it on.
+                punctuated_words = await self.punctuator.punctuate(labeled_words)
+                # Rebuild the human-readable transcript from the
+                # punctuated words so the AddTranscript.transcript field
+                # reflects the punctuator's output, not the engine's raw.
+                if punctuated_words is not labeled_words:
+                    parts: list[str] = []
+                    for w in punctuated_words:
+                        if w.is_punctuation:
+                            parts.append(w.content)
+                        else:
+                            parts.append((" " if parts else "") + w.content)
+                    transcript = "".join(parts).strip()
+                else:
+                    transcript = event.transcript
                 await self._send(AddTranscript(
-                    transcript=buf_transcript,
-                    start_time=buffered["start_time"],
-                    end_time=buffered["end_time"],
-                    results=buffered["results"],
+                    transcript=transcript,
+                    start_time=event.start_time,
+                    end_time=event.end_time,
+                    results=[self._word_to_protocol(w) for w in punctuated_words],
                 ))
-
-            # Buffer the current final to await its own interruption
-            # decision on the next final.
-            buffered = {
-                "transcript": transcript,
-                "start_time": event.start_time,
-                "end_time": event.end_time,
-                "results": [self._word_to_protocol(w) for w in punctuated_words],
-                "speaker": cur_speaker,
-            }
-
-        # End of stream — flush the last buffered final as-is (no
-        # interruption marker since nothing follows).
-        if buffered is not None:
-            await self._send(AddTranscript(
-                transcript=buffered["transcript"],
-                start_time=buffered["start_time"],
-                end_time=buffered["end_time"],
-                results=buffered["results"],
-            ))
         await self._send(EndOfTranscript())
 
     async def _send(self, msg: Any) -> None:

@@ -436,29 +436,6 @@ class EmbeddingSpeakerVerifier:
     # raw EAGER_THRESHOLD (84 in the shipping cohort; this is a safety
     # floor for partial / corrupt cohort loads).
     SNORM_MIN_COHORT = 30
-    # Anomaly upper bound for eager-classify merges. raw_sim above this
-    # means the test embedding effectively matches the candidate
-    # centroid 1:1 — which in the eager path is almost always the
-    # shared-audio-window artifact (the dominant-channel update fed the
-    # same audio into the candidate centroid milliseconds earlier),
-    # not a real same-speaker match. Genuine same-speaker raw_sim
-    # against an ESTABLISHED centroid in a 2-speaker session typically
-    # sits in the 0.80-0.93 band; values approaching 1.0 are the
-    # duplicate-audio artifact. Capping at 0.95 blocks the artifact
-    # while still allowing legitimate strong matches.
-    DUPLICATE_AUDIO_CEILING = 0.95
-    # Below this similarity to its current mapping target, a channel's
-    # mapping is bogus and gets reverted to self-identity. Catches the
-    # case where an erroneous early merge persists after centroids
-    # diverge: e.g. eager_classify merges ch1 → ch0 at first emission
-    # due to the shared-audio artifact (capped above, but if some
-    # edge case slips past, this is the safety net), then ch1
-    # accumulates real ch1-voice embeddings while ch0 stays as the
-    # user's voice. By step 200 the centroids might be 0.15 apart but
-    # verify() leaves the mapping at ch1 → ch0 because no OTHER channel
-    # has sim > SIMILARITY_THRESHOLD. UNMAP_THRESHOLD says: if your
-    # current mapping target isn't even close, fall back to self.
-    UNMAP_THRESHOLD = 0.50
     # Hysteresis: an alternative identity must beat the current mapping
     # target by this margin before verify() remaps. Prevents thrashing.
     REMAP_MARGIN = 0.05
@@ -718,40 +695,30 @@ class EmbeddingSpeakerVerifier:
         # few in-session impostors exist (early-session decisions).
         trial_cohort = self._trial_cohort(exclude_channel=best_ch)
         z, mu, sigma, k = self._adaptive_snorm_z(best_sim, emb, trial_cohort)
-        # Anomaly gate: raw_sim above DUPLICATE_AUDIO_CEILING in the eager
-        # path is suspicious. The TitaNet embedding for the eager-classify
-        # call uses the same audio window the dominant-channel update
-        # just ingested. When multitalker emits on a NEW channel in the
-        # same step as a different channel's dominant update, the eager
-        # embedding can be effectively identical to the just-updated
-        # centroid (raw_sim → 1.0), producing a false-positive merge of
-        # two genuinely distinct speakers. Measured 2026-06-08: user +
-        # AI partner, raw_sim 1.000 / z 20.32 — clearly an artifact of
-        # shared-audio compare, not same-speaker. Cap the upper bound on
-        # eager merge.
         if z is not None:
             info.update(
                 z=z, mu=mu, sigma=sigma, k=k, cohort_used=True,
                 cohort_size=int(trial_cohort.shape[0]),
             )
-            # Defense in depth: require z above EAGER_Z_THRESHOLD AND
-            # raw_sim in the (EAGER_THRESHOLD, DUPLICATE_AUDIO_CEILING)
-            # band. The lower bound blocks distinct-speakers-in-shared-
-            # acoustic-context false merges. The upper bound blocks
-            # the shared-audio-window false merges described above.
+            # Defense in depth: require BOTH the calibrated z-score AND
+            # the raw cosine floor before merging. Measured 2026-06-08
+            # on live mic without trial-side normalization: distinct
+            # speakers in a mic context the static cohort didn't cover
+            # produced raw_sim 0.229 / z 2.61 — z crossed threshold
+            # because cohort mu was 0.094 (very far from the live
+            # acoustic space). With trial-side normalization the
+            # in-session impostors raise mu to something realistic for
+            # the live acoustic space; the raw floor remains as defense
+            # in depth against pathological edge cases.
             matched = (
                 best_ch
                 if (z > self.EAGER_Z_THRESHOLD
-                    and self.EAGER_THRESHOLD < best_sim < self.DUPLICATE_AUDIO_CEILING)
+                    and best_sim > self.EAGER_THRESHOLD)
                 else None
             )
         else:
             info.update(cohort_used=False)
-            matched = (
-                best_ch
-                if self.EAGER_THRESHOLD < best_sim < self.DUPLICATE_AUDIO_CEILING
-                else None
-            )
+            matched = best_ch if best_sim > self.EAGER_THRESHOLD else None
         return matched, info
 
     def verify(self, raw_channel: int) -> int:
@@ -774,20 +741,6 @@ class EmbeddingSpeakerVerifier:
         else:
             # Mapping target's prototypes were dropped (e.g. merged away).
             current_sim = -2.0
-
-        # Bogus-mapping check: if we're routed to a target we don't
-        # actually resemble (current_sim very low), revert to self-
-        # identity. Catches early-merge mistakes that persist after the
-        # centroids diverge — verify()'s alternative-search alone can't
-        # un-merge because it only remaps when ANOTHER channel beats the
-        # current target, but if no other channel matches well, the
-        # bogus mapping silently sticks.
-        if (
-            current_target != raw_channel
-            and current_sim < self.UNMAP_THRESHOLD
-        ):
-            self._mapping[raw_channel] = raw_channel
-            return raw_channel
 
         # Best alternative live identity.
         best_match: int | None = None
@@ -915,12 +868,10 @@ class MultitalkerParakeet:
         # starts within INTERRUPTION_WINDOW_S of the current run's end AND
         # the current run doesn't terminate in sentence-final punctuation,
         # append " --" to mark the speaker as cut off (NCRA / West /
-        # Atkinson-Baker convention). Bumped from 0.5 → 1.0 on 2026-06-08
-        # after live-mic test showed interruptions where the cut-in
-        # speaker started ~0.6-0.8 s after the cut-off speaker — within
-        # what a court reporter would consider an interruption but
-        # outside the original tight window.
-        INTERRUPTION_WINDOW_S = 1.0
+        # Atkinson-Baker convention). The window is chosen tighter than a
+        # typical conversational pause (~1 s) so naturally-ending speakers
+        # whose turn happens to be followed quickly aren't false-marked.
+        INTERRUPTION_WINDOW_S = 0.5
         _SENTENCE_TERMINAL = {".", "!", "?"}
 
         diar, asr, titanet = _get_models()
@@ -1361,56 +1312,29 @@ class MultitalkerParakeet:
             batch_states = getattr(multispk.instance_manager, "batch_asr_states", None) or []
             prev_hyps = batch_states[0].previous_hypothesis if batch_states else None
             if prev_hyps:
-                # Interruption-flush: if ANOTHER speaker has emitted new
-                # text within the last INTERRUPT_FLUSH_WINDOW_S and THIS
-                # speaker has pending un-emitted tail, force-flush this
-                # speaker's tail NOW. Without this, when multitalker's
-                # attention shifts to the new speaker the prior speaker's
-                # last 1-3 words can get dropped before they ever commit
-                # (measured 2026-06-08: "writing, coding, analysis, and
-                # creative" lost the "and creative" tail when the user
-                # interrupted mid-flow). The stale-tail flush at
-                # STALE_HOLD_S = 1.5 s runs too late to catch this; the
-                # 0.5 s interrupt flush is the production-friendly
-                # tighter trigger that only fires when there's clear
-                # evidence the interrupted speaker is being talked over.
-                INTERRUPT_FLUSH_WINDOW_S = 0.5
                 for spk_idx, hyp in enumerate(prev_hyps):
                     if hyp is None:
                         continue
                     text = getattr(hyp, "text", None) or ""
 
-                    other_active = any(
-                        i != spk_idx
-                        and last_hyp_change_at[i] >= 0
-                        and (audio_seconds - last_hyp_change_at[i])
-                        < INTERRUPT_FLUSH_WINDOW_S
-                        for i in range(n_spk)
-                    )
-
+                    # Detect stale held tails — when the hypothesis hasn't
+                    # changed for STALE_HOLD_S of audio but we have buffered
+                    # text waiting for a boundary, force-flush it so the
+                    # last word doesn't pile up indefinitely.
                     if text != prev_hyp_text[spk_idx]:
                         prev_hyp_text[spk_idx] = text
                         last_hyp_change_at[spk_idx] = audio_seconds
                         final = _emit_speaker_delta(spk_idx, text)
-                    elif (
-                        other_active
-                        and emitted_text[spk_idx] != text
-                    ):
-                        # Another speaker is talking over this one and
-                        # we have un-emitted tail — flush now so the
-                        # words don't get dropped when multitalker
-                        # shifts focus.
-                        final = _emit_speaker_delta(spk_idx, text, force_flush=True)
-                        last_hyp_change_at[spk_idx] = -1.0
                     elif (
                         last_hyp_change_at[spk_idx] >= 0
                         and audio_seconds - last_hyp_change_at[spk_idx]
                         >= STALE_HOLD_S
                         and emitted_text[spk_idx] != text
                     ):
-                        # Stale tail (no interruption pressure, just a
-                        # natural pause that left a partial word held).
+                        # Same hypothesis, but emitted_text != text means
+                        # we're holding a partial-word tail. Flush it.
                         final = _emit_speaker_delta(spk_idx, text, force_flush=True)
+                        # Reset so we don't keep flushing on every poll.
                         last_hyp_change_at[spk_idx] = -1.0
                     else:
                         final = None
