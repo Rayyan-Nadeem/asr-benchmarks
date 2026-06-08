@@ -603,7 +603,22 @@ class EmbeddingSpeakerVerifier:
         z, mu, sigma, k = self._adaptive_snorm_z(best_sim, emb)
         if z is not None:
             info.update(z=z, mu=mu, sigma=sigma, k=k, cohort_used=True)
-            matched = best_ch if z > self.EAGER_Z_THRESHOLD else None
+            # Defense in depth: require BOTH the calibrated z-score AND
+            # the raw cosine floor before merging. Measured 2026-06-08
+            # on live mic: distinct speakers in a mic context the cohort
+            # doesn't cover (the cohort was built from clean AMI/SCOTUS/
+            # LibriSpeech, the live audio is room-mic) produced raw_sim
+            # 0.229 / z 2.61 — z crosses threshold because cohort mu is
+            # only 0.094 (very far from the live acoustic space), but
+            # raw_sim 0.229 is clearly not same-speaker in TitaNet's own
+            # scale. The raw floor blocks this false merge while the
+            # z-score keeps providing calibrated evidence when it agrees.
+            matched = (
+                best_ch
+                if (z > self.EAGER_Z_THRESHOLD
+                    and best_sim > self.EAGER_THRESHOLD)
+                else None
+            )
         else:
             info.update(cohort_used=False)
             matched = best_ch if best_sim > self.EAGER_THRESHOLD else None
