@@ -198,7 +198,15 @@ class SpeakerLabelSmoother:
     # from open-source pyannote.audio + DOVER-Lap implementations.
     MIN_SPEAKER_DURATION_S = 0.5    # min sustained activity to keep label
     SMOOTHING_WINDOW_S = 0.6        # ±0.6 s context around each word
-    HOLD_TIME_S = 0.9               # buffer this much audio before emitting
+    HOLD_TIME_S = 1.4               # buffer this much audio before emitting
+    # 1.4 s (raised from 0.9 on 2026-06-08) — gives the smoother a wider
+    # window before draining, which lets more words from each speaker
+    # accumulate before consecutive-speaker grouping fires. Reduces the
+    # overlap-fragmentation pattern where alternating S1/S2/S1/S2 single-
+    # word lines appear during cross-talk: with a longer hold, more
+    # same-speaker words land in each drain pass and group_consecutive
+    # produces longer per-speaker runs (i.e. fewer transcript lines per
+    # cross-talk segment). Cost: per-final latency up from ~0.9 → ~1.4 s.
 
     # Sticky speaker locking — resists transient re-labeling from acoustic
     # drift (mic distance, head turn, brief volume drops) AND from long-
