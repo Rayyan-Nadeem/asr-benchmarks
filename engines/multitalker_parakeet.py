@@ -864,6 +864,16 @@ class MultitalkerParakeet:
         BYTES_PER_SAMPLE = 2
         BYTES_PER_SEC = SAMPLE_RATE * BYTES_PER_SAMPLE
 
+        # Deposition-style interruption marker. When the next emitted run
+        # starts within INTERRUPTION_WINDOW_S of the current run's end AND
+        # the current run doesn't terminate in sentence-final punctuation,
+        # append " --" to mark the speaker as cut off (NCRA / West /
+        # Atkinson-Baker convention). The window is chosen tighter than a
+        # typical conversational pause (~1 s) so naturally-ending speakers
+        # whose turn happens to be followed quickly aren't false-marked.
+        INTERRUPTION_WINDOW_S = 0.5
+        _SENTENCE_TERMINAL = {".", "!", "?"}
+
         diar, asr, titanet = _get_models()
 
         # Build the session config. streaming_mode=True is critical.
@@ -1339,10 +1349,36 @@ class MultitalkerParakeet:
             # (one final = one speaker's utterance) instead of
             # one-final-per-word.
             ready_words = smoother.drain_ready(audio_seconds)
-            for spk, run in _group_consecutive_speakers(ready_words):
+            groups = list(_group_consecutive_speakers(ready_words))
+            for i, (spk, run) in enumerate(groups):
                 transcript = " ".join(w.content for w in run).strip()
                 if not transcript:
                     continue
+                # Deposition-style interruption marker: if the next run
+                # is a different speaker that starts within
+                # INTERRUPTION_WINDOW_S of this run's end, AND this
+                # run's final character isn't sentence-terminal, mark
+                # it as cut off with " --". This is the NCRA / West /
+                # Atkinson-Baker deposition convention — interrupted
+                # speech ends with an em-dash, then the next speaker
+                # starts a new line. Without this the transcript reads
+                # as if every cut-off speaker simply stopped naturally,
+                # which loses information a court reporter / attorney
+                # would want.
+                if i + 1 < len(groups):
+                    next_spk, next_run = groups[i + 1]
+                    gap = next_run[0].start_time - run[-1].end_time
+                    last_char = transcript.rstrip()[-1] if transcript.rstrip() else ""
+                    if (
+                        next_spk != spk
+                        and gap < INTERRUPTION_WINDOW_S
+                        and last_char not in _SENTENCE_TERMINAL
+                    ):
+                        transcript = transcript.rstrip() + " --"
+                        # Mirror the marker onto the last word so any
+                        # downstream consumer that re-renders from
+                        # words[] (rather than transcript) sees it too.
+                        run[-1].content = run[-1].content.rstrip() + " --"
                 yield StreamFinal(
                     transcript=transcript,
                     words=run,
